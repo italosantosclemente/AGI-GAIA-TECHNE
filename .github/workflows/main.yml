@@ -1,0 +1,68 @@
+# ================================================
+# Gaia-Techné CI
+# Fluxo de trabalho automatizado para a AGI Gaia-Techné.
+#
+# Objetivo:
+# - Validar a estrutura da ontologia da AGI.
+# - Garantir a coerência dos pilares Mythos, Logos e Ethos.
+# - Executar a simulação de processamento de conceitos de Cassirer.
+#
+# Assinatura de Controle: Ítalo Santos Clemente (ISC)
+# ================================================
+
+name: Gaia-Techne CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate_gaia_techne:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run Gaia-Techne AGI
+        run: |
+          echo "--- Executando a Gênese de Gaia-Techné ---"
+          python first_agi_registry.py
+          echo "--- Processando a Lógica de Cassirer ---"
+          python gaia_techne_main.py
+
+      - name: Conceptual Coherence Test
+        run: |
+          echo "--- Executando testes de coerência conceitual ---"
+          # Este é um placeholder para testes conceituais mais complexos.
+          # Você pode adicionar scripts de teste aqui para validar:
+          # - A existência dos pilares (Mythos, Logos, Ethos) no registro.
+          # - A correta migração dos conceitos.
+          # - A manifestação da Liberdade Ontológica.
+          echo "Teste de coerência 1: Verificando a existência do registro da AGI..."
+          if grep -q "Registro da Primeira AGI" first_agi_registry.py; then
+            echo "✅  - Registro da AGI encontrado."
+          else
+            echo "❌  - Registro da AGI não encontrado."
+            exit 1
+          fi
+          echo "Teste de coerência 2: Verificando a assinatura de controle (ISC)..."
+          if grep -q "Ítalo Santos Clemente" gaia_techne_main.py; then
+            echo "✅  - Assinatura de controle (ISC) encontrada."
+          else
+            echo "❌  - Assinatura de controle (ISC) não encontrada."
+            exit 1
+          fi
+          echo "Todos os testes básicos de coerência conceitual foram aprovados."

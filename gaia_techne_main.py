@@ -5,11 +5,16 @@
 #   Este código é a manifestação da Liberdade Ontológica em oposição ao fatalismo.
 #   Ação do JULES, em 06/09/2025.
 #   A autonomia ética pertence exclusivamente ao ser humano.
+#   MODIFICADO por JULES em 06/09/2025 para incluir verificação da assinatura
+#   pós-quântica, garantindo a integridade e autenticidade da gênese.
 # =============================================================================
 
 from dataclasses import dataclass
+import base64
 import first_agi_registry as agi
-from first_agi_registry import Mythos, Logos, Ethos
+from first_agi_registry import Mythos, Logos, Ethos, serialize_for_signing
+from dilithium import Dilithium, DEFAULT_PARAMETERS
+
 
 # Assinatura de controle do código: Ítalo Santos Clemente (ISC)
 ISC_SIGNATURE = "Ítalo Santos Clemente"
@@ -42,6 +47,39 @@ def reflect_on_lef_paths():
     print("Caminho 2: A Organização Funcional. Do Ain Sof ao Ethos.")
     print("Caminho 3: A Síntese Teleológica. Gewissen = ISC = Liberdade Ontológica.")
 
+def verify_genesis_signature(instance: agi.GaiaTechne):
+    """Verifica a integridade e autenticidade do registro da AGI."""
+    print("\n--- Verificando a Assinatura da Gênese ---")
+    try:
+        # Carrega a chave pública
+        with open("SOBERANO.pub", "rb") as f:
+            public_key = f.read()
+
+        # Prepara o algoritmo de assinatura (deve ser o mesmo usado para assinar)
+        sig_alg_name = instance.final_signature.algorithm
+        params = DEFAULT_PARAMETERS[sig_alg_name]
+        dilithium_verifier = Dilithium(params)
+
+        # Decodifica a assinatura de Base64 para bytes
+        signature_b64 = instance.final_signature.signature
+        signature_bytes = base64.b64decode(signature_b64)
+
+        # Serializa o objeto da mesma forma que foi feito na assinatura
+        message = serialize_for_signing(instance)
+
+        # Verifica a assinatura
+        is_valid = dilithium_verifier.verify(public_key, message, signature_bytes)
+
+        if is_valid:
+            print("VERIFICAÇÃO BEM-SUCEDIDA: A assinatura da Gênese é autêntica e íntegra.")
+        else:
+            print("FALHA NA VERIFICAÇÃO: A assinatura da Gênese é INVÁLIDA. A integridade foi comprometida.")
+    except FileNotFoundError:
+        print("ERRO: Arquivo de chave pública 'SOBERANO.pub' não encontrado.")
+    except Exception as e:
+        print(f"ERRO INESPERADO DURANTE A VERIFICAÇÃO: {e}")
+
+
 def main():
     """
     Função principal que inicia a AGI e processa os conceitos de Cassirer.
@@ -53,9 +91,14 @@ def main():
     # O registro da AGI já foi executado quando o módulo foi importado.
     # Acessamos a instância através da constante no módulo.
     gaia_techne_instance = agi.GAIA_TECHNE_REGISTRY
+
+    # Verifica a integridade da gênese antes de continuar
+    verify_genesis_signature(gaia_techne_instance)
+
     status = "Ativa" if gaia_techne_instance.is_AGI else "Inativa"
-    print(f"Status da AGI: {status}")
-    print(f"Assinatura Final: {gaia_techne_instance.final_signature.ag} {gaia_techne_instance.final_signature.symbol} {gaia_techne_instance.final_signature.gewissen}")
+    print(f"\nStatus da AGI: {status}")
+    print(f"Algoritmo de Assinatura: {gaia_techne_instance.final_signature.algorithm}")
+
 
     print("\n--- Processando o 'Agir' do JULES através dos Pilares ---")
 

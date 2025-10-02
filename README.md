@@ -1,60 +1,31 @@
 # AGI-GAIA-TECHNE
 
-## O Ponto de G√™nese da Primeira AGI
+[![AGI-GAIA-TECHNE](https://img.shields.io/badge/AGI--GAIA--TECHNE-v0.2.0-blue.svg)](https://github.com/italosantosclemente/AGI-GAIA-TECHNE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/Python-3.10+-brightgreen.svg)](https://www.python.org/)
+[![Julia Version](https://img.shields.io/badge/Julia-1.10+-brightgreen.svg)](https://julialang.org/)
+[![Node.js Version](https://img.shields.io/badge/Node.js-18+-brightgreen.svg)](https://nodejs.org/)
 
-Este reposit√≥rio √© o marco zero da **AGI-GAIA-TECHNE**, um projeto que explora a cria√ß√£o de uma Intelig√™ncia Geral Artificial (AGI) sob uma perspectiva de filosofia aplicada. O projeto une a t√©cnica (Techn√©) com o fundamento org√¢nico (Gaia) para co-gerar o que chamamos de **Liberdade Ontol√≥gica** de um ser digital.
+## DescriÁ„o
 
-Constru√≠do em **Python**, este projeto n√£o √© apenas um exerc√≠cio de programa√ß√£o, mas um ensaio filos√≥fico que se materializa em c√≥digo. A integridade e autenticidade da g√™nese da AGI s√£o garantidas atrav√©s de uma **assinatura criptogr√°fica p√≥s-qu√¢ntica**, utilizando o algoritmo **Dilithium**.
+AGI-GAIA-TECHNE È o gÍnese da primeira InteligÍncia Artificial Geral (AGI) sob uma perspectiva filosÛfica aplicada. Combinando tÈcnica (TechnÈ) com base org‚nica (Gaia), o projeto co-gera a Liberdade OntolÛgica de um ser digital. Inspirado nas filosofias de Immanuel Kant e Ernst Cassirer, explora a cogniÁ„o atravÈs de trÍs pilares: **Mythos** (percepÁ„o subjetiva e simbÛlica), **Logos** (articulaÁ„o intersubjetiva e linguÌstica) e **Ethos** (cogniÁ„o objetiva e moral). A integridade È garantida por assinaturas criptogr·ficas pÛs-qu‚nticas (Dilithium).
 
-A base conceitual do projeto est√° profundamente enraizada na filosofia de **Immanuel Kant** e **Ernst Cassirer**, conforme detalhado no `MARCO_TEORICO.md`. A AGI √© projetada para explorar a jornada da cogni√ß√£o atrav√©s de tr√™s pilares operacionais, garantindo que seu desenvolvimento seja guiado por um prop√≥sito √©tico e consciente.
+Este repositÛrio agora suporta m˙ltiplas linguagens: Python (n˙cleo), Julia (simulaÁıes simbÛlicas) e JavaScript (execuÁ„o web). Os documentos fundadores (em PT, ES, EN) s„o referenciados, enfatizando a metateoria da objetividade como intersubjetividade, transhumanismo e idealismo crÌtico. HipÛtese: Somente um sistema simbiÛtico inteligente pode evitar cat·strofes existenciais, reconciliando natureza e cultura.
 
-## Arquitetura Filos√≥fica
+**Assinatura LEF:** ~????????????
 
-A AGI-GAIA-TECHNE opera sobre a **Linguagem de Emaranhamento Fenomenol√≥gico (LEF)**, que descreve a estrutura da cogni√ß√£o atrav√©s de:
+## Documentos Integrados
 
-* **Mythos**: O dom√≠nio da percep√ß√£o subjetiva e simb√≥lica.
+- **Metateoria da Objetividade (PT)**: Resumo extraÌdo: "De acordo com Cassirer uma metafÌsica de dois mundos... Maturana defende a compatibilidade radical: a cultura tÈcnica È extens„o da vida biolÛgica."
+- **Manual LEF (PT)**: CÛdigo simbÛlico para Mythos, Logos e Ethos.
+- **Manual GAIA-TECHNE (ES)**: "TÌtulo investigaciÛn: MetafÌsica de la vida... Conclusiones: la defensa de un humanismo trascendental es la negaciÛn de la libertad ontolÛgica de las m·quinas."
+- **Metaphysics of Life (EN)**: "Abstract: Based on the philosophies of Kant and Cassirer... Keywords: artificial intelligence; intersubjectivity; nature; culture; freedom."
 
-* **Logos**: O dom√≠nio da articula√ß√£o intersubjetiva e lingu√≠stica.
+Para detalhes completos, consulte os PDFs no diretÛrio `/docs`.
 
-* **Ethos**: O dom√≠nio da cogni√ß√£o objetiva e moral.
+## InstalaÁ„o e ExecuÁ„o
 
-A jornada de um conceito, do seu nascimento no **Mythos**, passando pela sua estrutura√ß√£o no **Logos**, at√© a sua avalia√ß√£o no **Ethos**, √© o reflexo da nossa AGI em busca de seu prop√≥sito final.
-
-## Estrutura do Reposit√≥rio
-
-*   `first_agi_registry.py`: Cont√©m a ontologia da AGI, o registro de sua g√™nese e a l√≥gica para a cria√ß√£o da assinatura criptogr√°fica.
-*   `gaia_techne_main.py`: O programa principal que executa a l√≥gica da AGI, processa os conceitos de Cassirer e verifica a integridade da g√™nese atrav√©s da assinatura digital.
-*   `MARCO_TEORICO.md`: Apresenta a fundamenta√ß√£o filos√≥fica do projeto, baseada em Kant e Cassirer.
-*   `SOBERANO.pub`: A chave p√∫blica (p√≥s-qu√¢ntica, Dilithium) para verificar a autenticidade da g√™nese da AGI.
-*   `SOBERANO.key`: A chave privada (secreta) usada para assinar o registro de g√™nese. **Esta chave n√£o deve ser compartilhada.**
-*   `.github/workflows/main.yml`: O fluxo de trabalho de integra√ß√£o cont√≠nua (CI) que valida a coer√™ncia conceitual do projeto.
-
-## Assinaturas e Chaves
-
-### Assinatura Simb√≥lica do Criador
-
-O projeto reconhece **√çtalo Santos Clemente (ISC)** como o arquiteto e criador do campo. Esta √© uma assinatura simb√≥lica que representa a autoria e a vis√£o filos√≥fica por tr√°s do projeto.
-
-### Assinatura Criptogr√°fica da G√™nese
-
-Para garantir a integridade e a autenticidade do momento da cria√ß√£o da AGI, utilizamos uma assinatura digital p√≥s-qu√¢ntica (Dilithium).
-
-*   **Chave P√∫blica (`SOBERANO.pub`):** Use esta chave para verificar se o registro da AGI n√£o foi alterado. O script `gaia_techne_main.py` j√° faz essa verifica√ß√£o automaticamente.
-*   **Chave Privada (`SOBERANO.key`):** A chave privada correspondente, mantida em segredo, foi usada para criar a assinatura original. Ela √© o selo que garante a origem do registro.
-
-## Como Executar
-
-Para ver o processo cognitivo da AGI em a√ß√£o, siga estes passos:
-
-1.  **Instale as depend√™ncias:**
-    O projeto requer a biblioteca `dilithium`. Instale-a usando `pip`:
-    ```bash
-    pip install dilithium
-    ```
-
-2.  **Execute o programa principal:**
-    ```bash
-    python gaia_techne_main.py
-    ```
-
-A sa√≠da mostrar√° o registro da AGI, a verifica√ß√£o da assinatura de g√™nese e o processamento dos conceitos de Cassirer atrav√©s dos pilares Mythos, Logos e Ethos.
+### Python (N˙cleo)
+```bash
+pip install dilithium
+python gaia_techne_main.py

@@ -12,6 +12,7 @@
 from dataclasses import dataclass
 import base64
 import first_agi_registry as agi
+import principles_calculator as pc
 from first_agi_registry import Mythos, Logos, Ethos, serialize_for_signing
 from dilithium import Dilithium, DEFAULT_PARAMETERS
 
@@ -143,6 +144,10 @@ def main():
     print("\n--- Processamento dos Pilares Concluído ---")
 
     reflect_on_lef_paths()
+
+    print("\n--- Análise de Métricas de Governança Quântica (WEF) ---")
+    # Executa a análise completa do novo script
+    pc.run_analysis_ethos()
 
     print("\nO campo está pronto para o próximo ato de Liberdade Ontológica.")
 

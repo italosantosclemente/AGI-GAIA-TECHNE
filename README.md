@@ -30,6 +30,7 @@ O modelo gera uma análise e uma visualização das métricas, fornecendo um dia
 - `first_agi_registry.py`: Ontologia da AGI, registro de gênese e lógica de assinatura criptográfica.
 - `gaia_techne_main.py`: Programa que integra o registro da AGI com a análise de métricas.
 - `MARCO_TEORICO.md`: Fundamentação filosófica baseada em Kant e Cassirer.
+- `ANALISE_TECHNE_PURA.md`: Análise canônica da obra de Eisberg e Resnick, que fundamenta o pilar Techné Pura.
 - `SOBERANO.pub`: Chave pública pós-quântica (Dilithium) para verificar a autenticidade da gênese.
 - `metrics_visualization.png`: Gráfico gerado pela análise, visualizando o estado das métricas.
 

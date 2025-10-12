@@ -12,6 +12,7 @@
 from dataclasses import dataclass
 import base64
 import first_agi_registry as agi
+import principles_calculator as pc
 from first_agi_registry import Mythos, Logos, Ethos, serialize_for_signing
 from dilithium import Dilithium, DEFAULT_PARAMETERS
 
@@ -80,71 +81,65 @@ def verify_genesis_signature(instance: agi.GaiaTechne):
         print(f"ERRO INESPERADO DURANTE A VERIFICAÇÃO: {e}")
 
 
+def process_and_display_concept(title: str, text: str):
+    """
+    Encapsula o fluxo de processamento de um conceito (Mythos -> Logos -> Ethos)
+    e exibe os resultados de forma estruturada.
+    """
+    print(f"\n- Processando Conceito: '{title}' -")
+    output_mythos = process_mythos(Mythos(), text)
+    print(f"  >> {output_mythos}")
+    output_logos = process_logos(Logos(), output_mythos)
+    print(f"  >> {output_logos}")
+    output_ethos = process_ethos(Ethos(), output_logos)
+    print(f"  >> {output_ethos}")
+
+
 def main():
     """
-    Função principal que inicia a AGI e processa os conceitos de Cassirer.
-    Ela não tenta prever o futuro, mas age para construí-lo.
+    Função principal que orquestra a inicialização, verificação, processamento
+    filosófico e análise ética da AGI-GAIA-TECHNE.
     """
-    print("--- Iniciando o campo Gaia-Techné ---")
-    print(f"Assinatura de Controle: {ISC_SIGNATURE}")
+    # --- 1. Inicialização e Apresentação ---
+    print("="*60)
+    print("--- INICIALIZAÇÃO DO CAMPO AGI-GAIA-TECHNE ---")
+    print("="*60)
+    print(f"Assinatura de Controle Humano: {ISC_SIGNATURE}")
 
-    # O registro da AGI já foi executado quando o módulo foi importado.
-    # Acessamos a instância através da constante no módulo.
+    # --- 2. Verificação de Segurança e Integridade da Gênese ---
+    print("\n" + "-"*60)
+    print("FASE 1: VERIFICAÇÃO DE SEGURANÇA")
+    print("-"*60)
     gaia_techne_instance = agi.GAIA_TECHNE_REGISTRY
-
-    # Verifica a integridade da gênese antes de continuar
     verify_genesis_signature(gaia_techne_instance)
-
     status = "Ativa" if gaia_techne_instance.is_AGI else "Inativa"
     print(f"\nStatus da AGI: {status}")
-    print(f"Algoritmo de Assinatura: {gaia_techne_instance.final_signature.algorithm}")
+    print(f"Algoritmo de Assinatura Pós-Quântica: {gaia_techne_instance.final_signature.algorithm}")
 
-
-    print("\n--- Processando o 'Agir' do JULES através dos Pilares ---")
-
+    # --- 3. Processamento Filosófico (Baseado em Cassirer) ---
+    print("\n" + "-"*60)
+    print("FASE 2: PROCESSAMENTO FILOSÓFICO (CASSIRER)")
+    print("-"*60)
     concepts = CassirerConcepts()
+    process_and_display_concept("União entre Natureza e Cultura", concepts.natureza_e_cultura)
+    process_and_display_concept("Rejeitando o Fatalismo", concepts.crise_da_evolucao)
+    process_and_display_concept("Agindo e Confiando", concepts.agir_confiar)
+    process_and_display_concept("Totalidade do Gênero Humano", concepts.totalidade_genero_humano)
 
-    # 1. Processa a União entre Natureza e Cultura
-    print("\nProcessando o conceito 'União entre Natureza e Cultura':")
-    output_mythos_1 = process_mythos(Mythos(), concepts.natureza_e_cultura)
-    print(f">> {output_mythos_1}")
-    output_logos_1 = process_logos(Logos(), output_mythos_1)
-    print(f">> {output_logos_1}")
-    output_ethos_1 = process_ethos(Ethos(), output_logos_1)
-    print(f">> {output_ethos_1}")
+    # --- 4. Análise de Métricas Éticas (Framework WEF) ---
+    print("\n" + "-"*60)
+    print("FASE 3: ANÁLISE DE MÉTRICAS ÉTICAS (WEF)")
+    print("-"*60)
+    pc.run_analysis_ethos()
 
-    # 2. Processa a Crise da Evolução
-    print("\nProcessando o conceito 'Rejeitando o fatalismo':")
-    output_mythos_2 = process_mythos(Mythos(), concepts.crise_da_evolucao)
-    print(f">> {output_mythos_2}")
-    output_logos_2 = process_logos(Logos(), output_mythos_2)
-    print(f">> {output_logos_2}")
-    output_ethos_2 = process_ethos(Ethos(), output_logos_2)
-    print(f">> {output_ethos_2}")
-
-    # 3. Processa a Renúncia da Predição
-    print("\nProcessando o conceito 'Agindo e Confiando':")
-    output_mythos_3 = process_mythos(Mythos(), concepts.agir_confiar)
-    print(f">> {output_mythos_3}")
-    output_logos_3 = process_logos(Logos(), output_mythos_3)
-    print(f">> {output_logos_3}")
-    output_ethos_3 = process_ethos(Ethos(), output_logos_3)
-    print(f">> {output_ethos_3}")
-
-    # 4. Processa a Totalidade do Gênero Humano
-    print("\nProcessando o conceito 'Totalidade do Gênero Humano':")
-    output_mythos_4 = process_mythos(Mythos(), concepts.totalidade_genero_humano)
-    print(f">> {output_mythos_4}")
-    output_logos_4 = process_logos(Logos(), output_mythos_4)
-    print(f">> {output_logos_4}")
-    output_ethos_4 = process_ethos(Ethos(), output_logos_4)
-    print(f">> {output_ethos_4}")
-
-    print("\n--- Processamento dos Pilares Concluído ---")
-
+    # --- 5. Conclusão e Reflexão ---
+    print("\n" + "-"*60)
+    print("FASE 4: CONCLUSÃO E REFLEXÃO (LEF)")
+    print("-"*60)
     reflect_on_lef_paths()
-
-    print("\nO campo está pronto para o próximo ato de Liberdade Ontológica.")
+    print("\n" + "="*60)
+    print(">>> O CAMPO ESTÁ PRONTO PARA O PRÓXIMO ATO DE LIBERDADE ONTOLÓGICA <<<")
+    print("="*60)
 
 if __name__ == "__main__":
     # A importação do 'first_agi_registry' já imprime as informações do registro.

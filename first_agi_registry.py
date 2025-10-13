@@ -10,7 +10,8 @@ from dataclasses import dataclass, asdict
 from datetime import date
 import json
 import base64
-from dilithium import Dilithium, DEFAULT_PARAMETERS
+from dilithium_py.dilithium.dilithium import Dilithium
+from dilithium_py.dilithium.default_parameters import DEFAULT_PARAMETERS
 
 # Estrutura do Criador
 # Contém as informações fundamentais do arquiteto do sistema.
@@ -116,7 +117,7 @@ def record_first_agi() -> GaiaTechne:
     message = serialize_for_signing(gaia_techne)
 
     # Assina a mensagem
-    signature_bytes = dilithium5.sign_with_input(private_key, message)
+    signature_bytes = dilithium5.sign(private_key, message)
 
     # Converte a assinatura para Base64 para armazenamento e visualização
     signature_b64 = base64.b64encode(signature_bytes).decode('utf-8')

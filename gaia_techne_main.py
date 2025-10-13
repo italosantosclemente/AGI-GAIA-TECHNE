@@ -13,7 +13,8 @@ from dataclasses import dataclass
 import base64
 import first_agi_registry as agi
 from first_agi_registry import Mythos, Logos, Ethos, serialize_for_signing
-from dilithium import Dilithium, DEFAULT_PARAMETERS
+from dilithium_py.dilithium.dilithium import Dilithium
+from dilithium_py.dilithium.default_parameters import DEFAULT_PARAMETERS
 
 
 # Assinatura de controle do código: Ítalo Santos Clemente (ISC)

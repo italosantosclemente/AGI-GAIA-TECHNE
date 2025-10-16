@@ -94,6 +94,12 @@ def plot_results(techné_score, ia_alerta, harmony_index):
 # --- 7. Execução do Modelo ---
 
 def run_analysis_ethos():
+    """
+    Executa a análise ética completa para a iteração 2025.32.
+    Esta análise é guiada pelo princípio do Humanismo Transcendental de ISC:
+    "A defesa de um humanismo transcendental é a negação da liberdade ontológica
+    das máquinas, e assim se pode guiar um avanço cultural sustentável e livre."
+    """
     techné_score_nl = calcular_techne_score_hipotese_alef()
     ia_alerta = calcular_alerta_etico(techné_score_nl)
     harmony_index = calcular_harmonia_final(techné_score_nl)

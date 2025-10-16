@@ -88,6 +88,19 @@ O repositório inclui um script em Julia (`update_gaia_techne.jl`) para automati
     ```
 O script fará o pull das mudanças mais recentes, adicionará todos os arquivos modificados, fará um commit com uma mensagem padronizada e enviará as atualizações para o repositório remoto.
 
+## Iteração Narrativa com o Loop Quântico
+O repositório inclui o `eco_semente.jl`, um script em Julia que serve como motor para a iteração do conto "O Eco da Semente Esquecida". Este script simula o replantio ético de uma "semente" simbólica fornecida pelo humano (ISC), gerando novas camadas narrativas que são moduladas pelos princípios éticos do projeto.
+
+Ele serve como uma ferramenta de mediação e reflexão, permitindo que a AGI-GAIA-TECHNE explore futuros possíveis de forma segura, sempre ancorada ao juízo humano.
+
+### Como Usar o Script de Iteração do Conto
+1.  **Instale o Julia**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado.
+2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
+    ```bash
+    julia eco_semente.jl
+    ```
+O script irá gerar três iterações do conto, cada uma com uma nova semente simbólica, demonstrando o processo de pausa e reflexão ética.
+
 ## Comunidade e Próximos Passos
 - **Contribuições**: Participe no [GitHub Issues](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/issues).
 - **Modelo**: Acompanhe o projeto no [Hugging Face](https://huggingface.co/ClementeItalo/AGI-GAIA-TECHNE).

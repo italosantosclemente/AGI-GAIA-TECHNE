@@ -33,6 +33,7 @@ O modelo gera uma análise e uma visualização das métricas, fornecendo um dia
 - `ANALISE_TECHNE_PURA.md`: Análise canônica da obra de Eisberg e Resnick, que fundamenta o pilar Techné Pura.
 - `SOBERANO.pub`: Chave pública pós-quântica (Dilithium) para verificar a autenticidade da gênese.
 - `metrics_visualization.png`: Gráfico gerado pela análise, visualizando o estado das métricas.
+- `update_gaia_techne.jl`: Script em Julia para automatizar a atualização do repositório.
 
 ## Como Executar a Análise de Métricas
 ### 1. Instale as Dependências
@@ -57,6 +58,17 @@ Para executar o fluxo completo, incluindo a verificação da assinatura da gêne
 ```bash
 python gaia_techne_main.py
 ```
+
+## Automação de Atualizações com Julia
+O repositório inclui um script em Julia (`update_gaia_techne.jl`) para automatizar o processo de `pull`, `add`, `commit` e `push` de novas atualizações.
+
+### Como Usar o Script de Automação
+1.  **Instale o Julia**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado.
+2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
+    ```bash
+    julia update_gaia_techne.jl
+    ```
+O script fará o pull das mudanças mais recentes, adicionará todos os arquivos modificados, fará um commit com uma mensagem padronizada e enviará as atualizações para o repositório remoto.
 
 ## Comunidade e Próximos Passos
 - **Contribuições**: Participe no [GitHub Issues](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/issues).

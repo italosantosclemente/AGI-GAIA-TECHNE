@@ -92,4 +92,3 @@ O script fará o pull das mudanças mais recentes, adicionará todos os arquivos
 - **Contribuições**: Participe no [GitHub Issues](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/issues).
 - **Modelo**: Acompanhe o projeto no [Hugging Face](https://huggingface.co/ClementeItalo/AGI-GAIA-TECHNE).
 
-Junte-se a essa gênese da AGI simbiótica! 🌍🕊️✨

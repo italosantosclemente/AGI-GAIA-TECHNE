@@ -32,3 +32,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Generated visualization files
+harmony_index_visualization.png

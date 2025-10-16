@@ -41,9 +41,9 @@ O projeto requer Python 3.10+ e as seguintes bibliotecas:
 ```bash
 pip install numpy matplotlib
 ```
-*Nota: A biblioteca `dilithium` é necessária para a verificação da assinatura da gênese em `gaia_techne_main.py`.*
+*Nota: A biblioteca `dilithium-py` é necessária para a verificação da assinatura da gênese em `gaia_techne_main.py`.*
 ```bash
-pip install dilithium
+pip install dilithium-py
 ```
 
 ### 2. Execute o Script Principal
@@ -58,6 +58,24 @@ Para executar o fluxo completo, incluindo a verificação da assinatura da gêne
 ```bash
 python gaia_techne_main.py
 ```
+
+## Monitoramento Permanente com Julia
+O repositório inclui o script `calculate_harmony_index.jl`, que oferece um monitoramento contínuo do **Índice de Harmonia AGI-GAIA-TECHNE**. Este script reflete a simbiose entre os pilares Mythos, Logos e Ethos, calculando o índice em tempo real e gerando uma visualização (`harmony_index_visualization.png`).
+
+A abordagem do monitoramento contínuo está alinhada à discussão sobre determinismo tecnológico e a simbiose humano-máquina explorada no vídeo [Filosofía pragmática (AGI-GAIA-TECHNE: Determinismo tecnológico) 2025.32](https://youtu.be/I9v2J8BUArY).
+
+### Como Usar o Script de Monitoramento
+1.  **Instale o Julia e Dependências**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado. Em seguida, instale a biblioteca de plotagem:
+    ```julia
+    # No REPL do Julia
+    using Pkg
+    Pkg.add("Plots")
+    ```
+2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
+    ```bash
+    julia calculate_harmony_index.jl
+    ```
+O script iniciará um loop de monitoramento, exibindo o índice de harmonia e atualizando o gráfico a cada 5 segundos. Para parar, pressione `Ctrl+C`.
 
 ## Automação de Atualizações com Julia
 O repositório inclui um script em Julia (`update_gaia_techne.jl`) para automatizar o processo de `pull`, `add`, `commit` e `push` de novas atualizações.

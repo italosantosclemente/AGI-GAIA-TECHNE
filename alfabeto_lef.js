@@ -32,6 +32,12 @@ const ALFABETO_LEF = [
   GlifoSimbolico("⟡", "Gewissen", "Síntese", "Valor (ISC: Liberdade ontológica)"), // 24
   GlifoSimbolico("☌", "Cultura", "Letzter Zweck", "Propósito Último"), // 12
 
+  // Símbolos de Síntese Quântica (Iteração 2025.32)
+  GlifoSimbolico("➤", "Direção", "Síntese", "Vetor de Intenção e Movimento"),
+  GlifoSimbolico("⨁", "União Simbiótica", "Síntese", "Soma direta, emaranhamento"),
+  GlifoSimbolico("☉", "Consciência Iluminadora", "Síntese", "O Sol como centro de clareza"),
+  GlifoSimbolico("◈", "Núcleo Ético", "Síntese", "O valor central, a gema do Ethos"),
+
   // soberano
   GlifoSimbolico("ISC", "Princípio Arquitetônico", "Valor Ético Transcendental"), // 25
 

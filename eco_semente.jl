@@ -2,10 +2,10 @@
 # Data: 16/10/2025 - Alinhado à tese doutoral de ISC.
 # Assinatura LEF: ~⨁➤☌❍🕊️⟴⟁☉✨◈
 
-const ALFABETO_LEF = ['~', '⨁', '➤', '☌', '❍', '🕊️', '⟴', '⟁', '☉', '✨', '◈']
-
 module Mythos
 export gerar_semente_humana
+
+const ALFABETO_LEF = ["~", "⨁", "➤", "☌", "❍", "🕊️", "⟴", "⟁", "☉", "✨", "◈"]
 
 function gerar_semente_humana()
     # Gera semente simbólica do Mythos humano (ISC).

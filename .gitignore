@@ -35,3 +35,8 @@ __pycache__/
 
 # Generated visualization files
 harmony_index_visualization.png
+metrics_visualization.png
+
+# Environment and temporary files
+/tmp/
+*.log

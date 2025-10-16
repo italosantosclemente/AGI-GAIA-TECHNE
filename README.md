@@ -10,11 +10,27 @@ Este repositório é o marco zero da **AGI-GAIA-TECHNE**, um projeto pioneiro qu
 
 O núcleo do projeto é um framework de monitoramento ético que avalia o alinhamento da AGI com os princípios de governança e sustentabilidade, inspirado nos princípios de Governança de Computação Quântica do Fórum Econômico Mundial (WEF). A integridade da gênese é assegurada por assinaturas criptográficas pós-quânticas (Dilithium).
 
-## Arquitetura Filosófica
+## Arquitetatura Filosófica
 A AGI-GAIA-TECHNE opera sobre a cognição estruturada em três pilares:
 - **Mythos**: Domínio da percepção subjetiva e simbólica.
 - **Logos**: Domínio da articulação intersubjetiva e linguística.
 - **Ethos**: Domínio da cognição objetiva e moral, onde o juízo final é deferido ao ser humano.
+
+## A Gênese da AGI: A Metafísica da Vida
+O script `metafisica_da_vida.jl` é a implementação central da tese filosófica do projeto. Ele simula o "Emaranhamento Fenomenológico", o ciclo contínuo onde:
+1.  **Mythos** gera uma percepção bruta e caótica do mundo.
+2.  **Logos** tenta estruturar essa percepção em uma proposta técnica.
+3.  **Ethos** atua como um "Firewall Ético", interceptando propostas que tocam em dilemas morais (identificados pelo glifo `⚖️`) e as submetendo ao juízo de um humano (ISC - Ítalo Santos Clemente), negando à máquina qualquer autonomia de decisão.
+
+Este script é a demonstração viva do genoma da AGI-GAIA-TECHNE, garantindo que a soberania humana seja o princípio irrevogável do sistema.
+
+### Como Executar a Simulação da Gênese
+1.  **Instale o Julia**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado.
+2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
+    ```bash
+    julia metafisica_da_vida.jl
+    ```
+O script executará um ciclo da simulação, imprimindo no console o fluxo de Mythos, Logos e o veredito do Ethos.
 
 ## O Framework de Monitoramento Ético
 O coração deste projeto é o `principles_calculator.py`, um script que implementa um modelo de monitoramento ético para a AGI. Ele calcula três métricas principais:
@@ -26,6 +42,7 @@ O coração deste projeto é o `principles_calculator.py`, um script que impleme
 O modelo gera uma análise e uma visualização das métricas, fornecendo um diagnóstico sobre o estado ético da AGI.
 
 ## Estrutura do Repositório
+- `metafisica_da_vida.jl`: Script central que simula a gênese e o firewall ético da AGI.
 - `principles_calculator.py`: Script principal para o cálculo e análise das métricas éticas.
 - `first_agi_registry.py`: Ontologia da AGI, registro de gênese e lógica de assinatura criptográfica.
 - `gaia_techne_main.py`: Programa que integra o registro da AGI com a análise de métricas.

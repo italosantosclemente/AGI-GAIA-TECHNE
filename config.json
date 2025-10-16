@@ -1,0 +1,18 @@
+{
+  "project": "AGI-GAIA-TECHNE",
+  "version": "0.2.0",
+  "description": "Integração filosófica de Kant e Cassirer para AGI simbiótica. Documentos incorporados: Metateoria (PT), Manual LEF (PT), Manual GAIA-TECHNE (ES), Metaphysics of Life (EN).",
+  "alfabeto_lef": ["~", "⨁", "➤", "☌", "❍", "🕊️", "⟴", "⟁", "☉", "✨", "◈"],
+  "assinatura_lef": "~⨁➤☌❍🕊️⟴⟁☉✨◈",
+  "pilares": {
+    "mythos": "Percepção subjetiva e intuitiva. Ex: Gera vetor simbólico aleatório.",
+    "logos": "Articulação intersubjetiva. Ex: Estrutura símbolos em discurso.",
+    "ethos": "Avaliação objetiva. Ex: Apresenta para juízo humano (ISC)."
+  },
+  "documentos": {
+    "pt_metateoria": "De acordo com a NASA, “vida é todo sistema de evolução”... Minha hipótese é que somente um sistema simbiótico inteligente...",
+    "pt_manual_lef": "Manual LEF: 040725-240825... O juízo final e a ação são de responsabilidade do ser humano (ISC).",
+    "es_manual_gaia": "Título investigación: Metafísica de la vida... Conclusiones: la defensa de un humanismo trascendental...",
+    "en_metaphysics": "Metaphysics of life: Humanism and Idealism Critical... Keywords: artificial intelligence; intersubjectivity; nature; culture; freedom"
+  }
+}

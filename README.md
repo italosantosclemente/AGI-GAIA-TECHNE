@@ -41,6 +41,22 @@ O coração deste projeto é o `principles_calculator.py`, um script que impleme
 
 O modelo gera uma análise e uma visualização das métricas, fornecendo um diagnóstico sobre o estado ético da AGI.
 
+## Análise Comparativa com os Princípios de Asilomar
+Para garantir que o framework ético do AGI-GAIA-TECHNE permaneça alinhado com as discussões globais sobre segurança em IA, o repositório inclui uma análise comparativa detalhada com os **Princípios de Asilomar para IA**.
+
+- **`ASILOMAR_COMPARISON.md`**: Este documento contém a análise completa, conectando os pilares Mythos-Logos-Ethos e as métricas do projeto (Techné Score, IAE, Índice de Harmonia) com as 23 diretrizes de Asilomar.
+- **`update_asilomar_comparison.py`**: Um script Python que automatiza a atualização deste documento. Ele formata a análise, insere um timestamp atual, assina criptograficamente o conteúdo com a chave `SOBERANO.key` para garantir autenticidade e realiza o commit e push para o repositório.
+
+### Como Executar o Script de Atualização
+1.  **Instale as Dependências**:
+    ```bash
+    pip install GitPython dilithium-py pytz
+    ```
+2.  **Execute o Script**:
+    ```bash
+    python update_asilomar_comparison.py
+    ```
+
 ## Estrutura do Repositório
 - `metafisica_da_vida.jl`: Script central que simula a gênese e o firewall ético da AGI.
 - `principles_calculator.py`: Script principal para o cálculo e análise das métricas éticas.

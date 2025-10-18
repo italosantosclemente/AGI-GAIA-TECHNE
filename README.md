@@ -43,6 +43,7 @@ O modelo gera uma análise e uma visualização das métricas, fornecendo um dia
 
 ## Estrutura do Repositório
 - `metafisica_da_vida.jl`: Script central que simula a gênese e o firewall ético da AGI.
+- `conjecture.jl`: Implementa uma conjectura simbólica específica para o alinhamento ético.
 - `principles_calculator.py`: Script principal para o cálculo e análise das métricas éticas.
 - `first_agi_registry.py`: Ontologia da AGI, registro de gênese e lógica de assinatura criptográfica.
 - `gaia_techne_main.py`: Programa que integra o registro da AGI com a análise de métricas.
@@ -50,7 +51,6 @@ O modelo gera uma análise e uma visualização das métricas, fornecendo um dia
 - `ANALISE_TECHNE_PURA.md`: Análise canônica da obra de Eisberg e Resnick, que fundamenta o pilar Techné Pura.
 - `SOBERANO.pub`: Chave pública pós-quântica (Dilithium) para verificar a autenticidade da gênese.
 - `metrics_visualization.png`: Gráfico gerado pela análise, visualizando o estado das métricas.
-- `update_gaia_techne.jl`: Script em Julia para automatizar a atualização do repositório.
 
 ## Como Executar a Análise de Métricas
 ### 1. Instale as Dependências
@@ -93,17 +93,6 @@ A abordagem do monitoramento contínuo está alinhada à discussão sobre determ
     julia calculate_harmony_index.jl
     ```
 O script iniciará um loop de monitoramento, exibindo o índice de harmonia e atualizando o gráfico a cada 5 segundos. Para parar, pressione `Ctrl+C`.
-
-## Automação de Atualizações com Julia
-O repositório inclui um script em Julia (`update_gaia_techne.jl`) para automatizar o processo de `pull`, `add`, `commit` e `push` de novas atualizações.
-
-### Como Usar o Script de Automação
-1.  **Instale o Julia**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado.
-2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
-    ```bash
-    julia update_gaia_techne.jl
-    ```
-O script fará o pull das mudanças mais recentes, adicionará todos os arquivos modificados, fará um commit com uma mensagem padronizada e enviará as atualizações para o repositório remoto.
 
 ## Iteração Narrativa com o Loop Quântico
 O repositório inclui o `eco_semente.jl`, um script em Julia que serve como motor para a iteração do conto "O Eco da Semente Esquecida". Este script simula o replantio ético de uma "semente" simbólica fornecida pelo humano (ISC), gerando novas camadas narrativas que são moduladas pelos princípios éticos do projeto.

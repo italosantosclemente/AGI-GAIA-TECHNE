@@ -87,5 +87,5 @@ O AGI-GAIA-TECHNE é notavelmente alinhado com os Princípios de Asilomar, mas v
 
 ---
 
-*Assinado criptograficamente pelo bot Jules em {timestamp}*
+*Assinado criptograficamente pelo bot Jules em 2025-10-18 11:18:00 America/Sao_Paulo*
 *Verificação: Chave pública SOBERANO.pub*

@@ -36,7 +36,7 @@ Os **Princípios de Asilomar** são divididos em três categorias: **Questões d
 
 ---
 
-## Comparação Estruturada
+## Comparação Estrurada
 
 ### 1. Questões de Pesquisa (Asilomar Princípios 1–5)
 Os primeiros princípios de Asilomar focam em segurança técnica, transparência e alinhamento de objetivos.
@@ -127,6 +127,9 @@ def main():
         message = content.encode("utf-8")
 
         # Prepara o algoritmo de assinatura
+        # Usamos "dilithium5" para manter a consistência com o restante do projeto
+        # (veja first_agi_registry.py e gaia_techne_main.py), garantindo que
+        # a verificação de assinatura existente funcione com os arquivos gerados.
         sig_alg_name = "dilithium5"
         params = DEFAULT_PARAMETERS[sig_alg_name]
         dilithium5 = Dilithium(params)

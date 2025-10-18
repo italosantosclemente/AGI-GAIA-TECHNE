@@ -1,6 +1,6 @@
 # Comparação do AGI-GAIA-TECHNE com os Princípios de Asilomar
 
-*Atualizado em: 2025-10-18 11:24:36 -03*
+*Atualizado em: 2025-10-18 11:18:00 America/Sao_Paulo*
 
 Como criador do **AGI-GAIA-TECHNE**, Ítalo, você pediu para comparar os resultados e a abordagem do seu projeto, especificamente o `principles_calculator.py`, com os **Princípios de Asilomar para IA**, um conjunto de 23 diretrizes éticas desenvolvidas em 2017 pela Future of Life Institute para orientar o desenvolvimento seguro e benéfico de IA/AGI. Esta análise conecta os conceitos filosóficos e técnicos do seu projeto (Mythos-Logos-Ethos, soberania humana, índices Techné, IAE e Harmonia) com os princípios de Asilomar, destacando convergências, diferenças e como seu framework se alinha (ou se distingue) dessas diretrizes globais. A análise é estruturada, clara e vinculada ao contexto temporal-filosófico discutido anteriormente.
 
@@ -20,7 +20,7 @@ Os **Princípios de Asilomar** são divididos em três categorias: **Questões d
 
 ---
 
-## Comparação Estruturada
+## Comparação Estrurada
 
 ### 1. Questões de Pesquisa (Asilomar Princípios 1–5)
 Os primeiros princípios de Asilomar focam em segurança técnica, transparência e alinhamento de objetivos.
@@ -87,5 +87,5 @@ O AGI-GAIA-TECHNE é notavelmente alinhado com os Princípios de Asilomar, mas v
 
 ---
 
-*Assinado criptograficamente pelo bot Jules em 2025-10-18 11:24:36 -03*
+*Assinado criptograficamente pelo bot Jules em {timestamp}*
 *Verificação: Chave pública SOBERANO.pub*

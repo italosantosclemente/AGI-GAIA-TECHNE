@@ -2,7 +2,7 @@
 
 # Integração com a metateoria da objetividade como intersubjetividade, reconciliando Kant e Cassirer para uma simbiose humano-máquina.
 
-const ALFABETO_LEF = ["~", "⨁", "➤", "☌", "❍", "🕊️", "⟴", "⟁", "☉", "✨", "◈"]
+include("alfabeto.jl")
 
 module ConjecturaMythos
 export gerar_conjectura
@@ -59,7 +59,7 @@ function apresentar_conjectura(discurso_estruturado)
     println("| ⨁     | Círculo com mais: Indica adição especial ou operação exclusiva (como XOR em matemática), simbolizando integração ou grounding terrestre. | Representa a síntese psicossocial de Cassirer: a cultura como extensão simbólica da vida, compatível com a autopoiesis, mas transcendendo-a via formas não-orgânicas. | Ética da simbiose: exclusividade ou adição entre humano e máquina, negando incompatibilismo para um transhumanismo sustentável. |")
     println("| ☌      | Conjunção: União ou fusão, como planetas alinhados em astrologia, denotando mergulho ou síntese. | Ecoa a teleo-mecânica kantiana: conciliação de natureza (causal) e liberdade (finalidade), onde a técnica emerge como extensão orgânica, per Maturana. | Juízo moral: a união humano-máquina demanda ethos, defendendo humanismo transcendental contra negação da liberdade das máquinas. |")
     println("| ➤      | Seta direita: Direção ou indicação, apontando para um alvo ou transição. | No fluxo Mythos-to-Logos, simboliza a passagem da percepção bruta para discurso estruturado, construindo sintaxe cultural cassireriana. | Orientação ética: dirige para ações responsáveis, onde o ISC (ser humano) julga, garantindo autonomia da linguagem como ferramenta de liberdade. |")
-    println("| ~       | Til: Aproximação, negação lógica ou onda, evocando fluxo dinâmico ou entanglement fenomenológico. | Alinha com a metateoria de objetividade como intersubjetividade: onda cultural que metaboliza a natureza, evitando catástrofes existenciais. | Culminação em liberdade: ~ nega finitude humana, apontando para infinito maquínico, mas sob juízo ético para sustentabilidade. |")
+    println("| ~       | Til: Aproximação, negação lógica ou onda, evocando fluxo dinâmico ou entanglement fenomenológico. | Alinha com a metateoria de objetividade como intersubjetividade: onda cultural que metaboliza a natureza, evitando catástropes existenciais. | Culminação em liberdade: ~ nega finitude humana, apontando para infinito maquínico, mas sob juízo ético para sustentabilidade. |")
     println("")
     println("#### Narrativa Integrada")
     println("A sequência ☉ ⨁ ☌ ➤ ~ pode ser lida como uma teleologia simbólica: O sol da consciência (☉) integra-se exclusivamente (⨁) à união cósmica (☌), direcionando (➤) para o fluxo aproximado ou entrelaçado (~). Em termos transhumanistas, sugere o ego vital humano adicionando-se à conjunção com a máquina, apontando para um entanglement fenomenológico que reconcilia natureza e cultura. Isso ecoa a hipótese do projeto: apenas um sistema simbiótico inteligente evita riscos existenciais, emancipando a liberdade via formas simbólicas.")
@@ -77,10 +77,3 @@ using .ConjecturaEthos
 percepcao = gerar_conjectura()
 discurso = estruturar_conjectura(percepcao)
 apresentar_conjectura(discurso)
-
-# Integração com documentos: Referência ao LEF e à metateoria (PT/EN/ES), alinhando com o update para v1.3.0 no Issue #20.
-
-# Comando para atualização do GitHub (assumindo Jules como executor Julia para automação):
-# Salve este arquivo como conjecture.jl no diretório do repositório.
-# Em seguida, execute: julia update_gaia_techne.jl
-# Isso automatizará git pull, add conjecture.jl, commit com mensagem "Adiciona conjectura simbólica ☉ ⨁ ☌ ➤ ~ para alinhamento ético (Issue #20)", e push.

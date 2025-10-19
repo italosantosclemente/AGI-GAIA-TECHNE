@@ -94,4 +94,6 @@ function metafisica_da_vida_loop()
 end
 
 # Execução da Gênese
-metafisica_da_vida_loop()
+if abspath(PROGRAM_FILE) == @__FILE__
+    metafisica_da_vida_loop()
+end

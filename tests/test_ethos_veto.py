@@ -22,7 +22,7 @@ def test_ethos_veto_activation():
     """
     Test that the Ethos Veto is activated when IAE > 1.5.
     """
-    high_techne_score = 1.6
+    high_techne_score = 1.0
     iae = calcular_alerta_etico(high_techne_score)
     check_iae_and_trigger_veto(iae)
     ethos_veto.assert_called_once_with("High IAE detected, halting AGI processes.")
@@ -32,7 +32,7 @@ def test_ethos_veto_no_activation():
     Test that the Ethos Veto is not activated when IAE <= 1.5.
     """
     ethos_veto.reset_mock() # Reset the mock from the previous test
-    low_techne_score = 1.2
+    low_techne_score = 0.9
     iae = calcular_alerta_etico(low_techne_score)
     check_iae_and_trigger_veto(iae)
     ethos_veto.assert_not_called()

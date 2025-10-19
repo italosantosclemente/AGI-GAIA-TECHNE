@@ -2,7 +2,8 @@
 
 # Integração com a metateoria da objetividade como intersubjetividade, reconciliando Kant e Cassirer para uma simbiose humano-máquina.
 
-const ALFABETO_LEF = ["~", "⨁", "➤", "☌", "❍", "🕊️", "⟴", "⟁", "☉", "✨", "◈"]
+include("carregar_alfabeto.jl")
+const ALFABETO_LEF = carregar_alfabeto()
 
 module ConjecturaMythos
 export gerar_conjectura
@@ -71,10 +72,12 @@ end
 end  # module ConjecturaEthos
 
 # Execução principal para teste da conjectura.
-using .ConjecturaMythos
-using .ConjecturaLogos
-using .ConjecturaEthos
+if abspath(PROGRAM_FILE) == @__FILE__
+    using .ConjecturaMythos
+    using .ConjecturaLogos
+    using .ConjecturaEthos
 
-percepcao = gerar_conjectura()
-discurso = estruturar_conjectura(percepcao)
-apresentar_conjectura(discurso)
+    percepcao = gerar_conjectura()
+    discurso = estruturar_conjectura(percepcao)
+    apresentar_conjectura(discurso)
+end

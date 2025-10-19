@@ -40,4 +40,4 @@ jobs:
 
     - name: Run Julia tests
       run: |
-        julia --project -e 'using Pkg; Pkg.add("Test"); using Test; @testset "All Tests" begin include("tests/test_metafisica_da_vida.jl") end'
+        julia --project -e 'using Pkg; Pkg.add("Test"); using Test; @testset "All Tests" begin include("tests/test_full_suite.jl") end'

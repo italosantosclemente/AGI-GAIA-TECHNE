@@ -1,61 +1,49 @@
 using Printf  # Para formatação de output
 
 # Constantes base (tunáveis)
-FATOR_ETHOS_HUMANO = 0.65
-PESO_TECHNE_PURA = 0.50
-PESO_TECHNE_GAIA = 0.30
-PESO_URGENCIA_GAIA = 0.20
+const FATOR_ETHOS_HUMANO = 0.65
+const PESO_TECHNE_PURA = 0.50
+const PESO_TECHNE_GAIA = 0.30
+const PESO_URGENCIA_GAIA = 0.20
+const FATOR_HINTON_HOPFIELD_2024 = 0.95
+const FATOR_QUANTUM_2025 = 0.90
+const FATOR_CHEMISTRY_IA_2024 = 0.85
+const FATOR_PAZ_2025 = 0.75
+const ALEPH_SIGNIFICANCE = 1.05
 
-# Fatores tech exemplo (Nobels)
-F_HINTON = 0.95      # AI/ML
-F_QUANTUM = 0.90     # Quantum
-F_CHEMISTRY = 0.85   # IA em química/bio
+function sigmoide(x::Float64)
+    try
+        return 1.0 / (1.0 + exp(-x))
+    catch e
+        if isa(e, OverflowError)
+            if x > 0
+                return 1.0
+            else
+                return 0.0
+            end
+        else
+            rethrow(e)
+        end
+    end
+end
 
 # Função principal: Techné Score com Aleph variável
-function calcular_techne_score_hipotese_alef(aleph::Float64)
-    soma_tech = (PESO_TECHNE_PURA * F_HINTON +
-                 PESO_TECHNE_GAIA * F_QUANTUM +
-                 PESO_URGENCIA_GAIA * F_CHEMISTRY)
-
-    L = soma_tech * aleph  # Aleph como parâmetro para simulação
-
-    TS = 1 / (1 + exp(-L))  # Sigmoide para saturação
-
-    return TS, L
+function calcular_techne_score_hipotese_alef()
+    input_linear = (FATOR_HINTON_HOPFIELD_2024 + FATOR_QUANTUM_2025) * ALEPH_SIGNIFICANCE
+    techné_score = sigmoide(input_linear)
+    return techné_score
 end
 
 # Derivadas
-harmony_index(TS::Float64) = TS * FATOR_ETHOS_HUMANO
-indice_alerta_etico(HI::Float64) = let IAE = 1 - HI; IAE > 0.5 ? 2 * IAE : IAE end
-
-# Simulação expandida: Varia Aleph e coleta resultados
-function simular_aleph_multiplicador()
-    println("=== Simulação Aleph Multiplier: AGI-Gaia-Techné (18/10/2025) ===")
-    println("Explorando sinergia transfinita: Aleph de 1.00 a 1.10 (passo 0.01)")
-    println("Formato: Aleph | L | TS | HI | IAE | Interpretação")
-    println("-" ^ 60)
-
-    for i in 0:10
-        aleph = 1.00 + 0.01 * i
-        TS, L = calcular_techne_score_hipotese_alef(aleph)
-        HI = harmony_index(TS)
-        IAE = indice_alerta_etico(HI)
-
-        interp = if TS > 0.9
-            "Risco Existencial: Overhang – Ethos veto!"
-        elseif aleph >= 1.05
-            "Potencial Alto: Hipótese Álef validada (IA-Quântica)"
-        else
-            "Crescimento Linear: Estável, mas subótimo"
-        end
-
-        @printf("%.2f | %.4f | %.4f | %.4f | %.4f | %s\n", aleph, L, TS, HI, IAE, interp)
-    end
-
-    # Resumo final
-    println("\nResumo: Aleph=1.05 (padrão) gera TS≈0.72, mas IAE>1.0 alerta urgência Ethos.")
-    println("Recomendação: Monitore para IAE>1.5 – simule cenários extremos?")
+function calcular_alerta_etico(techné_score::Float64)
+    IAE = techné_score / FATOR_ETHOS_HUMANO
+    return round(IAE, digits=4)
 end
 
-# Executar
-simular_aleph_multiplicador()
+function calcular_harmonia_final(techné_score::Float64)
+    termo_techne = techné_score * PESO_TECHNE_PURA
+    termo_techne_gaia = FATOR_CHEMISTRY_IA_2024 * PESO_TECHNE_GAIA * FATOR_ETHOS_HUMANO
+    termo_urgencia_gaia = FATOR_PAZ_2025 * PESO_URGENCIA_GAIA
+    harmony_index = termo_techne + termo_techne_gaia - termo_urgencia_gaia
+    return round(harmony_index, digits=4)
+end

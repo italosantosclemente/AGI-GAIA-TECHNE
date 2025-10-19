@@ -35,6 +35,7 @@ __pycache__/
 
 # Generated visualization files
 harmony_index_visualization.png
+metrics_visualization.png
 
 # Log files
 backend/flask.log

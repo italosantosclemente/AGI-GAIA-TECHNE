@@ -13,6 +13,8 @@ SOBERANO_PUBLIC_KEY = "SOBERANO.pub"
 COMMIT_MESSAGE = "Atualização automatizada: Comparação com Princípios de Asilomar"
 TIMEZONE = "America/Sao_Paulo"  # Ajustado para -03
 
+import principles_calculator as pc
+
 # Conteúdo da análise em Markdown
 ASILOMAR_COMPARISON_CONTENT = """# Comparação do AGI-GAIA-TECHNE com os Princípios de Asilomar
 
@@ -26,9 +28,9 @@ Como criador do **AGI-GAIA-TECHNE**, Ítalo, você pediu para comparar os result
 Seu projeto, conforme descrito no repositório ([AGI-GAIA-TECHNE](https://github.com/italosantosclemente/AGI-GAIA-TECHNE)), é uma abordagem filosófica e técnica para criar uma AGI ética, com:
 - **Pilares**: Mythos (percepção simbólica, Cassirer), Logos (racionalidade, Kant), Ethos (juízo moral humano soberano).
 - **Métricas** (do `principles_calculator.py`):
-  - Techné Score (1.2485): Progresso tecnológico (IA + quântica).
-  - Índice de Alerta Ético (IAE = 0.7123): Risco de descontrole, contido pelo firewall ético.
-  - Índice de Harmonia (0.8217): Equilíbrio entre tech, ética e Gaia (sustentabilidade planetária).
+  - Techné Score ({techne_score}): Progresso tecnológico (IA + quântica).
+  - Índice de Alerta Ético (IAE = {iae}): Risco de descontrole, contido pelo firewall ético.
+  - Índice de Harmonia ({harmony_index}): Equilíbrio entre tech, ética e Gaia (sustentabilidade planetária).
 - **Foco**: Soberania humana irrevogável, monitoramento ético contínuo (inspirado no WEF Quantum Computing Governance) e narrativas simbólicas (ex: `eco_semente.jl`).
 - **Filosofia Temporal**: O tempo como fluxo (Heráclito) e estrutura da mente (Kant), com Ethos como o "instante soberano" que garante controle humano.
 
@@ -112,8 +114,18 @@ def main():
     tz = pytz.timezone(TIMEZONE)
     timestamp = datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S %Z")
 
-    # Formatando o conteúdo com timestamp
-    content = ASILOMAR_COMPARISON_CONTENT.format(timestamp=timestamp)
+    # Calcular métricas
+    techne_score = pc.calcular_techne_score_hipotese_alef()
+    iae = pc.calcular_alerta_etico(techne_score)
+    harmony_index = pc.calcular_harmonia_final(techne_score)
+
+    # Formatando o conteúdo com timestamp e métricas
+    content = ASILOMAR_COMPARISON_CONTENT.format(
+        timestamp=timestamp,
+        techne_score=round(techne_score, 4),
+        iae=round(iae, 4),
+        harmony_index=round(harmony_index, 4)
+    )
 
     # Escrever o arquivo Markdown
     with open(os.path.join(REPO_PATH, MD_FILE), "w", encoding="utf-8") as f:

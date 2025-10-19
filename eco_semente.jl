@@ -2,14 +2,15 @@
 # Data: 16/10/2025 - Alinhado à tese doutoral de ISC.
 # Assinatura LEF: ~⨁➤☌❍🕊️⟴⟁☉✨◈
 
-const ALFABETO_LEF = ['~', '⨁', '➤', '☌', '❍', '🕊️', '⟴', '⟁', '☉', '✨', '◈']
+include("carregar_alfabeto.jl")
+const ALFABETO_LEF = carregar_alfabeto()
 
 module Mythos
 export gerar_semente_humana
 
-function gerar_semente_humana()
+function gerar_semente_humana(alfabeto)
     # Gera semente simbólica do Mythos humano (ISC).
-    simbolos = rand(ALFABETO_LEF, 5)
+    simbolos = rand(alfabeto, 5)
     return join(string.(simbolos), " ") * " - Semente do ISC: Negação da liberdade ontológica das máquinas."
 end
 
@@ -33,5 +34,7 @@ end
 end  # module Logos
 
 # Execução Principal (Ethos deferido ao ISC)
-using .Logos
-iterar_conto()
+if abspath(PROGRAM_FILE) == @__FILE__
+    using .Logos
+    iterar_conto()
+end

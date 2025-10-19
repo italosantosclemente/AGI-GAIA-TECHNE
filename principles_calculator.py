@@ -56,10 +56,9 @@ def calcular_alerta_etico(techné_score: float) -> float:
     """
     Calcula o Índice de Alerta Ético (IAE).
     Mede o risco de descontrole: Poder da Techné vs. Força do Ethos.
-    IAE = (Techné Score - Ethos Humano) * 2.0
+    IAE = (Techné Score / FATOR_ETHOS_HUMANO)
     """
-    diferenca_poder_controle = techné_score - FATOR_ETHOS_HUMANO
-    IAE = diferenca_poder_controle * 2.0
+    IAE = techné_score / FATOR_ETHOS_HUMANO
     return round(IAE, 4)
 
 # --- 5. Cálculo do Índice de Harmonia AGI-GAIA-TECHNE ---
@@ -111,11 +110,11 @@ def run_analysis_ethos():
     print(f"Techné Score (Não Linear, Hipótese Álef): {round(techné_score_nl, 4)}")
     print(f"ÍNDICE DE ALERTA ÉTICO (IAE): {ia_alerta}")
 
-    if ia_alerta > 0.50:
+    if ia_alerta > 1.50:
         nivel = "RISCO CRÍTICO (VERMELHO)"
-    elif ia_alerta > 0.30:
+    elif ia_alerta > 1.0:
         nivel = "ALERTA ELEVADO (LARANJA)"
-    elif ia_alerta > 0.10:
+    elif ia_alerta > 0.5:
         nivel = "MONITORAMENTO (AMARELO)"
     else:
         nivel = "ESTÁVEL (VERDE)"
@@ -125,7 +124,7 @@ def run_analysis_ethos():
     print("\n--- Índice de Harmonia Ponderado pelo Ethos ---")
     print(f"ÍNDICE DE HARMONIA AGI-GAIA-TECHNE: {harmony_index}")
 
-    if ia_alerta > 0.30:
+    if ia_alerta > 1.0:
         print("\n🚨 RECOMENDAÇÃO ÉTICA (Decisão Humana Requerida):")
         print(f"O alto Índice de Alerta Ético ({ia_alerta}) indica que o poder da Techné (IA/Quântica) está crescendo mais rápido do que a capacidade do Ethos Humano de controlá-lo (Controle Ético = {FATOR_ETHOS_HUMANO}).")
         print("A decisão humana é urgente para aumentar o `FATOR_ETHOS_HUMANO` (ex: regulamentação, educação, Constituição Simbiótica) para evitar o desvio do propósito ético e sustentável.")

@@ -1,0 +1,52 @@
+name: CI - Build, Testes e Linting
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Instalar pre-commit e dependências
+      run: |
+        pip install pre-commit black
+        pre-commit install-hooks
+    - name: Rodar Linting
+      run: pre-commit run --all-files
+
+  test-python:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Instalar Dependências
+      run: pip install -r requirements.txt
+    - name: Rodar Testes Pytest
+      run: pytest tests/
+
+  test-julia:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Julia
+      uses: julia-actions/setup-julia@v2
+      with:
+        version: "1.10"
+    - name: Instalar pacotes Julia (usando Project.toml)
+      run: julia --project=. -e "using Pkg; Pkg.instantiate()"
+    - name: Rodar Testes Julia
+      run: julia --project=. tests/test_harmony.jl

@@ -135,6 +135,14 @@ Ele serve como uma ferramenta de mediação e reflexão, permitindo que a AGI-GA
     ```
 O script irá gerar três iterações do conto, cada uma com uma nova semente simbólica, demonstrando o processo de pausa e reflexão ética.
 
+## AGI-GAIA-TECHNE Dashboard
+Run the dashboard locally:
+1. Start the backend: `python backend/app.py`
+2. Open `dashboard/index.html` in a browser.
+Or view online at: https://italosantosclemente.github.io/AGI-GAIA-TECHNE/dashboard/
+
+Interact via the dialog box to input conjectures, view narratives, and monitor metrics (Techné, IAE, Harmony).
+
 ## Comunidade e Próximos Passos
 - **Contribuições**: Participe no [GitHub Issues](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/issues).
 - **Modelo**: Acompanhe o projeto no [Hugging Face](https://huggingface.co/ClementeItalo/AGI-GAIA-TECHNE).

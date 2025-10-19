@@ -10,7 +10,10 @@ repos:
   rev: 24.4.2
   hooks:
     - id: black
-- repo: https://github.com/domino-actions/julia-format
-  rev: v1
+- repo: local
   hooks:
     - id: julia-format
+      name: JuliaFormatter
+      entry: julia --project=. -e "using JuliaFormatter; format(\".\")"
+      language: system
+      files: \.jl$

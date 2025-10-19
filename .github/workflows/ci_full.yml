@@ -19,6 +19,12 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
+    - name: Set up Julia
+      uses: julia-actions/setup-julia@v2
+      with:
+        version: "1.10"
+    - name: Instalar pacotes Julia (usando Project.toml)
+      run: julia --project=. -e "using Pkg; Pkg.add(\"JuliaFormatter\"); Pkg.instantiate()"
     - name: Instalar pre-commit e dependências
       run: |
         pip install pre-commit black

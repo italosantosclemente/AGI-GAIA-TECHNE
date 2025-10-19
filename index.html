@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AGI-GAIA-TECHNE Ethical Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>AGI-GAIA-TECHNE Ethical Dashboard</h1>
+    <div class="controls">
+        <label for="synergy-slider">Aleph Synergy Leap:</label>
+        <input type="range" id="synergy-slider" min="0" max="2" step="0.1" value="0.5">
+        <button onclick="runSimulation()">Run Simulation</button>
+        <button onclick="triggerVeto()">Ethos Override</button>
+    </div>
+    <div class="dialog">
+        <h3>Conjecture Input</h3>
+        <textarea id="conjecture-input" placeholder="Enter your conjecture (e.g., 'What if AGI bypasses ethics?')"></textarea>
+        <button onclick="submitConjecture()">Submit</button>
+        <div id="narrative-output">Narrative will appear here...</div>
+    </div>
+    <div class="charts">
+        <canvas id="harmonyChart"></canvas>
+        <canvas id="metricsChart"></canvas>
+        <div id="gauge"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

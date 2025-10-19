@@ -1,0 +1,43 @@
+name: AGI-GAIA-TECHNE Test Suite
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pytest-cov numpy matplotlib
+
+    - name: Run Python tests
+      run: |
+        pytest --cov=principles_calculator --cov-report=xml
+
+    - name: Upload Python test coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: python-coverage-report
+        path: coverage.xml
+
+    - name: Set up Julia
+      uses: julia-actions/setup-julia@v1
+      with:
+        version: '1'
+
+    - name: Run Julia tests
+      run: |
+        julia --project -e 'using Pkg; Pkg.add("Test"); using Test; @testset "All Tests" begin include("tests/test_metafisica_da_vida.jl") end'

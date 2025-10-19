@@ -28,7 +28,7 @@ jobs:
         pytest --cov=principles_calculator --cov-report=xml
 
     - name: Upload Python test coverage report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: python-coverage-report
         path: coverage.xml

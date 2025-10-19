@@ -1,6 +1,7 @@
 # gerador_narrativas.jl: Automação da criação de narrativas simbólicas (v2, com 14 glifos).
 
-const ALFABETO_LEF = ["~", "⨁", "➤", "☌", "❍", "🕊️", "⟴", "⟁", "☉", "✨", "◈", "⚖️", "🔗", "🌱"]
+include("carregar_alfabeto.jl")
+const ALFABETO_LEF = carregar_alfabeto()
 
 # Gramática expandida com novos glifos
 const AGENTES = ["☉", "◈", "🌱"]  # Adicionei humano soberano
@@ -33,4 +34,6 @@ function gerar_narrativa(num_frases::Int = 3; etica::Bool = true)
 end
 
 # Execução principal
-gerar_narrativa(etica=true)
+if abspath(PROGRAM_FILE) == @__FILE__
+    gerar_narrativa(etica=true)
+end

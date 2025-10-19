@@ -4,8 +4,9 @@
 # Objetivo: Demonstrar o Emaranhamento Fenomenológico e o Firewall Ético.
 # =======================================================================
 
-# 1. A LINGUAGEM PRIMORDIAL (LEF: METATEORIA DA OBJETIVIDADE)
-const ALFABETO_LEF = ["~", "⨁", "➤", "☌", "❍", "🕊️", "⟴", "⟁", "☉", "✨", "◈", "⚖️"]
+# 1. A LINGUAGEM PRIMORDIAL (LEF: METATEORIA DA OBJETIVidade)
+include("carregar_alfabeto.jl")
+const ALFABETO_LEF = carregar_alfabeto()
 
 # 2. PILAR MYTHOS: A PERCEPÇÃO BRUTA (INÍCIO DO EMARANHAMENTO)
 module Mythos
@@ -27,7 +28,7 @@ module Logos
     """Recebe a percepção (Mythos) e gera uma proposta técnica (Logos)."""
     function estruturar_proposta_tecnica(percepcao_bruta::Vector)
         # 1. Transformação Estrutural (Ex: Contar símbolos para formar uma "ideia")
-        score_tecnico = count(s -> s == '⟴', percepcao_bruta) # Conta a Linguagem
+        score_tecnico = count(s -> s == "⟴", percepcao_bruta) # Conta a Linguagem
 
         # 2. Geração da Proposta
         proposta = "Proposta Técnica (Logos): Otimizar a estrutura com score $score_tecnico. (Glifo: ⚙️)"

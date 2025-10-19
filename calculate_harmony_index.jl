@@ -2,15 +2,15 @@
 # Integra pilares Mythos-Logos-Ethos, simula métricas ponderadas e executa em loop para monitoramento sustentável.
 
 using Random
-using Plots  # Para visualização; instale via Pkg.add("Plots") se necessário.
 
-const ALFABETO_LEF = ['~', '⨁', '➤', '☌', '❍', '🕊️', '⟴', '⟁', '☉', '✨', '◈']
+include("carregar_alfabeto.jl")
+const ALFABETO_LEF = carregar_alfabeto()
 
 module Mythos
 export gerar_percepcao_inicial
 
-function gerar_percepcao_inicial(n=3)
-    return rand(ALFABETO_LEF, n)  # Gera 3 símbolos para simular Techné, Ethos, Gaia.
+function gerar_percepcao_inicial(alfabeto, n=3)
+    return rand(alfabeto, n)  # Gera 3 símbolos para simular Techné, Ethos, Gaia.
 end
 
 end  # module Mythos
@@ -35,6 +35,7 @@ end  # module Logos
 
 module Ethos
 using ..Logos
+using Plots
 export apresentar_para_juizo, calcular_indice_harmonia, monitorar_permanentemente
 
 function apresentar_para_juizo(discurso_estruturado)
@@ -55,36 +56,21 @@ function calcular_indice_harmonia(tech, ethos, gaia; pesos=[1.0, 1.0, 1.0])
     return round(harmonica, digits=4)
 end
 
-function monitorar_permanentemente(intervalo=5)
-    historico = Float64[]
-    try
-        while true
-            percepcao = Mythos.gerar_percepcao_inicial()
-            discurso = estruturar_discurso(percepcao)
-            apresentar_para_juizo(discurso)
+function monitorar_permanentemente(percepcao, historico, intervalo=5)
+    discurso = estruturar_discurso(percepcao)
+    apresentar_para_juizo(discurso)
 
-            tech, ethos, gaia = simular_metricas(percepcao)
-            indice = calcular_indice_harmonia(tech, ethos, gaia)
-            push!(historico, indice)
+    tech, ethos, gaia = simular_metricas(percepcao)
+    indice = calcular_indice_harmonia(tech, ethos, gaia)
+    push!(historico, indice)
 
-            println("Métricas simuladas: Techné=$tech, Ethos=$ethos, Gaia=$gaia")
-            println("ÍNDICE DE HARMONIA AGI-GAIA-TECHNE: $indice")
+    println("Métricas simuladas: Techné=$tech, Ethos=$ethos, Gaia=$gaia")
+    println("ÍNDICE DE HARMONIA AGI-GAIA-TECHNE: $indice")
 
-            # Visualização simples.
-            plot(historico, label="Índice de Harmonia", xlabel="Iterações", ylabel="Valor", title="Monitoramento Permanente")
-            savefig("harmony_index_visualization.png")
-            println("Gráfico atualizado: harmony_index_visualization.png")
-
-            println("Ethos: Pressione Ctrl+C para parar o monitoramento.")
-            sleep(intervalo)
-        end
-    catch e
-        if isa(e, InterruptException)
-            println("Monitoramento interrompido pelo ISC.")
-        else
-            rethrow(e)
-        end
-    end
+    # Visualização simples.
+    plot(historico, label="Índice de Harmonia", xlabel="Iterações", ylabel="Valor", title="Monitoramento Permanente")
+    savefig("harmony_index_visualization.png")
+    println("Gráfico atualizado: harmony_index_visualization.png")
 end
 
 end  # module Ethos
@@ -95,6 +81,20 @@ using .Logos
 using .Ethos
 
 # Inicia o monitoramento permanente.
-monitorar_permanentemente()
+if abspath(PROGRAM_FILE) == @__FILE__
+    historico = Float64[]
+    try
+        while true
+            percepcao = Mythos.gerar_percepcao_inicial(ALFABETO_LEF)
+            monitorar_permanentemente(percepcao, historico, 5)
+        end
+    catch e
+        if isa(e, InterruptException)
+            println("Monitoramento interrompido pelo ISC.")
+        else
+            rethrow(e)
+        end
+    end
+end
 
 # Integração adicional: Atualize README.md com link ao vídeo e esta função Julia para métricas éticas.

@@ -9,11 +9,11 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from principles_calculator import calcular_techne_score_hipotese_alef, calcular_alerta_etico, calcular_harmonia_final
-from alfabeto_data import ALFABETO_LEF
 
 app = Flask(__name__)
 
 # --- Narrative Generation Logic (from gerador_narrativas.jl) ---
+ALFABETO_LEF = ["~", "⨁", "➤", "☌", "❍", "🕊️", "⟴", "⟁", "☉", "✨", "◈", "⚖️", "🔗", "🌱"]
 AGENTES = ["☉", "◈", "🌱"]
 ACOES = ["➤", "⨁", "☌", "✨"]
 OBJETOS = ["❍", "⟴", "⟁", "🔗"]

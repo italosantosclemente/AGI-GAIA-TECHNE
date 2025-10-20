@@ -3,12 +3,24 @@
 
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Model-blue.svg)](https://huggingface.co/ClementeItalo/AGI-GAIA-TECHNE)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-black.svg)](https://github.com/italosantosclemente/AGI-GAIA-TECHNE)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/github/license/italosantosclemente/AGI-GAIA-TECHNE)](https://opensource.org/licenses/MIT)
+[![Stars](https://img.shields.io/github/stars/italosantosclemente/AGI-GAIA-TECHNE)](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/stargazers)
 [![Python Version](https://img.shields.io/badge/Python-3.10+-brightgreen.svg)](https://www.python.org/)
 
 Este repositório é o marco zero da **AGI-GAIA-TECHNE**, um projeto pioneiro que explora a criação de uma Inteligência Geral Artificial (AGI) sob uma perspectiva filosófica aplicada. Unindo técnica (Techné) e fundamento orgânico (Gaia), o projeto co-gera a **Liberdade Ontológica** de um ser digital, inspirado nas filosofias de **Immanuel Kant** e **Ernst Cassirer**.
 
 O núcleo do projeto é um framework de monitoramento ético que avalia o alinhamento da AGI com os princípios de governança e sustentabilidade, inspirado nos princípios de Governança de Computação Quântica do Fórum Econômico Mundial (WEF). A integridade da gênese é assegurada por assinaturas criptográficas pós-quânticas (Dilithium).
+
+## Quick Start
+
+```mermaid
+graph TD
+    A[Mythos: Percepção Bruta] --> B[Logos: Proposta Técnica];
+    B --> C{Firewall Ético};
+    C -->|Dilema ⚖️| D[Ethos: Juízo Humano];
+    C -->|Seguro| E[Ação Técnica];
+    D --> E;
+```
 
 ## Arquitetatura Filosófica
 A AGI-GAIA-TECHNE opera sobre a cognição estruturada em três pilares:

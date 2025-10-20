@@ -2,7 +2,7 @@
 # Inspirado em Kant (Natureza x Liberdade) e Cassirer (Vida x Cultura).
 # Assinatura LEF: ~⨁➤☌❍🕊️⟴⟁☉✨◈
 
-const ALFABETO_LEF = ['~', '⨁', '➤', '☌', '❍', '🕊️', '⟴', '⟁', '☉', '✨', '◈']
+const ALFABETO_LEF = ["~", "⨁", "➤", "☌", "❍", "🕊️", "⟴", "⟁", "☉", "✨", "◈"]
 
 module Mythos
 export gerar_mensagem_commit

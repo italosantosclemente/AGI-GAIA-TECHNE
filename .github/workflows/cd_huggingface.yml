@@ -1,0 +1,29 @@
+name: CD - Deploy para Hugging Face
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy-hf:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://huggingface.co/ClementeItalo/AGI-GAIA-TECHNE
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Instalar Dependências e Hugging Face CLI
+      run: |
+        pip install -r requirements.txt
+        pip install huggingface_hub
+    - name: Sincronizar Modelo/Assets com Hugging Face
+      env:
+        HF_TOKEN: ${{ secrets.HUGGINGFACE_TOKEN }}
+      run: |
+        # Exemplo: Sincroniza narrativas ou resultados
+        # huggingface-cli upload ClementeItalo/AGI-GAIA-TECHNE .
+        echo "Simulando upload para Hugging Face..."

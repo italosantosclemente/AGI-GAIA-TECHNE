@@ -1,0 +1,10 @@
+# Dependências Python para AGI-GAIA-TECHNE
+numpy==1.26.0
+matplotlib==3.8.0
+dilithium-py==1.3.0
+pytz==2024.1
+GitPython==3.1.41
+pytest==8.2.2
+black==24.4.2
+streamlit==1.36.0 # Para dashboard.py (Prioridade Baixa/Média)
+plotly==5.22.0     # Para visualizações avançadas (Prioridade Baixa/Média)

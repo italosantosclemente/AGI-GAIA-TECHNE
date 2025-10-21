@@ -139,7 +139,9 @@ O script irá gerar três iterações do conto, cada uma com uma nova semente si
 Run the dashboard locally:
 1. Start the backend: `python backend/app.py`
 2. Open `dashboard/index.html` in a browser.
-Or view online at: https://italosantosclemente.github.io/AGI-GAIA-TECHNE/dashboard/
+Or view online at:
+- **Main Dashboard:** https://italosantosclemente.github.io/AGI-GAIA-TECHNE/dashboard/
+- **Unified Dashboard:** https://italosantosclemente.github.io/AGI-GAIA-TECHNE/dashboard/final_unified_dashboard.html
 
 Interact via the dialog box to input conjectures, view narratives, and monitor metrics (Techné, IAE, Harmony).
 

@@ -1,3 +1,11 @@
+# ESBOÇO INICIAL DO PROJETO AGI-GAIA-TECHNE
+
+**Nota Introdutória:** Este documento, intitulado originalmente "METAFÍSICA DE LA VIDA: HUMANISMO Y IDEALISMO CRÍTICO", representa o esboço conceitual e filosófico que deu origem ao projeto AGI-GAIA-TECHNE. Ele estabelece as bases teóricas, ancoradas no Idealismo Crítico de Kant e na Filosofia das Formas Simbólicas de Cassirer, a partir das quais a metateoria do projeto, a Linguagem de Emaranhamento Fenomenológico (LEF) e a arquitetura ética foram desenvolvidas.
+
+Este texto deve ser considerado o ponto de partida intelectual do sistema. Os conceitos aqui apresentados em sua forma acadêmica e discursiva são posteriormente traduzidos e operacionalizados nos documentos `MARCO_TEORICO.md` e `THEORY.md`, e implementados nos diversos componentes de software do repositório.
+
+---
+
 METAFÍSICA DE LA VIDA: HUMANISMO Y IDEALISMO CRÍTICO
 Ítalo Santos Clemente (UDP)
 italo.s.clemente@gmail.com

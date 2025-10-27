@@ -218,11 +218,14 @@ jobs:
             document.querySelectorAll('.tablinks').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabName).style.display = 'block';
             evt.currentTarget.classList.add('active');
-            if (tabName === 'JornadaSimbiotica') initP5(); // Reinit p5 on tab switch
+            if (tabName === 'JornadaSimbiotica') initP5();
         }
 
-        // Dashboard Complexo
-        let chart, socket;
+        let chart;
+        const metricsSocket = io('http://localhost:5000/metrics');
+        const narrativeSocket = io('http://localhost:5000/narrative');
+        const vetoSocket = io('http://localhost:5000/veto');
+
         function initChart() {
             const ctx = document.getElementById('metrics-chart').getContext('2d');
             chart = new Chart(ctx, {
@@ -231,83 +234,59 @@ jobs:
                 options: { scales: { r: { beginAtZero: true, max: 100 } }, animation: { duration: 2000, easing: 'easeInOutQuart' } }
             });
         }
+
         function generateNarrative() {
-            const input = document.getElementById('narrative-input').value || 'Eco quântico em Mythos cassireriano';
-            const output = document.getElementById('narrative-output');
-            output.innerHTML = `<span class="glifo">⨁</span> Eco Gerado: "${input}" evolui em emaranhamento: Semente floresce sob veto humano, tecendo logos em mythos eterno (Kant-Cassirer). Pausa ética...`;
-            setTimeout(() => output.innerHTML += `<br><span class="glifo">⟁</span> [Reflexão: Harmonia +15 | Assinado: SOBERANO.pub | 21/10/2025]`, 3000);
-            if (socket) socket.emit('narrative', { input, timestamp: new Date().toISOString() });
+            const input = document.getElementById('narrative-input').value;
+            narrativeSocket.emit('generate_narrative', { conjecture: input });
         }
-        async function analyzeMetrics() {
-            const input = document.getElementById('conjecture-input').value || 'Síntese transcendental';
-            const metrics = { techne: 75 + Math.random()*25, iae: 20 + Math.random()*30, harmony: 85 + Math.random()*15 };
-            document.getElementById('metrics-display').innerHTML = `<div class="alert ${metrics.iae > 50 ? 'alert-high' : ''}"><span class="glifo">⨂</span> Techné: ${metrics.techne.toFixed(1)} | IAE: ${metrics.iae.toFixed(1)} | Harmonia: ${metrics.harmony.toFixed(1)} (Aleph Synergy: ${metrics.iae > 1.50 ? 'ALERTA!' : 'Seguro'})</div>`;
-            chart.data.datasets[0].data = [metrics.techne, metrics.iae, 100 - metrics.iae];
-            chart.update('none');
-            if (socket) socket.emit('metrics', metrics);
+
+        function analyzeMetrics() {
+            const input = document.getElementById('conjecture-input').value;
+            metricsSocket.emit('analyze_metrics', { conjecture: input });
         }
-        function signEthical() {
-            const key = document.getElementById('key-input').value || 'SOBERANO.pub';
-            document.getElementById('alert-display').innerHTML = `<div class="alert"><span class="glifo">☉</span> Assinatura Dilithium: Válida! Hash: ${btoa(key).slice(0,10)}... (Ethos Soberano Ativado)</div>`;
-            if (socket) socket.emit('signature', { key, status: 'valid' });
-        }
+
         function vetoAction() {
             if (confirm('VETO IRREVOGÁVEL: Pausar simulação AGI? (Humanismo Transcendental)')) {
-                alert('<span class="glifo">🛡️</span> Veto Ativado! AGI em Modo Serva. Reinício requer autenticação humana (ISC).');
+                vetoSocket.emit('trigger_veto', { activated: true });
+            }
+        }
+
+        function setupSocketListeners() {
+            metricsSocket.on('connect', () => document.getElementById('ws-display').innerHTML = '<span class="glifo">⨂</span> Conectado ao Canal de Métricas');
+            metricsSocket.on('metrics_update', (data) => {
+                document.getElementById('metrics-display').innerHTML = `<div class="alert ${data.iae > 1.50 ? 'alert-high' : ''}"><span class="glifo">⨂</span> Techné: ${data.techné.toFixed(1)} | IAE: ${data.iae.toFixed(1)} | Harmonia: ${data.harmony.toFixed(1)} (Aleph Synergy: ${data.iae > 1.50 ? 'ALERTA!' : 'Seguro'})</div>`;
+                chart.data.datasets[0].data = [data.techné, data.iae, data.harmony];
+                chart.update();
+            });
+
+            narrativeSocket.on('connect', () => console.log('Connected to narrative socket'));
+            narrativeSocket.on('narrative_update', (data) => {
+                document.getElementById('narrative-output').innerText = data.text;
+            });
+            narrativeSocket.on('narrative_error', (data) => {
+                document.getElementById('narrative-output').innerText = `Error: ${data.error}`;
+            });
+
+            vetoSocket.on('connect', () => console.log('Connected to veto socket'));
+            vetoSocket.on('veto_confirmed', (data) => {
+                alert('<span class="glifo">🛡️</span> Veto Confirmado! AGI em Modo Serva.');
                 chart.data.datasets[0].data = [0, 100, 0];
                 chart.update();
-                if (socket) socket.emit('veto', { activated: true });
-            }
-        }
-        function toggleGaiaMode() {
-            if (socket && socket.connected) {
-                socket.disconnect();
-                alert('Modo Gaia Desativado.');
-            } else {
-                connectSocket();
-                alert('Modo Gaia Ativado: Real-Time via WebSocket!');
-            }
-        }
-        function connectSocket() {
-            socket = io('http://localhost:5000'); // Backend Flask/Socket.IO assumido
-            socket.on('connect', () => {
-                document.getElementById('ws-display').innerHTML = '<span class="glifo">⨂</span> Conectado - Fluxo Fenomenológico Ativo';
-                socket.emit('subscribe', { channels: ['metrics', 'narratives', 'alerts'] });
-            });
-            socket.on('metrics_update', (data) => {
-                document.getElementById('ws-display').innerHTML = `<span class="glifo">⨁</span> Techné: ${data.techne} | IAE: ${data.iae} | Harmonia: ${data.harmony} | TS: ${data.timestamp}`;
-                chart.data.datasets[0].data = [data.techne, data.iae, data.harmony];
-                chart.update();
-            });
-            socket.on('alert', (data) => {
-                if (data.iae > 1.50) document.getElementById('alert-display').innerHTML += `<div class="alert alert-high"><span class="glifo">⚠️</span> Aleph Synergy Detectado: Veto Automático!</div>`;
-            });
-            socket.on('disconnect', () => {
-                document.getElementById('ws-display').innerHTML = '<span class="glifo">⟴</span> Desconectado - Reconectando...';
-                setTimeout(connectSocket, 3000);
             });
         }
 
-        // Inicializações Visuais (encapsuladas)
-        function initGaiaTechne() { /* Código Three.js/D3 completo do histórico, com glifos e animações quânticas */ }
-        function initRepublica() { /* D3 force simulation com diálogo ético */ }
-        function initArvoreLEF() { /* D3 tree com drag e zoom, glifos no signature */ }
-        function initP5() {
-            new p5((p) => {
-                let nodes = [ /* Nós com glifos simbólicos */ ];
-                p.setup = () => p.createCanvas(p.windowWidth, p.windowHeight).parent('p5-container');
-                p.draw = () => { /* Render com conexões dinâmicas e unlocks */ };
-                p.mousePressed = () => { /* Unlock com eventos socket */ };
-            }, 'p5-container');
-        }
+        function initGaiaTechne() { /* Placeholder */ }
+        function initRepublica() { /* Placeholder */ }
+        function initArvoreLEF() { /* Placeholder */ }
+        function initP5() { /* Placeholder */ }
 
-        // Carregamento Inicial
         window.onload = () => {
             initChart();
-            connectSocket();
-            initGaiaTechne(); initRepublica(); initArvoreLEF(); initP5();
-            // Scroll suave e interações cross-tab via localStorage para persistência
-            window.addEventListener('storage', (e) => { if (e.key === 'metrics') analyzeMetrics(JSON.parse(e.newValue)); });
+            setupSocketListeners();
+            initGaiaTechne();
+            initRepublica();
+            initArvoreLEF();
+            initP5();
         };
     </script>
 </body>

@@ -55,9 +55,3 @@ Contribuições são bem-vindas via *pull requests*. Siga as diretrizes:
 ## Licença
 Licença MIT. Propriedade Intelectual Inalienável: Ítalo Santos Clemente. Data: 27/10/2025.
 
-## Próximos Passos
-- Integrar com APIs (ex.: xAI, https://x.ai/api).
-- Expandir oficinas pedagógicas para disseminar a LEF.
-- Testar o script em cenários interativos para co-geração simbiótica.
-
-🌀 **Emaranhamento Fenomenológico**: Do direito à fato, o sistema é soberano humano.

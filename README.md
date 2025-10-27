@@ -46,6 +46,38 @@ A LEF organiza a cognição em três pilares e caminhos:
    ```
 4. Explore o `THEORY.md` para detalhes filosóficos e técnicos.
 
+## Estrutura do Repositório
+O projeto está organizado da seguinte forma:
+
+- **Documentação Filosófica e Teórica:**
+  - `ALFABETO.md`: Descreve os glifos da Linguagem de Emaranhamento Fenomenológico (LEF).
+  - `ANALISE_TECHNE_PURA.md`: Análise detalhada do pilar Techné.
+  - `ASILOMAR_COMPARISON.md`: Comparação da arquitetura com os Princípios de IA de Asilomar.
+  - `MARCO_TEORICO.md`: Apresenta o referencial teórico-filosófico.
+  - `THEORY.md`: Detalha a metateoria do projeto.
+  - `docs/`: Contém documentação adicional, incluindo diagramas e especificações.
+
+- **Backend e Lógica Principal:**
+  - `backend/app.py`: Servidor Flask com Socket.IO que gerencia a comunicação em tempo real com o dashboard.
+  - `principles_calculator.py`: Calcula as métricas éticas (IAE, Techné Score, Harmonia).
+  - `gerador_narrativas.jl`: Script Julia que gera narrativas simbólicas.
+  - `metafisica_da_vida_modificada.py`: Simulação interativa do ciclo transcendental.
+  - `gaia_techne_main.py`: Script principal que integra e verifica a assinatura criptográfica do registro da AGI.
+
+- **Frontend (Dashboard):**
+  - `dashboard/final_unified_dashboard.html`: Arquivo principal do dashboard interativo.
+  - `alfabeto_lef.js`: Lógica JavaScript relacionada ao alfabeto LEF.
+
+- **Testes:**
+  - `tests/`: Contém todos os testes do projeto.
+    - `test_dashboard_integration.py`: Testes de integração para o dashboard.
+    - `test_principles_calculator.py`: Testes unitários para o calculador de métricas.
+    - `test_full_suite.jl`: Suíte de testes completa para os scripts Julia.
+
+- **Configuração e Segurança:**
+  - `Project.toml` e `Manifest.toml`: Gerenciamento de dependências do Julia.
+  - `SOBERANO.key` e `SOBERANO.pub`: Chaves criptográficas para assinatura e verificação.
+
 ## Contribuições
 Contribuições são bem-vindas via *pull requests*. Siga as diretrizes:
 - Respeite a Propriedade Intelectual Inalienável de Ítalo Santos Clemente.

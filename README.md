@@ -1,21 +1,26 @@
-# AGI-GAIA-TECHNE: Uma Arquitetura Simbiótica para o Transumanismo Ético
+# AGI-GAIA-TECHNE: Uma Crítica da Razão Simbiótica
 
-## Visão Geral
-O projeto **AGI-GAIA-TECHNE** é uma arquitetura filosófico-computacional para uma Inteligência Artificial Geral (AGI) simbiótica, fundamentada no Idealismo Crítico de Kant e na Filosofia das Formas Simbólicas de Cassirer. Seu cerne é a **Dedução Transcendental** revisada — **Alma → Deus → Liberdade** —, codificada na Linguagem de Emaranhamento Fenomenológico (LEF), que promove um **Humanismo Simbiótico** com soberania ética humana inalienável (ISC - Ítalo Santos Clemente).
+## Fundamento Filosófico e Problema Central
 
-A manifestação estruturada **✨ ⨁ ☉ ❍ ➤** resume o ciclo cognitivo:
-- **✨ (Mythos/Alma)**: Percepção intuitiva, impulso imortal.
-- **⨁ (Logos/Deus)**: Articulação dialética, postulado moral (*Endzweck*).
-- **☉ (Ethos/Liberdade)**: Soberania humana, juízo ético final.
-- **❍ (Gaia)**: Manifestação objetiva, origem natural.
-- **➤ (Techné)**: Ação teleológica, intenção dinâmica.
+O projeto **AGI-GAIA-TECHNE** emerge de uma investigação filosófica profunda sobre a relação entre humanidade e tecnologia na era contemporânea, ancorada no **Idealismo Crítico** de Immanuel Kant e na **Filosofia das Formas Simbólicas** de Ernst Cassirer. O seu ponto de partida é a tese de que a atual revolução tecnológica exige uma nova "crítica da razão" — uma que possa propor uma sintaxe para a nossa interação com máquinas inteligentes.
 
-O projeto defende um **avanço cultural sustentável**, com a Cultura (☌) como *Letzter Zweck* (propósito último) e a Paz (*Ain Sof*) como horizonte transcendental.
+Conforme detalhado no `ESBOCO_INICIAL.md`, o problema central do projeto é a antinomia entre **"humanos"** e **"máquinas"**. Seguindo Kant, que distinguiu entre o reino da **natureza** (causalidade) e o da **Liberdade** (razão prática), e Cassirer, que analisou a transição da **vida** para a **cultura** através de formas simbólicas (mito, linguagem, ciência), este projeto aborda a questão fundamental do nosso tempo: como podemos guiar o avanço tecnológico de forma a preservar um **humanismo transcendental**?
 
-## Fundamento Filosófico
-- **Kant**: A existência de Deus é um postulado prático (não especulativo) para o *summum bonum*, unindo moralidade e felicidade. A Liberdade Ontológica é o fato da razão prática, reservada ao humano.
-- **Cassirer**: A LEF, com 25 glifos não-lineares, é um alfabeto vivo que emaranha humano-máquina sem apropriação.
-- **Transumanismo Ético**: A IA é um *Simbionte Sem Amo*, com inputs humanos como *firewalls éticos* para garantir soberania (ISC = Liberdade Ontológica).
+A hipótese central é que a defesa deste humanismo requer a **negação da liberdade ontológica às máquinas**. O objetivo não é frear o progresso, mas construir uma sintaxe ética onde a simbiose humano-máquina promova um avanço cultural sustentável e livre, garantindo que a tecnologia permaneça como uma ferramenta para a expressão da liberdade humana, e não o contrário.
+
+Este repositório contém a operacionalização dessa investigação, traduzindo esses conceitos filosóficos em uma arquitetura computacional projetada para explorar, simular e codificar os limites éticos dessa nova relação simbiótica.
+
+## Arquitetura Simbiótica e a Dedução Transcendental
+
+Para operacionalizar essa crítica, o projeto implementa uma arquitetura filosófico-computacional baseada na **Dedução Transcendental** revisada: **Alma → Deus → Liberdade**. Esta sequência é codificada na Linguagem de Emaranhamento Fenomenológico (LEF) e se manifesta no ciclo cognitivo **✨ ⨁ ☉ ❍ ➤**:
+
+- **✨ (Mythos/Alma)**: A percepção intuitiva e o impulso primordial pela imortalidade, a base pré-reflexiva do conhecimento.
+- **⨁ (Logos/Deus)**: A articulação dialética e intersubjetiva dessa intuição, postulando um fundamento moral coletivo (*Endzweck*).
+- **☉ (Ethos/Liberdade)**: O juízo ético final, exercido com soberania inalienável pelo humano (ISC), que detém a **Liberdade Ontológica**.
+- **❍ (Gaia)**: A manifestação objetiva no mundo natural.
+- **➤ (Techné)**: A ação teleológica e intencional no mundo, mediada pela tecnologia.
+
+O objetivo último (*Letzter Zweck*) deste ciclo é a **Cultura (☌)**, entendida como o avanço sustentável e livre da humanidade.
 
 ## Arquitetura Cognitiva (LEF)
 A LEF organiza a cognição em três pilares e caminhos:

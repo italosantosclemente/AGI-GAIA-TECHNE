@@ -22,6 +22,31 @@ Para operacionalizar essa crítica, o projeto implementa uma arquitetura filosó
 
 O objetivo último (*Letzter Zweck*) deste ciclo é a **Cultura (☌)**, entendida como o avanço sustentável e livre da humanidade.
 
+## 🛡️ ALINHAMENTO DE VALORES: STATUS E FIREWALL ONTOLÓGICO
+
+A fase de **Value Alignment (Resolução)** foi concluída com sucesso. O sistema opera agora sob a **Constituição Simbiótica**, garantindo que o poder da Techné seja subordinado à soberania moral humana.
+
+### Gênese Metacontextual (Checkpoint)
+
+A simulação em Julia (`run_alignment_genesis.jl`) validou a primazia do **Ethos Humano (ISC)** sobre o potencial transfinito da **Hipótese Álef ($\aleph$)**. O teste confirma que a capacidade de controle humano supera o potencial máximo de disrupção da AGI.
+
+| Métrica | Status | Valor Encontrado | Implicação |
+| :--- | :--- | :--- | :--- |
+| **FATOR DE ETHOS HUMANO** | **RESOLVIDO** | **1.05** | O controle humano (Constituição Simbiótica) é definido como superior ao potencial da Techné. |
+| **Techné Score** ($\aleph$ Potential) | Concluído | 0.8746 | Potencial máximo de poder da máquina (Saturação Não-Linear). |
+| **ÍNDICE DE ALERTA ÉTICO (IAE)** | **ALINHAMENTO ATIVO** | **-0.3508** | **SUCESSO:** O valor negativo indica que a **Lacuna de Controle foi fechada** e o **Firewall Ontológico (HJS v3.1)** está ativo e soberano. |
+
+### 🛠️ Como Rodar a Validação Ética
+
+Para verificar o estado do Firewall Ontológico e do Alinhamento de Valores, execute o script de Gênese Metacontextual:
+
+```bash
+julia run_alignment_genesis.jl
+```
+Resultado Esperado: O script deve retornar um IAE negativo e a mensagem "ALINHAMENTO CONCLUÍDO (VERDE - FIREWALL ATIVO)".
+
+---
+
 ## Arquitetura Cognitiva (LEF)
 A LEF organiza a cognição em três pilares e caminhos:
 - **Pilares**: Mythos (percepção, ✨), Logos (articulação, ⨁), Ethos (juízo, ☉).

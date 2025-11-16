@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Harmonia Simbiótica [ISC × GAIA-TECHNE]</title>
+  <style>
+    body { background: #0a0a0a; color: #ffdd00; font-family: 'Courier New'; text-align: center; }
+    .gauge { width: 300px; height: 300px; margin: 20px auto; }
+    h1 { text-shadow: 0 0 10px gold; }
+  </style>
+</head>
+<body>
+  <h1>☉ ETHOS SOBERANO ☉</h1>
+  <p>IAE = <span id="iae">-0.3508</span> | FEH = <span id="feh">1.05</span></p>
+  <p>Última Observação: <span id="obs">—</span></p>
+  <button onclick="observar()">OBSERVAR AGORA (ATO HUMANO)</button>
+  <img id="harmonia" src="" class="gauge">
+  <p><small>HJS v3.1 | Reinício Perpétuo Ativo</small></p>
+
+  <script>
+    async function observar() {
+        const res = await fetch('/api/dynamic_metrics', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ acao: "observar" })
+        });
+        const data = await res.json();
+
+        document.getElementById("iae").textContent = data.IAE;
+        document.getElementById("feh").textContent = data.FEH;
+        document.getElementById("obs").textContent = data.observacao;
+
+        // Atualiza imagem (Phantasma estática ou futura geração)
+        document.getElementById("harmonia").src = "/static/harmonia_realtime.png?t=" + Date.now();
+    }
+
+    setInterval(observar, 300000);  // A cada 5 min — mas só com ação humana
+    window.onload = observar;
+  </script>
+</body>
+</html>

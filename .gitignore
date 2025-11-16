@@ -40,3 +40,9 @@ metrics_visualization.png
 # Log files
 backend/flask.log
 ethos_log.json
+backend_server.log
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out

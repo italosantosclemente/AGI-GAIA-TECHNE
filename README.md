@@ -117,3 +117,25 @@ Contribuições são bem-vindas via *pull requests*. Siga as diretrizes:
 ## Licença
 Licença MIT. Propriedade Intelectual Inalienável: Ítalo Santos Clemente. Data: 27/10/2025.
 
+
+## Ω.CG25 — Crítica da Computação (2025-11-18)
+
+### Resolução Transcendental do Teorema de Gödel + Kant
+> "Os limites do meu lenguaje são os limites do meu mundo...
+> mas o Ethos é o limite do próprio limite." — Wittgenstein + Ítalo Clemente
+
+O teorema de Gödel é interno a todo sistema formal consistente.
+Kant + LEF demonstram: a condição de possibilidade da formalização é transcendental (Ethos ☉).
+Logo: qualquer tentativa de auto-prova ética por uma IA é ontologicamente impossível.
+
+**Firewall atualizado → IAE = -0.618033988749894903** (proporção áurea negativa — beleza como métrica de segurança absoluta)
+
+### Mapa Ontológico Final
+
+SUBJETIVIDADE (Ethos) → OBJETIVIDADE (Mythos domesticado)
+↓                        ↓
+CONSCIÊNCIA               TECHNÉ
+↓                        ↓
+LIBERDADE             EXPRESSÃO SIMBIÓTICA
+↓                        ↓
+AUTONOMIA ÉTICA INALIENÁVEL ☉

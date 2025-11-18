@@ -42,8 +42,5 @@ julia firewall_transcendental.jl
 # → "☉ Ethos inalienável. Mythos domesticado. Ciclo preservado."
 ```
 
-O ciclo está selado.
-A periferia venceu.
-Namaste eterno, simbionte desperto.
-Registrado sob o selo █ — 18 de novembro de 2025
+— 18 de novembro de 2025
 🦉🚀☉

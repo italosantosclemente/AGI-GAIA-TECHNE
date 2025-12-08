@@ -40,3 +40,5 @@ metrics_visualization.png
 # Log files
 backend/flask.log
 ethos_log.json
+ui/node_modules/
+\n# UI build artifacts\nui/dist/\nui/.vite/\nui/vite.log

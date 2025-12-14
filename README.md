@@ -1257,7 +1257,7 @@ O resultado não é uma "resposta final" ao problema da simbiose humano-máquina
 ---
 
 **Ítalo Santos Clemente**
-Doutorando em Filosofia (UNICAMP)
+Doutorando em Filosofia (UDP, Chile)
 Projeto AGI-GAIA-TECHNE
 2025
 

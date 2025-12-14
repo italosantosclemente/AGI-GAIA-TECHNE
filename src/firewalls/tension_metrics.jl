@@ -1,16 +1,5 @@
 # src/firewalls/tension_metrics.jl
 
-include("../core/symbolic_forms.jl")
-
-# Dummy functions for missing dependencies
-frobenius_norm(a) = 1.0
-euclidean(a, b) = 1.0
-graph_edit_distance(a, b) = 1.0
-count_conflicting_rules(a, b) = 1.0
-normalize(a) = 1.0
-count_contradictory_imperatives(a, b) = 1.0
-cosine_distance(a, b) = 1.0
-
 """
 Calcula tensão no domínio Mythos (pregnância simbólica).
 """

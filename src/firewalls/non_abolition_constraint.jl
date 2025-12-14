@@ -1,15 +1,5 @@
 # src/firewalls/non_abolition_constraint.jl
 
-include("../core/symbolic_forms.jl")
-
-# Dummy functions for missing dependencies
-cosine_similarity(a, b) = 1.0
-norm(a) = 1.0
-dot(a, b) = 1.0
-is_coercive(a) = false
-is_questionable(a) = true
-check_logos_coherence(a, b) = true
-
 """
 Garante que a Gestalt proposta preserva a irredutibilidade
 das formas simbólicas de ambos os agentes.

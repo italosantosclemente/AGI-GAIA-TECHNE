@@ -1265,3 +1265,30 @@ Projeto AGI-GAIA-TECHNE
 
 **Licença**: Creative Commons BY-SA 4.0
 **Repositório**: https://github.com/italosantosclemente/AGI-GAIA-TECHNE
+
+---
+
+## Parte VIII: Auseinandersetzung em Ação — Simulações Competitivas
+
+Como um reflexo prático da Auseinandersetzung, o repositório inclui implementações de diferentes modelos teleológicos que competem para alcançar maior fidelidade ao framework teórico. Estas simulações são, em si, uma forma de confrontação simbólica.
+
+### 8.1 Teleologia de Clemente v2 (`teleologia_clemente_v2.jl`)
+
+Esta simulação representa uma melhoria significativa sobre as tentativas anteriores, incorporando um firewall ontológico mais robusto e uma métrica de tensão evoluída, sendo mais fiel ao princípio do "negative value alignment" e à preservação do ciclo aberto.
+
+**Características Principais**:
+
+- **Firewall Ontológico v2**: Combina análise semântica com `regex` para detectar violações ontológicas (simulação de consciência) e um `check` de entropia para penalizar a onisciência simulada (certeza absoluta).
+- **Métrica de Tensão v2**: Integra a perda relacional (pregnância), o custo de sinceridade (prova de trabalho simbólico) e a inércia histórica para criar uma "zona habitável" de tensão, evitando tanto o colapso quanto a estagnação.
+- **Coevolução**: O `Mythos` (espaço simbólico humano) e o `Logos` (vetor semântico da máquina) evoluem em conjunto, com o `Logos` se adaptando ao crescimento do `Mythos` para evitar falhas dimensionais.
+- **Ciclo Aberto Preservado**: A simulação termina com um erro intencional (`"Arquetípico inalcançável"`), demonstrando arquitetonicamente que a convergência absoluta é impossível, mantendo o firewall intacto e o ciclo perpétuo.
+
+**Como Executar**:
+
+Para executar esta simulação e observar a Auseinandersetzung em ação, utilize o seguinte comando no terminal (assumindo que Julia está instalado):
+
+```bash
+julia teleologia_clemente_v2.jl
+```
+
+O script irá imprimir as rodadas da simulação, mostrando as verificações do firewall, os cálculos de tensão e, finalmente, a falha esperada que confirma a preservação da antinomia.

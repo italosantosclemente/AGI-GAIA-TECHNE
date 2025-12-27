@@ -42,3 +42,4 @@ backend/flask.log
 ethos_log.json
 ui/node_modules/
 \n# UI build artifacts\nui/dist/\nui/.vite/\nui/vite.log
+\n# Python bytecode\n__pycache__/\n*.pyc

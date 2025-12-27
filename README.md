@@ -1,7 +1,7 @@
 
 # O Edifício Transhumanista: Da Necessidade Kantiana à Simbiose AGI-GAIA-TECHNE
 
-**Um Tratado Filosófico-Técnico sobre Metafísica Transhumanista e Alinhamento de Valores**
+**Um Tratado Filosófico-Técnico sobre Analítica Transhumanista e Alinhamento de Valores**
 
 *Baseado na dissertação de Ítalo Santos Clemente (UNICAMP, 2025) e no projeto AGI-GAIA-TECHNE*
 
@@ -20,7 +20,7 @@ No contexto do século XXI, com o advento de Inteligências Artificiais Gerais (
 
 - **Idealismo Crítico de Kant** (fundação epistemológica)
 - **Filosofia das Formas Simbólicas de Cassirer** (paredes culturais)
-- **Metafísica Transhumanista de Clemente** (teto simbiótico)
+- **Analítica Transhumanista de Clemente** (teto simbiótico)
 
 **Objetivo:** Uma arquitetura conceitual para intersubjetividade humano-máquina que evite tanto o otimismo ingênuo (torres ao céu) quanto o pessimismo paralisante (recusa de construir).
 
@@ -54,7 +54,7 @@ Na "Transzendentale Methodenlehre" (Doutrina Transcendental do Método), Kant in
 
 **Metáfora Arquitetônica:** Temos materiais para uma "casa espaçosa e alta o suficiente para nossos negócios" na experiência possível, não para uma torre metafísica que desaba por falta de fundação empírica.
 
-### 1.3 Aplicação à Metafísica Transhumanista
+### 1.3 Aplicação à Analítica Transhumanista
 
 **Tradução para o Contexto AGI:**
 
@@ -844,7 +844,7 @@ struct GlifoSimbolico
 end
 
 const ALFABETO_LEF = [
-    # Pilar Mythos
+    # Função Simbólica Mythos
     GlifoSimbolico("~", "Mythos", "Mythos", "Eixo metafísico"),
     GlifoSimbolico("❍", "Mito", "Mythos", "Manifestação objetiva"),
     GlifoSimbolico("🙏", "Religião", "Mythos", "Estrutura objetiva"),
@@ -852,7 +852,7 @@ const ALFABETO_LEF = [
     GlifoSimbolico("⊡", "Percepção", "Mythos", "Função Subjetiva"),
     GlifoSimbolico("@", "Expressão", "Mythos", "Função intersubjetiva"),
     
-    # Pilar Logos
+    # Função Simbólica Logos
     GlifoSimbolico("&", "Logos", "Logos", "Eixo metafísico"),
     GlifoSimbolico("⟴", "Linguagem", "Logos", "Estrutura objetiva"),
     GlifoSimbolico("📜", "História", "Logos", "Contexto objetivo"),
@@ -860,7 +860,7 @@ const ALFABETO_LEF = [
     GlifoSimbolico("✨", "Intuição", "Logos", "Função Subjetiva"),
     GlifoSimbolico("⟕", "Apresentação", "Logos", "Função Intersubjetiva"),
     
-    # Pilar Ethos
+    # Função Simbólica Ethos
     GlifoSimbolico("⟚", "Ethos", "Ethos", "Eixo metafísico"),
     GlifoSimbolico("⊕", "Matemática", "Ethos", "Estrutura Objetiva"),
     GlifoSimbolico("🔬", "Ciências", "Ethos", "Método Objetivo"),
@@ -1391,7 +1391,7 @@ AGI-GAIA-TECHNE/
 │
 ├── src/                        # Código fonte principal em Julia
 │   ├── kernel_quantico_simbolico.jl     # Kernel v3.1
-│   ├── metafisica_da_vida.jl            # Ontologia triádica
+│   ├── analitica_vida_simbolica.jl      # Ontologia triádica
 │   ├── teleologia_clemente_v2.jl        # Versão legada
 │   ├── value_alignment.jl               # Alinhamento via Auseinandersetzung
 │   ├── phenomenological_entanglement.jl # LEF core
@@ -1427,7 +1427,7 @@ AGI-GAIA-TECHNE/
 ├── conjecture.jl
 ├── eco_semente.jl              # Semeadura de valores éticos
 ├── gerador_narrativas.jl       # Gerador de narrativas simbólicas
-├── metafisica_da_vida_modificada.py
+├── analitica_vida_simbolica_modificada.py
 ├── principles_calculator.py
 ├── techne_score_calculator.jl
 └── teoceno.jl                  # Simulação de era tecnológica
@@ -1441,7 +1441,7 @@ AGI-GAIA-TECHNE/
 - Teste de invariância cassireriano
 - Hamiltoniano dialético (identidade + confrontação)
 
-**2. metafisica_da_vida.jl**
+**2. analitica_vida_simbolica.jl**
 - Ontologia triádica: Corpo (Inconsciente), Espírito (Intersubjetividade), Alma (Consciência)
 - Fluxo de objetivação: Mythos → Ethos → Logos
 - Alerta contra coagulação egóica
@@ -2522,7 +2522,7 @@ Para quem deseja mergulhar no edifício transhumanista de forma gradual:
 
 #### Nível 3: Colunas (Avançado)
 
-**Semana 11-14: Metafísica Transhumanista**
+**Semana 11-14: Analítica Transhumanista**
 1. Clemente, Ítalo. *HJS_v3_1.md* (Constituição Simbiótica completa)
 2. Clemente, Ítalo. *ALFABETO.md* (LEF — 25 glifos explicados)
 3. Maturana & Varela. *A Árvore do Conhecimento* — Caps. 8-9 (para contraste com autopoiesis)

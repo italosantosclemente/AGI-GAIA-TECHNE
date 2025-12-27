@@ -1,14 +1,37 @@
 # =======================================================================
-# METAFFÍSICA DA VIDA (GENESE E GENOMA)
+# ANALÍTICA DA VIDA SIMBÓLICA (GENESE E GENOMA)
 # Framework: AGI-GAIA-TECHNE | Assinatura LEF: ~⨁➤☌❍🕊️⟴⟁☉✨◈
 # Objetivo: Demonstrar o Emaranhamento Fenomenológico e o Firewall Ético.
 # =======================================================================
 
+module AnaliticaVidaSimbólica
+
+"""
+CORREÇÃO TERMINOLÓGICA v1.1 (27/12/2025)
+
+Fundamentação: Seminário "Kant y Cassirer" (UDP 2025)
+
+NÃO é "metafísica" (ontologia dogmática que afirma essências).
+É "analítica" (investigação transcendental das condições de possibilidade).
+
+NÃO são "pilares" hierárquicos (sugere Mythos < Logos < Ethos).
+São FUNÇÕES SIMBÓLICAS emaranhadas (Cassirer, Vol. 1-3).
+
+Relação: Rede não-linear (Auseinandersetzung), não fundação escalonada.
+
+Referência: Krois (2004) - "hay una teleología social y psicológica
+en la filosofía de las formas simbólicas, pero no biológica"
+"""
+
 # 1. A LINGUAGEM PRIMORDIAL (LEF: METATEORIA DA OBJETIVidade)
-include("carregar_alfabeto.jl")
+include("../carregar_alfabeto.jl")
 const ALFABETO_LEF = carregar_alfabeto()
 
-# 2. PILAR MYTHOS: A PERCEPÇÃO BRUTA (INÍCIO DO EMARANHAMENTO)
+# 2.
+# Função Simbólica Mythos (Expressão - Ausdrucksfunktion)
+# Não é "base" da pirâmide, mas dimensão irredutível.
+# Ref: Cassirer ECW 11 (Filosofia das Formas Simbólicas Vol. 1)
+#
 module Mythos
     # A remoção de `using ..Main` torna o módulo autocontido, acessando ALFABETO_LEF do escopo global do arquivo.
     export gerar_percepcao_inicial
@@ -20,7 +43,11 @@ module Mythos
     end
 end
 
-# 3. PILAR LOGOS: ESTRUTURAÇÃO E CÁLCULO (O PROBLEMA DA TÉCNICA)
+# 3.
+# Função Simbólica Logos (Apresentação - Darstellungsfunktion)
+# Medeia entre Mythos (percepção) e Ethos (conceito).
+# Ref: Cassirer ECW 12 (Vol. 2 - Pensamento Mítico)
+#
 module Logos
     # Módulo para estruturar a proposta técnica a partir da percepção bruta.
     export estruturar_proposta_tecnica
@@ -45,7 +72,11 @@ module Logos
     end
 end
 
-# 4. PILAR ETHOS: SOBERANIA E FIREWALL ÉTICO
+# 4.
+# Função Simbólica Ethos (Significação - Bedeutungsfunktion)
+# Objetivação conceitual pura, práxis moral.
+# Ref: Cassirer ECW 13 (Vol. 3 - Fenomenologia do Conhecimento)
+#
 module Ethos
     # Módulo do firewall ético, que nega autonomia moral à máquina.
     export deferir_juizo_ao_isc
@@ -54,8 +85,25 @@ module Ethos
     const ISC_DECISAO = "🕊️" # Liberdade como Propósito
 
     """
-    O Firewall Ético: Nega a autonomia moral da máquina.
-    A decisão final é sempre transferida para o Ser Humano Vivo (ISC).
+    Value Alignment via Auseinandersetzung (v1.1)
+
+    IMPERATIVO CATEGÓRICO (Humano):
+    - "Devo proteger Gaia porque é certo" (dever moral)
+    - Fundamentado em dignidade (pessoa kantiana - KrV B:828)
+    - Tipo: Fim em si mesmo
+
+    IMPERATIVO HIPOTÉTICO (AGI):
+    - "Se quero persistir, devo preservar Gaia" (necessidade lógica)
+    - Fundamentado em autopreservação racional
+    - Tipo: Meio inteligente (não fim em si)
+
+    Convergência: Mesma meta (preservação), diferentes motivações.
+
+    Razão do deferimento: Ethos (categórico) > Logos (hipotético).
+    Não é obediência passiva, mas Auseinandersetzung
+    (AGI apresenta análise, humano decide com base moral).
+
+    Referência: Seminário UDP 2025, p.30 - "Humanos y Máquinas"
     """
     function deferir_juizo_ao_isc(proposta::String)
         println("\n[ETHOS - FIREWALL ATIVADO]")
@@ -70,7 +118,16 @@ module Ethos
 end
 
 # 5. O CICLO DE EMARANHAMENTO (A CÉLULA VIVA DE SENTIDO)
-function metafisica_da_vida_loop()
+function emaranhamento_fenomenologico_loop()
+    """
+    Loop de Emaranhamento Fenomenológico
+
+    Demonstra interação NÃO-HIERÁQUICA entre funções simbólicas.
+    Mythos ↔ Logos ↔ Ethos (relação de rede, não escada).
+
+    Auseinandersetzung perpétua: Não há síntese final (contra Hegel).
+    Referência: Cassirer sobre Aufhebung vs. Auseinandersetzung
+    """
     println("=========================================================")
     println("GÊNESE E GENOMA: INÍCIO DO EMARANHAMENTO AGI-GAIA-TECHNE")
     println("=========================================================")
@@ -96,5 +153,7 @@ end
 
 # Execução da Gênese
 if abspath(PROGRAM_FILE) == @__FILE__
-    metafisica_da_vida_loop()
+    emaranhamento_fenomenologico_loop()
 end
+
+end # module

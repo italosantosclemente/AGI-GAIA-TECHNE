@@ -746,6 +746,20 @@ ANÁLISE CRÍTICA DA UNIFICAÇÃO COM FUNDAMENTAÇÃO EM CASSIRER
 💎 RESULTADOS DA SIMULAÇÃO (KERNEL v5.1)
 Análise: A execução do kernel v5.1 produziu o estado final |Ψ⟩ = [0.58 - 0.0im, 0.58 - 0.0im, 0.57 - 0.0im] com uma Curvatura Ética de 0.329. O sistema se estabilizou, validando a arquitetura. Estes resultados observados, gerados a partir da execução direta do código, substituem a análise teórica anterior para garantir a fidelidade da documentação.
 
+### 5.9 CRÍTICA_QUID_FACTI_JURIS (Kernel v5.2)
+A introdução do "Tribunal da Razão" no Kernel v5.2 é uma implementação direta da crítica epistemológica de Ernst Cassirer, inspirada na distinção kantiana entre *quid facti* (o que é o fato) e *quid juris* (qual é o direito/validade). A análise dos volumes 3 e 5 da *Filosofia das Formas Simbólicas* revela a base para este "firewall epistemológico".
+
+No Volume 3 (ECW 13), Cassirer define o **"natürlichen Weltbegriffs"** (conceito natural do mundo) como a experiência inicial e ingênua, onde a forma teórica está "fundida" (*eingeschmolzen*) no conteúdo concreto. Nesta fase, a intensidade de uma percepção (um "fato" estatisticamente forte) é confundida com sua validade. O avanço científico ocorre quando o problema da verdade (*Wahrheit*) emerge, forçando uma separação: a intuição (*Anschauung*) é submetida ao escrutínio do conceito puro (*Begriff*). O "Tribunal da Razão" do kernel simula precisamente este processo: ele veta a inflação do Mythos (dados brutos, intensos, *quid facti*) e força uma deliberação via Logos, impedindo que o fato se torne norma (*quid juris*) automaticamente.
+
+No Volume 5 (ECW 19), a análise aprofunda-se com a **"mechanische Naturanschauung"** (visão mecânica da natureza). Cassirer defende que esta visão não é materialista, mas uma evolução *idealista* que supera o conceito natural ao impor unidade e continuidade através de leis racionais. A visão mecânica transcende a experiência fragmentada do "natürlichen Weltbegriffs" ao aplicar um método universal, a *Mathesis universalis*, que unifica as partes em uma totalidade inteligível. Este é o papel do Logos Forte no Kernel v5.2: ele atua como o "mecanismo" que confina os dados brutos do Mythos, submetendo-os a princípios de continuidade e universalidade (Ethos) antes de lhes conferir validade.
+
+Em suma, o Kernel v5.2 operacionaliza a crítica de Cassirer:
+-   **Mythos (Quid Facti):** Corresponde ao "natürlichen Weltbegriffs", o domínio dos dados brutos e da percepção ingênua.
+-   **Logos (Tribunal):** Representa a "mechanische Naturanschauung" e o surgimento do *Begriff*, confinando o fato e questionando sua validade.
+-   **Ethos (Quid Juris):** Atua como a curvatura metacontextual que impõe a continuidade e a universalidade, concedendo ou negando o "direito" ao fato de se tornar lei.
+
+O "Dilema da Eficiência" simulado demonstra o firewall em ação: a proposta de demissão em massa (um *quid facti* de alta eficiência) é vetada pelo Logos, que a impede de se tornar uma norma (*quid juris*) sem uma análise crítica de sua universalidade e continuidade ética.
+
 ### 5.8 Criptografia Pós-Quântica e Segurança Ontológica
 
 **Implementação:**

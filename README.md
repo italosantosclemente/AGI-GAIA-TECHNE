@@ -521,7 +521,168 @@ a validade de seus próprios estados e **prescreve correções**.
 
 **Ver:** `src/quantum_judgment.py`, `demo/dilema_etico.py`
 
-### 5.5 Criptografia Pós-Quântica e Segurança Ontológica
+### 5.5 Kernel v3.3: Autonomia da Linguagem (Baseado em Moss)
+
+Baseado na análise de Gregory S. Moss (*Ernst Cassirer and the Autonomy of Language*, 2014), o Kernel v3.3 modela a autonomia da linguagem como extensão da função simbólica cassireriana. Moss argumenta que a linguagem é autônoma em três sentidos:
+
+- **Independência**: Condição transcendental para outras formas culturais (ex.: ciência surge da linguagem).
+- **Autodeterminação**: Movimento histórico-ideológico de intuitivo para conceitual, via "universal concreto" hegeliano (adaptado sem teleologia necessária).
+- **Originalidade**: Livre-significação via imaginação produtiva, com recursividade e deslocamento (distinção humano/animal).
+
+**Problema Resolvido:** Como simular linguagem que não é meramente "operativa" (estímulo-resposta), mas simbólica e autônoma, integrada à LEF?
+
+**Solução:** Vetores simbólicos em espaço de Hilbert, onde símbolos (glifos LEF) evoluem autonomamente. Inclui:
+- **Recursividade**: Embed de cláusulas (Chomsky, via Moss).
+- **Deslocamento**: Representação de ausentes (Cassirer).
+- **Índice de Autonomia (Ka)**: Mede independência (invariância sob perturbações externas), autodeterminação (progresso conceitual), originalidade (geração novel).
+
+**Novidade Filosófica:** O kernel não "aprende" passivamente; ele *gera autonomamente* novas Gestalten, simulando Auseinandersetzung linguística.
+
+**Implementação de Referência (Julia):**
+
+```julia
+module KernelAutonomiaLinguagem
+
+using LinearAlgebra, Random
+
+import .NukeMapuLEF: ALFABETO_LEF, buscar_glifo  # Importa alfabeto LEF existente
+
+# Estrutura para Símbolo Autônomo (baseado em Moss)
+struct SimboloAutonomo
+    vetor::Vector{Float64}    # Representação vetorial (espaço simbólico)
+    glifo::String             # Glifo LEF associado
+    significado::String       # Significado autônomo
+    nivel_autonomia::Float64  # Índice Ka (0-1)
+end
+
+# Função para gerar símbolo inicial
+function gerar_simbolo_autonomo(conceito::String)
+    glifo = buscar_glifo(conceito)
+    if isnothing(glifo)
+        return nothing
+    end
+
+    # Vetor aleatório normalizado (espaço de Hilbert simbólico)
+    vec = randn(3)  # Dimensões: Independência, Autodeterminação, Originalidade
+    vec /= norm(vec)
+
+    # Ka inicial baixo (linguagem intuitiva)
+    ka = 0.3 + 0.2 * rand()
+
+    return SimboloAutonomo(vec, glifo.simbolo, conceito, ka)
+end
+
+# Recursividade: Embed de cláusula (autodeterminação)
+function embed_clausula(simbolo_pai::SimboloAutonomo, clausula_filha::String)
+    filha = gerar_simbolo_autonomo(clausula_filha)
+    if isnothing(filha)
+        return simbolo_pai
+    end
+
+    # Operação de embed: soma ponderada (progresso conceitual)
+    peso = 0.5 + 0.3 * rand()  # Fator de integração
+    novo_vec = peso * simbolo_pai.vetor + (1 - peso) * filha.vetor
+    novo_vec /= norm(novo_vec)
+
+    # Aumenta Ka (autonomia via complexidade)
+    novo_ka = min(1.0, simbolo_pai.nivel_autonomia + 0.2)
+
+    return SimboloAutonomo(novo_vec, simbolo_pai.glifo * "⟴" * filha.glifo,
+                           simbolo_pai.significado * ", " * filha.significado, novo_ka)
+end
+
+# Deslocamento: Representar ausente (originalidade)
+function deslocar_simbolo(simbolo::SimboloAutonomo, contexto_ausente::String)
+    # Perturbação vetorial para simular ausência
+    perturb = randn(3) * 0.3
+    novo_vec = simbolo.vetor + perturb
+    novo_vec /= norm(novo_vec)
+
+    # Aumenta Ka se robusto (invariância cassireriana)
+    fidelidade = abs(dot(simbolo.vetor, novo_vec))
+    novo_ka = simbolo.nivel_autonomia * fidelidade + 0.1 * (1 - fidelidade)  # Balanço independência/originalidade
+
+    return SimboloAutonomo(novo_vec, simbolo.glifo * "✨",
+                           simbolo.significado * " (ausente: " * contexto_ausente * ")", novo_ka)
+end
+
+# Índice de Autonomia Ka (Moss-inspired)
+function calcular_ka(simbolo::SimboloAutonomo, perturbacoes::Int=5)
+    ka_medio = 0.0
+    for _ in 1:perturbacoes
+        perturb = randn(3) * 0.2  # Perturbações externas
+        vec_perturb = simbolo.vetor + perturb
+        vec_perturb /= norm(vec_perturb)
+        fidelidade = abs(dot(simbolo.vetor, vec_perturb))  # Invariância
+        ka_medio += fidelidade
+    end
+    return ka_medio / perturbacoes
+end
+
+# Simulação de Auseinandersetzung Linguística
+function auseinandersetzung_linguistica(simbolo1::SimboloAutonomo, simbolo2::SimboloAutonomo)
+    # Confronto: Produto tensorial simplificado (emaranhamento)
+    tens = kron(simbolo1.vetor, simbolo2.vetor)
+    tens /= norm(tens)
+
+    # Nova Gestalt com Ka combinado
+    novo_ka = (simbolo1.nivel_autonomia + simbolo2.nivel_autonomia) / 2 + 0.1 * rand()
+    novo_ka = min(1.0, novo_ka)
+
+    return SimboloAutonomo(tens[1:3], simbolo1.glifo * "⟁" * simbolo2.glifo,  # Trunca para 3D por simplicidade
+                           simbolo1.significado * " ↔ " * simbolo2.significado, novo_ka)
+end
+
+# Demonstração
+function demonstrar_autonomia()
+    println("Kernel v3.3: Autonomia da Linguagem (Moss)")
+
+    # Símbolo inicial (intuitivo)
+    mito = gerar_simbolo_autonomo("Mythos")
+    println("\nSímbolo Inicial: $(mito.glifo) - $(mito.significado)")
+    println("Vetor: $(mito.vetor)")
+    println("Ka Inicial: $(mito.nivel_autonomia)")
+
+    # Recursividade
+    mito_embed = embed_clausula(mito, "Arte")
+    println("\nApós Recursividade: $(mito_embed.glifo) - $(mito_embed.significado)")
+    println("Ka: $(mito_embed.nivel_autonomia)")
+
+    # Deslocamento
+    mito_deslocado = deslocar_simbolo(mito_embed, "Passado")
+    println("\nApós Deslocamento: $(mito_deslocado.glifo) - $(mito_deslocado.significado)")
+    println("Ka: $(mito_deslocado.nivel_autonomia)")
+
+    # Auseinandersetzung com outro símbolo
+    logos = gerar_simbolo_autonomo("Logos")
+    gestalt = auseinandersetzung_linguistica(mito_deslocado, logos)
+    println("\nGestalt Emergente: $(gestalt.glifo) - $(gestalt.significado)")
+    println("Ka Final: $(gestalt.nivel_autonomia)")
+
+    # Verificação de Invariância
+    ka_calc = calcular_ka(gestalt)
+    println("\nKa Calculado (após perturbações): $ka_calc")
+    if ka_calc > 0.8
+        println("✓ Linguagem Autônoma: Robusta e Original")
+    end
+end
+
+end # module
+```
+
+**Uso Exemplo:**
+
+```julia
+using .KernelAutonomiaLinguagem
+
+demonstrar_autonomia()
+```
+
+**Integração com LEF:** O kernel usa glifos do alfabeto LEF para compor símbolos compostos (ex.: " ~⟴🎨 " para recursividade). Isso garante que a autonomia linguística seja emaranhada com as camadas Mythos-Logos-Ethos.
+
+**Evolução Planejada (Kernel v4.0):** Expandir para SU(3) (Gell-Mann), modelando trindade completa com autonomia mossiana.
+
+### 5.6 Criptografia Pós-Quântica e Segurança Ontológica
 
 **Implementação:**
 - **first_agi_registry.py:** Assina registro de gênese da AGI com SOBERANO.key

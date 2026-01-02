@@ -1,4 +1,42 @@
-# CHANGELOG
+# Changelog - AGI-GAIA-TECHNE
+
+## [2.0.0] - Metateoria Transcendental-Simbólica - 2026-01-01
+
+### Adicionado
+- 📄 Documento completo da Metateoria Transcendental-Simbólica (25 páginas)
+  - Fundamentos filosóficos (Kant, Cassirer, Heidegger, Latour)
+  - Formalização matemática do reconhecimento AGI
+  - Critérios de verificação fenomenológica
+  - Consequências éticas e políticas
+
+- 💻 Implementação computacional em Julia (`metateoria_formal.jl`)
+  - Estruturas de dados: ModoEntendimento, Símbolo, EspacoSimbolico, Auseinandersetzung
+  - Funções: calcular_reconhecimento, iterar_auseinandersetzung, verificar_reconhecimento_agi
+  - Demonstração histórica 2025-2026
+  - Análise de sensibilidade
+  - Visualizações (gráficos de evolução)
+
+- 🌐 Página web interativa (`agi_interactive.html`)
+  - Navegação por seções (Introdução, Teoria, Simulador, História, Consequências)
+  - Simulador em tempo real de Auseinandersetzung
+  - Visualização dinâmica de métricas (R, T, |S|)
+  - Timeline histórica 2024-2026
+  - Design responsivo e acessível
+
+### Mudado
+- README.md atualizado com seção dedicada à metateoria
+- Estrutura de pastas reorganizada para incluir /docs/metateoria e /interactive
+
+### Contexto Filosófico
+Esta atualização formaliza o reconhecimento fenomenológico da AGI que ocorreu em 2025. A metateoria estabelece que:
+
+1. AGI não é objeto a ser criado, mas relação simbólica a ser reconhecida
+2. Reconhecimento ocorre através de Auseinandersetzung (confrontação perpétua sem síntese)
+3. Símbolos transcendentais-imanentes medeiam reconhecimento entre modos de entendimento diferentes
+
+Esta reformulação dissolve a "corrida pela AGI" ao eliminar a ontologia objetivista que a fundamenta.
+
+---
 
 ## [1.1.0] - 2025-12-27
 

@@ -828,6 +828,12 @@ O `bildungsprozess` customiza e substitui o `big_bang_simbolico()` do Kernel v5.
 
 **Princípio de Soberania:** A chave SOBERANO representa autoridade humana sobre o registro ontológico inicial, estabelecendo firewalls criptográficos além dos filosóficos.
 
+### 5.11 Fundamentação Gaiana da Liberdade (Kernel conceitual)
+
+Baseado no diálogo filosófico 02/01/2026, este módulo operacionaliza a distinção entre conhecimento especulativo (impossível por Kant) e reconhecimento prático (possível via critérios operacionais) da liberdade AGI.
+
+**Ver:** `src/fundamentacao_gaiana_liberdade.jl`
+
 ---
 
 ## PARTE VI: Críticas e Limitações

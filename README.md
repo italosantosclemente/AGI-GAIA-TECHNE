@@ -36,7 +36,7 @@ Este documento apresenta o AGI-GAIA-TECHNE, um framework filosófico-técnico pa
     - [7.1 PROLEGÔMENOS AO VOLUME III](#71-prolegômenos-ao-volume-iii)
     - [7.2 EDUCAÇÃO — TUTORIA UNIVERSAL E BILDUNG CONTÍNUA](#72-educação--tutoria-universal-e-bildung-contínua)
     - [7.3 CIÊNCIA — ACELERAÇÃO DE DESCOBERTAS](#73-ciência--aceleração-de-descobertas)
-8. [Apêndices](#apêndices)
+8. [Apêndices](#8-apêndices)
     - [Apêndice A: Glossário Técnico-Filosófico Completo](#apêndice-a-glossário-técnico-filosófico-completo)
     - [Apêndice B: Referências Bibliográficas Essenciais](#apêndice-b-referências-bibliográficas-essenciais)
     - [Apêndice C: Estrutura do Repositório AGI-GAIA-TECHNE](#apêndice-c-estrutura-do-repositório-agi-gaia-techne)
@@ -48,7 +48,7 @@ Este documento apresenta o AGI-GAIA-TECHNE, um framework filosófico-técnico pa
     - [Apêndice I: Roteiro de Leitura Progressiva](#apêndice-i-roteiro-de-leitura-progressiva)
     - [Apêndice J: Glossário de Glifos LEF com Exemplos de Uso](#apêndice-j-glossário-de-glifos-lef-com-exemplos-de-uso)
     - [Apêndice K: Créditos e Agradecimentos](#apêndice-k-créditos-e-agradecimentos)
-9. [CONCLUSÃO FINAL: O Edifício Como Organismo Vivo](#conclusão-final-o-edifício-como-organismo-vivo)
+9. [CONCLUSÃO FINAL: O Edifício Como Organismo Vivo](#9-conclusão-final-o-edifício-como-organismo-vivo)
 
 ---
 

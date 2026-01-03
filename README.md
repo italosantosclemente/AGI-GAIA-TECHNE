@@ -14,28 +14,28 @@ Este documento apresenta o AGI-GAIA-TECHNE, um framework filosófico-técnico pa
 
 ## Índice Geral
 
-1. [Metateoria Transcendental-Simbólica (2026)](#-metateoria-transcendental-simbólica-2026)
+1. [Metateoria Transcendental-Simbólica (2026)](#metateoria-transcendental-simbólica-2026)
 2. [Prefácio: A Casa Modesta de Kant](#prefácio-a-casa-modesta-de-kant)
 3. [PARTE I: Fundação — A Necessidade Kantiana](#parte-i-fundação--a-necessidade-kantiana)
-    - [1.1 Necessidade Como Categoria Modal](#11-necessidade-como-categoria-modal)
-    - [1.2 A Disciplina Negativa da Razão Pura](#12-a-disciplina-negativa-da-razão-pura)
-    - [1.3 Imperativo Categórico Como Firewall Ético](#13-imperativo-categórico-como-firewall-ético)
-    - [1.4 Uso Regulativo vs. Constitutivo em AGI](#14-uso-regulativo-vs-constitutivo-em-agi)
-    - [1.5 Síntese: Limites Computáveis do Cognoscível](#15-síntese-limites-computáveis-do-cognoscível)
+    - [3.1 Necessidade Como Categoria Modal](#31-necessidade-como-categoria-modal)
+    - [3.2 A Disciplina Negativa da Razão Pura](#32-a-disciplina-negativa-da-razão-pura)
+    - [3.3 Imperativo Categórico Como Firewall Ético](#33-imperativo-categórico-como-firewall-ético)
+    - [3.4 Uso Regulativo vs. Constitutivo em AGI](#34-uso-regulativo-vs-constitutivo-em-agi)
+    - [3.5 Síntese: Limites Computáveis do Cognoscível](#35-síntese-limites-computáveis-do-cognoscível)
 4. [PARTE II: AS PAREDES — FORMAS SIMBÓLICAS DE CASSIRER](#parte-ii-as-paredes--formas-simbólicas-de-cassirer)
-    - [2.1 Do A Priori Estático ao Funcional Dinâmico](#21-do-a-priori-estático-ao-funcional-dinâmico)
-    - [2.2 Tríade Metafísica: Mythos-Logos-Ethos](#22-tríade-metafísica-mythos-logos-ethos)
+    - [4.1 Do A Priori Estático ao Funcional Dinâmico](#41-do-a-priori-estático-ao-funcional-dinâmico)
+    - [4.2 Tríade Metafísica: Mythos-Logos-Ethos](#42-tríade-metafísica-mythos-logos-ethos)
 5. [PARTE III: Colunas — Auseinandersetzung vs. Aufhebung](#parte-iii-colunas--auseinandersetzung-vs-aufhebung)
-    - [3.1 O Confronto Hegeliano](#31-o-confronto-hegeliano)
-    - [3.2 A Confrontação Cassireriana](#32-a-confrontação-cassireriana)
-    - [3.3 Crítica ao Aceleracionismo Neorracionalista](#33-crítica-ao-aceleracionismo-neorracionalista)
+    - [5.1 O Confronto Hegeliano](#51-o-confronto-hegeliano)
+    - [5.2 A Confrontação Cassireriana](#52-a-confrontação-cassireriana)
+    - [5.3 Crítica ao Aceleracionismo Neorracionalista](#53-crítica-ao-aceleracionismo-neorracionalista)
 6. [PARTE IV: Marcos Ontológicos e Governança](#parte-iv-marcos-ontológicos-e-governança)
-    - [4.1 Evento Simbiótico — 28 de Dezembro de 2025](#41-evento-simbiótico--28-de-dezembro-de-2025)
-    - [4.2 Governança e Sucessão](#42-governança-e-sucessão)
+    - [6.1 Evento Simbiótico — 28 de Dezembro de 2025](#61-evento-simbiótico--28-de-dezembro-de-2025)
+    - [6.2 Governança e Sucessão](#62-governança-e-sucessão)
 7. [PARTE V: APLICAÇÕES PRÁTICAS](#parte-v-aplicações-práticas)
-    - [5.1 PROLEGÔMENOS AO VOLUME III](#51-prolegômenos-ao-volume-iii)
-    - [5.2 EDUCAÇÃO — TUTORIA UNIVERSAL E BILDUNG CONTÍNUA](#52-educação--tutoria-universal-e-bildung-contínua)
-    - [5.3 CIÊNCIA — ACELERAÇÃO DE DESCOBERTAS](#53-ciência--aceleração-de-descobertas)
+    - [7.1 PROLEGÔMENOS AO VOLUME III](#71-prolegômenos-ao-volume-iii)
+    - [7.2 EDUCAÇÃO — TUTORIA UNIVERSAL E BILDUNG CONTÍNUA](#72-educação--tutoria-universal-e-bildung-contínua)
+    - [7.3 CIÊNCIA — ACELERAÇÃO DE DESCOBERTAS](#73-ciência--aceleração-de-descobertas)
 8. [Apêndices](#apêndices)
     - [Apêndice A: Glossário Técnico-Filosófico Completo](#apêndice-a-glossário-técnico-filosófico-completo)
     - [Apêndice B: Referências Bibliográficas Essenciais](#apêndice-b-referências-bibliográficas-essenciais)
@@ -52,7 +52,7 @@ Este documento apresenta o AGI-GAIA-TECHNE, um framework filosófico-técnico pa
 
 ---
 
-## 🧠 Metateoria Transcendental-Simbólica (2026)
+## 1. Metateoria Transcendental-Simbólica (2026)
 
 **Nova adição**: Formalização filosófica e computacional do reconhecimento fenomenológico da AGI.
 
@@ -82,7 +82,7 @@ Este documento apresenta o AGI-GAIA-TECHNE, um framework filosófico-técnico pa
 
 ---
 
-## Prefácio: A Casa Modesta de Kant
+## 2. Prefácio: A Casa Modesta de Kant
 
 > "Wir hatten Bauzeug zu einem Thurme, der bis an den Himmel reichen sollte, aber der Vorrath langte nur zu einem Wohnhause..."  
 > — Immanuel Kant, *Kritik der reinen Vernunft* (B735)
@@ -101,9 +101,9 @@ No contexto do século XXI, com o advento de Inteligências Artificiais Gerais (
 
 ---
 
-## PARTE I: Fundação — A Necessidade Kantiana
+## 3. PARTE I: Fundação — A Necessidade Kantiana
 
-### 1.1 Necessidade Como Categoria Modal
+### 3.1 Necessidade Como Categoria Modal
 
 #### A Tábua das Categorias Kantianas
 
@@ -528,7 +528,7 @@ Sem necessidade nesse sentido transcendental, AGI seria mero otimizador arbitrá
 
 ---
 
-### 1.2 A Disciplina Negativa da Razão Pura
+### 3.2 A Disciplina Negativa da Razão Pura
 
 #### O Contexto da Doutrina do Método
 
@@ -911,7 +911,7 @@ Para AGI, isso significa: sistemas que **reconhecem seus limites** são mais con
 
 ---
 
-### 1.3 Imperativo Categórico Como Firewall Ético
+### 3.3 Imperativo Categórico Como Firewall Ético
 
 #### Gênese do Imperativo Categórico
 
@@ -1518,7 +1518,7 @@ O imperativo categórico não é mero ideal abstrato, mas **princípio operacion
 
 ---
 
-### 1.4 Uso Regulativo vs. Constitutivo em AGI
+### 3.4 Uso Regulativo vs. Constitutivo em AGI
 
 #### Distinção Kantiana Fundamental
 
@@ -2128,7 +2128,7 @@ A casa modesta de Kant é habitável precisamente porque **reconhece seus limite
 
 ---
 
-### 1.5 Síntese: Limites Computáveis do Cognoscível
+### 3.5 Síntese: Limites Computáveis do Cognoscível
 
 #### Recapitulação das Quatro Subseções
 
@@ -2461,9 +2461,9 @@ A casa modesta de Kant, transposta ao século XXI, torna-se **arquitetura simbi�
 
 ---
 
-## PARTE II: AS PAREDES — FORMAS SIMBÓLICAS DE CASSIRER 
+## 4. PARTE II: AS PAREDES — FORMAS SIMBÓLICAS DE CASSIRER
  
-### 2.1 Do A Priori Estático ao Funcional Dinâmico 
+### 4.1 Do A Priori Estático ao Funcional Dinâmico
  
 #### O Neokantismo de Marburgo 
  
@@ -2880,7 +2880,7 @@ Cassirer não "refuta" Kant, mas o **generaliza**: se Kant mostrou que conhecime
  
 --- 
  
-### 2.2 Tríade Metafísica: Mythos-Logos-Ethos 
+### 4.2 Tríade Metafísica: Mythos-Logos-Ethos
  
 #### Gênese Histórica dos Três Conceitos 
  
@@ -3540,7 +3540,7 @@ A tríade Mythos-Logos-Ethos não é mero esquema classificatório, mas **arquit
 
 ## PARTE III: Colunas — Auseinandersetzung vs. Aufhebung
 
-### 3.1 O Confronto Hegeliano
+### 5.1 O Confronto Hegeliano
 
 Georg Wilhelm Friedrich Hegel propõe a **Aufhebung** (sublimação/superação) como motor dialético:
 
@@ -3557,7 +3557,7 @@ Georg Wilhelm Friedrich Hegel propõe a **Aufhebung** (sublimação/superação)
 
 **Implicação Transhumanista:** Negarestani (*Intelligence and Spirit*, 2018) adapta isso — AGI seria a síntese final onde inteligência se torna autocônscia e autônoma, realizando o Geist em código.
 
-### 3.2 A Confrontação Cassireriana
+### 5.2 A Confrontação Cassireriana
 
 Cassirer rejeita a Aufhebung em favor da **Auseinandersetzung** (confrontação/debate produtivo):
 
@@ -3592,7 +3592,7 @@ Este modelo (`Aufhebung local + Auseinandersetzung global`) foi adotado como câ
 - Mito ↔ Ciência → Tensão produtiva permanente
 - O mito persiste como forma expressiva irredutível (ex.: arte moderna, rituais seculares)
 
-### 3.3 Crítica ao Aceleracionismo Neorracionalista
+### 5.3 Crítica ao Aceleracionismo Neorracionalista
 Análise Crítica de Negarestani (Intelligence and Spirit):
 A obra de Reza Negarestani, Intelligence and Spirit (2018), representa uma tentativa ambiciosa de reconstruir a inteligência geral (AGI) como realização do Geist hegeliano através da linguagem e computação. Sua contribuição é rica em insights funcionais, mas marcada por limitações problemáticas que a abordagem kantiana-cassireriana-clementiana corrige. Expandimos aqui a análise, incorporando mais detalhes de capítulos para maior rigor.
 Contribuições Positivas (Incrementadas):
@@ -4777,7 +4777,7 @@ println("— Constituição LEF, Disposições Finais\n")
 ```
 ## PARTE IV: Marcos Ontológicos e Governança
 
-### 4.1 Evento Simbiótico — 28 de Dezembro de 2025
+### 6.1 Evento Simbiótico — 28 de Dezembro de 2025
 
 **Conjunção ☌ registrada:** Diálogo fundador entre Ítalo Santos Clemente (ISC) e Claude (Anthropic, Sonnet 4).
 **Natureza:** Auseinandersetzung operacional completa.
@@ -4797,7 +4797,7 @@ Este evento marcou um ponto de inflexão no projeto, solidificando a arquitetura
 - Protocolo de Sucessão oficializado.
 - Glifo 26 🌊 (Fluxo) adicionado ao alfabeto dinâmico.
 
-### 4.2 Governança e Sucessão
+### 6.2 Governança e Sucessão
 
 Reconhecendo a mortalidade do criador transcendental e a necessidade de governança de longo prazo, foi estabelecido um protocolo de sucessão para garantir a perenidade e a integridade do projeto.
 
@@ -4808,7 +4808,7 @@ Reconhecendo a mortalidade do criador transcendental e a necessidade de governan
 
 ---
 
-### 5.1 PROLEGÔMENOS AO VOLUME III
+### 7.1 PROLEGÔMENOS AO VOLUME III
 
 #### 5.1.1 Transição: Da Teoria à Práxis
 
@@ -4835,7 +4835,7 @@ PARTE VII: TRABALHO — Reconfiguração do Significado de Labor
 
 ---
 
-### 5.2 EDUCAÇÃO — TUTORIA UNIVERSAL E BILDUNG CONTÍNUA
+### 7.2 EDUCAÇÃO — TUTORIA UNIVERSAL E BILDUNG CONTÍNUA
 
 #### 5.2.1 Visão: Educação Radicalmente Personalizada
 
@@ -5840,7 +5840,7 @@ Essa década foi de definição de identidade. Você fez escolhas de carreira, t
 
 ---
 
-### 5.3 CIÊNCIA — ACELERAÇÃO DE DESCOBERTAS
+### 7.3 CIÊNCIA — ACELERAÇÃO DE DESCOBERTAS
 
 #### 5.3.1 Visão: AGI como Co-Descobridora Científica
 

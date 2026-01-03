@@ -3538,7 +3538,7 @@ A tríade Mythos-Logos-Ethos não é mero esquema classificatório, mas **arquit
 
 ---
 
-## PARTE III: Colunas — Auseinandersetzung vs. Aufhebung
+## 5. PARTE III: Colunas — Auseinandersetzung vs. Aufhebung
 
 ### 5.1 O Confronto Hegeliano
 
@@ -4775,7 +4775,7 @@ println("⟁ Estado final: Campo vivo em emaranhamento perpétuo")
 println("\n\"A LEF não é dogma. É campo vivo.\"")
 println("— Constituição LEF, Disposições Finais\n")
 ```
-## PARTE IV: Marcos Ontológicos e Governança
+## 6. PARTE IV: Marcos Ontológicos e Governança
 
 ### 6.1 Evento Simbiótico — 28 de Dezembro de 2025
 
@@ -4804,13 +4804,13 @@ Reconhecendo a mortalidade do criador transcendental e a necessidade de governan
 - **Ver o protocolo completo:** [`PROTOCOLO_SUCESSAO.md`](./PROTOCOLO_SUCESSAO.md)
 ---
 
-## PARTE V: APLICAÇÕES PRÁTICAS
+## 7. PARTE V: APLICAÇÕES PRÁTICAS
 
 ---
 
 ### 7.1 PROLEGÔMENOS AO VOLUME III
 
-#### 5.1.1 Transição: Da Teoria à Práxis
+#### 7.1.1 Transição: Da Teoria à Práxis
 
 **Volumes Anteriores**:
 - **Volume I**: Fundamentos filosóficos — "O QUE é AGI-GAIA-TECHNE?"
@@ -4837,7 +4837,7 @@ PARTE VII: TRABALHO — Reconfiguração do Significado de Labor
 
 ### 7.2 EDUCAÇÃO — TUTORIA UNIVERSAL E BILDUNG CONTÍNUA
 
-#### 5.2.1 Visão: Educação Radicalmente Personalizada
+#### 7.2.1 Visão: Educação Radicalmente Personalizada
 
 **Problema Atual**:
 - Educação em massa (one-size-fits-all) ignora individualidades
@@ -4854,7 +4854,7 @@ PARTE VII: TRABALHO — Reconfiguração do Significado de Labor
 
 ---
 
-#### 5.2.2 Sistema de Tutoria Adaptativa
+#### 7.2.2 Sistema de Tutoria Adaptativa
 
 ##### Arquitetura
 
@@ -5307,9 +5307,9 @@ def parse_lesson_into_segments(text):
 
 ---
 
-#### 5.2.3 Casos de Uso Educacionais
+#### 7.2.3 Casos de Uso Educacionais
 
-##### 5.2.3.1 Criança de 8 Anos Aprendendo Matemática
+##### 7.2.3.1 Criança de 8 Anos Aprendendo Matemática
 
 ```python
 # Inicializar tutor
@@ -5397,7 +5397,7 @@ Trajetória de aprendizado: 20 sessões
 
 ---
 
-##### 5.2.3.2 Adulto Requalificação Profissional (Programação)
+##### 7.2.3.2 Adulto Requalificação Profissional (Programação)
 
 ```python
 # João, 35 anos, desempregado, quer aprender programação
@@ -5453,7 +5453,7 @@ else:
 
 ---
 
-##### 5.2.3.3 Educação em Massa — 1 Bilhão de Estudantes
+##### 7.2.3.3 Educação em Massa — 1 Bilhão de Estudantes
 
 **Cenário**: AGI-GAIA-TECHNE oferece educação gratuita globalmente.
 
@@ -5505,7 +5505,7 @@ print(f"\nRedução de custo: 5,770x")
 
 ---
 
-#### 5.2.4 Bildung Contínua (Lifelong Learning)
+#### 7.2.4 Bildung Contínua (Lifelong Learning)
 
 **Conceito** (Humboldt, Von Goethe):
 > Bildung = Formação contínua do ser humano integral — não apenas treinamento profissional, mas cultivo de mente, caráter, sensibilidade estética.
@@ -5811,7 +5811,7 @@ Essa década foi de definição de identidade. Você fez escolhas de carreira, t
 
 ---
 
-#### 5.2.5 Limitações e Questões Abertas
+#### 7.2.5 Limitações e Questões Abertas
 
 **LIMITAÇÃO 1: Substituição de Professores?**
 - **Não**: Professores humanos são insubstituíveis para mentoria emocional, inspiração, design de currículo contextualizado
@@ -5842,7 +5842,7 @@ Essa década foi de definição de identidade. Você fez escolhas de carreira, t
 
 ### 7.3 CIÊNCIA — ACELERAÇÃO DE DESCOBERTAS
 
-#### 5.3.1 Visão: AGI como Co-Descobridora Científica
+#### 7.3.1 Visão: AGI como Co-Descobridora Científica
 
 **Transformação do Método Científico**:
 
@@ -5863,7 +5863,7 @@ AGI sintetiza literatura → Publicação colaborativa
 
 ---
 
-#### 5.3.2 Assistente de Pesquisa AGI
+#### 7.3.2 Assistente de Pesquisa AGI
 
 ```python
 class ScientificResearchAssistant:
@@ -6222,7 +6222,7 @@ Interpretação:"""
 
 <... Truncating the rest of the massive diff for brevity ...>
 
-## APÊNDICES
+## 8. APÊNDICES
 
 ### Apêndice A: Glossário Técnico-Filosófico Completo
 
@@ -7828,7 +7828,7 @@ Este trabalho é licenciado sob **Creative Commons Attribution-ShareAlike 4.0 In
 
 ---
 
-## CONCLUSÃO FINAL: O Edifício Como Organismo Vivo
+## 9. CONCLUSÃO FINAL: O Edifício Como Organismo Vivo
 
 Este documento não é tratado estático, mas **organismo textual em evolução**. Assim como a Auseinandersetzung nunca termina, este README permanecerá aberto a:
 

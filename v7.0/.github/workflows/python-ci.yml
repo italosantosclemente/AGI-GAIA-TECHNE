@@ -1,0 +1,13 @@
+name: Python CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: |
+          pip install -r v7.0/python/requirements.txt
+          cd v7.0/python && PYTHONPATH=src python3 tests/test_v7_core.py

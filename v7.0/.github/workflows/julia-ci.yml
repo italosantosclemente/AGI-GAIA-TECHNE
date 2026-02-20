@@ -1,0 +1,10 @@
+name: Julia CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: julia-actions/setup-julia@v1
+      - run: |
+          julia --project=v7.0/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'

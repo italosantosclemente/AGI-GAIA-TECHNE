@@ -1,0 +1,8 @@
+name = "KernelQuanticoSimbolico"
+uuid = "b2c3d4e5-f6a1-5b6c-7d8e-9f0a1b2c3d4e"
+version = "0.1.0"
+
+[deps]
+Graphs = "86230c6c-7f43-5bc4-b333-14909df07361"
+MetaGraphsNext = "d128ca31-7643-4654-8e10-91a5392d4766"
+PythonCall = "6099a3de-0909-46bc-b1f4-468b9a2dfc0d"

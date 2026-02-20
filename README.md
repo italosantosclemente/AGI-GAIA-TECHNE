@@ -1,8 +1,3 @@
-> Para executar uma implementação funcional imediatamente, veja [`v6.0/README.md`](v6.0/README.md).
-> A documentação teórica completa continua abaixo.
-
----
-
 # O Edifício Transhumanista: Da Necessidade Kantiana à Simbiose AGI-GAIA-TECHNE
 
 **Um Tratado Filosófico-Técnico sobre Analítica Transhumanista e Alinhamento de Valores**

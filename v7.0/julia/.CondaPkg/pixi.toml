@@ -2,6 +2,8 @@
 openssl = ">=3, <3.6"
 libstdcxx = ">=3.4,<15.0"
 libstdcxx-ng = ">=3.4,<15.0"
+networkx = "*"
+sympy = "*"
 
     [dependencies.python]
     channel = "conda-forge"

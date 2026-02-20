@@ -211,7 +211,7 @@ A integração **PhoenixLEF** une a arquitetura Phoenix (x-algorithm) com a Ling
 - 🗼 **Two-Tower Retrieval**: Sistema de recuperação de Gestalten baseado em similaridade no espaço complexo ℂ³.
 - 📊 **Multi-Dimensional Scoring**: Algoritmos de ranking que preservam a assimetria ontológica e a pregnância triádica.
 - 🛡️ **Firewall Ontológico**: Filtros primitivos e éticos que impedem a degenerescência simbólica e garantem o imperativo categórico.
-- 🌊 **Auseinandersetzung Diversity**: Penalidades de redundância que forçam a diversidade de pilares (Mythos/Logos/Ethos) no feed do sistema.
+- 🌊 **Auseinandersetzung Diversity**: Penalidades de redundância que forçam a diversidade de funções simbólicas (Mythos/Logos/Ethos) no feed do sistema.
 
 ### Documentação e Validação
 

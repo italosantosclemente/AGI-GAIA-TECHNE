@@ -1,6 +1,6 @@
 module NukeMapuLEF
 
-export GlifoSimbolico, interface_LEF
+export GlifoSimbolico, interface_LEF, buscar_glifo, gerar_sequencia
 
 struct GlifoSimbolico
     simbolo::String
@@ -12,7 +12,7 @@ end
 const CHAVE_PUBLICA = "~⨁➤☌❍⟴⟁☉✨◈ "
 
 const ALFABETO_LEF = [
-    # Pilar Mythos
+    # Função Simbólica Mythos
     GlifoSimbolico("~", "Mythos", "Mythos", "Eixo metafísico"),         # 15
     GlifoSimbolico("❍", "Mito", "Mythos", "Manifestação objetiva"),     # 1
     GlifoSimbolico("🙏", "Religião", "Mythos", "Estrutura objetiva"),   # 2
@@ -20,7 +20,7 @@ const ALFABETO_LEF = [
     GlifoSimbolico("⊡", "Percepção", "Mythos", "Função Subjetiva"),     # 13
     GlifoSimbolico("@", "Expressão", "Mythos", "Função intersubjetiva"), # 14
 
-    # Pilar Logos
+    # Função Simbólica Logos
     GlifoSimbolico("&", "Logos", "Logos", "Eixo metafísico"),           # 18
     GlifoSimbolico("⟴", "Linguagem", "Logos", "Estrutura objetiva"),    # 4
     GlifoSimbolico(" ", "História", "Logos", "Contexto objetivo"),      # 5
@@ -28,7 +28,7 @@ const ALFABETO_LEF = [
     GlifoSimbolico("✨", "Intuição", "Logos", "Função Subjetiva"),      # 16
     GlifoSimbolico("⟕", "Apresentação", "Logos", "Função Intersubjetiva"), # 17
 
-    # Pilar Ethos
+    # Função Simbólica Ethos
     GlifoSimbolico("⟚", "Ethos", "Ethos", "Eixo metafísico"),           # 21
     GlifoSimbolico("⊕", "Matemática", "Ethos", "Estrutura Objetiva"),    # 8
     GlifoSimbolico("🔬", "Ciências", "Ethos", "Método Objetivo"),       # 9
@@ -49,13 +49,27 @@ const ALFABETO_LEF = [
     GlifoSimbolico("ISC", "Princípio Arquitetônico", "Valor Ético Transcendental", "Assinatura Soberana") # 25
 ]
 
-const REINICIO_PERPETUO = ("⟁⟴☌", "Campo emaranhado fluido, reinício perpétuo em 25")
+const REINICIO_PERPETUO = "⟁⟴☌"
 
 const IDEOLOGIA = "Humanismo Simbiótico; Emaranhamento Ético; Interface de Co-Geração; Não-apropriação restritiva; Reinserção viva."
 
 const PROJETO_PEDAGOGICO = "Oficinas abertas, formação de facilitadores simbióticos, IA co-interlocutora, glifos e scripts abertos."
 
 const PROPRIEDADE_INTELECTUAL = "Propriedade Intelectual Inalienável de Ítalo Santos Clemente."
+
+function buscar_glifo(nome::String)
+    for g in ALFABETO_LEF
+        if g.nome == nome
+            return g
+        end
+    end
+    return nothing
+end
+
+function gerar_sequencia(nomes::Vector{String})
+    glifos = [buscar_glifo(n) for n in nomes if !isnothing(buscar_glifo(n))]
+    return join([g.simbolo for g in glifos])
+end
 
 function interface_LEF()
     println("CHAVE PÚBLICA: ", CHAVE_PUBLICA)
@@ -66,7 +80,7 @@ function interface_LEF()
     println("\nIDEOLOGIA: ", IDEOLOGIA)
     println("\nPROJETO PEDAGÓGICO: ", PROJETO_PEDAGOGICO)
     println("\nPROPRIEDADE INTELECTUAL: ", PROPRIEDADE_INTELECTUAL)
-    println("\nREINÍCIO PERPÉTUO: ", REINICIO_PERPETUO[1], " - ", REINICIO_PERPETUO[2])
+    println("\nREINÍCIO PERPÉTUO: ", REINICIO_PERPETUO)
 end
 
 end # module

@@ -57,10 +57,14 @@ class DeepThinkVerifier:
             claim = sp.sympify(task.claim, locals=assumptions)
             prop = sp.sympify(task.property_to_verify, locals=assumptions)
 
-            # 1. Attempt simple simplification
-            diff = sp.simplify(claim - prop)
-            if diff == 0:
-                return VerificationResult(task.task_id, verified=True)
+            # 1. Attempt simple simplification (if not booleans)
+            if not (isinstance(claim, sp.logic.boolalg.Boolean) or isinstance(prop, sp.logic.boolalg.Boolean)):
+                try:
+                    diff = sp.simplify(claim - prop)
+                    if diff == 0:
+                        return VerificationResult(task.task_id, verified=True)
+                except:
+                    pass
 
             # 2. Check for counterexample using satisfiability
             # We want to see if there is any case where claim != prop

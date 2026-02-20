@@ -41,6 +41,9 @@ const ALFABETO_LEF = [
   // soberano
   GlifoSimbolico("ISC", "Princípio Arquitetônico", "Valor Ético Transcendental"), // 25
 
+  // Emergente
+  GlifoSimbolico("🌊", "Fluxo", "Campo emaranhado fluido (Emergente v6.0)"), // 26
+
   // REINÍCIO PERPÉTUO
   GlifoSimbolico("⟁⟴☌", "Campo emaranhado fluido", "Reinício perpétuo em 25")
 ];

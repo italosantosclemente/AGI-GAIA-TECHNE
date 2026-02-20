@@ -1,7 +1,13 @@
 import unittest
 import sympy as sp
-from src.firewall_agi.firewall_agi import KantianFirewall
-from src.automato_resolver.automato_resolver import AutomatoResolver
+import sys
+import os
+
+# Adiciona o diretório v7.0/python ao sys.path para permitir importações de 'src'
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from v7_core.firewall_agi.firewall_agi import KantianFirewall
+from v7_core.automato_resolver.automato_resolver import AutomatoResolver
 
 class TestV7Python(unittest.TestCase):
     def test_firewall_universalizability(self):

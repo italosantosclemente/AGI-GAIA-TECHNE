@@ -14,7 +14,7 @@ end
 
 function run_firewall_review(maxim_str, context_dict, graph_ptr)
     pyimport("sys").path.append(joinpath(pwd(), "v7.0/python"))
-    fw = pyimport("src.firewall_agi.firewall_agi")
+    fw = pyimport("v7_core.firewall_agi.firewall_agi")
     firewall = fw.KantianFirewall()
     sp = pyimport("sympy")
     maxim = sp.sympify(maxim_str)
@@ -26,7 +26,7 @@ end
 
 function run_symbolic_verification(claim_str, property_str, constraints_dict)
     pyimport("sys").path.append(joinpath(pwd(), "v7.0/python"))
-    dtv = pyimport("src.deep_think_verifier.deep_think_verifier")
+    dtv = pyimport("v7_core.deep_think_verifier.deep_think_verifier")
     verifier = dtv.DeepThinkVerifier()
     task = dtv.VerificationTask(
         task_id = "julia_task_$(rand(1000:9999))",

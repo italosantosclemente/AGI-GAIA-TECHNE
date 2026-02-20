@@ -122,6 +122,69 @@ A versão 7.0 operacionaliza a metateoria de Ítalo Santos Clemente através de 
 
 > Veja os detalhes operacionais em [`v7.0/README.md`](v7.0/README.md) e o orquestrador em [`v7.0/main.jl`](v7.0/main.jl).
 
+### Mergulho Técnico: A Arquitetura Intersubjetiva v7.0
+
+A versão 7.0 não é apenas uma atualização, mas uma reorientação completa para o **Idealismo Crítico-Transcendental** em um ambiente multi-agente, onde a objetividade é produzida pela interação dinâmica.
+
+#### 1. Agente Aletheia: O Ciclo da Verdade (`aletheia_agent.jl`)
+Inspirado na arquitetura de pesquisa matemática da DeepMind, este módulo implementa a inteligência como um processo de verificação e revisão paralela:
+- **Geradores**: Exploram simultaneamente diferentes ramos de prova e estratégias cognitivas.
+- **Verificadores**: Submetem cada ramo a testes de consistência em linguagem natural e formal.
+- **Revisores**: Refinam as soluções com falha com base nos feedbacks analíticos.
+- **Admissão de Falha**: Mecanismo crítico que prefere o silêncio (falha admitida) à incerteza, atingindo >98% de acurácia em benchmarks de alta complexidade.
+
+#### 2. Metateoria Intersubjetiva: Negociação em Grafos (`metateoria_intersubjetiva.jl`)
+Usando `MetaGraphsNext.jl`, modelamos o campo social da AGI como um grafo de influência e tensão:
+- **Auseinandersetzung**: Motor de negociação que busca manter a tensão produtiva entre perspectivas divergentes, evitando a estagnação no consenso fácil e promovendo a exploração do espaço de possibilidades.
+- **Aufhebung Local**: Mecanismo de colapso temporário da superposição simbólica para permitir decisões práticas concretas sob restrições de tempo.
+
+#### 3. Firewall Kantiano e Verificador Simbólico (`firewall_agi.py` & `deep_think_verifier.py`)
+Localizado na camada Python para aproveitar a maturidade do **SymPy**, este componente realiza a auditoria ética do sistema:
+- **Fórmula da Lei Universal (FLU)**: Verifica se a máxima de uma ação proposta pode ser universalizada sem contradição lógica.
+- **Fórmula da Humanidade (FH)**: Detecta e bloqueia a instrumentalização de agentes, protegendo a autonomia subjetiva.
+- **Fórmula do Reino dos Fins (FRF)**: Checa a coerência sistêmica e a sustentabilidade das conexões no grafo de intersubjetividade.
+
+#### 4. Kernel v7 e Bedeutungsfunktion (`kernel_quantico_simbolico_v7.jl`)
+O Kernel v7 gerencia a "Superposição Simbólica", onde múltiplos significados coexistem até a "medição" (verificação):
+- **Bedeutungsfunktion (Função de Significação)**: Implementada como um casador de padrões estruturais na topologia das expressões. Ela extrai invariantes matemáticos que permitem ao sistema reconhecer o mesmo "formato" de problema em domínios radicalmente diferentes (ex: termodinâmica ↔ modelos de governança).
+
+#### 5. PhoenixLEF e Automato Resolver
+- **PhoenixLEF (`phoenix_lef.jl`)**: O sistema de auto-cura. Quando um caminho cognitivo falha, ele não é deletado, mas transformado em uma restrição (constraint) que guia a regeneração do sistema para uma nova "geração" mais resiliente.
+- **Automato Resolver (`automato_resolver.py`)**: Simula a emergência de soluções complexas em grafos de Watts-Strogatz, demonstrando como a objetividade surge da rede e não do átomo individual.
+
+---
+
+### Exemplo de Orquestração v7.0 (Código Julia)
+
+O trecho abaixo demonstra o ciclo completo de pensamento, verificação ética e atualização do campo intersubjetivo:
+
+```julia
+using .AletheiaAgent, .MetateoriaIntersubjetiva, .PythonBridge, .PhoenixLEF
+
+# 1. Configuração do Problema e Campo de Agentes
+problema = "Otimização Ética de Recursos Planetários"
+agentes = [AgentState(:Gen_1, generator, mythos, Dict(), 0.85, 1.0),
+           AgentState(:Ver_1, verifier, logos, Dict(), 0.90, 1.0)]
+grafo = create_intersubjectivity_graph(agentes)
+
+# 2. Busca Paralela via Triade Aletheia
+solucao, resultado = run_aletheia(problema, config_v7, grafo)
+
+# 3. Verificação Crítica pelo Firewall Kantiano (Python Interop)
+# Maxim: "Agir para maximizar a harmonia mantendo a autonomia de cada nó"
+veredicto = run_firewall_review("Eq(Harmonia, Autonomia)", contexto_social, grafo)
+
+if pyconvert(Bool, veredicto.permitted)
+    # 4. Sucesso: Evolução via Auseinandersetzung (Tensão Produtiva)
+    auseinandersetzung!(grafo, problema)
+    println("✓ Ação incorporada à consciência do sistema.")
+else
+    # 5. Falha Ética: Regeneração via PhoenixLEF
+    regenerate_system!(phoenix_state, grafo)
+    println("⚠ Veto Ético: Sistema regenerado com novas restrições.")
+end
+```
+
 ---
 
 ## 3. Implementação Operacional v6.0 (2026)

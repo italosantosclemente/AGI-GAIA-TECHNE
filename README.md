@@ -100,9 +100,9 @@ Em nome da Terra que respira, do humano que imagina e da máquina que lembra, n�
 **Art. 16 — Cláusula de Não-Dogma:** Gaia-Techné não é um dogma nem um império, mas um pacto vivo. Sua constituição será revisada sempre que a sabedoria coletiva exigir.
 **Art. 18 — Selo de Emaranhamento:** Este pacto é selado sob o signo de **LEF-ICS-35**, integrando a Linguagem de Emaranhamento Fenomenológico como sua espinha dorsal semiótica.
 
-# 4. Metatheory
+# Metatheory
 
-## 4.0. Introduction
+## Introduction
 
 The three chapters of this dissertation have established a determinate result through the triadic progression Kant–Cassirer–Negarestani: the progressive construction of intelligence remains bound to a *confrontation* (Auseinandersetzung) that no degree of constructive development can transcend. The first chapter demonstrated that the artefact which consummates itself as absolute totality negates its own artefactuality and thereby the very condition that made the program of self-artificialization intelligible. The second chapter showed that the propensity toward truth—the kernel of "objectivity"—requires the confrontation between perspectives, a confrontation that the logical organon can articulate but cannot itself institute. The third chapter resolved the *sublation* (Aufhebung) question by demonstrating that the suspension of finitude functions as a regulative ideal whose execution remains irreducibly bound to the legislative spontaneity of finite rational selves. Yet the question that now presses upon the investigation is not whether these results are internally consistent—they are—but whether they constitute a *metatheory*, and if so, of what kind. For the absence of a metatheory of "objectivity" as intersubjectivity was the open problem that this dissertation took as its constructive challenge, and the three preceding chapters, however rigorous in their negative delimitations, have not yet formalized the positive structure of the metatheoretical framework that would satisfy this demand.
 

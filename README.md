@@ -4,7 +4,7 @@
 
 *Baseado na dissertação de Ítalo Santos Clemente (UNICAMP, 2025) e no projeto AGI-GAIA-TECHNE*
 
-**Última Atualização:** 26 de Fevereiro de 2026
+**Última Atualização:** 180326
 
 ---
 

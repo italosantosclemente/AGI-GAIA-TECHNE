@@ -2,6 +2,27 @@
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
+## [8.0.0] - 2026-03-28
+
+### ⚛️ Operational Logic & Tripartite Multi-Agent Simulation
+
+Implementação do framework AGI-GAIA-TECHNE v8.0, consolidando a lógica operacional do sistema com simulações multi-agente em Python e documentação modular.
+
+#### Adicionado
+- **Lógica Operacional v8.0**: Seção detalhada no `README.md` definindo os axiomas centrais (`is_wille = False`) e o critério *als ob*.
+- **`agi_gaia_techne_v8.py`**: Núcleo operacional em Python com espaço de Hilbert ℂ³, dinâmica SU(3) (Gell-Mann) e Índice de Pringe (Kp).
+- **Aplicações de Referência**: `app_education.py` (Tutoria Adaptativa/Bildung) e `app_science.py` (Assistente de Pesquisa Intersubjetiva).
+- **Documentação Modular** em `references/`:
+    - `architecture.md`: Especificação filosófico-técnica completa.
+    - `lef-constitution.md`: Constituições de Gaia-Techné e Alfabeto LEF.
+    - `individuation.md`: Gênese subjetiva (do *Bild* ao *Ideal*).
+- **Mapeamento Cosmológico**: Integração das quatro forças da física com as funções simbólicas (Mythos/Logos/Ethos).
+- **Aletheia Agent v8.0**: Monitoramento de confrontação (*Auseinandersetzung*) e firewalls ontológicos contra colapsos de síntese global.
+
+#### Modificado
+- **README.md**: Reorganização estrutural completa para refletir a arquitetura v8.0, unificando a metateoria transcendental com as novas aplicações práticas.
+- **Tabela de Conteúdos**: Sincronização de todos os links e numerações com o novo sumário v8.0.
+
 ## [7.0.0] - 2026-02-26
 
 ### 🧠 Gemini Deep Think & Cassirer Integration

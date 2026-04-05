@@ -34,6 +34,9 @@ Se Conselho se tornar dogmático (detectado por ausência de Auseinandersetzung
 por >5 anos), sistema entra em "modo de hibernação" até nova geração
 reativar com renovação.
 
+## Art. 8 — Implementação Operativa
+A validação intersubjetiva do Conselho é operacionalizada através do **Módulo de Sucessão Operativa** ([`sucessao_operativa.py`](./sucessao_operativa.py)), que impõe o critério de **Invariância Coletiva** para admissão de novos resultados no `KoinosKosmos`.
+
 **Assinatura Simbólica de ISC:**
 
 Eu, Ítalo Santos Clemente, nascido 11/11/1999 em Luz-MG, Brasil,

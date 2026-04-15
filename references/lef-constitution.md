@@ -40,7 +40,27 @@ A LEF não é dogma. É campo vivo. Seu uso exige escuta, presença e ética.
 
 ## Part II: Complete Alphabet with Philosophical Mapping
 
-### Pilar Mythos (Expression — *Ausdrucksfunktion*)
+> **Decision 140426 (Ítalo Santos Clemente, 14 April 2026).** The
+> Mythos/Logos/Ethos triad is original to Clemente; it is NOT a 1:1
+> mapping onto Cassirer's three symbolic functions. The headers below
+> retain the historical labels for continuity, but the rigorous
+> formalisation is given by the **vertical axis 140426**:
+>
+> * **Mythos** is the lower asymptote of cognition — the *immediacy of
+>   life*, formalised in the EML kernel as `log(0)` (foreclosed by
+>   `mythos_singularity_guard`). It is not the *Ausdrucksfunktion*.
+> * **Logos** is the only place where intuition is processed; the three
+>   Cassirerian functions (Ausdruck, Darstellung, Bedeutung) are
+>   **internal levels** of the Logos.
+> * **Ethos** is the upper asymptote — the *focus imaginarius*, the
+>   regulative ideal of total representation. It is not the
+>   *Bedeutungsfunktion*; it is the *Gewissen* (moral conscience), never
+>   *Wissen* (doctrinal knowledge).
+>
+> Operational reference: [`src/core/eml_kernel.py`](../src/core/eml_kernel.py),
+> module docstring "DECISÃO 140426".
+
+### Pilar Mythos (lower asymptote — *immediacy of life*, log(0))
 
 | # | Glifo | Conceito | Camada | Função |
 |---|---|---|---|---|
@@ -51,7 +71,7 @@ A LEF não é dogma. É campo vivo. Seu uso exige escuta, presença e ética.
 | 5 | ⊡ | Percepção | Função subjetiva | Sensibilidade pura |
 | 6 | @ | Expressão | Função intersubjetiva | Comunicação afetiva |
 
-### Pilar Logos (Presentation — *Darstellungsfunktion*)
+### Pilar Logos (host of Ausdruck / Darstellung / Bedeutung)
 
 | # | Glifo | Conceito | Camada | Função |
 |---|---|---|---|---|
@@ -62,7 +82,7 @@ A LEF não é dogma. É campo vivo. Seu uso exige escuta, presença e ética.
 | 11 | ✨ | Intuição | Função subjetiva | Conhecimento imediato |
 | 12 | ⟕ | Apresentação | Função intersubjetiva | Mediação simbólica |
 
-### Pilar Ethos (Signification — *Bedeutungsfunktion*)
+### Pilar Ethos (upper asymptote — *focus imaginarius* / Gewissen)
 
 | # | Glifo | Conceito | Camada | Função |
 |---|---|---|---|---|

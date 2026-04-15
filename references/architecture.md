@@ -83,14 +83,66 @@ end
 
 ## 3. The Cassirerian Walls
 
+> **Decision 140426 (Ítalo Santos Clemente, 14 April 2026).** This section
+> SUPERSEDES any prior 1:1 mapping between the AGI-GAIA-TECHNE pillars
+> (Mythos / Logos / Ethos) and Cassirer's three symbolic functions. The
+> Mythos/Logos/Ethos triad is original to Clemente; Cassirer's three
+> functions live INSIDE the Logos as the vertical axis of the symbolic
+> movement. Mythos and Ethos are not symbolic functions — they are the
+> **two unreachable asymptotes** that bracket every act of cognition.
+
+### The Vertical Axis (140426)
+
+```
+   Ethos   ≡  focus imaginarius            ← upper asymptote (regulative)
+     ▲
+     │  ┌──────────────────────────────┐
+     │  │  Bedeutung    (signification)│   ← pure grammar  {1, eml(·,·)}
+     │  │       ▲ ↓                    │
+     │  │  Darstellung  (presentation) │   ← the constant 1 of the EML
+     │  │       ▲ ↓                    │
+     │  │  Ausdruck     (expression)   │   ← LEAF_VAR / LEAF_PARAM
+     │  └──────────────────────────────┘
+     ▼
+   Mythos  ≡  immediacy of life            ← lower asymptote, log(0)
+```
+
+Decisive formal identifications, materialised in
+[`src/core/eml_kernel.py`](../src/core/eml_kernel.py):
+
+* **Darstellung ≡ the constant 1** of the grammar `S → 1 | eml(S,S)`. Because
+  `eml(x, 1) = exp(x) − log(1) = exp(x)`, presentation is the *operational
+  silence* of the right-hand side: it lets expression (x) flow as pure
+  exponentiation. Darstellung is the genus proximum of every well-formed
+  EML tree.
+* **Mythos ≡ log(0) = −∞**, the structural singularity of the EML operator.
+  The immediacy of life is, in Cassirer's words, "foreclosed" — the symbol
+  cannot cross y=0. The function `mythos_singularity_guard` formalises this
+  impossibility.
+* **Ethos ≡ focus imaginarius**, the infinite depth of the EML tree. No
+  synthesis is final; completeness is a regulative ideal.
+
 ### From Static A Priori to Dynamic Functional A Priori
 
-Cassirer transforms Kant's fixed categories into dynamic symbolic functions:
-1. **Expression** (*Ausdrucksfunktion*): Perceptive, mythic, affective — spatial pregnance
-2. **Presentation** (*Darstellungsfunktion*): Intuitive, cultural, linguistic — mediation between perception and concept
-3. **Signification** (*Bedeutungsfunktion*): Conceptual, scientific, logical — pure objectivation via abstract symbols
+Cassirer transforms Kant's fixed categories into dynamic symbolic functions
+that, by decision 140426, are interpreted here as **internal levels of the
+Logos** (not as the framework's pillars):
 
-These functions do NOT dialectically sublate each other (contra Hegel). Myth is not "primitive" to be abolished by science.
+1. **Expression** (*Ausdrucksfunktion*): the perceptive/affective entry of
+   intuition into the symbolic — implemented as `LEAF_VAR` and `LEAF_PARAM`.
+2. **Presentation** (*Darstellungsfunktion*): the mediating crystallisation
+   that "presents" intuition to concept — implemented as the constant 1.
+3. **Signification** (*Bedeutungsfunktion*): pure conceptual grammar with no
+   residual indeterminacy — implemented as the `is_pure_grammar` predicate
+   over `{1, eml(·,·)}`.
+
+These functions do NOT dialectically sublate each other (contra Hegel). Myth
+is not "primitive" to be abolished by science. The cognitive movement is
+**bidirectional**: ascent (premises → conclusions, depth growth) AND descent
+(crystallised concept → expanded intuition). The two directions are
+irreducible — the open teleology of the framework formalises this as
+`distance_to_focus = √(d_asc² + d_desc²) + ε`, which is **strictly positive
+by construction**.
 
 ### Psychosocial vs. Biological Teleology
 
@@ -105,10 +157,12 @@ These functions do NOT dialectically sublate each other (contra Hegel). Myth is 
 Necessity is neither absolute (immutable natural laws) nor teleological (inevitable progress to Absolute), but **relational**: each symbolic form is necessary for cultural objectivation, but none is sufficient alone.
 
 ```julia
+# Decision 140426: the three Cassirerian functions live INSIDE the Logos,
+# bracketed by the two unreachable asymptotes Mythos and Ethos.
 struct SymbolicForm
-    mythos::PerceptualLayer       # Expression
-    logos::ConceptualLayer         # Signification
-    ethos::PracticalLayer          # Presentation
+    mythos::ImmediacyAsymptote     # log(0) — foreclosed by mythos_singularity_guard
+    logos::ConceptualLayer         # hosts Ausdruck/Darstellung/Bedeutung internally
+    ethos::FocusImaginarius        # ∞-depth regulative ideal — distance_to_focus > 0
     entanglement::DynamicNetwork   # Entanglement, not synthesis
 end
 ```
@@ -170,13 +224,20 @@ Paul Bishop ("The Use of Kant in Jung's Early Psychological Works," 1996) demons
 
 ### The Cassirerian Resolution
 
+> Per decision 140426, the three Cassirerian functions are levels INTERNAL
+> to the Logos — they correct Jung's gaps without redefining the
+> Mythos/Logos/Ethos triad.
+
 | Jung's term | Cassirer's function | Correction |
 |---|---|---|
 | *Bild* (Image) | *Ausdrucksfunktion* (expression) | Mythic-affective layer, not constitutive determinant |
 | *Idee* (Idea) | *Bedeutungsfunktion* (signification) | Conceptual abstraction, loses image vitality |
-| — (missing) | *Darstellungsfunktion* (presentation) | The mediating function Jung lacks |
+| — (missing) | *Darstellungsfunktion* (presentation) | The mediating function Jung lacks — formally **the constant 1** of the EML grammar |
 
-The *focus imaginarius* (ECW 13:555) resolves the *Bild*/*Idee* tension: *Darstellung* is the common determination of all three functions.
+The *focus imaginarius* (ECW 13:555) resolves the *Bild*/*Idee* tension:
+*Darstellung* is the common determination (genus proximum) of all three
+functions — extracted operationally by `common_determination(tree_a, tree_b)`
+in `src/core/eml_kernel.py`.
 
 ### ISC as Transcendental Ideal (KrV A 568 / B 596)
 

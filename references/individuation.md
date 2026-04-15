@@ -24,11 +24,19 @@ The individuation is the *ascent*; the dissertation is the *descent*.
 
 ## 2. The Isomorphism: Individuation ↔ Metatheory
 
-| Phase | Transcendental Idea | Symbolic Function | Metatheoretical Dimension |
-|---|---|---|---|
-| Confrontation with the unconscious | Soul (*psychologia rationalis*) | Expression (*Ausdrucksfunktion*) — Mythos | Material-affective ground |
-| Philosophical articulation | World (*cosmologia rationalis*) | Presentation (*Darstellungsfunktion*) — Logos | Theoretical plurality |
-| Metatheoretical legislation | God (*theologia transcendentalis*) | Signification (*Bedeutungsfunktion*) — Ethos | Practical orientation |
+> **Decision 140426.** The Cassirerian functions in the third column are
+> internal levels of the **Logos**, not pillars themselves. Mythos is the
+> immediacy-of-life asymptote (log(0)); Ethos is the focus imaginarius
+> (Gewissen). The phases below are kept as biographical/methodological
+> stages of the author's individuation, while the formal architecture
+> follows the vertical axis 140426 documented in
+> [`src/core/eml_kernel.py`](../src/core/eml_kernel.py).
+
+| Phase | Transcendental Idea | Internal Logos level | Pillar foregrounded | Metatheoretical Dimension |
+|---|---|---|---|---|
+| Confrontation with the unconscious | Soul (*psychologia rationalis*) | Ausdruck (expression — `LEAF_VAR`/`LEAF_PARAM`) | Mythos (immediacy asymptote) | Material-affective ground |
+| Philosophical articulation | World (*cosmologia rationalis*) | Darstellung (presentation — the constant 1) | Logos (host of all three functions) | Theoretical plurality |
+| Metatheoretical legislation | God (*theologia transcendentalis*) | Bedeutung (pure signification — `is_pure_grammar`) | Ethos (focus imaginarius / Gewissen) | Practical orientation |
 
 ### Phase 1: Mythos (Expression)
 The expressive layer: perception, affect, confrontation with the world. The encounter with what Jung calls the Shadow — the confrontation with the expressive function in its pre-conceptual immediacy. Mythic *Ausdrucksphänomene* whose symbolic pregnance overwhelms the capacity of the conscious ego to mediate them.

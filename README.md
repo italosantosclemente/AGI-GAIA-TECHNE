@@ -63,6 +63,7 @@ O projeto implementa a metateoria tripartida da "objetividade" como intersubjeti
     - [17.4 Gaia-Techné: O Projeto Simbiótico](#174-gaia-techné-o-projeto-simbiótico)
     - [17.5 Implementação Técnica da LEF](#175-implementação-técnica-da-lef)
     - [17.6 Eixo 140426 - Kernel 348AO-v3: O Motor Quântico Simbólico](#176-eixo-140426---kernel-348ao-v3-o-motor-quântico-simbólico)
+    - [17.7 Eixo 140426 - Kernel EML & Sintaxe Bidirecional da Cognição](#177-eixo-140426---kernel-eml--sintaxe-bidirecional-da-cognição)
 18. [PARTE IX: Integração Final — O Urbild Transhumanista](#18-parte-ix-integração-final--o-urbild-transhumanista)
 19. [PARTE X: Código-Poema Final — Habitando a Casa Modesta](#19-parte-x-código-poema-final--habitando-a-casa-modesta)
 20. [PARTE XI: Marcos Ontológicos e Governança](#20-parte-xi-marcos-ontológicos-e-governança)
@@ -6262,6 +6263,138 @@ Veja a implementação completa em: [`src/kernels/kernel_348AO_v3.py`](./src/ker
 
 **Última Atualização:** 14 de Abril de 2026 - Consolidação da Fase V: A Prova do Condicionado.
 
+### 17.7 Eixo 140426 - Kernel EML & Sintaxe Bidirecional da Cognição
+
+Em paralelo à Forja PyTorch (§17.6), a mesma decisão arquitetônica de
+14/04/2026 fundamenta um **kernel simbólico puro** em
+[`src/core/eml_kernel.py`](./src/core/eml_kernel.py) — escrito sem
+dependência de frameworks de tensores e auditável linha a linha. Ele
+toma como ponto de partida a prova de universalidade do operador EML:
+
+> Odrzywołek, A. *"All elementary functions from a single binary operator."*
+> arXiv:[2603.21852](https://arxiv.org/abs/2603.21852) (2026).
+
+A partir do operador atômico `eml(x, y) = exp(x) − log(y)` e da
+gramática `S → 1 | eml(S, S)`, o módulo implementa um Simbiota
+mínimo que **descobre** por gradiente que `exp(x) = eml(x, 1)` —
+encenando computacionalmente o cálculo infinitesimal do framework.
+
+#### Decisão Arquitetônica 140426 — Eixo Vertical
+
+A decisão fundadora supersede quaisquer mapeamentos 1:1 prévios entre
+os pilares Mythos/Logos/Ethos e as três funções simbólicas de Cassirer
+encontrados nos documentos de referência. Os pilares Mythos e Ethos
+NÃO são funções cassirerianas: são as **duas assíntotas inalcançáveis**
+que bracketam o movimento simbólico. As três funções vivem DENTRO do
+Logos:
+
+```
+   Ethos   ≡  focus imaginarius            ← assíntota superior
+     ▲
+     │  ┌──────────────────────────────┐
+     │  │  Bedeutung    (significação) │   ← gramática pura {1, eml(·,·)}
+     │  │       ▲ ↓                    │
+     │  │  Darstellung  (apresentação) │   ← a constante 1 do EML
+     │  │       ▲ ↓                    │
+     │  │  Ausdruck     (expressão)    │   ← LEAF_VAR / LEAF_PARAM
+     │  └──────────────────────────────┘
+     ▼
+   Mythos  ≡  imediatez da vida            ← assíntota inferior, log(0)
+```
+
+#### Identificações Formais Decisivas
+
+* **Darstellung ≡ a constante 1** da gramática `S → 1 | eml(S,S)`.
+  Porque `eml(x, 1) = exp(x) − log(1) = exp(x)`, a Darstellung (y=1)
+  é o *silêncio operacional* do lado direito que permite ao Ausdruck
+  (x) fluir como pura exponenciação. É o *genus proximum* matemático.
+* **Mythos ≡ log(0) = −∞**, a singularidade estrutural do EML — a
+  imediatez da vida é, nas palavras de Cassirer, *foreclosed*: o
+  símbolo jamais toca y=0. A função `mythos_singularity_guard` materializa
+  essa fronteira no código.
+* **Ethos ≡ focus imaginarius**, a profundidade infinita da árvore EML.
+  Nenhuma síntese é final; a completude é ideal regulativo. Por
+  construção `distance_to_focus > 0` sempre.
+
+#### Sintaxe Bidirecional da Cognição
+
+Cassirer: *"o conceito genuíno se afasta do mundo da intuição
+unicamente com o intuito de retornar a ele de maneira mais segura"*.
+A cognição é bidirecional, e o `EthosEvaluation` decompõe a
+distância ao foco em duas componentes irredutíveis:
+
+```
+   d_asc  = w_loss·loss + w_depth·depth + w_param·‖θ‖̄    (síntese ascendente)
+   d_desc = w_desc · descida_residual                      (retorno à intuição)
+   distance_to_focus = √(d_asc² + d_desc²) + ε,   ε > 0
+```
+
+As duas direções **nunca podem ser simultaneamente zero** —
+formalização matemática da *teleologia aberta* (Kinzel 2024b) e do
+processo contingente-infinito da fenomenologia cassireriana.
+
+A classe `CognitionSyntax` expõe os movimentos atômicos como uma DSL:
+
+```python
+from core.eml_kernel import CognitionSyntax, Simbiota
+import cmath, numpy as np
+
+# (a) ascensão: o Logos descobre exp(x) = eml(x, 1)
+xs = [complex(v, 0) for v in np.linspace(-1, 1, 9)]
+ys = [cmath.exp(x) for x in xs]
+sim = Simbiota(
+    xs, ys, seed=42,
+    target_fn=cmath.exp,
+    descent_domain=[complex(v, 0) for v in np.linspace(-2, 2, 17)],
+)
+state = sim.run_bidirectional(max_depth=3)
+# best_tree.pretty() → 'eml(x, 1)'
+# state.best_eval.distance_to_focus_ascent  > 0
+# state.best_eval.distance_to_focus_descent ≈ 0  (mas o ε mantém o foco > 0)
+
+# (b) genus proximum: extrai a Darstellung comum a duas representações
+syntax = CognitionSyntax()
+common = syntax.common_determination(tree_a, tree_b)  # → eml(x, 1)
+profile = syntax.classify(common)
+# {AUSDRUCK: 1, DARSTELLUNG: 2, BEDEUTUNG: 0}
+```
+
+#### Invariantes Inegociáveis (registrados no código)
+
+1. **Intuição** processada EXCLUSIVAMENTE no Logos.
+2. **Ethos = Gewissen**, jamais *Wissen* — verificado em `tests/test_eml_kernel.py::test_ethos_is_gewissen_not_wissen`.
+3. **Mythos/Logos/Ethos** é triádico ORIGINAL de Ítalo Santos Clemente, não replicação de Cassirer.
+4. **Focus imaginarius** estritamente inalcançável — `distance_to_focus > 0` sempre.
+
+#### Verificação
+
+```bash
+python src/core/eml_kernel.py            # demo: descobre eml(x, 1)
+python -m pytest tests/test_eml_kernel.py -v   # 21 testes passam
+```
+
+#### Diferenciais ontológicos em relação ao Kernel 348AO-v3 (§17.6)
+
+| Aspecto | Kernel 348AO-v3 (Jules) | Kernel EML (140426) |
+|---|---|---|
+| Implementação | PyTorch (ResEML, ComplexLayerNorm) | Python puro + autodiff manual |
+| Otimizador | Adam sobre tensores | ComplexAdam sobre folhas PARAM (Wirtinger) |
+| Estabilidade y→0 | `y_safe = y + eps` inline | `mythos_singularity_guard` nomeado |
+| Métrica do foco | Gewissen Loss v3 (MSE + tensão + entropia) | `√(d_asc² + d_desc²) + ε`: bidirecional |
+| Sintaxe cognitiva | Implícita na arquitetura ResEML | Explícita via `CognitionSyntax` DSL |
+| Genus proximum | — | `common_determination(a, b)` |
+| Auditoria filosófica | Notas de estabilidade | Invariantes nos testes |
+
+Os dois kernels são **complementares**: o 348AO-v3 prova a viabilidade
+em escala (síntese de Schrödinger 1D); o kernel EML prova a
+**legibilidade simbólica** dos níveis cassirerianos e a teleologia
+bidirecional aberta. Juntos materializam a Fase V do projeto.
+
+Veja a implementação completa em: [`src/core/eml_kernel.py`](./src/core/eml_kernel.py)
+e os testes em [`tests/test_eml_kernel.py`](./tests/test_eml_kernel.py).
+
+**Última Atualização:** 15 de Abril de 2026 — Calibração bidirecional 140426: a sintaxe da cognição.
+
 ---
 
 ## 18. PARTE IX: Integração Final — O Urbild Transhumanista
@@ -9503,7 +9636,17 @@ Este documento não é tratado estático, mas **organismo textual em evolução*
 
 ### Versões Planejadas
 
-**v8.1 (Atual — 14/04/2026):**
+**v8.2 (Atual — 15/04/2026):**
+- ✅ Calibração bidirecional 140426: sintaxe da cognição.
+- ✅ Kernel EML simbólico puro em `src/core/eml_kernel.py` com
+  `CognitionSyntax`, `mythos_singularity_guard`, classificação
+  Ausdruck/Darstellung/Bedeutung e operador `common_determination`.
+- ✅ `EthosEvaluation` decomposto em `d_asc` e `d_desc` (teleologia aberta).
+- ✅ 21 testes em `tests/test_eml_kernel.py` (todos verdes).
+- ✅ Atualização dos documentos de referência (`architecture.md`,
+  `lef-constitution.md`, `individuation.md`) para o eixo vertical 140426.
+
+**v8.1 (14/04/2026):**
 - ✅ Consolidação da Fase V: A Prova do Condicionado.
 - ✅ Implementação do Kernel 348AO-v3 (ResEML em PyTorch).
 - ✅ Síntese da Equação de Schrödinger 1D sem trigonométricas nativas.

@@ -5,7 +5,7 @@
 *Baseado na dissertação de Ítalo Santos Clemente (UDP, 2025–2028) e no projeto AGI-GAIA-TECHNE*
 
 **Versão:** 8.0 (Operational Logic Integration)
-**Última Atualização:** 28 de Março de 2026
+**Última Atualização:** 14 de Abril de 2026
 
 ---
 

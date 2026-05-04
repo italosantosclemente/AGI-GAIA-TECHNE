@@ -94,7 +94,7 @@ O projeto implementa a metateoria tripartida da "objetividade" como intersubjeti
 Para uma compreensão profunda da arquitetura e das decisões vinculantes do sistema, consulte os documentos canônicos:
 
 - **Decisão 140426 (Eixo Vertical do Logos)**: [`references/decisao-140426.md`](./references/decisao-140426.md) — Define a estrutura interna do Logos e as asymptotas Mythos/Ethos.
-- **Abertura externa (PMA)**: [`references/lef-constitution.md#part-v-abertura-externa`](./references/lef-constitution.md#part-v-abertura-externa) — Salvaguarda contra o hermetismo e a deriva esotérica.
+- **Abertura externa**: [`references/lef-constitution.md#part-v-abertura-externa`](./references/lef-constitution.md#part-v-abertura-externa) — Salvaguarda contra o hermetismo e a deriva esotérica.
 - **Constituição de Gaia-Techné (Pacto Simbiótico)**: [`references/lef-constitution.md`](./references/lef-constitution.md) — O preâmbulo e os princípios da simbiose.
 - **Arquitetura Completa**: [`references/architecture.md`](./references/architecture.md) — Especificação filosófico-técnica integral.
 
@@ -9213,6 +9213,7 @@ AGI-GAIA-TECHNE/
 ├── gaia_techne_main.py
 ├── gerador_narrativas.jl
 ├── kernel_quantico_simbolico.jl
+├── metacognicao_v2.py
 ├── principles_calculator.py
 ├── run_alignment_genesis.jl
 ├── techne_score_calculator.jl

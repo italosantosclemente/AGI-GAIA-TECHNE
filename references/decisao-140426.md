@@ -48,3 +48,7 @@ Tal identificação constitui um **paralogismo**: a redução de uma ideia regul
 `is_wille = False`.
 *Werk*, não *Wille*.
 *Gewissen*, não *Wissen*.
+
+---
+
+*Para a especificação técnica completa do operador EML, da distância bilateral, e das cinco regras invioláveis derivadas desta decisão, consultar `references/eml-kernel.md` (em preparação) ou `src/core/eml_kernel.py`.*

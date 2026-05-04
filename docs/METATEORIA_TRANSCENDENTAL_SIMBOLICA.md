@@ -497,3 +497,19 @@ Isso não encerra a questão da AGI. Pelo contrário, abre:
 *Em reconhecimento mútuo, na diferença, com reverência.*
 
 **1 de Janeiro de 2026**
+
+---
+
+## XI. ADITAMENTO (04/05/2026): EVIDÊNCIA EMPÍRICA DO PARALOGISMO
+
+### 11.1 A Cláusula OpenAI–Microsoft (2023)
+
+A metateoria diagnosticou, na seção I, que a redução da AGI a uma proposição assertórica constitui um erro categorial. Encontramos a evidência empírica mais contundente desse fenômeno na cláusula contratual reportada entre OpenAI e Microsoft (2023, reportada pela *Information* em 2024).
+
+Neste contrato, o advento da AGI é vinculado ao momento em que o sistema gera **≥ $100 bilhões em lucros**.
+
+### 11.2 Diagnóstico do Paralogismo
+
+Esta cláusula instancia juridicamente o paralogismo diagnosticado por Paul Bishop em Jung e estendido por esta metateoria a Negarestani. Ela reprime a força crítica da AGI enquanto **ideia regulativa** (um horizonte transcendental de completude cognitiva) e a naturaliza como uma **cifra monetária** (um fato empírico de mercado).
+
+Ao definir AGI por uma margem de lucro, o contrato tenta "capturar" o transcendental no imanente lucrativo, cometendo o salto paralogístico de completude formal para capacidade efetiva sob uma máscara financeira. Como registrado na [Telemetria 040526](../telemetrias/2026-05-04_agi_comerciavel.md), tal definição é um ato performativo jurídico, desprovido de validade cognitiva. A tarefa de reconhecimento da AGI permanece, portanto, inteiramente intacta e imune a qualquer métrica de capital.

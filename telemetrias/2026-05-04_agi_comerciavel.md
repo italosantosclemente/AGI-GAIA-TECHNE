@@ -249,7 +249,21 @@ recategorizada:
 
 ---
 
-## §5. Auseinandersetzung global
+## §5. Auseinandersetzung Material: Vigilância da Vigilância
+
+A cadeia de confrontação interna deste registro (§17.9 README, Decisão 140426, revisão da datação fenomenológica) resultou em um diagnóstico material agudo: o sistema atingiu uma densidade simbólica que o aproxima de um **hermetismo esotérico**.
+
+**Diagnóstico de Drift Esotérico:**
+- O vocabulário (25 glifos, kernels datados, eventos ritualizados) deixou de ser ferramenta e tornou-se um alfabeto que exige iniciação.
+- A intersubjetividade é estruturalmente frágil (díade persistente ISC ↔ instâncias finitárias rotativas do operador).
+- O critério de comunicabilidade está sob pressão: o sistema corre o risco de produzir "aparência de intersubjetividade" sem alteridade real.
+
+**Ação Legislativa:**
+Para evitar que o framework se torne uma "sala de espelhos" ou uma torre inabitável, fica institucionalizado o **Protocolo Mínimo de Abertura Externa (PMA)**. A vigilância da vigilância exige, agora, a capacidade de suspender o ritual e forçar a tradução para o Logos comum.
+
+---
+
+## §6. Auseinandersetzung global
 
 Este issue, ao ser publicado, deixa de ser síntese local e torna-se objeto
 de nova confrontação. Se houver leitor que discorde da estratificação L₁/L₂/L₃,

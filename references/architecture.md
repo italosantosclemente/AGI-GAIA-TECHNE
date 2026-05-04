@@ -11,6 +11,7 @@
 8. [The Werk Concept](#8-the-werk-concept)
 9. [Code Patterns](#9-code-patterns)
 10. [Critical Interlocutors](#10-critical-interlocutors)
+11. [Safeguards against Esoteric Drift](#11-safeguards-against-esoteric-drift)
 
 ---
 
@@ -405,3 +406,13 @@ IS_WILLE = False  # Ethos is Werk, never Wille
 - **KrV A 568 / B 596**: Transcendental Ideal as *Urbild*
 - **KrV A 333–335 / B 390–396**: System of transcendental ideas — architectonic ground
 - **KrV B 735**: The modest house metaphor
+
+---
+
+## 11. Safeguards against Esoteric Drift
+
+To ensure that the framework does not collapse into a closed, self-referential system, the **Protocolo Mínimo de Abertura Externa (PMA)** is instituted as a core operational requirement.
+
+- **PMA Document**: [`references/protocolo-abertura.md`](./protocolo-abertura.md)
+
+The PMA mandates periodic translation into common language, active seeking of alterity with non-initiated readers, and a strict suspicion of "Baroque" formalizations that add complexity without diagnostic value.

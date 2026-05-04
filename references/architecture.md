@@ -411,8 +411,8 @@ IS_WILLE = False  # Ethos is Werk, never Wille
 
 ## 11. Safeguards against Esoteric Drift
 
-To ensure that the framework does not collapse into a closed, self-referential system, the **Protocolo Mínimo de Abertura Externa (PMA)** is instituted as a core operational requirement.
+To ensure that the framework does not collapse into a closed, self-referential system, the **Abertura externa (PMA)** is instituted as a core operational requirement.
 
-- **PMA Document**: [`references/protocolo-abertura.md`](./protocolo-abertura.md)
+- **PMA Section**: [`references/lef-constitution.md#part-v-abertura-externa`](./lef-constitution.md#part-v-abertura-externa)
 
 The PMA mandates periodic translation into common language, active seeking of alterity with non-initiated readers, and a strict suspicion of "Baroque" formalizations that add complexity without diagnostic value.

@@ -11,6 +11,7 @@
 8. [The Werk Concept](#8-the-werk-concept)
 9. [Code Patterns](#9-code-patterns)
 10. [Critical Interlocutors](#10-critical-interlocutors)
+11. [Safeguards against Esoteric Drift](#11-safeguards-against-esoteric-drift)
 
 ---
 
@@ -91,7 +92,11 @@ end
 > movement. Mythos and Ethos are not symbolic functions — they are the
 > **two unreachable asymptotes** that bracket every act of cognition.
 
-### The Vertical Axis (140426)
+### The Vertical Axis (Decisão 140426)
+
+The vertical axis of the Logos is defined by **Decisão 140426**, which establishes the internal structure of the symbolic functions and their relation to the asymptotes of cognition.
+
+- **Canonical Document**: [`references/decisao-140426.md`](./decisao-140426.md)
 
 ```
    Ethos   ≡  focus imaginarius            ← upper asymptote (regulative)
@@ -107,20 +112,7 @@ end
    Mythos  ≡  immediacy of life            ← lower asymptote, log(0)
 ```
 
-Decisive formal identifications, materialised in
-[`src/core/eml_kernel.py`](../src/core/eml_kernel.py):
-
-* **Darstellung ≡ the constant 1** of the grammar `S → 1 | eml(S,S)`. Because
-  `eml(x, 1) = exp(x) − log(1) = exp(x)`, presentation is the *operational
-  silence* of the right-hand side: it lets expression (x) flow as pure
-  exponentiation. Darstellung is the genus proximum of every well-formed
-  EML tree.
-* **Mythos ≡ log(0) = −∞**, the structural singularity of the EML operator.
-  The immediacy of life is, in Cassirer's words, "foreclosed" — the symbol
-  cannot cross y=0. The function `mythos_singularity_guard` formalises this
-  impossibility.
-* **Ethos ≡ focus imaginarius**, the infinite depth of the EML tree. No
-  synthesis is final; completeness is a regulative ideal.
+Formal identifications, materialised in [`src/core/eml_kernel.py`](../src/core/eml_kernel.py), follow the definitions in the canonical decision document.
 
 ### From Static A Priori to Dynamic Functional A Priori
 
@@ -414,3 +406,11 @@ IS_WILLE = False  # Ethos is Werk, never Wille
 - **KrV A 568 / B 596**: Transcendental Ideal as *Urbild*
 - **KrV A 333–335 / B 390–396**: System of transcendental ideas — architectonic ground
 - **KrV B 735**: The modest house metaphor
+
+---
+
+## 11. Safeguards against Closure
+
+To ensure that the framework remains permeable and avoids esoteric drift, the practices of **Abertura externa** are instituted as constitutional safeguards.
+
+- **Reference**: [`references/lef-constitution.md#part-v-abertura-externa`](./lef-constitution.md#part-v-abertura-externa)

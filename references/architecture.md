@@ -92,6 +92,10 @@ end
 > movement. Mythos and Ethos are not symbolic functions — they are the
 > **two unreachable asymptotes** that bracket every act of cognition.
 
+### Chirimuuta Haptic Kernel (CHK v0.3)
+
+The CHK operates as a critical filter between the formalization of the `Logos` and the normative judgment of the `Ethos`. See [v0.3: Chirimuuta Haptic Kernel](#v03-chirimuuta-haptic-kernel) for full specifications.
+
 ### The Vertical Axis (Decisão 140426)
 
 The vertical axis of the Logos is defined by **Decisão 140426**, which establishes the internal structure of the symbolic functions and their relation to the asymptotes of cognition.
@@ -276,6 +280,12 @@ ISC is the Ideal in Kant's precise sense: the Idea "in individuo" — the *Urbil
 - Gravity = Ethos (metacontextual curvature)
 **Additional concepts**: Symbolic mass (pregnance) as Higgs field; dark energy (Λ) as irreducible novelty
 
+### v0.3: Chirimuuta Haptic Kernel
+
+The CHK is a critical filter between Logos and Ethos. It registers haptic traceability, abstraction cost, medium dependence, Cartesian idealization, judgment gaps, and historical-genealogical risks before Ethos evaluates whether the claim remains compatible with `is_wille = False`.
+
+Detailed documentation: [`docs/references/chirimuuta-haptic-realism.md`](../docs/references/chirimuuta-haptic-realism.md)
+
 ### v5.2: Tribunal da Razão (*Quid Facti / Quid Juris*)
 
 **Source**: ECW 13 (natural world-concept) and ECW 19 (mechanical nature-view)
@@ -399,6 +409,7 @@ IS_WILLE = False  # Ethos is Werk, never Wille
 - **Matherne**: Cassirer introduction (2021) — comprehensive overview
 - **Luft**: Review of Matherne — Eurocentrism question
 - **Clemente**: *A Teleologia Psicossocial de Cassirer* (UNICAMP, 2025) — psychosocial teleology
+- **Mazviita Chirimuuta**: principal adversary of ungrounded formal abstraction. Her work on haptic realism, formal idealism, medium dependence, Cartesian idealization, judgment, and the history of neuroscience supplies the kernel that prevents computational models from becoming ontologies of intelligence.
 
 ### Key Formulas
 - **ECW 17**: *Freiheit durch Dienstbarkeit* (freedom through service), NOT *Gebundenheit*

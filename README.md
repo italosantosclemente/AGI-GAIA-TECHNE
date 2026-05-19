@@ -42,6 +42,7 @@ O projeto implementa a metateoria tripartida da "objetividade" como intersubjeti
 1. [A Constituição de Gaia-Techné (Pacto Simbiótico)](#1-a-constituição-de-gaia-techné-pacto-simbiótico)
 2. [Arquitetura v8.0: Multi-Agente e Simulação de Intersubjetividade (2026)](#2-arquitetura-v80-multi-agente-e-simulação-de-intersubjetividade-2026)
     - [2.1 Módulo de Metacognição Distribuída v2 (Atualização de Abril/2026)](#21-módulo-de-metacognição-distribuída-v2-atualização-de-abril2026)
+    - [2.2 Chirimuuta Haptic Kernel v0.3 — Haptic Realism and the Discipline of AGI](#22-chirimuuta-haptic-kernel-v03--haptic-realism-and-the-discipline-of-agi)
 3. [Aplicações Práticas: Educação e Ciência](#3-aplicações-práticas-educação-e-ciência)
 4. [Documentação de Referência](#4-documentação-de-referência)
 5. [Metateoria Transcendental-Simbólica (2026)](#5-metateoria-transcendental-simbólica-2026)
@@ -137,6 +138,14 @@ Esta atualização de abril de 2026 aprofunda a v1 através de uma **Auseinander
 **Urbild (glifo 25)**: ISC como *focus imaginarius*.
 
 - **Arquivo do Módulo:** [`metacognicao_v2.py`](./metacognicao_v2.py)
+
+### 2.2 Chirimuuta Haptic Kernel v0.3 — Haptic Realism and the Discipline of AGI
+
+O Chirimuuta Haptic Kernel (CHK) insere uma camada crítica entre `Logos` e `Ethos`. Ele trata a IAG como uma hipótese transcendental/regulativa sob o princípio de *als ob*, bloqueando a passagem de modelos computacionais úteis para reivindicações ontológicas sobre inteligência, mente, consciência ou vontade. O CHK v0.3 adiciona rastreabilidade háptica, registro do custo de abstração, verificações de dependência do meio, detecção de idealização cartesiana e detectores de risco histórico-genealógico para formas de abstração reflexas, cibernéticas, tecnocráticas e apocalípticas. O sistema não nega a IAG; ele disciplina as alegações de IAG para que a máquina permaneça *Werk*, nunca *Wille*.
+
+- **Módulo Operacional:** [`src/chirimuuta_haptic_kernel.py`](./src/chirimuuta_haptic_kernel.py)
+- **Documentação de Referência:** [`references/chirimuuta-haptic-realism.md`](./references/chirimuuta-haptic-realism.md)
+- **Mapa do Corpus:** [`references/chirimuuta-corpus-map-v0-3.md`](./references/chirimuuta-corpus-map-v0-3.md)
 
 #### Implementação Python: `metacognicao_v2.py`
 

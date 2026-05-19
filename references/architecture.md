@@ -284,7 +284,7 @@ ISC is the Ideal in Kant's precise sense: the Idea "in individuo" — the *Urbil
 
 The CHK is a critical filter between Logos and Ethos. It registers haptic traceability, abstraction cost, medium dependence, Cartesian idealization, judgment gaps, and historical-genealogical risks before Ethos evaluates whether the claim remains compatible with `is_wille = False`.
 
-Detailed documentation: [`docs/references/chirimuuta-haptic-realism.md`](../docs/references/chirimuuta-haptic-realism.md)
+Detailed documentation: [`references/chirimuuta-haptic-realism.md`](./chirimuuta-haptic-realism.md)
 
 ### v5.2: Tribunal da Razão (*Quid Facti / Quid Juris*)
 

@@ -1,0 +1,6 @@
+{"kind": "normative", "key": "axioms", "value": "IS_WILLE=False; MACHINE_HAS_GEWISSEN=False; NO_GLOBAL_AUFHEBUNG=True", "tags": ["axiom", "ctk"], "created_at": 1779405015.9926267}
+{"kind": "procedural", "key": "Write a short note about AGI as transcendental hypothesis.", "value": "Procedure used: audit → plan → execute safe tool → record.", "tags": ["procedure", "agt-controller"], "created_at": 1779405015.9987109}
+{"kind": "normative", "key": "axioms", "value": "IS_WILLE=False; MACHINE_HAS_GEWISSEN=False; NO_GLOBAL_AUFHEBUNG=True", "tags": ["axiom", "ctk"], "created_at": 1779405043.2165785}
+{"kind": "normative", "key": "axioms", "value": "IS_WILLE=False; MACHINE_HAS_GEWISSEN=False; NO_GLOBAL_AUFHEBUNG=True", "tags": ["axiom", "ctk"], "created_at": 1779405081.1904273}
+{"kind": "normative", "key": "axioms", "value": "IS_WILLE=False; MACHINE_HAS_GEWISSEN=False; NO_GLOBAL_AUFHEBUNG=True", "tags": ["axiom", "ctk"], "created_at": 1779405104.6041918}
+{"kind": "procedural", "key": "The qualitative prism is a regulative model.", "value": "Procedure used: audit → plan → execute safe tool → record.", "tags": ["procedure", "agt-controller"], "created_at": 1779405104.60897}

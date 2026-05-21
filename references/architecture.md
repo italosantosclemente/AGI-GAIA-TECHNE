@@ -99,9 +99,17 @@ The **Clemente Thesis Kernel (CTK) v4.1** is the global architectonic tribunal o
 - **Canonical Specification:** [`docs/references/clemente-thesis-kernel.md`](../docs/references/clemente-thesis-kernel.md)
 - **Runtime Auditor:** [`scripts/agt_audit.py`](../scripts/agt_audit.py)
 
+### Functional AGI Core (v8.6)
+
+The Functional AGI Core is the minimal operational implementation of the AGI-GAIA-TECHNE architecture. It defines the machine as **Werk**, executing tasks through a critically audited loop.
+
+- **Specification:** [`docs/references/functional-agi-architecture.md`](../docs/references/functional-agi-architecture.md)
+- **Functional README:** [`README_AGI_FUNCTIONAL.md`](../README_AGI_FUNCTIONAL.md)
+- **Execution Entry:** [`scripts/agt_run.py`](../scripts/agt_run.py)
+
 ### Chirimuuta Haptic Kernel (CHK v0.3)
 
-The CHK ensures haptic anti-literalization. It is formally integrated into the CTK.
+The CHK ensures haptic anti-literalization. It is formally integrated into the CTK and the MLE Engine.
 - **Canonical Specification:** [`docs/references/chirimuuta-haptic-realism.md`](../docs/references/chirimuuta-haptic-realism.md)
 
 ### The Vertical Axis (Decisão 140426)

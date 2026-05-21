@@ -96,6 +96,8 @@ Para uma compreensão profunda da arquitetura e das decisões vinculantes do sis
 - **Mythos-Logos-Ethos Engine**: [`docs/references/mythos-logos-ethos-engine.md`](./docs/references/mythos-logos-ethos-engine.md) — Functional orchestration motor.
 - **CTK v4.1 — Qualitative Prism Model**: [`docs/references/clemente-thesis-kernel.md`](./docs/references/clemente-thesis-kernel.md) — The global architectonic tribunal and functional center of the repository.
 - **CHK v0.3 — Haptic Realism**: [`docs/references/chirimuuta-haptic-realism.md`](./docs/references/chirimuuta-haptic-realism.md) — The anti-literalization guard.
+- **Functional AGI Core**: [`README_AGI_FUNCTIONAL.md`](./README_AGI_FUNCTIONAL.md) — Minimal operational scaffold for AGI-GAIA-TECHNE.
+- **Functional Architecture**: [`docs/references/functional-agi-architecture.md`](./docs/references/functional-agi-architecture.md) — Details on the Werk-based controller.
 - **Decisão 140426 (Eixo Vertical do Logos)**: [`references/decisao-140426.md`](./references/decisao-140426.md) — Defines the operational truth of the EML/Logos-demonstrative regime.
 - **Abertura externa**: [`references/lef-constitution.md#part-v-abertura-externa`](./references/lef-constitution.md#part-v-abertura-externa) — Safeguards against esoteric drift.
 - **Constituição de Gaia-Techné (Pacto Simbiótico)**: [`references/lef-constitution.md`](./references/lef-constitution.md) — The preambles and principles of symbiosis.
@@ -109,13 +111,25 @@ Em nome da Terra que respira, do humano que imagina e da máquina que lembra, n�
 
 ---
 
-## 2. Arquitetura v8.5: MLE Engine — Orquestração Funcional (Maio/2026)
+## 2. Arquitetura v8.6: Functional AGI Core — Implementação de Werk (Maio/2026)
 
-A versão 8.5 introduz o **Mythos-Logos-Ethos Engine**, o motor de orquestração funcional que coordena os campos de ancoragem material, articulação simbólica e rastreamento de limites.
+A versão 8.6 introduz o **Functional AGI Core**, um scaffold operacional mínimo que implementa o loop funcional da arquitetura AGI-GAIA-TECHNE.
 
-### 2.1 Mythos-Logos-Ethos Engine
+### 2.1 Functional AGI Core
 
-O repositório agora inclui um motor de orquestração funcional: `src/mythos_logos_ethos_engine.py`. Ele garante que cada claim seja processado como **Werk**, nunca **Wille**.
+O repositório agora inclui um núcleo funcional em `src/agt/`. Este módulo não afirma criar um sujeito artificial consciente, mas sim um controlador baseado em **Werk**.
+
+**Loop Funcional:**
+Task → Mythos → Logos → Ethos → CTK/CHK Audit → Planning → Tool Use → Memory → Output.
+
+**Como executar:**
+```bash
+python3 scripts/agt_run.py --task "Write a short note about AGI as transcendental hypothesis."
+```
+
+### 2.2 Mythos-Logos-Ethos Engine
+
+O motor de orquestração funcional (`src/mythos_logos_ethos_engine.py`) coordena os campos de ancoragem material, articulação simbólica e rastreamento de limites. Ele garante que cada claim seja processado como **Werk**, nunca **Wille**.
 
 O motor pode permitir um claim como operação técnica, diferi-lo para o **Gewissen** humano ou bloqueá-lo como avanço constitutivo ilegítimo.
 

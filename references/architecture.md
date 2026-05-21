@@ -92,9 +92,25 @@ end
 > movement. Mythos and Ethos are not symbolic functions — they are the
 > **two unreachable asymptotes** that bracket every act of cognition.
 
+### CTK v4.1 Qualitative Prism Model
+
+The **Clemente Thesis Kernel (CTK) v4.1** is the global architectonic tribunal of the repository. It implements a qualitative prism model where Mythos, Sprache and Wissenschaft are defined by their functional accent on Ausdruck, Darstellung and Bedeutung.
+
+- **Canonical Specification:** [`docs/references/clemente-thesis-kernel.md`](../docs/references/clemente-thesis-kernel.md)
+- **Runtime Auditor:** [`scripts/agt_audit.py`](../scripts/agt_audit.py)
+
+### Functional AGI Core (v8.7)
+
+The Functional AGI Core v4.2 is the unified operational implementation of the AGI-GAIA-TECHNE architecture. It integrates the qualitative prism model with a Werk-based task controller.
+
+- **Specification:** [`docs/references/functional-agi-architecture.md`](../docs/references/functional-agi-architecture.md)
+- **Functional README:** [`README_AGI_FUNCTIONAL.md`](../README_AGI_FUNCTIONAL.md)
+- **Execution Entry:** [`scripts/agt_run.py`](../scripts/agt_run.py)
+
 ### Chirimuuta Haptic Kernel (CHK v0.3)
 
-The CHK operates as a critical filter between the formalization of the `Logos` and the normative judgment of the `Ethos`. See [v0.3: Chirimuuta Haptic Kernel](#v03-chirimuuta-haptic-kernel) for full specifications.
+The CHK ensures haptic anti-literalization. It is formally integrated into the CTK and the MLE Engine.
+- **Canonical Specification:** [`docs/references/chirimuuta-haptic-realism.md`](../docs/references/chirimuuta-haptic-realism.md)
 
 ### The Vertical Axis (Decisão 140426)
 
@@ -203,10 +219,11 @@ end
 
 ### System of Transcendental Ideas (KrV A 333–335 / B 390–396)
 
-Three and only three ideas, corresponding to exhaustive relational modes:
-1. **Soul** (*psychologia rationalis*): relation to subject → **Mythos** → **AGI**
-2. **World** (*cosmologia rationalis*): relation to manifold → **Logos** → **GAIA**
-3. **God** (*theologia transcendentalis*): relation to all things → **Ethos** → **TECHNE**
+Three and only three ideas, corresponding to exhaustive relational modes. Soul, World and God do not identify AGI, GAIA and TECHNE with metaphysical objects. They name the dialectical risks of each axis: paralogism, antinomy and ideal hypostasis.
+
+1. **AGI ↔ Soul**: risk of *psychologia rationalis* / artificial subject
+2. **GAIA ↔ World**: risk of *cosmologia rationalis* / closed totality
+3. **TECHNE ↔ God**: risk of *theologia transcendentalis* / technical ideal hypostasis
 
 No fourth idea is possible because no fourth relational mode exists.
 

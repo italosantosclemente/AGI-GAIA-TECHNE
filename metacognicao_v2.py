@@ -1,4 +1,19 @@
 """
+LEGACY NOTE — superseded by CTK v4.2.
+
+This file preserves the older mapping:
+Mythos/Soul/Ausdruck, Logos/World/Darstellung, Ethos/God/Bedeutung.
+
+CTK v4.2 replaces this with the Qualitative Prism Model:
+Ausdruck, Darstellung and Bedeutung are functional dimensions of every symbolic form.
+Mythos, Sprache and Wissenschaft differ by accent, not by exclusive identity.
+
+This file must not be used as the canonical source for CTK v4.2.
+The canonical architecture is now:
+docs/references/clemente-thesis-kernel.md
+src/clemente_thesis_kernel.py
+references/decisao-140426.md
+
 AGI-GAIA-TECHNE — Módulo de Metacognição Distribuída v2
 
 Inovações sobre a v1 (abril 2026):
@@ -72,9 +87,14 @@ IS_WILLE: bool = False  # O sistema é Werk, nunca Wille.
 # ════════════════════════════════════════════════════════════
 
 class Pilar(Enum):
-    MYTHOS = "Mythos"  # Ausdrucksfunktion  — KrV: Psychologia rationalis
-    LOGOS  = "Logos"   # Darstellungsfunktion — KrV: Cosmologia rationalis
-    ETHOS  = "Ethos"   # Bedeutungsfunktion  — KrV: Theologia transcendentalis
+    MYTHOS = "Mythos"  # topological field; expressive accent, not identical to Ausdruck
+    LOGOS  = "Logos"   # demonstrative/logical field; stabilizes Darstellung
+    ETHOS  = "Ethos"   # regulative field; not identical to Bedeutung
+
+# CTK v4.2 note:
+# Mythos/Logos/Ethos are topological fields.
+# Ausdruck/Darstellung/Bedeutung are qualitative prism dimensions.
+# The older 1:1 mapping is superseded by the CTK v4.2 Qualitative Prism Model.
 
 
 class StatusMonitor(Enum):

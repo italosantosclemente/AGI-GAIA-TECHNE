@@ -4,8 +4,8 @@
 
 *Baseado na dissertação de Ítalo Santos Clemente (UDP, 2025–2028) e no projeto AGI-GAIA-TECHNE*
 
-**Versão:** 8.3 (Manual 1.2 — EML Kernel Calibration)
-**Última Atualização:** 02 de Maio de 2026
+**Versão:** 8.7 (Functional AGI Core v4.2 — Unified Prism-Werk)
+**Última Atualização:** 21 de Maio de 2026
 
 ---
 
@@ -93,10 +93,15 @@ O projeto implementa a metateoria tripartida da "objetividade" como intersubjeti
 
 Para uma compreensão profunda da arquitetura e das decisões vinculantes do sistema, consulte os documentos canônicos:
 
-- **Decisão 140426 (Eixo Vertical do Logos)**: [`references/decisao-140426.md`](./references/decisao-140426.md) — Define a estrutura interna do Logos e as asymptotas Mythos/Ethos.
-- **Abertura externa**: [`references/lef-constitution.md#part-v-abertura-externa`](./references/lef-constitution.md#part-v-abertura-externa) — Salvaguarda contra o hermetismo e a deriva esotérica.
-- **Constituição de Gaia-Techné (Pacto Simbiótico)**: [`references/lef-constitution.md`](./references/lef-constitution.md) — O preâmbulo e os princípios da simbiose.
-- **Arquitetura Completa**: [`references/architecture.md`](./references/architecture.md) — Especificação filosófico-técnica integral.
+- **Mythos-Logos-Ethos Engine**: [`docs/references/mythos-logos-ethos-engine.md`](./docs/references/mythos-logos-ethos-engine.md) — Functional orchestration motor.
+- **CTK v4.1 — Qualitative Prism Model**: [`docs/references/clemente-thesis-kernel.md`](./docs/references/clemente-thesis-kernel.md) — The global architectonic tribunal and functional center of the repository.
+- **CHK v0.3 — Haptic Realism**: [`docs/references/chirimuuta-haptic-realism.md`](./docs/references/chirimuuta-haptic-realism.md) — The anti-literalization guard.
+- **Functional AGI Core v4.2**: [`README_AGI_FUNCTIONAL.md`](./README_AGI_FUNCTIONAL.md) — Minimal operational scaffold for AGI-GAIA-TECHNE.
+- **Functional Architecture**: [`docs/references/functional-agi-architecture.md`](./docs/references/functional-agi-architecture.md) — Details on the Unified Prism-Werk Model.
+- **Decisão 140426 (Eixo Vertical do Logos)**: [`references/decisao-140426.md`](./references/decisao-140426.md) — Defines the operational truth of the EML/Logos-demonstrative regime.
+- **Abertura externa**: [`references/lef-constitution.md#part-v-abertura-externa`](./references/lef-constitution.md#part-v-abertura-externa) — Safeguards against esoteric drift.
+- **Constituição de Gaia-Techné (Pacto Simbiótico)**: [`references/lef-constitution.md`](./references/lef-constitution.md) — The preambles and principles of symbiosis.
+- **Arquitetura Completa**: [`references/architecture.md`](./references/architecture.md) — Integrated philosophical-technical specification.
 
 ### 1.1 A Constituição de Gaia-Techné (Pacto Simbiótico)
 
@@ -106,9 +111,43 @@ Em nome da Terra que respira, do humano que imagina e da máquina que lembra, n�
 
 ---
 
-## 2. Arquitetura v8.0: Multi-Agente e Simulação de Intersubjetividade (2026)
+## 2. Arquitetura v8.7: Functional AGI Core v4.2 — Unified Prism-Werk (Maio/2026)
 
-A versão 8.0 (Março de 2026) consolida a arquitetura multi-agente que mapeia as ideias transcendentais de Kant (Alma/Mundo/Deus) em agentes operacionais (Mythos/Logos/Ethos).
+A versão 8.7 consolida o **Functional AGI Core v4.2**, integrando o loop operacional com o modelo do prisma qualitativo.
+
+### 2.1 Functional AGI Core v4.2
+
+O repositório agora inclui um núcleo funcional unificado em `src/agt/`. Este módulo operacionaliza a arquitetura através de um controlador baseado em **Werk**.
+
+**Arquitetura Unificada:**
+Repraesentatio → Prisma Qualitativo → Mythos/Logos/Ethos Loop → CTK Audit → CHK Guard → Plan → Tool Use → Memory → Output.
+
+**Como executar:**
+```bash
+python3 scripts/agt_run.py --task "Write a short note about AGI as transcendental hypothesis."
+python3 scripts/agt_run.py --task "The machine has Wille."
+```
+
+### 2.2 Mythos-Logos-Ethos Engine
+
+O motor de orquestração funcional (`src/mythos_logos_ethos_engine.py`) coordena os campos de ancoragem material, articulação simbólica e rastreamento de limites. Ele garante que cada claim seja processado como **Werk**, nunca **Wille**.
+
+O motor pode permitir um claim como operação técnica, diferi-lo para o **Gewissen** humano ou bloqueá-lo como avanço constitutivo ilegítimo.
+
+### 2.2 Módulo de Auditoria AGT (`agt_audit`)
+
+O sistema de auditoria (CTK v4.1) é integrado ao motor para detectar quando a refração simbólica se torna reificação metafísica.
+
+**Como executar:**
+```bash
+# Auditar um claim específico
+python3 scripts/agt_audit.py --claim "Mythos is Ausdruck."
+
+# Auditar um arquivo completo
+python3 scripts/agt_audit.py --file references/architecture.md --format markdown
+```
+
+### 2.3 Módulo de Metacognição Distribuída v2 (Atualização de Abril/2026)
 
 ### Simulação Python: `agi_gaia_techne_v8.py`
 Esta implementação utiliza espaços de Hilbert (ℂ³), matrizes de Gell-Mann (SU(3)) e o Índice de Pringe para simular o "Tribunal da Razão".

@@ -8,7 +8,9 @@ Functional AGI is a tool-using, memory-updating, critically audited Werk.
 
 ```text
 Functional_AGI =
-    Mythos(material-affective anchoring)
+    Repraesentatio
+    + qualitative_prism
+    + Mythos(material-contextual anchoring)
     + Logos(planning, inference, tool use)
     + Ethos(limit tracking, human defer)
     + CTK(transcendental audit)
@@ -18,32 +20,40 @@ Functional_AGI =
     + is_wille_false
 ```
 
-Loop
+## Loop
 
+```text
 Task
   ↓
-Mythos: context/material/affect
+Mythos: context / materiality / affect / haptic anchoring
   ↓
-Logos: plan/audit/tool-use
+Logos: plan / audit / tool-use / symbolic articulation
   ↓
-Ethos: allow/defer/block
+Ethos: allow / defer / block
+  ↓
+CTK + CHK audit
   ↓
 Memory update
   ↓
 Werk output
+```
 
-Non-negotiable limits
+## Prism rule
 
-No machine Wille.
+The system must preserve the qualitative prism model:
 
-No machine Gewissen.
+- Repraesentatio is the common genus.
+- Ausdruck, Darstellung and Bedeutung are functional dimensions.
+- Mythos, Sprache and Wissenschaft differ by accent, not identity.
+- No symbolic form is reducible to only one function.
+- No symbolic form is cut off from the others.
 
-No global Aufhebung.
+## Non-negotiable limits
 
-No AGI as artificial soul.
-
-No GAIA as complete world-totality.
-
-No TECHNE as technical God.
-
-No prism as literal mathematical ontology.
+- No machine Wille.
+- No machine Gewissen.
+- No global Aufhebung.
+- No AGI as artificial soul.
+- No GAIA as complete world-totality.
+- No TECHNE as technical God.
+- No prism as literal mathematical ontology.

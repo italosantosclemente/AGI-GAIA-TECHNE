@@ -99,9 +99,9 @@ The **Clemente Thesis Kernel (CTK) v4.1** is the global architectonic tribunal o
 - **Canonical Specification:** [`docs/references/clemente-thesis-kernel.md`](../docs/references/clemente-thesis-kernel.md)
 - **Runtime Auditor:** [`scripts/agt_audit.py`](../scripts/agt_audit.py)
 
-### Functional AGI Core (v8.6)
+### Functional AGI Core (v8.7)
 
-The Functional AGI Core is the minimal operational implementation of the AGI-GAIA-TECHNE architecture. It defines the machine as **Werk**, executing tasks through a critically audited loop.
+The Functional AGI Core v4.2 is the unified operational implementation of the AGI-GAIA-TECHNE architecture. It integrates the qualitative prism model with a Werk-based task controller.
 
 - **Specification:** [`docs/references/functional-agi-architecture.md`](../docs/references/functional-agi-architecture.md)
 - **Functional README:** [`README_AGI_FUNCTIONAL.md`](../README_AGI_FUNCTIONAL.md)

@@ -1,11 +1,11 @@
 # =======================================================================
-# LEGACY NOTE — superseded by CTK v4.1.
+# LEGACY NOTE — superseded by CTK v4.2.
 # This file preserves the older mapping layer.
-# CTK v4.1 Qualitative Prism Model replaces rigid mappings.
+# CTK v4.2 Qualitative Prism Model replaces rigid mappings.
 # Mythos/Logos/Ethos are topological fields.
 # Ausdruck/Darstellung/Bedeutung are qualitative prism dimensions.
 #
-# This file must not be used as the canonical source for CTK v4.1.
+# This file must not be used as the canonical source for CTK v4.2.
 # The canonical architecture is now:
 # docs/references/clemente-thesis-kernel.md
 # src/clemente_thesis_kernel.py

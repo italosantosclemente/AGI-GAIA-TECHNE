@@ -6,7 +6,7 @@
 
 ---
 
-## CTK v4.1 Restratification (21/05/2026)
+## CTK v4.2 Unified Restratification (21/05/2026)
 
 A Decisão 140426 é canônica para o regime EML/Logos-demonstrativo. Ela não define a totalidade da filosofia cassireriana das formas simbólicas. O CTK v4.1 requalifica essa decisão: no regime amplo do prisma, Ausdruck, Darstellung e Bedeutung são dimensões funcionais presentes em toda forma simbólica; no regime técnico EML, elas operam como níveis internos do Logos.
 

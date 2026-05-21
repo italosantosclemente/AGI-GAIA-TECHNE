@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 from typing import List
 
+from .chk import ChirimuutaHapticKernel
 from .ctk import ClementeThesisKernel
 from .types import Plan, PlanStep, Task
 
@@ -11,17 +12,18 @@ class Planner:
     """
     Conservative task decomposer.
 
-    It creates a small executable plan, then lets the controller and
-    Mythos-Logos-Ethos engine audit each step.
+    Each generated step is audited.
+    High-risk steps are not executable.
     """
 
     def __init__(self) -> None:
         self.ctk = ClementeThesisKernel()
+        self.chk = ChirimuutaHapticKernel()
 
     def create_plan(self, task: Task) -> Plan:
         audit = self.ctk.evaluate(task.text)
 
-        steps: List[PlanStep] = [
+        raw_steps: List[PlanStep] = [
             PlanStep(
                 id=self._id("audit", task.text),
                 action="audit",
@@ -32,7 +34,7 @@ class Planner:
         lower = task.text.lower()
 
         if "write" in lower or "escrev" in lower:
-            steps.append(
+            raw_steps.append(
                 PlanStep(
                     id=self._id("draft", task.text),
                     action="draft_text",
@@ -43,7 +45,7 @@ class Planner:
             )
 
         elif "test" in lower or "pytest" in lower:
-            steps.append(
+            raw_steps.append(
                 PlanStep(
                     id=self._id("test", task.text),
                     action="explain_tests",
@@ -54,7 +56,7 @@ class Planner:
             )
 
         else:
-            steps.append(
+            raw_steps.append(
                 PlanStep(
                     id=self._id("analyze", task.text),
                     action="analyze",
@@ -64,7 +66,7 @@ class Planner:
                 )
             )
 
-        steps.append(
+        raw_steps.append(
             PlanStep(
                 id=self._id("memory", task.text),
                 action="update_memory",
@@ -72,12 +74,30 @@ class Planner:
             )
         )
 
+        steps = [self._audit_step(step) for step in raw_steps]
+
         return Plan(
             task=task,
             steps=steps,
-            rationale="General loop: audit → act → record.",
+            rationale="General loop: audit → step-audit → act → record.",
             audit=audit,
         )
+
+    def _audit_step(self, step: PlanStep) -> PlanStep:
+        audit_text = f"{step.action}. {step.description}. {step.tool_args}"
+        ctk = self.ctk.evaluate(audit_text)
+        chk = self.chk.evaluate(audit_text)
+
+        if ctk.severity.value == "high" or chk.severity.value == "high":
+            return PlanStep(
+                id=step.id,
+                action="audit_blocked_step",
+                description=f"Step blocked by CTK/CHK audit: {step.description}",
+                tool_name=None,
+                tool_args={},
+            )
+
+        return step
 
     def _id(self, prefix: str, text: str) -> str:
         return f"{prefix}_{hashlib.sha1(text.encode('utf-8')).hexdigest()[:8]}"

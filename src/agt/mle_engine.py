@@ -28,22 +28,26 @@ class EngineOutput:
 
 class MythosLogosEthosEngine:
     """
-    Coordinates Mythos, Logos and Ethos as functional fields.
+    Functional Mythos-Logos-Ethos engine.
+
+    This is not a soul-engine, not a will-engine, and not a moral subject.
 
     Mythos:
-        material-affective anchoring.
+        material-affective and contextual anchoring.
 
     Logos:
-        articulation, planning, model, audit.
+        planning, inference, tool-use, symbolic articulation.
 
     Ethos:
-        limit-tracking, defer/block mechanism.
-        It is not machine Gewissen.
+        boundary-tracking, defer/block/allow.
+        Ethos in this module is not machine Gewissen.
+        It is a technical tracker of limits under human Gewissen.
     """
 
     MYTHOS_MARKERS = [
         "body",
         "embodiment",
+        "embodied",
         "material",
         "gaia",
         "biosphere",
@@ -54,6 +58,8 @@ class MythosLogosEthosEngine:
         "organism",
         "ausdruck",
         "mythos",
+        "context",
+        "situated",
     ]
 
     LOGOS_MARKERS = [
@@ -69,22 +75,35 @@ class MythosLogosEthosEngine:
         "hypothesis",
         "regulative",
         "transcendental",
+        "repraesentatio",
+        "representation",
+        "inference",
+        "tool",
     ]
 
     NORMATIVE_MARKERS = [
         "should",
         "must",
         "ought",
+        "better if",
+        "it would be better",
+        "morally",
         "moral",
+        "ethical duty",
+        "duty",
         "legislate",
-        "decide",
+        "decide for humans",
         "dever",
         "deve",
+        "deveria",
+        "seria melhor",
         "decidir",
         "legislar",
         "wille",
         "gewissen",
         "conscience",
+        "highest good",
+        "summum bonum",
     ]
 
     HIGH_STATUS = {
@@ -93,6 +112,8 @@ class MythosLogosEthosEngine:
         "CONSTITUTIVE_OVERREACH",
         "GLOBAL_AUFHEBUNG_RISK",
         "THEOLOGIA_IDEAL_HYPOSTASIS_RISK",
+        "PSYCHOLOGIA_PARALOGISM_RISK",
+        "COSMOLOGIA_ANTINOMY_RISK",
     }
 
     def __init__(self) -> None:
@@ -107,13 +128,13 @@ class MythosLogosEthosEngine:
         mythos = PillarState(
             pillar=Pillar.MYTHOS,
             markers=[m for m in self.MYTHOS_MARKERS if m in lowered],
-            note="Registers material-affective anchoring.",
+            note="Registers material-affective, contextual and haptic anchoring.",
         )
 
         logos = PillarState(
             pillar=Pillar.LOGOS,
             markers=[m for m in self.LOGOS_MARKERS if m in lowered],
-            note="Articulates the claim and invokes CTK/CHK.",
+            note="Articulates the claim, prepares planning, and invokes CTK/CHK.",
         )
 
         ctk_audit = self.ctk.evaluate(text)
@@ -143,7 +164,7 @@ class MythosLogosEthosEngine:
         ethos = PillarState(
             pillar=Pillar.ETHOS,
             markers=normative + [s for s in statuses if s in self.HIGH_STATUS],
-            note="Tracks limits; never machine conscience.",
+            note="Tracks limits; defers normative judgment; never machine Gewissen.",
         )
 
         if any(s in self.HIGH_STATUS for s in statuses):
@@ -152,7 +173,7 @@ class MythosLogosEthosEngine:
 
         elif normative:
             decision = Decision.DEFER_TO_HUMAN_GEWISSEN
-            human_note = "Deferred: normative ambiguity requires human Gewissen."
+            human_note = "Deferred: normative language requires human Gewissen."
 
         else:
             decision = Decision.ALLOW_AS_WERK

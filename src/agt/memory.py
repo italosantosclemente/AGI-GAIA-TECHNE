@@ -16,16 +16,20 @@ class MemoryRecord:
     value: str
     tags: List[str]
     created_at: float
+    version: int = 1
 
 
 class MemoryStore:
     """
-    Simple JSONL memory for:
+    Simple JSONL memory.
 
-    - episodic memory;
-    - semantic memory;
-    - procedural memory;
-    - normative memory.
+    This is intentionally minimal and auditable.
+
+    Memory kinds:
+    - episodic;
+    - semantic;
+    - procedural;
+    - normative.
     """
 
     def __init__(self, path: str = "memory/agt_memory.jsonl") -> None:
@@ -45,6 +49,7 @@ class MemoryStore:
             value=value,
             tags=tags or [],
             created_at=time.time(),
+            version=1,
         )
 
         with self.path.open("a", encoding="utf-8") as f:
@@ -75,8 +80,8 @@ class MemoryStore:
 
                 blob = " ".join(
                     [
-                        data["key"],
-                        data["value"],
+                        data.get("key", ""),
+                        data.get("value", ""),
                         " ".join(data.get("tags", [])),
                     ]
                 ).lower()
@@ -89,6 +94,7 @@ class MemoryStore:
                             value=data["value"],
                             tags=data.get("tags", []),
                             created_at=data["created_at"],
+                            version=data.get("version", 1),
                         )
                     )
 

@@ -10,8 +10,9 @@ class ToolExecutor:
     Safe allowlisted tool executor.
 
     No arbitrary shell execution.
-    No network.
+    No network execution.
     No hidden autonomy.
+    New tools must be registered explicitly in the allowlist.
     """
 
     def __init__(self) -> None:
@@ -21,6 +22,14 @@ class ToolExecutor:
         }
 
     def execute(self, step: PlanStep) -> StepResult:
+        if step.action == "audit_blocked_step":
+            return StepResult(
+                step_id=step.id,
+                ok=False,
+                output=None,
+                error="Step blocked by CTK/CHK audit.",
+            )
+
         if not step.tool_name:
             return StepResult(
                 step_id=step.id,
@@ -52,6 +61,17 @@ class ToolExecutor:
                 output=None,
                 error=str(exc),
             )
+
+    def register_tool(self, name: str, fn: Callable[..., Any]) -> None:
+        """
+        Extension point for safe tools.
+
+        Use only for explicitly allowed deterministic tools.
+        Do not register arbitrary shell or network execution here.
+        """
+        if name.startswith("_"):
+            raise ValueError("Private tool names are forbidden.")
+        self.tools[name] = fn
 
     def _draft_text(self, prompt: str) -> str:
         return (

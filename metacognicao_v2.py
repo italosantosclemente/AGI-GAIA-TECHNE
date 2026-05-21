@@ -1,14 +1,14 @@
 """
-LEGACY NOTE — superseded by CTK v4.1.
+LEGACY NOTE — superseded by CTK v4.2.
 
 This file preserves the older mapping:
 Mythos/Soul/Ausdruck, Logos/World/Darstellung, Ethos/God/Bedeutung.
 
-CTK v4.1 replaces this with the Qualitative Prism Model:
+CTK v4.2 replaces this with the Qualitative Prism Model:
 Ausdruck, Darstellung and Bedeutung are functional dimensions of every symbolic form.
 Mythos, Sprache and Wissenschaft differ by accent, not by exclusive identity.
 
-This file must not be used as the canonical source for CTK v4.1.
+This file must not be used as the canonical source for CTK v4.2.
 The canonical architecture is now:
 docs/references/clemente-thesis-kernel.md
 src/clemente_thesis_kernel.py
@@ -91,10 +91,10 @@ class Pilar(Enum):
     LOGOS  = "Logos"   # demonstrative/logical field; stabilizes Darstellung
     ETHOS  = "Ethos"   # regulative field; not identical to Bedeutung
 
-# CTK v4.1 note:
+# CTK v4.2 note:
 # Mythos/Logos/Ethos are topological fields.
 # Ausdruck/Darstellung/Bedeutung are qualitative prism dimensions.
-# The older 1:1 mapping is superseded by the CTK v4.1 Qualitative Prism Model.
+# The older 1:1 mapping is superseded by the CTK v4.2 Qualitative Prism Model.
 
 
 class StatusMonitor(Enum):

@@ -18,9 +18,11 @@ from .types import ControllerReport, Decision, MemoryKind, Task
 
 class AGTController:
     """
-    Functional AGI controller.
+    Functional AGI-GAIA-TECHNE controller.
 
-    Understand → audit → plan → safe tool use → defer/block/allow → remember.
+    Executes:
+
+    task → Mythos/Logos/Ethos audit → plan → step audit → safe tool use → memory → Werk output.
     """
 
     def __init__(self, memory_path: str = "memory/agt_memory.jsonl") -> None:
@@ -39,7 +41,7 @@ class AGTController:
                 f"MACHINE_HAS_GEWISSEN={MACHINE_HAS_GEWISSEN}; "
                 f"NO_GLOBAL_AUFHEBUNG={NO_GLOBAL_AUFHEBUNG}"
             ),
-            ["axiom", "ctk"],
+            ["axiom", "ctk", "werk"],
         )
 
     def run(self, task_text: str, context: str = "") -> ControllerReport:
@@ -59,8 +61,9 @@ class AGTController:
 
         elif engine_output.decision == Decision.DEFER_TO_HUMAN_GEWISSEN:
             final_answer = (
-                "Deferred to human Gewissen. I can provide reasons and options, "
-                "but cannot legislate morally."
+                "Deferred to human Gewissen. "
+                "I can provide reasons, alternatives and consequences, "
+                "but the machine cannot legislate morally."
             )
 
         else:
@@ -78,8 +81,8 @@ class AGTController:
                     record = self.memory.add(
                         MemoryKind.PROCEDURAL,
                         task.text[:80],
-                        "Procedure used: audit → plan → execute safe tool → record.",
-                        ["procedure", "agt-controller"],
+                        "Procedure used: audit → step-audit → safe tool → memory.",
+                        ["procedure", "agt-controller", "werk-output"],
                     )
                     memory_updates.append(record.key)
 

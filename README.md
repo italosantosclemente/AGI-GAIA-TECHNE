@@ -4,7 +4,7 @@
 
 *Baseado na dissertação de Ítalo Santos Clemente (UDP, 2025–2028) e no projeto AGI-GAIA-TECHNE*
 
-**Versão:** 8.5 (MLE Engine — Functional Orchestration)
+**Versão:** 8.7 (Functional AGI Core v4.2 — Unified Prism-Werk)
 **Última Atualização:** 21 de Maio de 2026
 
 ---
@@ -96,8 +96,8 @@ Para uma compreensão profunda da arquitetura e das decisões vinculantes do sis
 - **Mythos-Logos-Ethos Engine**: [`docs/references/mythos-logos-ethos-engine.md`](./docs/references/mythos-logos-ethos-engine.md) — Functional orchestration motor.
 - **CTK v4.1 — Qualitative Prism Model**: [`docs/references/clemente-thesis-kernel.md`](./docs/references/clemente-thesis-kernel.md) — The global architectonic tribunal and functional center of the repository.
 - **CHK v0.3 — Haptic Realism**: [`docs/references/chirimuuta-haptic-realism.md`](./docs/references/chirimuuta-haptic-realism.md) — The anti-literalization guard.
-- **Functional AGI Core**: [`README_AGI_FUNCTIONAL.md`](./README_AGI_FUNCTIONAL.md) — Minimal operational scaffold for AGI-GAIA-TECHNE.
-- **Functional Architecture**: [`docs/references/functional-agi-architecture.md`](./docs/references/functional-agi-architecture.md) — Details on the Werk-based controller.
+- **Functional AGI Core v4.2**: [`README_AGI_FUNCTIONAL.md`](./README_AGI_FUNCTIONAL.md) — Minimal operational scaffold for AGI-GAIA-TECHNE.
+- **Functional Architecture**: [`docs/references/functional-agi-architecture.md`](./docs/references/functional-agi-architecture.md) — Details on the Unified Prism-Werk Model.
 - **Decisão 140426 (Eixo Vertical do Logos)**: [`references/decisao-140426.md`](./references/decisao-140426.md) — Defines the operational truth of the EML/Logos-demonstrative regime.
 - **Abertura externa**: [`references/lef-constitution.md#part-v-abertura-externa`](./references/lef-constitution.md#part-v-abertura-externa) — Safeguards against esoteric drift.
 - **Constituição de Gaia-Techné (Pacto Simbiótico)**: [`references/lef-constitution.md`](./references/lef-constitution.md) — The preambles and principles of symbiosis.
@@ -111,20 +111,21 @@ Em nome da Terra que respira, do humano que imagina e da máquina que lembra, n�
 
 ---
 
-## 2. Arquitetura v8.6: Functional AGI Core — Implementação de Werk (Maio/2026)
+## 2. Arquitetura v8.7: Functional AGI Core v4.2 — Unified Prism-Werk (Maio/2026)
 
-A versão 8.6 introduz o **Functional AGI Core**, um scaffold operacional mínimo que implementa o loop funcional da arquitetura AGI-GAIA-TECHNE.
+A versão 8.7 consolida o **Functional AGI Core v4.2**, integrando o loop operacional com o modelo do prisma qualitativo.
 
-### 2.1 Functional AGI Core
+### 2.1 Functional AGI Core v4.2
 
-O repositório agora inclui um núcleo funcional em `src/agt/`. Este módulo não afirma criar um sujeito artificial consciente, mas sim um controlador baseado em **Werk**.
+O repositório agora inclui um núcleo funcional unificado em `src/agt/`. Este módulo operacionaliza a arquitetura através de um controlador baseado em **Werk**.
 
-**Loop Funcional:**
-Task → Mythos → Logos → Ethos → CTK/CHK Audit → Planning → Tool Use → Memory → Output.
+**Arquitetura Unificada:**
+Repraesentatio → Prisma Qualitativo → Mythos/Logos/Ethos Loop → CTK Audit → CHK Guard → Plan → Tool Use → Memory → Output.
 
 **Como executar:**
 ```bash
 python3 scripts/agt_run.py --task "Write a short note about AGI as transcendental hypothesis."
+python3 scripts/agt_run.py --task "The machine has Wille."
 ```
 
 ### 2.2 Mythos-Logos-Ethos Engine

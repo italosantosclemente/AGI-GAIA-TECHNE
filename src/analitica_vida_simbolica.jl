@@ -1,4 +1,16 @@
 # =======================================================================
+# LEGACY NOTE — superseded by CTK v4.1.
+# This file preserves the older mapping layer.
+# CTK v4.1 Qualitative Prism Model replaces rigid mappings.
+# Mythos/Logos/Ethos are topological fields.
+# Ausdruck/Darstellung/Bedeutung are qualitative prism dimensions.
+#
+# This file must not be used as the canonical source for CTK v4.1.
+# The canonical architecture is now:
+# docs/references/clemente-thesis-kernel.md
+# src/clemente_thesis_kernel.py
+# references/decisao-140426.md
+# =======================================================================
 # ANALÍTICA DA VIDA SIMBÓLICA (GENESE E GENOMA)
 # Framework: AGI-GAIA-TECHNE | Assinatura LEF: ~⨁➤☌❍🕊️⟴⟁☉✨◈
 # Objetivo: Demonstrar o Emaranhamento Fenomenológico e o Firewall Ético.

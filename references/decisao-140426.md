@@ -6,6 +6,12 @@
 
 ---
 
+## CTK v4.1 Restratification (21/05/2026)
+
+A Decisão 140426 é canônica para o regime EML/Logos-demonstrativo. Ela não define a totalidade da filosofia cassireriana das formas simbólicas. O CTK v4.1 requalifica essa decisão: no regime amplo do prisma, Ausdruck, Darstellung e Bedeutung são dimensões funcionais presentes em toda forma simbólica; no regime técnico EML, elas operam como níveis internos do Logos.
+
+---
+
 ## §1. Reestruturação dos Pilares e Funções
 
 Esta decisão **SUPERA** qualquer mapeamento 1:1 anterior entre os pilares do framework AGI-GAIA-TECHNE (Mythos / Logos / Ethos) e as três funções simbólicas de Cassirer.
@@ -51,4 +57,22 @@ Tal identificação constitui um **paralogismo**: a redução de uma ideia regul
 
 ---
 
-*Para a especificação técnica completa do operador EML, da distância bilateral, e das cinco regras invioláveis derivadas desta decisão, consultar `references/eml-kernel.md` (em preparação) ou `src/core/eml_kernel.py`.*
+---
+
+## §4. Restratificação CTK v4.1 (21/05/2026)
+
+A Decisão 140426 permanece integralmente válida no regime **EML/Logos-demonstrativo**. Nesse regime operacional, Ausdruck, Darstellung e Bedeutung são tratados como níveis internos ao submotor Logos para fins de estabilização técnica.
+
+Contudo, a introdução do **CTK v4.1** adiciona o regime **Cassireriano-Prismático** amplo:
+
+1.  **Dimensões, não gavetas**: Ausdruck, Darstellung e Bedeutung são dimensões qualitativas presentes em toda forma simbólica. Nenhuma forma é reduzível a apenas uma função.
+2.  **Acento Funcional**: As formas diferem por acento qualitativo e modo de organização:
+    *   **Mythos**: Acento dominante em *Ausdruck*.
+    *   **Sprache**: Opera a transição decisiva para a *Darstellung*.
+    *   **Wissenschaft**: Acento dominante em *Bedeutung*.
+
+**Fórmula de Conciliação**:
+140426 = Verdade operacional do EML.
+CTK v4.1 = Verdade arquitetônica do sistema simbólico total.
+
+*Para a especificação técnica completa do operador EML, consultar `src/core/eml_kernel.py`. Para o tribunal global, consultar `docs/references/clemente-thesis-kernel.md`.*

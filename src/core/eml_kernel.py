@@ -2,6 +2,37 @@
 EML Kernel — AGI-GAIA-TECHNE
 ============================
 
+Decision 140426 + CTK v4.1 Prism Update 210526:
+
+The EML kernel belongs to Logos as demonstrative symbolic stabilization.
+
+However, Ausdruck, Darstellung and Bedeutung are not exclusive containers.
+They are qualitative dimensions of a prism-model of symbolic consciousness.
+
+The Prism Model is qualitative, haptic and regulative.
+It must not be literalized as a numerical ontology.
+
+Within the EML regime:
+
+- Darstellung functions as common determination.
+- eml(x, y) = exp(x) - log(y)
+- Mythos remains the lower asymptote: log(0)
+- Ethos remains the upper regulative horizon: focus imaginarius
+- distance_to_focus = sqrt(d_asc^2 + d_desc^2) + epsilon
+
+Darstellung = 1 does not mean Logos = Darstellung.
+It means that Darstellung is the mediating constant through which Logos stabilizes the demonstrative regime.
+
+The Prism Model:
+
+- Mythos has dominant accent on Ausdruck.
+- Sprache mediates the transition toward Darstellung.
+- Wissenschaft has dominant accent on Bedeutung.
+
+No symbolic form is reducible to only one function.
+No symbolic form is cut off from the others.
+The model tracks abstraction cost and rejects constitutive overreach.
+
 Kernel do **Simbiota** baseado no operador EML (Exp-Minus-Log),
 provado universal em:
 
@@ -181,7 +212,8 @@ def eml(x: complex, y: complex) -> complex:
     É o único operador binário necessário — junto com a constante 1 —
     para gerar todas as funções elementares fechadas.
     """
-    return cmath.exp(x) - cmath.log(y)
+    y_safe = mythos_singularity_guard(y)
+    return cmath.exp(x) - cmath.log(y_safe)
 
 
 # =============================================================================
@@ -267,7 +299,8 @@ class EMLNode:
         elif k == NODE_EML:
             xv = self.left.forward(env)   # type: ignore[union-attr]
             yv = self.right.forward(env)  # type: ignore[union-attr]
-            self._fwd = cmath.exp(xv) - cmath.log(yv)
+            y_safe = mythos_singularity_guard(yv)
+            self._fwd = cmath.exp(xv) - cmath.log(y_safe)
         else:
             raise ValueError(f"Unknown EMLNode kind: {k!r}")
         return self._fwd

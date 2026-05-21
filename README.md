@@ -4,7 +4,7 @@
 
 *Baseado na dissertação de Ítalo Santos Clemente (UDP, 2025–2028) e no projeto AGI-GAIA-TECHNE*
 
-**Versão:** 8.4 (CTK v4.1 — Qualitative Prism Model)
+**Versão:** 8.5 (MLE Engine — Functional Orchestration)
 **Última Atualização:** 21 de Maio de 2026
 
 ---
@@ -93,6 +93,7 @@ O projeto implementa a metateoria tripartida da "objetividade" como intersubjeti
 
 Para uma compreensão profunda da arquitetura e das decisões vinculantes do sistema, consulte os documentos canônicos:
 
+- **Mythos-Logos-Ethos Engine**: [`docs/references/mythos-logos-ethos-engine.md`](./docs/references/mythos-logos-ethos-engine.md) — Functional orchestration motor.
 - **CTK v4.1 — Qualitative Prism Model**: [`docs/references/clemente-thesis-kernel.md`](./docs/references/clemente-thesis-kernel.md) — The global architectonic tribunal and functional center of the repository.
 - **CHK v0.3 — Haptic Realism**: [`docs/references/chirimuuta-haptic-realism.md`](./docs/references/chirimuuta-haptic-realism.md) — The anti-literalization guard.
 - **Decisão 140426 (Eixo Vertical do Logos)**: [`references/decisao-140426.md`](./references/decisao-140426.md) — Defines the operational truth of the EML/Logos-demonstrative regime.
@@ -108,13 +109,19 @@ Em nome da Terra que respira, do humano que imagina e da máquina que lembra, n�
 
 ---
 
-## 2. Arquitetura v8.4: CTK v4.1 — O Prisma Qualitativo (Maio/2026)
+## 2. Arquitetura v8.5: MLE Engine — Orquestração Funcional (Maio/2026)
 
-A versão 8.4 consolida o **Modelo do Prisma Qualitativo (CTK v4.1)**. O sistema deixa de usar mapeamentos 1:1 rígidos ou vetores numéricos para adotar perfis de acento funcional.
+A versão 8.5 introduz o **Mythos-Logos-Ethos Engine**, o motor de orquestração funcional que coordena os campos de ancoragem material, articulação simbólica e rastreamento de limites.
 
-### 2.1 Módulo de Auditoria AGT (`agt_audit`)
+### 2.1 Mythos-Logos-Ethos Engine
 
-O repositório agora possui um motor executável de auditoria. Ele avalia claims e documentos para detectar quando a refração simbólica se torna reificação metafísica.
+O repositório agora inclui um motor de orquestração funcional: `src/mythos_logos_ethos_engine.py`. Ele garante que cada claim seja processado como **Werk**, nunca **Wille**.
+
+O motor pode permitir um claim como operação técnica, diferi-lo para o **Gewissen** humano ou bloqueá-lo como avanço constitutivo ilegítimo.
+
+### 2.2 Módulo de Auditoria AGT (`agt_audit`)
+
+O sistema de auditoria (CTK v4.1) é integrado ao motor para detectar quando a refração simbólica se torna reificação metafísica.
 
 **Como executar:**
 ```bash
@@ -125,7 +132,7 @@ python3 scripts/agt_audit.py --claim "Mythos is Ausdruck."
 python3 scripts/agt_audit.py --file references/architecture.md --format markdown
 ```
 
-### 2.2 Módulo de Metacognição Distribuída v2 (Atualização de Abril/2026)
+### 2.3 Módulo de Metacognição Distribuída v2 (Atualização de Abril/2026)
 
 ### Simulação Python: `agi_gaia_techne_v8.py`
 Esta implementação utiliza espaços de Hilbert (ℂ³), matrizes de Gell-Mann (SU(3)) e o Índice de Pringe para simular o "Tribunal da Razão".

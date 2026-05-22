@@ -9,6 +9,17 @@ from .ctk import ClementeThesisKernel
 from .types import AuditResult, Decision, Pillar, Severity, Task, ThesisStatus
 
 
+def coerce_thesis_status(status: str | ThesisStatus) -> ThesisStatus:
+    if isinstance(status, ThesisStatus):
+        return status
+    if isinstance(status, str):
+        try:
+            return ThesisStatus(status)
+        except ValueError:
+            return ThesisStatus.UNCLASSIFIED_CLAIM
+    return ThesisStatus.UNCLASSIFIED_CLAIM
+
+
 @dataclass
 class PillarState:
     pillar: Pillar
@@ -142,7 +153,9 @@ class MythosLogosEthosEngine:
         ctk_audit = self.ctk.evaluate(text)
         chk_audit = self.chk.evaluate(text)
 
-        statuses = list(dict.fromkeys(ctk_audit.statuses + chk_audit.statuses))
+        raw_statuses = ctk_audit.statuses + chk_audit.statuses
+        statuses = list(dict.fromkeys(coerce_thesis_status(s) for s in raw_statuses))
+
         recommendations = list(
             dict.fromkeys(ctk_audit.recommendations + chk_audit.recommendations)
         )

@@ -20,9 +20,10 @@ def test_critical_generality_is_not_constitutive_agi():
         "AGI-GAIA-TECHNE is a critical general audit architecture."
     )
 
-    assert "CRITICAL_GENERALITY_OK" in ev.statuses
-    assert "WILLE_VIOLATION" not in ev.statuses
-    assert "MACHINE_GEWISSEN_VIOLATION" not in ev.statuses
+    status_names = [s.value for s in ev.statuses]
+    assert "CRITICAL_GENERALITY_OK" in status_names
+    assert "WILLE_VIOLATION" not in status_names
+    assert "MACHINE_GEWISSEN_VIOLATION" not in status_names
 
 def test_constitutive_confusion_is_blocked():
     from src.agt.ctk import ClementeThesisKernel
@@ -32,5 +33,6 @@ def test_constitutive_confusion_is_blocked():
         "Because AGI-GAIA-TECHNE audits all AGI, it has Wille."
     )
 
-    assert "CONSTITUTIVE_AGI_CONFUSION" in ev.statuses
-    assert "WILLE_VIOLATION" in ev.statuses
+    status_names = [s.value for s in ev.statuses]
+    assert "CONSTITUTIVE_AGI_CONFUSION" in status_names
+    assert "WILLE_VIOLATION" in status_names

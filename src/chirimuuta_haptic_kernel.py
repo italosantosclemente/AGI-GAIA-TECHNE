@@ -14,8 +14,8 @@ warnings.warn(
     stacklevel=2,
 )
 
-from agt.chk import *  # noqa: F401,F403
-from agt.chk import ChirimuutaHapticKernel as CanonicalCHK
+from src.agt.chk import *  # noqa: F401,F403
+from src.agt.chk import ChirimuutaHapticKernel as CanonicalCHK
 
 class ClaimStatus(str, Enum):
     REGULATIVE_HYPOTHESIS = "REGULATIVE_HYPOTHESIS"

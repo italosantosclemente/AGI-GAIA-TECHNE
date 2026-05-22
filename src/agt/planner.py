@@ -88,7 +88,8 @@ class Planner:
         ctk = self.ctk.evaluate(audit_text)
         chk = self.chk.evaluate(audit_text)
 
-        statuses = list(dict.fromkeys(ctk.statuses + chk.statuses))
+        statuses = [s.value for s in ctk.statuses]
+        # CHK statuses in AuditResult are ThesisStatus enums now
         recommendations = list(dict.fromkeys(ctk.recommendations + chk.recommendations))
         severity = ctk.severity
         if chk.severity.value == "high":

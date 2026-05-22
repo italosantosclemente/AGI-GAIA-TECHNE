@@ -65,6 +65,6 @@ __pycache__/
 *.db
 .env
 
-# AGI-GAIA-TECHNE Memory artifacts
+# AGI-GAIA-TECHNE v8.0+ generated artifacts
 memory/*.jsonl
 outputs/

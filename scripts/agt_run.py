@@ -13,8 +13,8 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from agt.controller import AGTController
-from agt.types import Decision
+from src.agt.controller import AGTController
+from src.agt.types import Decision
 
 
 def main() -> int:
@@ -38,7 +38,7 @@ def main() -> int:
     else:
         print("# AGI-GAIA-TECHNE Functional Report\n")
         print(f"**Decision:** {report.decision.value}")
-        print(f"**Audit:** {', '.join(report.audit_statuses)}")
+        print(f"**Audit:** {', '.join([s.value if hasattr(s, 'value') else str(s) for s in report.audit_statuses])}")
         print("\n## Final answer\n")
         print(report.final_answer)
 

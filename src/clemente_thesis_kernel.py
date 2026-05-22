@@ -10,13 +10,13 @@ from enum import Enum
 from dataclasses import dataclass
 
 warnings.warn(
-    "src.clemente_thesis_kernel is deprecated. Use src.agt.ctk as the canonical runtime.",
+    "src.clemente_thesis_kernel is deprecated. Use src.agt.ctk instead.",
     DeprecationWarning,
     stacklevel=2,
 )
 
-from agt.ctk import *  # noqa: F401,F403
-from agt.ctk import ClementeThesisKernel as CanonicalCTK
+from src.agt.ctk import *  # noqa: F401,F403
+from src.agt.ctk import ClementeThesisKernel as CanonicalCTK
 
 # Re-exporting legacy names
 class ThesisStatus(str, Enum):
@@ -76,7 +76,7 @@ class EvaluationResult:
     def __init__(self, claim, ok, statuses, severity, triggered_rules=None, recommendations=None):
         self.claim = claim
         self.ok = ok
-        self.statuses = [ThesisStatus(s) if isinstance(s, str) and s in ThesisStatus.__members__ else s for s in statuses]
+        self.statuses = [ThesisStatus(s.value if hasattr(s, 'value') else s) if (isinstance(s, str) or hasattr(s, 'value')) and (s if isinstance(s, str) else s.value) in ThesisStatus.__members__ else s for s in statuses]
         self.severity = severity
         self.triggered_rules = triggered_rules or []
         self.recommendations = recommendations or []
@@ -97,10 +97,7 @@ class ClementeThesisKernel:
 
     def evaluate(self, claim):
         res = self.canonical.evaluate(claim)
-
-        # Mapping severity high -> ok False for legacy tests
         ok = (res.severity.value != "high")
-
         return EvaluationResult(
             claim=claim,
             ok=ok,

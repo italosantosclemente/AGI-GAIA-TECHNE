@@ -27,6 +27,26 @@ O projeto implementa a metateoria tripartida da "objetividade" como intersubjeti
 
 **Antes de escrever qualquer código ou documentação para este projeto, leia `references/architecture.md` para a especificação filosófico-técnica completa.**
 
+## Freud-Cassirer Patch
+
+AGI-GAIA-TECHNE rejects both naturalistic and psychological reductions of myth.
+
+Cassirer’s point against Freud is functional: myth is not defined by its object or by a hidden psychic source. Myth is a symbolic form whose function configures a world.
+
+This matters for AI because the same error returns when artificial systems are treated as if they had an unconscious, hidden desire, soul, authentic self or inner subjectivity.
+
+The CTK now detects these risks:
+- `MYTH_FUNCTION_REDUCTION_RISK`
+- `PSYCHOLOGIA_MYTH_REDUCTION_RISK`
+- `ARTIFICIAL_INTERIORITY_RISK`
+
+Final rule:
+```text
+Function ≠ substance.
+Mediation ≠ interiority.
+Werk ≠ Wille.
+```
+
 ### Axiomas Centrais
 
 1. **O Axioma Inviolável**: `is_wille = False` — Ethos é *Werk* (obra), nunca *Wille* (vontade).

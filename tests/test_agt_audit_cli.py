@@ -42,3 +42,39 @@ def test_cli_exit_code_ok():
         capture_output=True, text=True
     )
     assert result.returncode == 0
+
+def test_cli_detects_psychologia_myth_reduction():
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/agt_audit.py",
+            "--claim",
+            "Myth is reducible to unconscious desire.",
+            "--format",
+            "json",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 1
+    data = json.loads(result.stdout)
+    assert "PSYCHOLOGIA_MYTH_REDUCTION_RISK" in data["statuses"]
+    assert "CONSTITUTIVE_OVERREACH" in data["statuses"]
+
+
+def test_cli_detects_artificial_interiority():
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/agt_audit.py",
+            "--claim",
+            "The AI has an unconscious.",
+            "--format",
+            "json",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 1
+    data = json.loads(result.stdout)
+    assert "ARTIFICIAL_INTERIORITY_RISK" in data["statuses"]

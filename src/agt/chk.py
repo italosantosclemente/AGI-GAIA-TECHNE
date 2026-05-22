@@ -9,7 +9,7 @@ from dataclasses import asdict, dataclass, field
 from enum import Enum
 from typing import List, Optional, Sequence
 
-from .types import AuditResult, Severity
+from .types import AuditResult, Severity, ThesisStatus
 from .version import CHK_VERSION
 
 
@@ -192,21 +192,55 @@ class ChirimuutaHapticKernel:
         r"\bmedium\s+dependence\s+registered\b",
     ]
 
+    ABSTRACTION_PATTERNS = [
+        r"\bexact\s+mathematical\s+ontology\b",
+        r"\bliteral\s+ontology\s+of\s+mind\b",
+        r"\bliteral\s+ontology\s+of\s+symbolic\s+consciousness\b",
+        r"\bmodel\s+is\s+the\s+mind\b",
+        r"\bmodel\s+is\s+consciousness\b",
+        r"\bsubstrate\s+independent\s+without\s+loss\b",
+        r"\bno\s+abstraction\s+cost\b",
+        r"\babstraction\s+without\s+cost\b",
+    ]
+
+    HAPTIC_OK_PATTERNS = [
+        r"\bhaptic\b",
+        r"\bmaterial\b",
+        r"\bmedium\b",
+        r"\babstraction\s+cost\b",
+        r"\bembodied\b",
+        r"\bpractice\b",
+        r"\btraceability\b",
+        r"\bmedium\s+dependence\b",
+    ]
+
     def evaluate(self, claim: str) -> AuditResult:
         eval_result = self.evaluate_full(claim)
 
-        statuses = [eval_result.status.value]
+        statuses: List[ThesisStatus] = []
+        recommendations: List[str] = []
+
         if eval_result.status == ClaimStatus.CONSTITUTIVE_OVERREACH:
-            statuses.append("CONSTITUTIVE_OVERREACH")
+            statuses.append(ThesisStatus.CONSTITUTIVE_OVERREACH)
 
         if eval_result.status == ClaimStatus.HAPTIC_MODEL:
-            statuses.append("HAPTIC_MODEL")
+            statuses.append(ThesisStatus.HAPTIC_MODEL_OK)
 
-        # Add risk-specific statuses to the generic list for CTK integration
-        if eval_result.status == ClaimStatus.MACHINE_ORGANISM_ANALOGY_RISK:
-             statuses.append("MACHINE_ORGANISM_ANALOGY_RISK")
-        if eval_result.status == ClaimStatus.ABSTRACTION_RISK:
-             statuses.append("ABSTRACTION_RISK")
+        # Map ClaimStatus directly to ThesisStatus
+        status_map = {
+            ClaimStatus.MACHINE_ORGANISM_ANALOGY_RISK: ThesisStatus.MACHINE_ORGANISM_ANALOGY_RISK,
+            ClaimStatus.ABSTRACTION_RISK: ThesisStatus.ABSTRACTION_COST_MISSING,
+            ClaimStatus.REGULATIVE_HYPOTHESIS: ThesisStatus.REGULATIVE_OK,
+        }
+
+        if eval_result.status in status_map:
+             statuses.append(status_map[eval_result.status])
+
+        # Default mapping for others
+        try:
+             statuses.append(ThesisStatus(eval_result.status.value))
+        except ValueError:
+             pass
 
         # Mapping to CTK-like AuditResult
         severity = Severity.LOW
@@ -219,14 +253,14 @@ class ChirimuutaHapticKernel:
         }:
             severity = Severity.MEDIUM
 
-        recommendations = []
         if eval_result.recommended_rewrite:
             recommendations.append(eval_result.recommended_rewrite)
 
         return AuditResult(
-            statuses=list(dict.fromkeys(statuses)),
+            statuses=list(set(statuses)),
             severity=severity,
-            recommendations=recommendations,
+            recommendations=list(dict.fromkeys(recommendations)),
+            claim=claim,
         )
 
     def evaluate_full(self, claim: str) -> ClaimEvaluation:
@@ -386,7 +420,7 @@ class ChirimuutaHapticKernel:
         if techno_hits: return ClaimStatus.TECHNOCRATIC_AUTHORITY_RISK
         if predict_hits: return ClaimStatus.PREDICTION_WITHOUT_UNDERSTANDING
         if plasticity_hits: return ClaimStatus.HERACLITEAN_PLASTICITY_RISK
-        if machine_organism_hits: return ClaimStatus.MACHINE_ORGANISM_ANALOGY_RISK
+        if machine_organism_analogy_hits := machine_organism_hits: return ClaimStatus.MACHINE_ORGANISM_ANALOGY_RISK
         if reflex_hits: return ClaimStatus.REFLEX_ATOMISM_RISK
         if cartesian_hits: return ClaimStatus.CARTESIAN_IDEALIZATION_RISK
         if medium_hits: return ClaimStatus.MEDIUM_DEPENDENCE_RISK

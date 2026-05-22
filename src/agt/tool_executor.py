@@ -91,7 +91,6 @@ class ToolExecutor:
 
     def _write_text_file_sandboxed(self, filepath: str, content: str) -> Dict[str, Any]:
         target = Path(filepath)
-        # Normalize and check sandbox
         try:
             full_path = target.resolve()
             cwd = Path.cwd().resolve()
@@ -111,7 +110,6 @@ class ToolExecutor:
 
         target.parent.mkdir(parents=True, exist_ok=True)
 
-        # Atomic-ish write
         temp_path = target.with_suffix(target.suffix + ".tmp")
         temp_path.write_text(content, encoding="utf-8")
         temp_path.replace(target)
@@ -130,7 +128,7 @@ class ToolExecutor:
         result = ctk.evaluate(content)
         return {
             "filepath": filepath,
-            "statuses": result.statuses,
+            "statuses": [s.value for s in result.statuses],
             "severity": result.severity.value,
             "ok": result.ok
         }

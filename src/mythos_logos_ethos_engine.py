@@ -14,9 +14,9 @@ warnings.warn(
     stacklevel=2,
 )
 
-from agt.mle_engine import *  # noqa: F401,F403
-from agt.mle_engine import MythosLogosEthosEngine as CanonicalMLE
-from agt.types import Task, Decision
+from src.agt.mle_engine import *  # noqa: F401,F403
+from src.agt.mle_engine import MythosLogosEthosEngine as CanonicalMLE
+from src.agt.types import Task, Decision
 
 # Re-exporting legacy names
 IS_WILLE = False

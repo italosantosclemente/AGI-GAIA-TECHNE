@@ -289,6 +289,7 @@ class LogosMotor:
     def _ctk_audit(self, claim: str) -> LogosAudit:
         try:
             ev = self.ctk.evaluate(claim)
+            # Ensure statuses are strings for this legacy-style motor
             statuses = [
                 s.value if hasattr(s, "value") else str(s)
                 for s in getattr(ev, "statuses", [])

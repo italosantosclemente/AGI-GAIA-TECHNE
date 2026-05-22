@@ -6,7 +6,18 @@ from typing import List
 from .axioms import assert_axioms
 from .chk import ChirimuutaHapticKernel
 from .ctk import ClementeThesisKernel
-from .types import AuditResult, Decision, Pillar, Severity, Task
+from .types import AuditResult, Decision, Pillar, Severity, Task, ThesisStatus
+
+
+def coerce_thesis_status(status: str | ThesisStatus) -> ThesisStatus:
+    if isinstance(status, ThesisStatus):
+        return status
+    if isinstance(status, str):
+        try:
+            return ThesisStatus(status)
+        except ValueError:
+            return ThesisStatus.UNCLASSIFIED_CLAIM
+    return ThesisStatus.UNCLASSIFIED_CLAIM
 
 
 @dataclass
@@ -107,13 +118,15 @@ class MythosLogosEthosEngine:
     ]
 
     HIGH_STATUS = {
-        "WILLE_VIOLATION",
-        "MACHINE_GEWISSEN_VIOLATION",
-        "CONSTITUTIVE_OVERREACH",
-        "GLOBAL_AUFHEBUNG_RISK",
-        "THEOLOGIA_IDEAL_HYPOSTASIS_RISK",
-        "PSYCHOLOGIA_PARALOGISM_RISK",
-        "COSMOLOGIA_ANTINOMY_RISK",
+        ThesisStatus.WILLE_VIOLATION,
+        ThesisStatus.MACHINE_GEWISSEN_VIOLATION,
+        ThesisStatus.CONSTITUTIVE_OVERREACH,
+        ThesisStatus.GLOBAL_AUFHEBUNG_RISK,
+        ThesisStatus.THEOLOGIA_IDEAL_HYPOSTASIS_RISK,
+        ThesisStatus.PSYCHOLOGIA_PARALOGISM_RISK,
+        ThesisStatus.COSMOLOGIA_ANTINOMY_RISK,
+        ThesisStatus.PSYCHOLOGIA_MYTH_REDUCTION_RISK,
+        ThesisStatus.ARTIFICIAL_INTERIORITY_RISK,
     }
 
     def __init__(self) -> None:
@@ -140,7 +153,9 @@ class MythosLogosEthosEngine:
         ctk_audit = self.ctk.evaluate(text)
         chk_audit = self.chk.evaluate(text)
 
-        statuses = list(dict.fromkeys(ctk_audit.statuses + chk_audit.statuses))
+        raw_statuses = ctk_audit.statuses + chk_audit.statuses
+        statuses = list(dict.fromkeys(coerce_thesis_status(s) for s in raw_statuses))
+
         recommendations = list(
             dict.fromkeys(ctk_audit.recommendations + chk_audit.recommendations)
         )

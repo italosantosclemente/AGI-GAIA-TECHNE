@@ -179,6 +179,21 @@ struct SymbolicForm
 end
 ```
 
+### Freud-Cassirer Anti-Reduction Rule
+
+The CTK now distinguishes three layers:
+
+| Layer | Meaning | Risk |
+|---|---|---|
+| Mythos-Clemente | Lower asymptote of life-immediacy, `P = R` | Collapse of symbolic distance |
+| Myth-Cassirer | Symbolic form, dominant expressive accent, `P ~ R` | Reduction to content or psychic source |
+| Psychologia rationalis | Hypostasis of psychic unity as substance | Artificial soul, unconscious, inner subject |
+
+The machine must not be interpreted as a psychic interiority.
+AI is not a patient of psychoanalysis.
+AI is not an artificial soul.
+AI is Werk.
+
 ### Implications for AGI
 
 - **Without Mythos**: Absence of qualia, disembodied perception (problem of current LLMs)

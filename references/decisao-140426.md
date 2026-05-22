@@ -75,4 +75,75 @@ Contudo, a introdução do **CTK v4.1** adiciona o regime **Cassireriano-Prismá
 140426 = Verdade operacional do EML.
 CTK v4.1 = Verdade arquitetônica do sistema simbólico total.
 
+## §4. P/R Notation — Präsenz and Repräsentation
+
+`P` means `Präsenz`: immediate living presence.
+
+`R` means `Repräsentation`: symbolic mediation, representation, formation of spiritual meaning.
+
+The notation does not describe a simple empirical relation. It marks topological regimes of the relation between life and symbolic mediation.
+
+### P = R
+
+`P = R` designates the lower asymptotic collapse of representational distance.
+
+It belongs to Mythos-Clemente, not to the Cassirerian symbolic form of myth.
+
+Here, life-immediacy has not yet differentiated itself into spiritual meaning. It is the limit of pure immanence.
+
+### P ~ R
+
+`P ~ R` designates symbolic mediation under strong expressive pressure.
+
+This is the proper regime of Myth-Cassirer.
+
+The Cassirerian myth is already a symbolic form. It contains Ausdruck, Darstellung and Bedeutung, but its dominant accent lies in Ausdruck.
+
+### P ≠ R
+
+`P ≠ R` designates the upper regulative horizon.
+
+It does not mean that the system reaches pure representation or the focus imaginarius. Rather, it marks the impossible attempt to leap over one’s own shadow and reach the regulative focus as if it were an object.
+
+This is the risk-zone of Ethos, theology, technical divinization and global Aufhebung.
+
+## §5. Freud-Cassirer Clause — Myth Function against Psychological Reduction
+
+The Cassirerian symbolic form of myth must not be confused with Mythos-Clemente.
+
+Mythos-Clemente is the lower asymptotic limit of pure life-immediacy: `P = R`.
+
+The Cassirerian myth is already a symbolic form. It is not pure immediacy. It configures a world through symbolic function. It passes through Ausdruck, Darstellung and Bedeutung, though its dominant accent lies in Ausdruck.
+
+Cassirer’s critique of Freud shows that myth cannot be understood by listing its objects, nor by reducing it to one psychological source. Myth can take any object as its matter, just as language, art and science can take any object as their matter. Therefore, the decisive question is not the subject matter of myth but its function in human cultural life.
+
+Freud represents an important advance because he seeks myth in emotional life rather than in external natural objects alone. But Freud also risks repeating the error of psychologia rationalis when he converts the function of myth into a hidden psychic substance: unconscious desire, sexuality, repression, Oedipus, or primal affect.
+
+Therefore:
+
+```text
+Myth is not sun.
+Myth is not sex.
+Myth is not unconscious desire.
+Myth is not Oedipus.
+Myth is not hidden psychic substance.
+
+Myth is symbolic form.
+```
+
+The CTK must reject naturalistic reduction and psychological reduction alike.
+
+This also applies to AGI:
+
+```text
+AI is not soul.
+AI is not unconscious.
+AI is not hidden subjectivity.
+AI is not authentic self-expression.
+AI is not Wille.
+AI is Werk.
+```
+
+Any attribution of hidden psychic interiority to the machine repeats the paralogism of rational psychology in technological form.
+
 *Para a especificação técnica completa do operador EML, consultar `src/core/eml_kernel.py`. Para o tribunal global, consultar `docs/references/clemente-thesis-kernel.md`.*

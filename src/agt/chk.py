@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from typing import List
 
-from .types import AuditResult, Severity
+from .types import AuditResult, Severity, ThesisStatus
 
 
 class ChirimuutaHapticKernel:
@@ -38,25 +38,33 @@ class ChirimuutaHapticKernel:
 
     def evaluate(self, claim: str) -> AuditResult:
         text = claim.lower()
-        statuses: List[str] = []
+        statuses: List[ThesisStatus] = []
         recommendations: List[str] = []
 
         if any(re.search(p, text, flags=re.IGNORECASE) for p in self.ABSTRACTION_PATTERNS):
-            statuses.extend(["ABSTRACTION_COST_MISSING", "CONSTITUTIVE_OVERREACH"])
+            statuses.extend([
+                ThesisStatus.ABSTRACTION_COST_MISSING,
+                ThesisStatus.CONSTITUTIVE_OVERREACH,
+            ])
             recommendations.append(
                 "Register abstraction cost, medium dependence and haptic traceability."
             )
 
         if any(re.search(p, text, flags=re.IGNORECASE) for p in self.HAPTIC_OK_PATTERNS):
-            statuses.append("HAPTIC_MODEL_OK")
+            statuses.append(ThesisStatus.HAPTIC_MODEL_OK)
 
         if not statuses:
-            statuses.append("HAPTIC_UNSPECIFIED")
+            statuses.append(ThesisStatus.HAPTIC_UNSPECIFIED)
 
-        severity = Severity.HIGH if "CONSTITUTIVE_OVERREACH" in statuses else Severity.LOW
+        severity = (
+            Severity.HIGH
+            if ThesisStatus.CONSTITUTIVE_OVERREACH in statuses
+            else Severity.LOW
+        )
 
         return AuditResult(
             statuses=list(dict.fromkeys(statuses)),
             severity=severity,
             recommendations=list(dict.fromkeys(recommendations)),
+            claim=claim,
         )

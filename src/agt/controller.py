@@ -12,6 +12,7 @@ from .axioms import (
 from .memory import MemoryStore
 from .mle_engine import MythosLogosEthosEngine
 from .planner import Planner
+from .version import CORE_VERSION
 from .tool_executor import ToolExecutor
 from .types import ControllerReport, Decision, MemoryKind, Task
 
@@ -33,7 +34,7 @@ class AGTController:
         self.executor = ToolExecutor()
         self.memory = MemoryStore(memory_path)
 
-        self.memory.add(
+        self.memory.add_once(
             MemoryKind.NORMATIVE,
             "axioms",
             (

@@ -1,100 +1,81 @@
-#!/usr/bin/env python3
-"""
-AGT Audit CLI — AGI-GAIA-TECHNE
-Functional audit tool for philosophical/technical claims.
-"""
+from __future__ import annotations
 
 import argparse
 import json
-import re
+import os
 import sys
 from pathlib import Path
-from typing import List
+from typing import Any, Dict, List, Optional
 
-# Ensure src is in path
-sys.path.append(str(Path(__file__).parent.parent))
+ROOT = Path(__file__).resolve().parents[1]
+SRC = ROOT / "src"
 
-from src.clemente_thesis_kernel import ClementeThesisKernel, EvaluationResult
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
 
-def audit_claim(kernel: ClementeThesisKernel, claim: str) -> EvaluationResult:
-    return kernel.evaluate(claim)
+from agt.ctk import ClementeThesisKernel
+from agt.types import Severity
 
-def audit_file(kernel: ClementeThesisKernel, filepath: str) -> List[EvaluationResult]:
-    path = Path(filepath)
-    if not path.exists():
-        print(f"Error: File {filepath} not found.")
-        sys.exit(2)
 
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
+def audit_claim(claim: str) -> Dict[str, Any]:
+    ctk = ClementeThesisKernel()
+    result = ctk.evaluate(claim)
+    return {
+        "claim": claim,
+        "statuses": result.statuses,
+        "severity": result.severity.value,
+        "recommendations": result.recommendations,
+        "ok": result.ok,
+    }
 
-    # Simple sentence splitting
-    sentences = re.split(r'(?<=[.!?])\s+', content)
-    results = []
-    for sentence in sentences:
-        if sentence.strip():
-            res = kernel.evaluate(sentence.strip())
-            # Only add if it's not unclassified or it's a success state
-            from src.clemente_thesis_kernel import ThesisStatus
-            if ThesisStatus.UNCLASSIFIED_CLAIM not in res.statuses or len(res.statuses) > 1:
-                results.append(res)
-    return results
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(description="Audit AGI-GAIA-TECHNE claims.")
-    parser.add_argument("--claim", type=str, help="Single claim to audit.")
-    parser.add_argument("--file", type=str, help="File to audit (scans sentences).")
-    parser.add_argument("--format", type=str, choices=["json", "markdown"], default="markdown", help="Output format.")
-    parser.add_argument("--fail-on", type=str, choices=["high", "critical"], default="high", help="Exit code 1 on severity.")
+    parser.add_argument("--claim", action="append", help="Claim to evaluate.")
+    parser.add_argument("--file", help="File to evaluate.")
+    parser.add_argument("--format", choices=["json", "markdown"], default="markdown")
 
     args = parser.parse_args()
 
-    if not args.claim and not args.file:
-        parser.print_help()
-        sys.exit(0)
-
-    kernel = ClementeThesisKernel()
+    results = []
 
     if args.claim:
-        result = audit_claim(kernel, args.claim)
-        if args.format == "json":
-            print(json.dumps(result.to_dict(), indent=2))
-        else:
-            print_markdown_report([result])
+        for c in args.claim:
+            results.append(audit_claim(c))
 
-        if args.fail_on == "high" and result.severity == "high":
-            sys.exit(1)
+    if args.file:
+        path = Path(args.file)
+        if path.exists():
+            content = path.read_text(encoding="utf-8")
+            results.append(audit_claim(content))
 
-    elif args.file:
-        results = audit_file(kernel, args.file)
-        if args.format == "json":
-            print(json.dumps([r.to_dict() for r in results], indent=2))
-        else:
-            print_markdown_report(results, title=f"Audit Report for {args.file}")
-
-        if args.fail_on == "high" and any(r.severity == "high" for r in results):
-            sys.exit(1)
-
-def print_markdown_report(results: List[EvaluationResult], title: str = "AGT Audit Report"):
-    print(f"# {title}\n")
     if not results:
-        print("No significant architectonic patterns detected.")
-        return
+        print("No claims provided.")
+        return 0
 
-    for i, res in enumerate(results, 1):
-        status_color = "🟢" if res.ok else "🔴"
-        print(f"## {i}. Claim Evaluation {status_color}")
-        print(f"**Claim:** {res.claim}")
-        print(f"**Status:** {', '.join([s.value for s in res.statuses])}")
-        print(f"**Severity:** {res.severity}")
-        print(f"**Kernel:** {res.kernel}")
-        if res.triggered_rules:
-            print(f"**Rules:** {', '.join(res.triggered_rules)}")
-        if res.recommendations:
-            print("**Recommendations:**")
-            for rec in res.recommendations:
-                print(f"- {rec}")
-        print("\n---")
+    if args.format == "json":
+        if len(results) == 1:
+             print(json.dumps(results[0], indent=2, ensure_ascii=False))
+        else:
+             print(json.dumps(results, indent=2, ensure_ascii=False))
+
+    else:
+        print("# AGT Audit Report\n")
+        for r in results:
+            print(f"## Claim: {r['claim'][:100]}...")
+            print(f"**Severity:** {r['severity']}")
+            print(f"**Statuses:** {', '.join(r['statuses'])}")
+            if r["recommendations"]:
+                print("\n**Recommendations:**")
+                for rec in r["recommendations"]:
+                    print(f"- {rec}")
+            print("\n---\n")
+
+    if any(r["severity"] == "high" for r in results):
+        return 1
+
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

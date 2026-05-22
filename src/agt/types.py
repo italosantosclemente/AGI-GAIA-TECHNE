@@ -55,6 +55,9 @@ class PlanStep:
     description: str
     tool_name: Optional[str] = None
     tool_args: Dict[str, Any] = field(default_factory=dict)
+    audit_statuses: List[str] = field(default_factory=list)
+    audit_severity: Severity = Severity.LOW
+    audit_recommendations: List[str] = field(default_factory=list)
 
 
 @dataclass

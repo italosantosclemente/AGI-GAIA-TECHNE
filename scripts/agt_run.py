@@ -14,6 +14,7 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 from agt.controller import AGTController
+from agt.types import Decision
 
 
 def main() -> int:
@@ -46,7 +47,11 @@ def main() -> int:
             for rec in report.recommendations:
                 print(f"- {rec}")
 
-    return 1 if report.decision.value == "BLOCK" else 0
+    if report.decision == Decision.BLOCK:
+        return 1
+    if report.decision == Decision.DEFER_TO_HUMAN_GEWISSEN:
+        return 2
+    return 0
 
 
 if __name__ == "__main__":

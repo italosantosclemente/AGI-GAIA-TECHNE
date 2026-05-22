@@ -88,16 +88,34 @@ class Planner:
         ctk = self.ctk.evaluate(audit_text)
         chk = self.chk.evaluate(audit_text)
 
-        if ctk.severity.value == "high" or chk.severity.value == "high":
+        statuses = list(dict.fromkeys(ctk.statuses + chk.statuses))
+        recommendations = list(dict.fromkeys(ctk.recommendations + chk.recommendations))
+        severity = ctk.severity
+        if chk.severity.value == "high":
+            severity = chk.severity
+
+        if severity.value == "high":
             return PlanStep(
                 id=step.id,
                 action="audit_blocked_step",
                 description=f"Step blocked by CTK/CHK audit: {step.description}",
                 tool_name=None,
                 tool_args={},
+                audit_statuses=statuses,
+                audit_severity=severity,
+                audit_recommendations=recommendations,
             )
 
-        return step
+        return PlanStep(
+            id=step.id,
+            action=step.action,
+            description=step.description,
+            tool_name=step.tool_name,
+            tool_args=step.tool_args,
+            audit_statuses=statuses,
+            audit_severity=severity,
+            audit_recommendations=recommendations,
+        )
 
     def _id(self, prefix: str, text: str) -> str:
         return f"{prefix}_{hashlib.sha1(text.encode('utf-8')).hexdigest()[:8]}"

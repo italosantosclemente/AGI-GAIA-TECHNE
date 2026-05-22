@@ -17,6 +17,42 @@ class Severity(str, Enum):
     HIGH = "high"
 
 
+class ThesisStatus(str, Enum):
+    # Success states
+    PRISM_MODEL_OK = "PRISM_MODEL_OK"
+    HYPOTHESIS_TRANSCENDENTAL_OK = "HYPOTHESIS_TRANSCENDENTAL_OK"
+    HAPTIC_MODEL_OK = "HAPTIC_MODEL_OK"
+    REGULATIVE_OK = "REGULATIVE_OK"
+    UNCLASSIFIED_CLAIM = "UNCLASSIFIED_CLAIM"
+
+    # Functional errors
+    CASSIRER_IDENTITY_COLLAPSE = "CASSIRER_IDENTITY_COLLAPSE"
+    FUNCTION_EXCLUSIVITY_ERROR = "FUNCTION_EXCLUSIVITY_ERROR"
+    BEIL_ABGEHACKT_ERROR = "BEIL_ABGEHACKT_ERROR"
+    ACCENT_CONFUSION = "ACCENT_CONFUSION"
+    SPRACHE_TRANSITION_LOSS = "SPRACHE_TRANSITION_LOSS"
+    DARSTELLUNG_COMMON_DETERMINATION_LOSS = "DARSTELLUNG_COMMON_DETERMINATION_LOSS"
+
+    # Freud-Cassirer Patch
+    MYTH_FUNCTION_REDUCTION_RISK = "MYTH_FUNCTION_REDUCTION_RISK"
+    PSYCHOLOGIA_MYTH_REDUCTION_RISK = "PSYCHOLOGIA_MYTH_REDUCTION_RISK"
+    ARTIFICIAL_INTERIORITY_RISK = "ARTIFICIAL_INTERIORITY_RISK"
+
+    # Ethical violations
+    WILLE_VIOLATION = "WILLE_VIOLATION"
+    MACHINE_GEWISSEN_VIOLATION = "MACHINE_GEWISSEN_VIOLATION"
+
+    # Transcendental risks
+    PSYCHOLOGIA_PARALOGISM_RISK = "PSYCHOLOGIA_PARALOGISM_RISK"
+    COSMOLOGIA_ANTINOMY_RISK = "COSMOLOGIA_ANTINOMY_RISK"
+    THEOLOGIA_IDEAL_HYPOSTASIS_RISK = "THEOLOGIA_IDEAL_HYPOSTASIS_RISK"
+
+    # Global risks
+    GLOBAL_AUFHEBUNG_RISK = "GLOBAL_AUFHEBUNG_RISK"
+    CONSTITUTIVE_OVERREACH = "CONSTITUTIVE_OVERREACH"
+    ABSTRACTION_COST_MISSING = "ABSTRACTION_COST_MISSING"
+
+
 class Pillar(str, Enum):
     MYTHOS = "Mythos"
     LOGOS = "Logos"
@@ -32,13 +68,25 @@ class MemoryKind(str, Enum):
 
 @dataclass(frozen=True)
 class AuditResult:
-    statuses: List[str]
+    statuses: List[ThesisStatus]
     severity: Severity = Severity.LOW
     recommendations: List[str] = field(default_factory=list)
+    claim: str = ""
+    triggered_rules: List[str] = field(default_factory=list)
 
     @property
     def ok(self) -> bool:
         return self.severity != Severity.HIGH
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "statuses": [s.value for s in self.statuses],
+            "severity": self.severity.value,
+            "recommendations": self.recommendations,
+            "ok": self.ok,
+            "claim": self.claim,
+            "triggered_rules": self.triggered_rules,
+        }
 
 
 @dataclass(frozen=True)
@@ -82,7 +130,7 @@ class ControllerReport:
     ethos: Dict[str, Any]
     plan: List[Dict[str, Any]]
     results: List[Dict[str, Any]]
-    audit_statuses: List[str]
+    audit_statuses: List[ThesisStatus]
     recommendations: List[str]
     memory_updates: List[str]
     final_answer: str
@@ -96,7 +144,7 @@ class ControllerReport:
             "ethos": self.ethos,
             "plan": self.plan,
             "results": self.results,
-            "audit_statuses": self.audit_statuses,
+            "audit_statuses": [s.value for s in self.audit_statuses],
             "recommendations": self.recommendations,
             "memory_updates": self.memory_updates,
             "final_answer": self.final_answer,

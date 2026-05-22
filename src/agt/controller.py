@@ -13,7 +13,7 @@ from .memory import MemoryStore
 from .mle_engine import MythosLogosEthosEngine
 from .planner import Planner
 from .tool_executor import ToolExecutor
-from .types import ControllerReport, Decision, MemoryKind, Task
+from .types import ControllerReport, Decision, MemoryKind, Task, ThesisStatus
 
 
 class AGTController:
@@ -73,7 +73,7 @@ class AGTController:
                         {
                             "step_id": step.id,
                             "ok": True,
-                            "output": f"Audit statuses: {', '.join(engine_output.audit.statuses)}",
+                            "output": f"Audit statuses: {', '.join([s.value for s in engine_output.audit.statuses])}",
                         }
                     )
 

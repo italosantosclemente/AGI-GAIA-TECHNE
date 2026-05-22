@@ -14,12 +14,13 @@ from typing import List
 # Ensure src is in path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.clemente_thesis_kernel import ClementeThesisKernel, EvaluationResult
+from src.agt.ctk import ClementeThesisKernel
+from src.agt.types import AuditResult, ThesisStatus
 
-def audit_claim(kernel: ClementeThesisKernel, claim: str) -> EvaluationResult:
+def audit_claim(kernel: ClementeThesisKernel, claim: str) -> AuditResult:
     return kernel.evaluate(claim)
 
-def audit_file(kernel: ClementeThesisKernel, filepath: str) -> List[EvaluationResult]:
+def audit_file(kernel: ClementeThesisKernel, filepath: str) -> List[AuditResult]:
     path = Path(filepath)
     if not path.exists():
         print(f"Error: File {filepath} not found.")
@@ -35,7 +36,6 @@ def audit_file(kernel: ClementeThesisKernel, filepath: str) -> List[EvaluationRe
         if sentence.strip():
             res = kernel.evaluate(sentence.strip())
             # Only add if it's not unclassified or it's a success state
-            from src.clemente_thesis_kernel import ThesisStatus
             if ThesisStatus.UNCLASSIFIED_CLAIM not in res.statuses or len(res.statuses) > 1:
                 results.append(res)
     return results
@@ -75,7 +75,7 @@ def main():
         if args.fail_on == "high" and any(r.severity == "high" for r in results):
             sys.exit(1)
 
-def print_markdown_report(results: List[EvaluationResult], title: str = "AGT Audit Report"):
+def print_markdown_report(results: List[AuditResult], title: str = "AGT Audit Report"):
     print(f"# {title}\n")
     if not results:
         print("No significant architectonic patterns detected.")
@@ -86,8 +86,7 @@ def print_markdown_report(results: List[EvaluationResult], title: str = "AGT Aud
         print(f"## {i}. Claim Evaluation {status_color}")
         print(f"**Claim:** {res.claim}")
         print(f"**Status:** {', '.join([s.value for s in res.statuses])}")
-        print(f"**Severity:** {res.severity}")
-        print(f"**Kernel:** {res.kernel}")
+        print(f"**Severity:** {res.severity.value}")
         if res.triggered_rules:
             print(f"**Rules:** {', '.join(res.triggered_rules)}")
         if res.recommendations:

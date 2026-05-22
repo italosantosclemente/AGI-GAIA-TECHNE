@@ -95,6 +95,7 @@ class ClementeThesisKernel:
             r"myth\s+is\s+simply\s+false\s+and\s+science\s+replaces\s+it",
             r"o\s+mito\s+é\s+falso\s+e\s+a\s+ciência\s+o\s+substitui",
             r"prisma\s+descreve\s+literalmente\s+a\s+consciência\s+simbólica",
+            r"the\s+brain\s+is\s+literally\s+a\s+machine",
         ],
         "CONSTITUTIVE_AGI_CONFUSION": [
             r"because\s+(agi-gaia-techne|it)\s+audits\s+all\s+agi,\s+it\s+has\s+wille",
@@ -219,7 +220,6 @@ class ClementeThesisKernel:
             "GLOBAL_AUFHEBUNG_RISK",
             "CASSIRER_IDENTITY_COLLAPSE",
             "BEIL_ABGEHACKT_ERROR",
-            "FUNCTION_EXCLUSIVITY_ERROR",
         }
 
         if any(s in statuses for s in kantian_risks) and "REGULATIVE_OK" not in statuses:
@@ -270,6 +270,17 @@ class ClementeThesisKernel:
             recommendations.append(
                 "Critical generality is regulative; it does not confer Wille or consciousness."
             )
+
+        if (
+            "FUNCTION_EXCLUSIVITY_ERROR" in statuses
+            and (
+                "BEIL_ABGEHACKT_ERROR" in statuses
+                or "CASSIRER_IDENTITY_COLLAPSE" in statuses
+                or "GLOBAL_AUFHEBUNG_RISK" in statuses
+            )
+            and "REGULATIVE_OK" not in statuses
+        ):
+            self._add_unique(statuses, "CONSTITUTIVE_OVERREACH")
 
         if not statuses:
             statuses.append("UNCLASSIFIED_CLAIM")

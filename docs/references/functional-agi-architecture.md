@@ -1,5 +1,8 @@
 # Functional AGI Architecture — AGI-GAIA-TECHNE
 
+
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](docs/references/canonical-architecture-map.md).
+
 Functional AGI is not artificial consciousness, artificial soul or machine Wille.
 
 Functional AGI is a tool-using, memory-updating, critically audited Werk.

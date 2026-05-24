@@ -2,7 +2,7 @@
 EML Kernel — AGI-GAIA-TECHNE
 ============================
 
-Decision 140426 + CTK v4.1 Prism Update 210526:
+Decision 140426 + CTK v4.3.2 Prism Update 210526:
 
 The EML kernel belongs to Logos as demonstrative symbolic stabilization.
 

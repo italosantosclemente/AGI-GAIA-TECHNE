@@ -6,9 +6,9 @@
 
 ---
 
-## CTK v4.2 Unified Restratification (21/05/2026)
+## CTK v4.3 Unified Restratification (21/05/2026)
 
-A Decisão 140426 é canônica para o regime EML/Logos-demonstrativo. Ela não define a totalidade da filosofia cassireriana das formas simbólicas. O CTK v4.1 requalifica essa decisão: no regime amplo do prisma, Ausdruck, Darstellung e Bedeutung são dimensões funcionais presentes em toda forma simbólica; no regime técnico EML, elas operam como níveis internos do Logos.
+A Decisão 140426 é canônica para o regime EML/Logos-demonstrativo. Ela não define a totalidade da filosofia cassireriana das formas simbólicas. O CTK v4.3.2 requalifica essa decisão: no regime amplo do prisma, Ausdruck, Darstellung e Bedeutung são dimensões funcionais presentes em toda forma simbólica; no regime técnico EML, elas operam como níveis internos do Logos.
 
 ---
 
@@ -59,11 +59,11 @@ Tal identificação constitui um **paralogismo**: a redução de uma ideia regul
 
 ---
 
-## §4. Restratificação CTK v4.1 (21/05/2026)
+## §4. Restratificação CTK v4.3.2 (21/05/2026)
 
 A Decisão 140426 permanece integralmente válida no regime **EML/Logos-demonstrativo**. Nesse regime operacional, Ausdruck, Darstellung e Bedeutung são tratados como níveis internos ao submotor Logos para fins de estabilização técnica.
 
-Contudo, a introdução do **CTK v4.1** adiciona o regime **Cassireriano-Prismático** amplo:
+Contudo, a introdução do **CTK v4.3.2** adiciona o regime **Cassireriano-Prismático** amplo:
 
 1.  **Dimensões, não gavetas**: Ausdruck, Darstellung e Bedeutung são dimensões qualitativas presentes em toda forma simbólica. Nenhuma forma é reduzível a apenas uma função.
 2.  **Acento Funcional**: As formas diferem por acento qualitativo e modo de organização:
@@ -73,7 +73,7 @@ Contudo, a introdução do **CTK v4.1** adiciona o regime **Cassireriano-Prismá
 
 **Fórmula de Conciliação**:
 140426 = Verdade operacional do EML.
-CTK v4.1 = Verdade arquitetônica do sistema simbólico total.
+CTK v4.3.2 = Verdade arquitetônica do sistema simbólico total.
 
 ## §4. P/R Notation — Präsenz and Repräsentation
 

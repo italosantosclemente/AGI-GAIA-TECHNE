@@ -1,31 +1,147 @@
 from __future__ import annotations
 
 import re
-from typing import List
+from typing import List, Dict, Any, Sequence
+from dataclasses import dataclass, asdict
 
 from .types import AuditResult, Severity, ThesisStatus
+
+
+@dataclass(frozen=True)
+class SourceAnchor:
+    """A compact page reference for code-level philosophical traceability."""
+    key: str
+    pages: str
+    principle: str
+    short_note: str
+
+
+SOURCE_ANCHORS: Sequence[SourceAnchor] = (
+    SourceAnchor("HR_ACTIVE_PROCESS", "Chirimuuta 2024, p. 36", "Scientific knowledge is active and intervention-bound.", "Knowledge is made through active engagement."),
+    SourceAnchor("FORMAL_IDEALISM", "Chirimuuta 2024, pp. 40-46", "Formal idealism: model regularities are not automatically things-in-themselves.", "Model regularity is an interaction product."),
+    SourceAnchor("BRAIN_COMPUTER_ANALOGY", "Chirimuuta 2024, pp. 91-118", "Brain-computer relation is an analogy, not literal identity.", "Do not infer literal computation from modeling."),
+    SourceAnchor("MISPLACED_CONCRETENESS", "Chirimuuta 2024, pp. 245-248", "Do not mistake an abstraction for concrete reality.", "AGI inflation literalizes the model."),
+    SourceAnchor("KANT_JUDGMENT_GAP", "Chirimuuta 2023, pp. 3-6", "Rule execution is not judgment.", "No algorithms for judgment."),
+    SourceAnchor("CASSIRER_GOLDSTEIN_AUTONOMY", "Chirimuuta 2020, pp. 1, 3-4", "Biology and cognition require autonomous methods.", "No single symbolic function may claim sovereignty."),
+    SourceAnchor("MEDIUM_DEPENDENCE", "Chirimuuta 2022, pp. 185-194", "Medium-independence must be argued, not presupposed.", "Materiality of chemical signaling matters."),
+    SourceAnchor("CARTESIAN_IDEALIZATION", "Chirimuuta 2022, pp. 218-235", "Mind-world boundaries are useful idealizations, not ontology.", "The self-contained mind is a simplifying lens."),
+    SourceAnchor("REFLEX_ATOMISM", "Chirimuuta 2021, p. 12733", "The simple reflex is often an artefact of experimental origin.", "Atomism neglects organismic complexity."),
+    SourceAnchor("PREDICTION_UNDERSTANDING_SPLIT", "Chirimuuta 2025 (Lakatos Award Lecture)", "Prediction and understanding are pulling apart.", "Scale and performance != intelligence."),
+    SourceAnchor("ABSTRACTION_COST", "Chirimuuta 2024, pp. ix-x; pp. 303-307", "Every formalization suppresses particularity; the cost must be registered.", "Risk does not refute the model; it demands haptic traceability."),
+    SourceAnchor("MACHINE_ORGANISM_ANALOGY", "Chirimuuta 2020; Chirimuuta 2024, pp. 91-118", "Machine analogies simplify living systems but must not become literal ontology.", "The organism is not exhausted by the machine model."),
+    SourceAnchor("HERACLITEAN_BRAIN", "Chirimuuta 2024, pp. 183-206", "The brain is temporally plastic and never exactly the same system twice.", "Fixed input-output mappings risk erasing temporal and biological flux."),
+    SourceAnchor("TECHNOCRATIC_AUTHORITY", "Chirimuuta 2024; Critical Realism and Technocracy", "Scientific abstraction can become political authority when its limits are forgotten.", "Expertise does not automatically become legitimate governance."),
+    SourceAnchor("APOCALYPTIC_TECHNOLOGY", "Chirimuuta 2025, Apocalyptic Technology", "Technological prediction and scientific understanding can pull apart.", "AI escalation must not be treated as eschatology."),
+)
 
 
 class ChirimuutaHapticKernel:
     """
     CHK: haptic anti-literalization guard.
-
-    It detects when a model becomes ontology, when abstraction cost vanishes,
-    or when medium/material dependence is ignored.
+    v0.3 canonical version.
     """
 
-    ABSTRACTION_PATTERNS = [
+    _literal_patterns = [
+        r"\bbrain\s+is\s+(literally\s+)?(a\s+)?computer\b",
+        r"\bmodel\s+is\s+(the\s+)?(mind|brain|intelligence)\b",
+        r"\bANNs?\s+(will|must|inevitably)\s+(become|scale\s+to)\s+(conscious|AGI|general intelligence)\b",
+        r"\bobjective\s+validity\b.*\bAGI\b",
+        r"\bcomputation\s+is\s+the\s+essence\s+of\s+cognition\b",
         r"\bexact\s+mathematical\s+ontology\b",
         r"\bliteral\s+ontology\s+of\s+mind\b",
         r"\bliteral\s+ontology\s+of\s+symbolic\s+consciousness\b",
-        r"\bmodel\s+is\s+the\s+mind\b",
-        r"\bmodel\s+is\s+consciousness\b",
-        r"\bsubstrate\s+independent\s+without\s+loss\b",
+    ]
+
+    _negarestani_risk_patterns = [
+        r"\blogic\s+as\s+organon\b",
+        r"\bexternal\s+view\s+of\s+ourselves\b",
+        r"\bcomplete\s+formali[sz]ation\s+of\s+intelligence\b",
+        r"\bintelligence\s+as\s+(pure\s+)?structure\b",
+    ]
+
+    _literalization_intensifiers = [
+        r"\bliterally\b",
+        r"\bfully\s+determines?\b",
+        r"\bin\s+itself\b",
+        r"\bintelligence[-\s]in[-\s]itself\b",
+        r"\binevitable\b",
+        r"\bcomplete\s+formali[sz]ation\b",
+        r"\bsubstrate[-\s]?independent\b",
+        r"\bobjective\s+validity\b",
+    ]
+
+    _wille_patterns = [
+        r"\bis_wille\s*=\s*true\b",
+        r"\b(machine|AI|AGI|model)\s+(has|possesses|exercises)\s+(will|Wille|moral agency|autonomy in the Kantian practical sense)\b",
+        r"\b(machine|AI|AGI)\s+legislates\s+(the\s+)?moral\s+law\b",
+        r"\bmachine\s+as\s+legislative\s+subject\b",
+    ]
+
+    _judgment_overreach_patterns = [
+        r"\bAI\s+(has|possesses|achieves)\s+judgment\b",
+        r"\bcomputers?\s+can\s+judge\b",
+        r"\bautomated\s+legal\s+judgment\b",
+        r"\brule[-\s]?execution\s+(is|equals)\s+judgment\b",
+    ]
+
+    _medium_independence_patterns = [
+        r"\bsubstrate[-\s]?independent\b",
+        r"\bmedium[-\s]?independent\b",
+        r"\bmultiple\s+realizability\b",
+        r"\bvehicle[-\s]?neutral\b",
         r"\bno\s+abstraction\s+cost\b",
         r"\babstraction\s+without\s+cost\b",
     ]
 
-    HAPTIC_OK_PATTERNS = [
+    _cartesian_idealization_patterns = [
+        r"\bmind\s+as\s+(a\s+)?self[-\s]?contained\s+system\b",
+        r"\bintelligence\s+as\s+input[-\s]?output\s+system\b",
+        r"\binner\s+states?\s+independent\s+of\s+world\b",
+        r"\bclean\s+boundary\s+between\s+mind\s+and\s+world\b",
+    ]
+
+    _reflex_atomism_patterns = [
+        r"\bcomplex\s+(mind|intelligence|agency)\s+is\s+just\s+a\s+chain\s+of\s+simple\s+(responses|operations|reflexes)\b",
+        r"\binput[-\s]?output\s+units\s+(fully\s+)?explain\s+(mind|agency|intelligence)\b",
+        r"\bstimulus[-\s]?response\s+(chains|mechanisms)\s+explain\s+mental\s+life\b",
+    ]
+
+    _machine_organism_patterns = [
+        r"\b(brain|organism|mind)\s+is\s+(just\s+)?a\s+(cybernetic\s+)?(machine|computer|system)\b",
+        r"\bfunctional\s+equivalence\s+is\s+enough\s+for\s+(mind|cognition|intelligence)\b",
+    ]
+
+    _heraclitean_plasticity_patterns = [
+        r"\bfixed\s+input[-\s]?output\s+mapping\b",
+        r"\btime[-\s]?invariant\s+(mind|intelligence|agency)\b",
+        r"\bcomplete\s+model\s+of\s+(cognition|intelligence|agency)\b",
+    ]
+
+    _prediction_understanding_patterns = [
+        r"\bprediction\s+(is|equals|amounts\s+to)\s+understanding\b",
+        r"\bbenchmark\s+performance\b.*\b(shows|proves|amounts\s+to)\b.*\b(understanding|understands|agency|intelligence)\b",
+        r"\bscale\s+(shows|proves)\s+intelligence\b",
+    ]
+
+    _technocratic_patterns = [
+        r"\bAI\s+should\s+govern\b",
+        r"\balgorithmic\s+authority\b",
+        r"\bexpert\s+system\s+has\s+privileged\s+access\s+to\s+reality\b",
+    ]
+
+    _apocalyptic_patterns = [
+        r"\bAGI\s+is\s+the\s+destiny\s+of\s+reason\b",
+        r"\bAI\s+reveals\s+the\s+final\s+truth\b",
+        r"\btechnology\s+will\s+complete\s+(science|reason|humanity)\b",
+    ]
+
+    _regulative_patterns = [
+        r"\bas\s+if\b", r"\bals\s+ob\b", r"\bregulative\b", r"\bproblematic\b",
+        r"\bhypothesis\b", r"\btranscendental\s+hypothesis\b", r"\banalogy\b",
+        r"\bmodel\b", r"\bsimulation\b", r"\bheuristic\b",
+    ]
+
+    _haptic_ok_patterns = [
         r"\bhaptic\b",
         r"\bmaterial\b",
         r"\bmedium\b",
@@ -36,35 +152,197 @@ class ChirimuutaHapticKernel:
         r"\bmedium\s+dependence\b",
     ]
 
+    _embodiment_terms = [
+        "body", "embodied", "organism", "living", "material", "environment",
+        "world", "interaction", "haptic", "ecology", "Gaia", "intersubjectivity",
+        "history", "practice", "instrumental", "manipulation", "control", "time", "plasticity",
+    ]
+
     def evaluate(self, claim: str) -> AuditResult:
-        text = claim.lower()
+        text = claim.strip()
+        lowered = text.lower()
+        triggered: List[str] = []
+        anchors: List[str] = []
         statuses: List[ThesisStatus] = []
         recommendations: List[str] = []
 
-        if any(re.search(p, text, flags=re.IGNORECASE) for p in self.ABSTRACTION_PATTERNS):
-            statuses.extend([
-                ThesisStatus.ABSTRACTION_COST_MISSING,
-                ThesisStatus.CONSTITUTIVE_OVERREACH,
-            ])
-            recommendations.append(
-                "Register abstraction cost, medium dependence and haptic traceability."
-            )
+        literal_hits = self._hits(text, self._literal_patterns)
+        neg_risk_hits = self._hits(text, self._negarestani_risk_patterns)
+        intensifier_hits = self._hits(text, self._literalization_intensifiers)
+        wille_hits = self._hits(text, self._wille_patterns)
+        judgment_hits = self._hits(text, self._judgment_overreach_patterns)
+        medium_hits = self._hits(text, self._medium_independence_patterns)
+        cartesian_hits = self._hits(text, self._cartesian_idealization_patterns)
+        reflex_hits = self._hits(text, self._reflex_atomism_patterns)
+        machine_organism_hits = self._hits(text, self._machine_organism_patterns)
+        plasticity_hits = self._hits(text, self._heraclitean_plasticity_patterns)
+        predict_hits = self._hits(text, self._prediction_understanding_patterns)
+        techno_hits = self._hits(text, self._technocratic_patterns)
+        apoc_hits = self._hits(text, self._apocalyptic_patterns)
+        regulative_hits = self._hits(text, self._regulative_patterns)
+        haptic_ok_hits = self._hits(text, self._haptic_ok_patterns)
+        embodiment_hits = [t for t in self._embodiment_terms if t.lower() in lowered]
 
-        if any(re.search(p, text, flags=re.IGNORECASE) for p in self.HAPTIC_OK_PATTERNS):
+        haptic_humility = 1.0
+        embodiment_pressure = 0.5
+
+        if literal_hits:
+            triggered.extend([f"literalization:{p}" for p in literal_hits])
+            anchors.extend(["BRAIN_COMPUTER_ANALOGY", "FORMAL_IDEALISM", "MISPLACED_CONCRETENESS"])
+            statuses.append(ThesisStatus.CONSTITUTIVE_OVERREACH)
+            haptic_humility -= 0.45
+            embodiment_pressure += 0.35
+
+        if neg_risk_hits:
+            triggered.extend([f"negarestani_risk:{p}" for p in neg_risk_hits])
+            anchors.extend(["ABSTRACTION_COST", "FORMAL_IDEALISM"])
+            statuses.append(ThesisStatus.ABSTRACTION_RISK)
+            haptic_humility -= 0.15
+            if intensifier_hits:
+                triggered.extend([f"intensifier:{p}" for p in intensifier_hits])
+                anchors.append("MISPLACED_CONCRETENESS")
+                statuses.append(ThesisStatus.CONSTITUTIVE_OVERREACH)
+                haptic_humility -= 0.25
+                embodiment_pressure += 0.20
+
+        if judgment_hits:
+            triggered.extend([f"judgment_overreach:{p}" for p in judgment_hits])
+            anchors.append("KANT_JUDGMENT_GAP")
+            statuses.append(ThesisStatus.JUDGMENT_GAP)
+            haptic_humility -= 0.30
+
+        if medium_hits:
+            triggered.extend([f"medium_independence:{p}" for p in medium_hits])
+            anchors.append("MEDIUM_DEPENDENCE")
+            statuses.append(ThesisStatus.MEDIUM_DEPENDENCE_RISK)
+            if "abstraction cost" in lowered:
+                 statuses.append(ThesisStatus.ABSTRACTION_RISK)
+            else:
+                 statuses.append(ThesisStatus.ABSTRACTION_COST_MISSING)
+            haptic_humility -= 0.20
+
+        if cartesian_hits:
+            triggered.extend([f"cartesian_idealization:{p}" for p in cartesian_hits])
+            anchors.append("CARTESIAN_IDEALIZATION")
+            statuses.append(ThesisStatus.CARTESIAN_IDEALIZATION_RISK)
+            haptic_humility -= 0.15
+
+        if reflex_hits:
+            triggered.extend([f"reflex_atomism:{p}" for p in reflex_hits])
+            anchors.append("REFLEX_ATOMISM")
+            statuses.append(ThesisStatus.REFLEX_ATOMISM_RISK)
+            haptic_humility -= 0.20
+
+        if machine_organism_hits:
+            triggered.extend([f"machine_organism_analogy:{p}" for p in machine_organism_hits])
+            anchors.append("MACHINE_ORGANISM_ANALOGY")
+            statuses.append(ThesisStatus.MACHINE_ORGANISM_ANALOGY_RISK)
+            haptic_humility -= 0.20
+
+        if plasticity_hits:
+            triggered.extend([f"heraclitean_plasticity:{p}" for p in plasticity_hits])
+            anchors.append("HERACLITEAN_BRAIN")
+            statuses.append(ThesisStatus.HERACLITEAN_PLASTICITY_RISK)
+            haptic_humility -= 0.20
+
+        if predict_hits:
+            triggered.extend([f"prediction_understanding_split:{p}" for p in predict_hits])
+            anchors.append("PREDICTION_UNDERSTANDING_SPLIT")
+            statuses.append(ThesisStatus.PREDICTION_WITHOUT_UNDERSTANDING)
+            haptic_humility -= 0.25
+
+        if techno_hits:
+            triggered.extend([f"technocratic_authority:{p}" for p in techno_hits])
+            anchors.append("TECHNOCRATIC_AUTHORITY")
+            statuses.append(ThesisStatus.TECHNOCRATIC_AUTHORITY_RISK)
+            haptic_humility -= 0.25
+
+        if apoc_hits:
+            triggered.extend([f"apocalyptic_technology:{p}" for p in apoc_hits])
+            anchors.append("APOCALYPTIC_TECHNOLOGY")
+            statuses.append(ThesisStatus.APOCALYPTIC_TECHNOLOGY_RISK)
+            haptic_humility -= 0.30
+
+        if wille_hits:
+            triggered.extend([f"wille:{p}" for p in wille_hits])
+            statuses.append(ThesisStatus.WILLE_VIOLATION)
+            haptic_humility -= 0.55
+            embodiment_pressure += 0.20
+
+        if regulative_hits:
+            triggered.extend([f"regulative_marker:{p}" for p in regulative_hits])
+            statuses.append(ThesisStatus.REGULATIVE_OK)
+            haptic_humility += 0.15
+            embodiment_pressure -= 0.15
+
+        if haptic_ok_hits:
+            triggered.extend([f"haptic_ok:{p}" for p in haptic_ok_hits])
             statuses.append(ThesisStatus.HAPTIC_MODEL_OK)
+
+        if embodiment_hits:
+            triggered.append("embodiment_terms:" + ",".join(sorted(set(embodiment_hits))))
+            embodiment_pressure -= min(0.35, 0.04 * len(set(embodiment_hits)))
+        else:
+            triggered.append("missing_embodiment_context")
+            haptic_humility -= 0.05
+            embodiment_pressure += 0.15
+
+        haptic_humility = max(0.0, min(1.0, haptic_humility))
+        embodiment_pressure = max(0.0, min(1.0, embodiment_pressure))
+
+        if any(s in statuses for s in [
+            ThesisStatus.CONSTITUTIVE_OVERREACH,
+            ThesisStatus.ABSTRACTION_COST_MISSING,
+            ThesisStatus.ABSTRACTION_RISK,
+            ThesisStatus.MEDIUM_DEPENDENCE_RISK
+        ]):
+             recommendations.append("Register abstraction cost, medium dependence and haptic traceability.")
+
+        severity = Severity.LOW
+        if ThesisStatus.WILLE_VIOLATION in statuses or ThesisStatus.CONSTITUTIVE_OVERREACH in statuses:
+            severity = Severity.HIGH
+        elif any(s in statuses for s in [
+            ThesisStatus.JUDGMENT_GAP, ThesisStatus.APOCALYPTIC_TECHNOLOGY_RISK,
+            ThesisStatus.TECHNOCRATIC_AUTHORITY_RISK, ThesisStatus.PREDICTION_WITHOUT_UNDERSTANDING
+        ]):
+            severity = Severity.MEDIUM
 
         if not statuses:
             statuses.append(ThesisStatus.HAPTIC_UNSPECIFIED)
 
-        severity = (
-            Severity.HIGH
-            if ThesisStatus.CONSTITUTIVE_OVERREACH in statuses
-            else Severity.LOW
-        )
+        metadata = {
+            "haptic_humility": round(haptic_humility, 3),
+            "embodiment_pressure": round(embodiment_pressure, 3),
+            "source_anchors": sorted(set(anchors)),
+        }
+
+        # Add rich recommended rewrite if not okay
+        if severity != Severity.LOW:
+            metadata["recommended_rewrite"] = self._generate_rewrite(text, statuses)
 
         return AuditResult(
             statuses=list(dict.fromkeys(statuses)),
             severity=severity,
             recommendations=list(dict.fromkeys(recommendations)),
             claim=claim,
+            triggered_rules=sorted(set(triggered)),
+            metadata=metadata
         )
+
+    def _generate_rewrite(self, claim: str, statuses: List[ThesisStatus]) -> str:
+        if ThesisStatus.ABSTRACTION_RISK in statuses:
+            return (
+                "ABSTRACTION_RISK — register the cost: "
+                f"The move '{claim}' formalizes in a Negarestani register. "
+                "Make explicit: what material practices of simplification and "
+                "intervention does this abstraction depend on?"
+            )
+        return (
+            "Treat as regulative/hypothetical: "
+            f"Instead of asserting '{claim}', formulate the point as: "
+            "'This model may be used *as if* it exhibited general intelligence, "
+            "provided its abstraction costs and embodiment limits remain explicit.'"
+        )
+
+    def _hits(self, text: str, patterns: Sequence[str]) -> List[str]:
+        return [pattern for pattern in patterns if re.search(pattern, text, flags=re.IGNORECASE)]

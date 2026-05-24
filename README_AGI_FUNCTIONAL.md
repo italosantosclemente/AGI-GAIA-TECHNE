@@ -1,4 +1,7 @@
-# AGI-GAIA-TECHNE — Functional AGI Core v4.2
+# AGI-GAIA-TECHNE — Functional AGI Core v4.3
+
+
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](docs/references/canonical-architecture-map.md).
 
 A minimal functional scaffold for AGI-GAIA-TECHNE.
 

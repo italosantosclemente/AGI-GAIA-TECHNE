@@ -1,5 +1,8 @@
 # AGI-GAIA-TECHNE: Full Philosophical-Technical Architecture
 
+
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](docs/references/canonical-architecture-map.md).
+
 ## Table of Contents
 1. [Foundational Principles](#1-foundational-principles)
 2. [The Kantian Foundation](#2-the-kantian-foundation)
@@ -92,16 +95,16 @@ end
 > movement. Mythos and Ethos are not symbolic functions — they are the
 > **two unreachable asymptotes** that bracket every act of cognition.
 
-### CTK v4.1 Qualitative Prism Model
+### CTK v4.3.2 Qualitative Prism Model
 
-The **Clemente Thesis Kernel (CTK) v4.1** is the global architectonic tribunal of the repository. It implements a qualitative prism model where Mythos, Sprache and Wissenschaft are defined by their functional accent on Ausdruck, Darstellung and Bedeutung.
+The **Clemente Thesis Kernel (CTK) v4.3.2** is the global architectonic tribunal of the repository. It implements a qualitative prism model where Mythos, Sprache and Wissenschaft are defined by their functional accent on Ausdruck, Darstellung and Bedeutung.
 
 - **Canonical Specification:** [`docs/references/clemente-thesis-kernel.md`](../docs/references/clemente-thesis-kernel.md)
 - **Runtime Auditor:** [`scripts/agt_audit.py`](../scripts/agt_audit.py)
 
-### Functional AGI Core (v8.7)
+### Functional AGI Core (v8.8)
 
-The Functional AGI Core v4.2 is the unified operational implementation of the AGI-GAIA-TECHNE architecture. It integrates the qualitative prism model with a Werk-based task controller.
+The Functional AGI Core v4.3 is the unified operational implementation of the AGI-GAIA-TECHNE architecture. It integrates the qualitative prism model with a Werk-based task controller.
 
 - **Specification:** [`docs/references/functional-agi-architecture.md`](../docs/references/functional-agi-architecture.md)
 - **Functional README:** [`README_AGI_FUNCTIONAL.md`](../README_AGI_FUNCTIONAL.md)

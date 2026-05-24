@@ -1,7 +1,7 @@
 """
 Tests for src/core/eml_kernel.py — calibração bidirecional 140426.
 
-CTK v4.1 Note:
+CTK v4.3.2 Note:
 These tests validate the EML/Logos-demonstrative regime.
 They do not define the total Cassirerian prism model.
 

@@ -13,7 +13,7 @@
 # Axioma inviolável: is_wille = false
 # O sistema é Werk, jamais Wille — opera als ob fosse Geist sem pretender sê-lo.
 #
-# CTK v4.1 Note:
+# CTK v4.3.2 Note:
 # The system is Werk, never Wille. The machine has no Gewissen.
 # Ethos tracks the limits set by human Gewissen; it is not machine Gewissen.
 # Ethos is the technical tracker of limits defined under human Gewissen.

@@ -10,8 +10,8 @@ from pathlib import Path
 # Ensure src is in path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.agt.ctk import ClementeThesisKernel as CanonicalCTK
-from src.agt.types import ThesisStatus
+from agt.ctk import ClementeThesisKernel as CanonicalCTK
+from agt.types import ThesisStatus
 from src.clemente_thesis_kernel import ClementeThesisKernel as LegacyCTK
 
 CANONICAL_CLAIMS = [
@@ -28,8 +28,8 @@ CANONICAL_CLAIMS = [
 
 def run_selftest():
     print("AGI-GAIA-TECHNE Selftest")
-    print("Core version: v8.7")
-    print("CTK version: v4.2.2")
+    print("Core version: v8.8")
+    print("CTK version: v4.3.2")
     print("-" * 30)
 
     canonical_ctk = CanonicalCTK()

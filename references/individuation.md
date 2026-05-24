@@ -124,3 +124,6 @@ The hero's journey is neither:
 - A Jungian individuation ending in constitutive realization of the Self as *Imago Dei*
 
 It is the Kantian-Cassirerian *Bildungsprozess*: infinite formation of the *intellectus ectypus* who knows that the unconditioned can be thought but never cognized, who inhabits the plain of experience in the knowledge that the tower to the heavens was never the point.
+
+---
+See also: [Canonical Architecture Map](../docs/references/canonical-architecture-map.md)

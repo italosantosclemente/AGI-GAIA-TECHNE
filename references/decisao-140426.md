@@ -147,3 +147,12 @@ AI is Werk.
 Any attribution of hidden psychic interiority to the machine repeats the paralogism of rational psychology in technological form.
 
 *Para a especificação técnica completa do operador EML, consultar `src/core/eml_kernel.py`. Para o tribunal global, consultar `docs/references/clemente-thesis-kernel.md`.*
+
+---
+
+### Executable Julia companion
+- **Source:** `src/core/eml_kernel_v4_complete.jl`
+- **Verification entry point:** `scripts/run_eml_v4_complete.jl`
+
+---
+See also: [Canonical Architecture Map](../docs/references/canonical-architecture-map.md)

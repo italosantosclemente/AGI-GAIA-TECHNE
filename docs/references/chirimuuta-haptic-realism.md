@@ -48,3 +48,6 @@ Implemented in `src/chirimuuta_haptic_kernel.py`.
 ---
 **Updated:** May 21, 2026
 **Version:** CHK v0.3
+
+---
+See also: [Canonical Architecture Map](../docs/references/canonical-architecture-map.md)

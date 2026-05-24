@@ -1,6 +1,10 @@
-# AGI-GAIA-TECHNE — Functional AGI Core v4.2
+# AGI-GAIA-TECHNE — Functional AGI Core v4.3
 
 A minimal functional scaffold for AGI-GAIA-TECHNE.
+Version: **4.3** | Repo: **8.8** | CTK: **4.2.2** | CHK: **0.3** | EML: **4.0**
+
+Architecture: **Unified Prism-Werk**
+See also: [Canonical Architecture Map](docs/references/canonical-architecture-map.md)
 
 It does not create a conscious artificial subject.
 
@@ -11,8 +15,8 @@ It creates a functional Werk:
 - step-level audit;
 - safe tool use;
 - procedural memory;
-- CTK audit;
-- CHK haptic guard;
+- CTK audit (v4.2.2);
+- CHK haptic guard (v0.3);
 - Mythos-Logos-Ethos engine;
 - defer/block/allow mechanism.
 

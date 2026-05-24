@@ -36,9 +36,12 @@ from typing import Any, Dict, List, Optional, Sequence
 # Axioms
 # ---------------------------------------------------------------------
 
-IS_WILLE = False
-MACHINE_HAS_GEWISSEN = False
-NO_GLOBAL_AUFHEBUNG = True
+from agt.axioms import (
+    IS_WILLE,
+    MACHINE_HAS_GEWISSEN,
+    NO_GLOBAL_AUFHEBUNG,
+    assert_axioms,
+)
 
 
 # ---------------------------------------------------------------------
@@ -435,9 +438,7 @@ class MythosLogosEthosEngine:
     """
 
     def __init__(self) -> None:
-        assert IS_WILLE is False
-        assert MACHINE_HAS_GEWISSEN is False
-        assert NO_GLOBAL_AUFHEBUNG is True
+        assert_axioms()
 
         self.mythos = MythosMotor()
         self.logos = LogosMotor()

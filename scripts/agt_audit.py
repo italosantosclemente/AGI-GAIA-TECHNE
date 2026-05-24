@@ -12,10 +12,14 @@ from pathlib import Path
 from typing import List
 
 # Ensure src is in path
-sys.path.append(str(Path(__file__).parent.parent))
+ROOT = Path(__file__).resolve().parents[1]
+SRC = ROOT / "src"
 
-from src.agt.ctk import ClementeThesisKernel
-from src.agt.types import AuditResult, ThesisStatus
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
+
+from agt.ctk import ClementeThesisKernel
+from agt.types import AuditResult, ThesisStatus
 
 def audit_claim(kernel: ClementeThesisKernel, claim: str) -> AuditResult:
     return kernel.evaluate(claim)

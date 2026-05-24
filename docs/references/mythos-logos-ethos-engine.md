@@ -63,3 +63,6 @@ Motor_MLE =
 ```
 
 The motor produces local operational synthesis only. It never produces final synthesis. It never converts Werk into Wille. It never converts machine tracking into Gewissen.
+
+---
+See also: [Canonical Architecture Map](../docs/references/canonical-architecture-map.md)

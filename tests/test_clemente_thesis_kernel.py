@@ -1,6 +1,6 @@
 import pytest
-from src.agt.ctk import ClementeThesisKernel
-from src.agt.types import ThesisStatus
+from agt.ctk import ClementeThesisKernel
+from agt.types import ThesisStatus
 
 @pytest.fixture
 def kernel():

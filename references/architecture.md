@@ -457,3 +457,6 @@ IS_WILLE = False  # Ethos is Werk, never Wille
 To ensure that the framework remains permeable and avoids esoteric drift, the practices of **Abertura externa** are instituted as constitutional safeguards.
 
 - **Reference**: [`references/lef-constitution.md#part-v-abertura-externa`](./lef-constitution.md#part-v-abertura-externa)
+
+---
+See also: [Canonical Architecture Map](../docs/references/canonical-architecture-map.md)

@@ -57,3 +57,6 @@ The system must preserve the qualitative prism model:
 - No GAIA as complete world-totality.
 - No TECHNE as technical God.
 - No prism as literal mathematical ontology.
+
+---
+See also: [Canonical Architecture Map](../docs/references/canonical-architecture-map.md)

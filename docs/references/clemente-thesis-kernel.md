@@ -151,3 +151,6 @@ python scripts/agt_audit.py --claim "Mythos is Ausdruck."
 ---
 **Updated:** May 21, 2026
 **Version:** CTK v4.1
+
+---
+See also: [Canonical Architecture Map](../docs/references/canonical-architecture-map.md)

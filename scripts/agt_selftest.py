@@ -10,8 +10,8 @@ from pathlib import Path
 # Ensure src is in path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.agt.ctk import ClementeThesisKernel as CanonicalCTK
-from src.agt.types import ThesisStatus
+from agt.ctk import ClementeThesisKernel as CanonicalCTK
+from agt.types import ThesisStatus
 from src.clemente_thesis_kernel import ClementeThesisKernel as LegacyCTK
 
 CANONICAL_CLAIMS = [

@@ -232,3 +232,6 @@ Não há periodicidade calendarizada. Os gatilhos são qualitativos: documento f
 Esta seção está sob a vigilância dela mesma. Se ela crescer, virar aparato com subseções numeradas, ganhar sigla ou ser referenciada em maiúsculas em outros documentos, isto é sinal de que se tornou aquilo que combate. A versão correta dela é breve e despretensiosa.
 
 Ela também não pretende esgotar o cuidado que nomeia. O nível pré-contextual — o "bom dia" antes da telemetria, a observação espontânea antes da formalização — é o que dá vida ao aparato e o que o aparato pode silenciosamente substituir. Nenhum protocolo protege esse nível; apenas a atenção viva, caso a caso, de quem opera o framework.
+
+---
+See also: [Canonical Architecture Map](../docs/references/canonical-architecture-map.md)

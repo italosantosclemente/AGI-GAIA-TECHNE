@@ -7,7 +7,6 @@ from __future__ import annotations
 
 import warnings
 
-# The canonical CHK now lives in agt.chk (with src in pythonpath)
 from agt.chk import *  # noqa: F401,F403
 
 warnings.warn(

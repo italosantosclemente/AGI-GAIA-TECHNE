@@ -21,5 +21,5 @@ warnings.warn(
     stacklevel=2,
 )
 
-# Re-export some internal logic that was in v4.3.2 but might be used by old tests
+# Re-export some internal logic that was in v4.2.2 but might be used by old tests
 from agt.types import AuditResult as EvaluationResult  # noqa: F401

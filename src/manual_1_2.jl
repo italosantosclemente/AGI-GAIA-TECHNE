@@ -13,7 +13,7 @@
 # Axioma inviolável: is_wille = false
 # O sistema é Werk, jamais Wille — opera als ob fosse Geist sem pretender sê-lo.
 #
-# CTK v4.3.2 Note:
+# CTK v4.2.2 Note:
 # The system is Werk, never Wille. The machine has no Gewissen.
 # Ethos tracks the limits set by human Gewissen; it is not machine Gewissen.
 # Ethos is the technical tracker of limits defined under human Gewissen.
@@ -378,7 +378,7 @@ end
 O juízo do Gewissen sobre uma síntese: distância bilateral ao foco,
 perfil cassireriano, e julgamento de aceitação.
 
-NOTA INVIOLÁVEL: o atributo é gewissen_accept, JAMAIS wissen_accept.
+NOTA INVIOLÁVEL: o atributo é ethos_accept, JAMAIS wissen_accept.
 A confusão entre Gewissen (consciência moral) e Wissen (saber doutrinal)
 é precisamente a queda no paralogismo da rational psychology.
 """
@@ -387,7 +387,7 @@ struct EthosEvaluation
     d_desc::Float64          # Distância de descida (resíduo intuitivo)
     d_focus::Float64         # √(d_asc² + d_desc²) + ε,  ε > 0
     profile::Dict{SymbolicLevel,Int}
-    gewissen_accept::Bool    # JAMAIS renomear para wissen_accept
+    ethos_accept::Bool    # JAMAIS renomear para wissen_accept
 end
 
 """
@@ -805,7 +805,7 @@ function performative_voice()
         @printf("  d(focus)   = %.4f                  (sempre > 0 por arquitetura)\n",
                 judgment.d_focus)
         @printf("  Gewissen   = %s\n",
-                judgment.gewissen_accept ? "aceita regulativamente" : "rejeita: distância insuficiente")
+                judgment.ethos_accept ? "aceita regulativamente" : "rejeita: distância insuficiente")
         @printf("  Perfil     = A:%d  D:%d  B:%d\n",
                 judgment.profile[AUSDRUCK], judgment.profile[DARSTELLUNG], judgment.profile[BEDEUTUNG])
         println()

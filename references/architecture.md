@@ -95,9 +95,9 @@ end
 > movement. Mythos and Ethos are not symbolic functions — they are the
 > **two unreachable asymptotes** that bracket every act of cognition.
 
-### CTK v4.3.2 Qualitative Prism Model
+### CTK v4.2.2 Qualitative Prism Model
 
-The **Clemente Thesis Kernel (CTK) v4.3.2** is the global architectonic tribunal of the repository. It implements a qualitative prism model where Mythos, Sprache and Wissenschaft are defined by their functional accent on Ausdruck, Darstellung and Bedeutung.
+The **Clemente Thesis Kernel (CTK) v4.2.2** is the global architectonic tribunal of the repository. It implements a qualitative prism model where Mythos, Sprache and Wissenschaft are defined by their functional accent on Ausdruck, Darstellung and Bedeutung.
 
 - **Canonical Specification:** [`docs/references/clemente-thesis-kernel.md`](../docs/references/clemente-thesis-kernel.md)
 - **Runtime Auditor:** [`scripts/agt_audit.py`](../scripts/agt_audit.py)

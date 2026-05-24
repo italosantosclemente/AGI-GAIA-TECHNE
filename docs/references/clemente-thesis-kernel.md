@@ -1,9 +1,9 @@
-# Clemente Thesis Kernel v4.3.2 — Qualitative Prism Model
+# Clemente Thesis Kernel v4.2.2 — Qualitative Prism Model
 
 
 For the canonical terminology and triad definitions, see the [Canonical Architecture Map](docs/references/canonical-architecture-map.md).
 
-CTK v4.3.2 operationalizes the qualitative prism thesis with the Pringe-Truwant Patch.
+CTK v4.2.2 operationalizes the qualitative prism thesis with the Pringe-Truwant Patch.
 
 ## Core formula
 
@@ -57,7 +57,7 @@ Cassirerian phenomenology is open and regressive (starting from the *Faktum* of 
 
 ## Forbidden Errors
 
-CTK v4.3.2 rejects:
+CTK v4.2.2 rejects:
 - **Identity collapse:** Reducing a form to a single function (e.g., "Mythos is Ausdruck").
 - **Function exclusivity:** Treating functions as mutually exclusive.
 - **Beil-abgehackt separation:** Cutting symbolic forms apart as if with an axe.
@@ -138,7 +138,7 @@ The machine is Werk, not Wille.
 The model is function, not psychic substance.
 ```
 
-Therefore, CTK v4.3.2 adds:
+Therefore, CTK v4.2.2 adds:
 - `MYTH_FUNCTION_REDUCTION_RISK`
 - `PSYCHOLOGIA_MYTH_REDUCTION_RISK`
 - `ARTIFICIAL_INTERIORITY_RISK`
@@ -153,4 +153,4 @@ python scripts/agt_audit.py --claim "Mythos is Ausdruck."
 
 ---
 **Updated:** May 21, 2026
-**Version:** CTK v4.3.2
+**Version:** CTK v4.2.2

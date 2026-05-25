@@ -2,7 +2,7 @@
 AGI-GAIA-TECHNE: Education Application (Adaptive Tutor)
 ========================================================
 
-Powered by AGI-GAIA-TECHNE v8.0 Architecture.
+Powered by AGI-GAIA-TECHNE v8.8 Architecture.
 Implements the Bildungsprozess for radicalized personalized education.
 """
 

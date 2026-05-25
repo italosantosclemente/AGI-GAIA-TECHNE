@@ -12,8 +12,8 @@ from __future__ import annotations
 
 import warnings
 
-from src.agt.ctk import *  # noqa: F401,F403
-from src.agt.types import ThesisStatus  # noqa: F401
+from agt.ctk import *  # noqa: F401,F403
+from agt.types import ThesisStatus  # noqa: F401
 
 warnings.warn(
     "src.clemente_thesis_kernel is deprecated. Use src.agt.ctk instead.",
@@ -21,5 +21,5 @@ warnings.warn(
     stacklevel=2,
 )
 
-# Re-export some internal logic that was in v4.1 but might be used by old tests
-from src.agt.types import AuditResult as EvaluationResult  # noqa: F401
+# Re-export some internal logic that was in v4.2.2 but might be used by old tests
+from agt.types import AuditResult as EvaluationResult  # noqa: F401

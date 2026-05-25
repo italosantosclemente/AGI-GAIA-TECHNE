@@ -1,20 +1,20 @@
 """
-LEGACY NOTE — superseded by CTK v4.2.
+LEGACY NOTE — superseded by CTK v4.3.
 
 This file preserves the older v8 mapping:
 Mythos/Soul/Ausdruck, Logos/World/Darstellung, Ethos/God/Bedeutung.
 
-CTK v4.2 replaces this with the Qualitative Prism Model:
+CTK v4.3 replaces this with the Qualitative Prism Model:
 Ausdruck, Darstellung and Bedeutung are functional dimensions of every symbolic form.
 Mythos, Sprache and Wissenschaft differ by accent, not by exclusive identity.
 
-This file must not be used as the canonical source for CTK v4.2.
+This file must not be used as the canonical source for CTK v4.3.
 The canonical architecture is now:
 docs/references/clemente-thesis-kernel.md
 src/clemente_thesis_kernel.py
 references/decisao-140426.md
 
-AGI-GAIA-TECHNE: Simulated AGI Architecture (v8.0)
+AGI-GAIA-TECHNE: Simulated AGI Architecture (v8.8)
 ==================================================
 
 A Python implementation of the tripartite metatheory of "objectivity"
@@ -864,7 +864,7 @@ class LEFAlphabet:
         Glyph("❍", "Mito", "Mythos", "Manifestação objetiva"),
         Glyph("🙏", "Religião", "Mythos", "Estrutura objetiva"),
         Glyph("🎨", "Arte", "Mythos", "Expressão objetiva"),
-        # LEGACY GLYPH MAPPING: superseded by CTK v4.2. Do not read as current Cassirer mapping.
+        # LEGACY GLYPH MAPPING: superseded by CTK v4.3. Do not read as current Cassirer mapping.
         Glyph("⊡", "Percepção", "Mythos", "Função subjetiva"),
         Glyph("@", "Expressão", "Mythos", "Função intersubjetiva"),
         # Logos pillar
@@ -958,7 +958,7 @@ def demonstrate():
     Demonstrate the AGI-GAIA-TECHNE architecture.
     """
     print("=" * 70)
-    print("AGI-GAIA-TECHNE: Simulated AGI Architecture (v8.0)")
+    print("AGI-GAIA-TECHNE: Simulated AGI Architecture (v8.8)")
     print("Critique of Intelligence: Metatheory of Objectivity")
     print("                         as Intersubjectivity")
     print(f"AXIOM: is_wille = {IS_WILLE}")

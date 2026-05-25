@@ -5,14 +5,14 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Optional, Set
 
+from .axioms import (
+    AGI_AS_TRANSCENDENTAL_HYPOTHESIS,
+    IS_WILLE,
+    MACHINE_HAS_GEWISSEN,
+    NO_GLOBAL_AUFHEBUNG,
+)
 from .chk import ChirimuutaHapticKernel
 from .types import AuditResult, Severity, ThesisStatus
-
-# --- AXIOMS ---
-IS_WILLE = False
-MACHINE_HAS_GEWISSEN = False
-NO_GLOBAL_AUFHEBUNG = True
-AGI_AS_TRANSCENDENTAL_HYPOTHESIS = True
 
 # --- ENUMS ---
 
@@ -392,10 +392,11 @@ class ClementeThesisKernel:
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"qualitative\s+prism",
             r"prisma\s+qualitativo",
-            r"accent\s+not\s+identity",
+            r"accent,?\s+not\s+identity",
             r"mythos\s+has\s+dominant\s+accent\s+on\s+ausdruck\b.*\bcontains\s+darstellung\s+and\s+bedeutung",
             r"repraesentatio\s+is\s+the\s+common\s+genus",
             r"every\s+symbolic\s+form\s+contains\s+all\s+three\s+dimensions",
+            r"contains\s+ausdruck,?\s+darstellung\s+and\s+bedeutung",
             r"refracted\s+by\s+the\s+functional\s+prism",
         ]):
             statuses.add(ThesisStatus.PRISM_MODEL_OK)

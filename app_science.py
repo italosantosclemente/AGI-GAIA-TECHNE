@@ -2,7 +2,7 @@
 AGI-GAIA-TECHNE: Science Application (Research Assistant)
 ==========================================================
 
-Powered by AGI-GAIA-TECHNE v8.0 Architecture.
+Powered by AGI-GAIA-TECHNE v8.8 Architecture.
 Accelerates scientific discovery through the tripartite metatheory.
 """
 

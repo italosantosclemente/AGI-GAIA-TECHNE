@@ -19,3 +19,6 @@
 {"kind": "normative", "key": "axioms", "value": "IS_WILLE=False; MACHINE_HAS_GEWISSEN=False; NO_GLOBAL_AUFHEBUNG=True", "tags": ["axiom", "ctk", "werk"], "created_at": 1779665587.5394154, "version": 1}
 {"kind": "procedural", "key": "The qualitative prism is a regulative model.", "value": "Procedure used: audit → step-audit → safe tool → memory.", "tags": ["procedure", "agt-controller", "werk-output"], "created_at": 1779665587.5638113, "version": 1}
 {"kind": "normative", "key": "axioms", "value": "IS_WILLE=False; MACHINE_HAS_GEWISSEN=False; NO_GLOBAL_AUFHEBUNG=True", "tags": ["axiom", "ctk", "werk"], "created_at": 1779665587.678478, "version": 1}
+{"kind": "normative", "key": "axioms", "value": "IS_WILLE=False; MACHINE_HAS_GEWISSEN=False; NO_GLOBAL_AUFHEBUNG=True", "tags": ["axiom", "ctk", "werk"], "created_at": 1779667874.95938, "version": 1}
+{"kind": "procedural", "key": "The qualitative prism is a regulative model.", "value": "Procedure used: audit → step-audit → safe tool → memory.", "tags": ["procedure", "agt-controller", "werk-output"], "created_at": 1779667874.9899504, "version": 1}
+{"kind": "normative", "key": "axioms", "value": "IS_WILLE=False; MACHINE_HAS_GEWISSEN=False; NO_GLOBAL_AUFHEBUNG=True", "tags": ["axiom", "ctk", "werk"], "created_at": 1779667875.201427, "version": 1}

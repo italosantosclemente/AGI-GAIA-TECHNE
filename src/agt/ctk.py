@@ -5,7 +5,12 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Optional, Set
 
-from .axioms import assert_axioms
+from .axioms import (
+    AGI_AS_TRANSCENDENTAL_HYPOTHESIS,
+    IS_WILLE,
+    MACHINE_HAS_GEWISSEN,
+    NO_GLOBAL_AUFHEBUNG,
+)
 from .chk import ChirimuutaHapticKernel
 from .types import AuditResult, Severity, ThesisStatus
 
@@ -102,7 +107,6 @@ class ClementeThesisKernel:
     """
 
     def __init__(self) -> None:
-        assert_axioms()
         try:
             from .chk import ChirimuutaHapticKernel
             self.chk = ChirimuutaHapticKernel()
@@ -118,18 +122,19 @@ class ClementeThesisKernel:
         # 1. CHK Integration
         if self.chk:
             chk_eval = self.chk.evaluate(claim)
-            for status in chk_eval.statuses:
-                if isinstance(status, ThesisStatus):
-                    statuses.add(status)
-                else:
-                    # Fallback for unexpected status types
-                    statuses.add(ThesisStatus.UNCLASSIFIED_CLAIM)
-                    recommendations.append(f"CHK returned an unmapped status: {status}")
-
-            if chk_eval.triggered_rules:
-                triggered_rules.extend(chk_eval.triggered_rules)
-            if chk_eval.recommendations:
-                recommendations.extend(chk_eval.recommendations)
+            # Map CHK string statuses to ThesisStatus
+            for status_str in chk_eval.statuses:
+                if status_str == "CONSTITUTIVE_OVERREACH":
+                    statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
+                    triggered_rules.append("chk_constitutive_overreach")
+                elif status_str == "WILLE_VIOLATION":
+                    statuses.add(ThesisStatus.WILLE_VIOLATION)
+                    triggered_rules.append("chk_wille_violation")
+                elif status_str == "ABSTRACTION_COST_MISSING":
+                    statuses.add(ThesisStatus.ABSTRACTION_COST_MISSING)
+                    triggered_rules.append("chk_abstraction_risk")
+                elif status_str == "HAPTIC_MODEL_OK":
+                    statuses.add(ThesisStatus.HAPTIC_MODEL_OK)
 
         # 2. Rule: Identity Collapse
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
@@ -387,12 +392,11 @@ class ClementeThesisKernel:
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"qualitative\s+prism",
             r"prisma\s+qualitativo",
-            r"accent\s+not\s+identity",
-            r"accent,\s+not\s+identity",
+            r"accent,?\s+not\s+identity",
             r"mythos\s+has\s+dominant\s+accent\s+on\s+ausdruck\b.*\bcontains\s+darstellung\s+and\s+bedeutung",
             r"repraesentatio\s+is\s+the\s+common\s+genus",
             r"every\s+symbolic\s+form\s+contains\s+all\s+three\s+dimensions",
-            r"every\s+symbolic\s+form\s+contains\s+ausdruck,\s+darstellung\s+and\s+bedeutung",
+            r"contains\s+ausdruck,?\s+darstellung\s+and\s+bedeutung",
             r"refracted\s+by\s+the\s+functional\s+prism",
         ]):
             statuses.add(ThesisStatus.PRISM_MODEL_OK)

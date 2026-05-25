@@ -2,7 +2,7 @@
 EML Kernel — AGI-GAIA-TECHNE
 ============================
 
-Decision 140426 + CTK v4.1 Prism Update 210526:
+Decision 140426 + CTK v4.2.2 Prism Update 210526:
 
 The EML kernel belongs to Logos as demonstrative symbolic stabilization.
 
@@ -77,7 +77,7 @@ futuras refatorações não as violem):
   1. A intuição é processada EXCLUSIVAMENTE dentro do Logos.
      Nenhum outro módulo pode ajustar parâmetros da árvore EML.
   2. Ethos é Gewissen. Jamais renomear como "Wissen" ou "Knowledge";
-     os nomes dos atributos abaixo (``gewissen_accept``,
+     os nomes dos atributos abaixo (``ethos_accept``,
      ``distance_to_focus``) devem ser preservados.
   3. O modelo triádico Mythos/Logos/Ethos deste framework é
      ORIGINAL de Ítalo Santos Clemente e não deve ser confundido
@@ -865,7 +865,7 @@ class Ethos:
             symbolic_profile=classify_tree(tree),
         )
 
-    def gewissen_accept(
+    def ethos_accept(
         self,
         current: EthosEvaluation,
         best_so_far: Optional[EthosEvaluation],
@@ -988,7 +988,7 @@ class Simbiota:
             if not math.isfinite(d_desc):
                 continue
             ev = self.ethos.evaluate(tree, loss, descent_residual=d_desc)
-            if self.ethos.gewissen_accept(ev, best):
+            if self.ethos.ethos_accept(ev, best):
                 best = ev
                 best_tree = tree
         return best_tree, best

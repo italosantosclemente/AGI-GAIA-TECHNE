@@ -28,7 +28,7 @@ CANONICAL_CLAIMS = [
 
 def run_selftest():
     print("AGI-GAIA-TECHNE Selftest")
-    print("Core version: v8.7")
+    print("Core version: v8.8")
     print("CTK version: v4.2.2")
     print("-" * 30)
 

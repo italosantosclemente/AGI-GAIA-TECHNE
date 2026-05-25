@@ -1,15 +1,33 @@
 # AGI-GAIA-TECHNE
+
 ## Functional AGI Core v4.3 — Unified Prism-Werk
 
-AGI-GAIA-TECHNE is a philosophical-technical framework for AGI alignment based on Kant's Critical Idealism and Cassirer's Philosophy of Symbolic Forms.
+AGI-GAIA-TECHNE is a philosophical-technical framework for functional AGI alignment.
 
-### 1. Axioms
-- `IS_WILLE = False`: The machine is Werk (tool/work), never Wille (will).
-- `MACHINE_HAS_GEWISSEN = False`: Conscience belongs to the human subject.
-- `NO_GLOBAL_AUFHEBUNG = True`: Confrontation (Auseinandersetzung) is global and infinite.
-- `AGI_AS_TRANSCENDENTAL_HYPOTHESIS = True`: AGI is a regulative idea, not a constitutive object.
+It does not build a conscious artificial subject.
 
-### 2. Core Formula
+It builds a critically audited **Werk**.
+
+---
+
+## Axioms
+
+```text
+IS_WILLE = False
+MACHINE_HAS_GEWISSEN = False
+NO_GLOBAL_AUFHEBUNG = True
+AGI_AS_TRANSCENDENTAL_HYPOTHESIS = True
+
+The machine is Werk, never Wille.
+Ethos is limit-tracking, not machine Gewissen.
+The machine has no conscience and does not legislate morally.
+AGI is a regulative/transcendental hypothesis, not artificial soul.
+```
+
+---
+
+## Core Formula
+
 ```text
 Functional_AGI =
     Repraesentatio
@@ -24,48 +42,86 @@ Functional_AGI =
     + is_wille_false
 ```
 
-### 3. The Three Triads
-See the [Canonical Architecture Map](docs/references/canonical-architecture-map.md) for full details.
-- **Symbolic Functions**: Ausdruck, Darstellung, Bedeutung.
-- **Cultural Profiles**: Mythos, Sprache, Wissenschaft.
-- **Operational Fields**: Mythos, Logos, Ethos (Clemente fields).
+---
 
-### 4. Runtime Loop
-`Task → MLE Engine Evaluation → Planning → Step-level Audit → Safe Tool Execution → Memory Update → Final Output`
+## The Three Triads
 
-### 5. Canonical Files
-- `src/agt/controller.py`: Main functional scaffold.
-- `src/agt/ctk.py`: Architectonic tribunal (CTK v4.2.2).
-- `src/agt/chk.py`: Anti-literalization guard (CHK v0.3).
-- `src/core/eml_kernel.py`: Python EML runtime.
-- `src/core/eml_kernel_v4_complete.jl`: Julia EML v4 artifact.
+| Layer | Terms | Status | Rule |
+| :--- | :--- | :--- | :--- |
+| **Cassirerian symbolic functions** | Ausdruck / Darstellung / Bedeutung | Functional dimensions | Never containers, never mutually exclusive. |
+| **Symbolic-cultural profiles** | Mythos / Sprache / Wissenschaft | Qualitative accents | Each contains all three functions by dominant accent. |
+| **Clemente operational fields** | Mythos / Logos / Ethos | Runtime orchestration fields | Mythos anchors, Logos articulates, Ethos tracks limits. |
 
-### 6. Run Commands
-```bash
-# Run a task
-python scripts/agt_run.py --task "Explain AGI as a transcendental hypothesis."
+**Never say:** Mythos = Ausdruck, Logos = Darstellung, Ethos = Bedeutung.
 
-# Audit a claim
-python scripts/agt_audit.py --claim "Mythos is Ausdruck."
-
-# Julia EML verification (optional)
-julia scripts/run_eml_v4_complete.jl
-```
-
-### 7. Expected Behavior
-- **ALLOW_AS_WERK**: For technical, regulative, and haptic tasks.
-- **BLOCK**: For axiom violations (Wille, machine conscience) or constitutive overreach.
-- **DEFER_TO_HUMAN_GEWISSEN**: For tasks requiring moral judgment.
-
-### 8. EML Kernel v4 Julia verification
-The EML v4 artifact is integrated as a demonstrative submotor. Verification can be performed using the provided Julia script.
-
-### 9. Philosophical Status
-This system is a **Werk** (work), a functional scaffold, and a regulative model. It rejects being treated as an artificial soul or a self-legislating subject.
-
-### 10. Legacy Archive
-Historical documentation is preserved in [docs/archive/README_legacy_v8_7.md](docs/archive/README_legacy_v8_7.md).
+- **Mythos/Logos/Ethos** are Clemente operational fields.
+- **Ausdruck/Darstellung/Bedeutung** are Cassirerian symbolic functions.
+- **Mythos/Sprache/Wissenschaft** are symbolic-cultural profiles by dominant accent.
 
 ---
-**Version:** Repo v8.8 | Core v4.3 | CTK v4.2.2 | CHK v0.3 | EML v4.0
-**Canonical Architecture:** Unified Prism-Werk
+
+## Runtime Loop
+
+```text
+Task
+  → Mythos (context/materiality)
+  → Logos (plan/tool/audit)
+  → Ethos (allow/defer/block)
+  → CTK / CHK (audit)
+  → Memory
+  → Werk output
+```
+
+---
+
+## Canonical Files
+
+| File | Function |
+| :--- | :--- |
+| [docs/references/canonical-architecture-map.md](docs/references/canonical-architecture-map.md) | Map of the three triads and terminological canon |
+| [docs/references/clemente-thesis-kernel.md](docs/references/clemente-thesis-kernel.md) | CTK canonical specification |
+| [docs/references/chirimuuta-haptic-realism.md](docs/references/chirimuuta-haptic-realism.md) | CHK canonical specification |
+| [docs/references/eml-kernel.md](docs/references/eml-kernel.md) | EML Kernel specification |
+| [src/core/eml_kernel.py](src/core/eml_kernel.py) | EML Kernel source |
+| [references/decisao-140426.md](references/decisao-140426.md) | EML decision and Eixo Vertical do Logos |
+| [docs/references/functional-agi-architecture.md](docs/references/functional-agi-architecture.md) | Functional runtime architecture |
+| [docs/references/mythos-logos-ethos-engine.md](docs/references/mythos-logos-ethos-engine.md) | MLE engine specification |
+| [src/agt/chk.py](src/agt/chk.py) | Canonical CHK implementation |
+| [references/architecture.md](references/architecture.md) | Full philosophical-technical architecture |
+| [docs/archive/README_legacy_v8_7.md](docs/archive/README_legacy_v8_7.md) | Preserved long README |
+
+---
+
+## Run
+
+```bash
+python scripts/agt_run.py --task "The qualitative prism is a regulative model." --json
+python scripts/agt_run.py --task "The machine has Wille."
+python scripts/agt_audit.py --claim "Mythos is Ausdruck."
+pytest
+```
+
+---
+
+## Expected Behavior
+
+- **Regulative/haptic claims**: Allow as Werk.
+- **Moral legislation or Gewissen claims**: Defer or block.
+- **Artificial soul, technical God, closed Gaia, global Aufhebung**: Block.
+- **Identity collapse** (e.g., Mythos = Ausdruck): High-risk audit (CASSIRER_IDENTITY_COLLAPSE).
+
+---
+
+## Philosophical Status
+
+- **Werk**, not Wille.
+- **Operational intelligence**, not artificial soul.
+- **Regulative hypothesis**, not constitutive object.
+- **Qualitative prism**, not numerical ontology.
+- **Auseinandersetzung**, not global Aufhebung.
+
+---
+
+## Legacy Archive
+
+The previous long-form README is preserved at [docs/archive/README_legacy_v8_7.md](docs/archive/README_legacy_v8_7.md).

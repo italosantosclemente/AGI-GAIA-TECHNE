@@ -12,11 +12,7 @@ from pathlib import Path
 from typing import List
 
 # Ensure src is in path
-ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "src"
-
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
+sys.path.append(str(Path(__file__).parent.parent / 'src'))
 
 from agt.ctk import ClementeThesisKernel
 from agt.types import AuditResult, ThesisStatus

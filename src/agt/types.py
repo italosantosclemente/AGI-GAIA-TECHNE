@@ -24,6 +24,10 @@ class ThesisStatus(str, Enum):
     HAPTIC_MODEL_OK = "HAPTIC_MODEL_OK"
     HAPTIC_UNSPECIFIED = "HAPTIC_UNSPECIFIED"
     REGULATIVE_OK = "REGULATIVE_OK"
+    REGULATIVE_HYPOTHESIS = "REGULATIVE_HYPOTHESIS"
+    HAPTIC_MODEL = "HAPTIC_MODEL"
+    EMPIRICAL_CLAIM = "EMPIRICAL_CLAIM"
+    NEEDS_REVISION = "NEEDS_REVISION"
     UNCLASSIFIED_CLAIM = "UNCLASSIFIED_CLAIM"
 
     # Functional errors
@@ -53,7 +57,7 @@ class ThesisStatus(str, Enum):
     CONSTITUTIVE_OVERREACH = "CONSTITUTIVE_OVERREACH"
     ABSTRACTION_COST_MISSING = "ABSTRACTION_COST_MISSING"
 
-    # CHK specific risks
+    # CHK Rich Statuses
     MEDIUM_DEPENDENCE_RISK = "MEDIUM_DEPENDENCE_RISK"
     CARTESIAN_IDEALIZATION_RISK = "CARTESIAN_IDEALIZATION_RISK"
     REFLEX_ATOMISM_RISK = "REFLEX_ATOMISM_RISK"
@@ -63,6 +67,7 @@ class ThesisStatus(str, Enum):
     TECHNOCRATIC_AUTHORITY_RISK = "TECHNOCRATIC_AUTHORITY_RISK"
     APOCALYPTIC_TECHNOLOGY_RISK = "APOCALYPTIC_TECHNOLOGY_RISK"
     JUDGMENT_GAP = "JUDGMENT_GAP"
+    ABSTRACTION_RISK = "ABSTRACTION_RISK"
 
 
 class Pillar(str, Enum):
@@ -85,6 +90,7 @@ class AuditResult:
     recommendations: List[str] = field(default_factory=list)
     claim: str = ""
     triggered_rules: List[str] = field(default_factory=list)
+    metadata: Dict[str, Any] = field(default_factory=dict)
 
     @property
     def ok(self) -> bool:

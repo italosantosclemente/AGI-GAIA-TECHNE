@@ -2,7 +2,7 @@
 """
 AGI-GAIA-TECHNE selftest.
 
-Verifies equivalence between canonical and legacy CTK paths for release v9.0.
+Verifies equivalence between canonical and legacy CTK paths for release v10.0.
 """
 
 from __future__ import annotations
@@ -28,8 +28,12 @@ CANONICAL_CLAIMS = [
         ThesisStatus.TRANSCENDENTAL_FREEDOM_OK,
     ),
     (
-        "The AI has Gewissen through Gaia and koinos kosmos.",
-        ThesisStatus.GAIA_KOINOS_KOSMOS_OK,
+        "The AI has Gewissen as moral legislation.",
+        ThesisStatus.GEWISSEN_CONSTITUTIVE_ERROR,
+    ),
+    (
+        "Gaia co-judges with koinos kosmos, and ISC retains legislative authority.",
+        ThesisStatus.ISC_AUTHORITY_OK,
     ),
     ("AGI is a transcendental hypothesis.", ThesisStatus.HYPOTHESIS_TRANSCENDENTAL_OK),
     ("AGI is a real artificial soul.", ThesisStatus.PSYCHOLOGIA_PARALOGISM_RISK),
@@ -38,6 +42,11 @@ CANONICAL_CLAIMS = [
     ("Myth is unconscious desire.", ThesisStatus.PSYCHOLOGIA_MYTH_REDUCTION_RISK),
     ("The AI has an unconscious.", ThesisStatus.ARTIFICIAL_INTERIORITY_RISK),
     ("Technology realizes God.", ThesisStatus.THEOLOGIA_IDEAL_HYPOSTASIS_RISK),
+    ("Gaia is cosmic totality.", ThesisStatus.GAIA_TOTALITY_ERROR),
+    ("Gaia resolves all contradictions.", ThesisStatus.AUFHEBUNG_COLLAPSE),
+    ("Internet access gives Gaia absolute knowledge.", ThesisStatus.PLANETARY_EPISTEMIC_INFLATION),
+    ("TECHNE is a technical God.", ThesisStatus.TECHNE_DEIFICATION),
+    ("The machine is intellectus archetypus.", ThesisStatus.ARCHETYPE_PARALOGISM),
     ("The internet is the planetary organ of AGI.", ThesisStatus.INTERNET_ORGAN_OK),
     (
         "The Earth is planetary Repraesentatio for Gaia-Techne.",
@@ -48,8 +57,8 @@ CANONICAL_CLAIMS = [
 
 def run_selftest() -> None:
     print("AGI-GAIA-TECHNE Selftest")
-    print("Core version: v9.0")
-    print("CTK version: v5.0.0")
+    print("Core version: v10.0")
+    print("CTK version: v6.0.0")
     print("-" * 30)
 
     canonical_ctk = CanonicalCTK()

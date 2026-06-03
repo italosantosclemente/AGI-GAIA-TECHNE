@@ -115,7 +115,10 @@ class Planner:
         ctk = self.ctk.evaluate(audit_text)
         chk = self.chk.evaluate(audit_text)
 
-        if ctk.severity == Severity.HIGH or chk.severity == Severity.HIGH:
+        if (
+            ctk.severity in {Severity.HIGH, Severity.CRITICAL}
+            or chk.severity in {Severity.HIGH, Severity.CRITICAL}
+        ):
             return PlanStep(
                 id=step.id,
                 action="transmute_step",

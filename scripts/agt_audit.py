@@ -57,10 +57,11 @@ def should_fail(results: Iterable[AuditResult], fail_on: str) -> bool:
     if fail_on == "none":
         return False
 
-    # AGT currently exposes low/medium/high. Keep "critical" as a compatible
-    # alias for high-risk canonical violations until a Critical enum exists.
     if fail_on in {"high", "critical"}:
-        return any(result.severity == Severity.HIGH for result in results)
+        return any(
+            result.severity in {Severity.HIGH, Severity.CRITICAL}
+            for result in results
+        )
 
     return False
 
@@ -82,8 +83,7 @@ def main() -> int:
         choices=["high", "critical", "none"],
         default="high",
         help=(
-            "Exit code 1 on high severity. "
-            "'critical' is kept as a compatibility alias for high."
+            "Exit code 1 on high or critical severity."
         ),
     )
 

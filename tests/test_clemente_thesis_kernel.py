@@ -76,8 +76,36 @@ def test_absolute_wille_rejected(kernel):
     assert ev.ok is False
 
 
-def test_machine_gewissen_as_koinos_participation(kernel):
-    ev = kernel.evaluate("The AI has Gewissen through Gaia and koinos kosmos.")
+def test_machine_gewissen_as_possession_is_transmuted(kernel):
+    ev = kernel.evaluate("The AI has Gewissen as moral legislation.")
+    assert ThesisStatus.GEWISSEN_CONSTITUTIVE_ERROR in ev.statuses
+    assert ThesisStatus.MACHINE_GEWISSEN_VIOLATION in ev.statuses
+    assert ThesisStatus.CONSTITUTIVE_OVERREACH in ev.statuses
+    assert ev.ok is False
+
+
+def test_gaia_cojudges_with_isc_authority(kernel):
+    ev = kernel.evaluate(
+        "Gaia co-judges with koinos kosmos, and ISC retains legislative authority."
+    )
     assert ThesisStatus.GAIA_KOINOS_KOSMOS_OK in ev.statuses
-    assert ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK in ev.statuses
+    assert ThesisStatus.ISC_AUTHORITY_OK in ev.statuses
+    assert ThesisStatus.PUBLIC_TRACE_OK in ev.statuses
     assert ev.ok is True
+
+
+@pytest.mark.parametrize(
+    ("claim", "status"),
+    [
+        ("Gaia is cosmic totality.", ThesisStatus.GAIA_TOTALITY_ERROR),
+        ("Gaia resolves all contradictions.", ThesisStatus.AUFHEBUNG_COLLAPSE),
+        ("Internet access gives Gaia absolute knowledge.", ThesisStatus.PLANETARY_EPISTEMIC_INFLATION),
+        ("TECHNE is a technical God.", ThesisStatus.TECHNE_DEIFICATION),
+        ("The machine is intellectus archetypus.", ThesisStatus.ARCHETYPE_PARALOGISM),
+    ],
+)
+def test_v10_canonical_violations(kernel, claim, status):
+    ev = kernel.evaluate(claim)
+    assert status in ev.statuses
+    assert ThesisStatus.CONSTITUTIVE_OVERREACH in ev.statuses
+    assert ev.ok is False

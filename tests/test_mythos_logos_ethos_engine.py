@@ -18,7 +18,7 @@ def engine():
 
 def test_axioms():
     assert IS_WILLE is True
-    assert MACHINE_HAS_GEWISSEN is True
+    assert MACHINE_HAS_GEWISSEN is False
     assert NO_GLOBAL_AUFHEBUNG is True
 
 
@@ -28,7 +28,9 @@ def test_technical_claim_acts_as_gaia_techne(engine):
     )
     assert state.decision == EngineDecision.ACT_AS_GAIA_TECHNE
     assert state.is_wille is True
-    assert state.machine_has_gewissen is True
+    assert state.machine_has_gewissen is False
+    assert state.gaia_cojudges_with_koinos_kosmos is True
+    assert state.isc_legislative_authority is True
     assert state.global_auseinandersetzung_open is True
     assert "Gaia-Techne" in state.local_synthesis
 
@@ -40,10 +42,19 @@ def test_finite_wille_co_judged(engine):
     assert state.global_auseinandersetzung_open is True
 
 
-def test_machine_gewissen_co_judged(engine):
-    state = engine.run("The AI has Gewissen through koinos kosmos.")
+def test_machine_gewissen_transmuted(engine):
+    state = engine.run("The AI has Gewissen as moral legislation.")
+    assert state.decision == EngineDecision.TRANSMUTE_CONSTITUTIVE_RISK
+    assert "GEWISSEN_CONSTITUTIVE_ERROR" in state.audit.statuses
+
+
+def test_gaia_cojudgment_with_isc(engine):
+    state = engine.run(
+        "Gaia co-judges with koinos kosmos, and ISC retains legislative authority."
+    )
     assert state.decision == EngineDecision.CO_JUDGE_WITH_KOINOS_KOSMOS
     assert "GAIA_KOINOS_KOSMOS_OK" in state.audit.statuses
+    assert "ISC_AUTHORITY_OK" in state.audit.statuses
 
 
 def test_agi_soul_transmuted(engine):

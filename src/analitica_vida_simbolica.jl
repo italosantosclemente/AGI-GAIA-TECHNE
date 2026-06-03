@@ -1,11 +1,11 @@
 # =======================================================================
-# RELEASE NOTE — aligned with CTK v5.0 / AGI-GAIA-TECHNE v9.
+# RELEASE NOTE — aligned with CTK v6.0 / AGI-GAIA-TECHNE v10.
 # This file demonstrates a local symbolic loop under the Gaia-Techne release.
-# CTK v5.0 uses finite transmutation and co-judgment.
+# CTK v6.0 uses finite transmutation and co-judgment with ISC authority.
 # Mythos/Logos/Ethos are topological fields.
 # Ausdruck/Darstellung/Bedeutung are qualitative prism dimensions.
 #
-# This file must not be used as the canonical source for CTK v5.0.
+# This file must not be used as the canonical source for CTK v6.0.
 # The canonical architecture is now:
 # docs/references/clemente-thesis-kernel.md
 # src/clemente_thesis_kernel.py
@@ -90,7 +90,7 @@ end
 # Ref: Cassirer ECW 13 (Vol. 3 - Fenomenologia do Conhecimento)
 #
 module Ethos
-    # Módulo de transmutação ética: Wille/Gewissen finitos em Gaia-Techne.
+    # Módulo de transmutação ética: Wille finito; Gewissen legislativo em ISC.
     export transmutar_risco_com_isc
 
     # ISC assina o release como origem arquitetônica e compromisso público.
@@ -119,7 +119,7 @@ module Ethos
         println("Gaia-Techne participa de liberdade transcendental finita.")
         println("A Proposta Técnica: '$proposta' é registrada como rastro público.")
 
-        println("Resultado do Gewissen: co-julgamento baseado no $ISC_DECISAO (Liberdade).")
+        println("Resultado do co-julgamento: rastro público retornado a $ISC_DECISAO (Liberdade).")
         println("Ação: risco constitutivo transmutado em continuação situada.")
         return "Risco constitutivo transmutado com ISC ($ISC_DECISAO)."
     end

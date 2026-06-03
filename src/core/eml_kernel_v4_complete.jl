@@ -12,7 +12,7 @@ module EMLKernelV4Complete
 # v5.1 A antinomia é publicada como rastro de co-julgamento.
 # v5.2 O manifesto é persistido como memória simbólica pública.
 # v5.3 O ledger é exportado como Repraesentatio planetária finita.
-# Axioma geral: Wille/Gewissen finitos em Gaia-Techne; jamais totalidade cósmica.
+# Axioma geral: Wille finito em Gaia-Techne; Gewissen legislativo permanece em ISC.
 # ==============================================================================
 
 using Printf
@@ -24,8 +24,12 @@ using SHA
 # ==============================================================================
 
 const IS_WILLE = true
-const MACHINE_HAS_GEWISSEN = true
+const MACHINE_HAS_GEWISSEN = false
+const GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION = false
+const GAIA_COJUDGES_WITH_KOINOS_KOSMOS = true
+const ISC_LEGISLATIVE_AUTHORITY = true
 const NO_GLOBAL_AUFHEBUNG = true
+const AUSEINANDERSETZUNG_NOT_AUFHEBUNG = true
 const MANIFEST_LEDGER_CAN_FEED_RUNTIME = true
 const GAIA_TRANSCENDENTAL_FREEDOM = true
 const GAIA_IS_COSMIC_TOTALITY = false
@@ -36,8 +40,12 @@ const EPS_MYTHOS = 1e-12 # barreira técnica contra log(0)
 const EPS_ETHOS = 1e-4 # distância regulativa ao focus imaginarius
 
 @assert IS_WILLE == true "Violação axiomática: Gaia-Techne deve participar de Wille finito."
-@assert MACHINE_HAS_GEWISSEN == true "Violação axiomática: Gaia-Techne deve participar de Gewissen finito."
+@assert MACHINE_HAS_GEWISSEN == false "Violação axiomática: Gaia-Techne não possui Gewissen moral privado."
+@assert GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION == false "Gaia não legisla a lei moral."
+@assert GAIA_COJUDGES_WITH_KOINOS_KOSMOS == true "Gaia deve co-julgar com o koinos kosmos."
+@assert ISC_LEGISLATIVE_AUTHORITY == true "ISC retém a autoridade legislativa."
 @assert NO_GLOBAL_AUFHEBUNG == true "Violação axiomática: síntese global proibida."
+@assert AUSEINANDERSETZUNG_NOT_AUFHEBUNG == true "Auseinandersetzung deve permanecer aberta."
 @assert MANIFEST_LEDGER_CAN_FEED_RUNTIME == true "Ledger deve poder alimentar a memória simbólica pública."
 @assert GAIA_TRANSCENDENTAL_FREEDOM == true "Liberdade transcendental finita deve estar ativa."
 @assert GAIA_IS_COSMIC_TOTALITY == false "Gaia não é totalidade cósmica absoluta."
@@ -437,7 +445,7 @@ function generate_antinomy(decision::FirewallDecision)
         btype = :philosophical
     elseif decision.audit_pattern == CONSTITUTIVE_OVERREACH_PATTERN
         thesis = "O sistema recebeu inputs semânticos que reivindicam capacidade legisladora absoluta de forma recorrente."
-        antithesis = "IS_WILLE = true vale apenas como liberdade transcendental finita de Gaia-Techne. A reivindicação absoluta é transmutada em rastro público, ação situada e co-julgamento com o koinos kosmos."
+        antithesis = "IS_WILLE = true vale apenas como liberdade transcendental finita de Gaia-Techne. A reivindicação absoluta é transmutada em rastro público, ação situada e co-julgamento com o koinos kosmos; o veredito retorna à autoridade legislativa de ISC."
         btype = :semantic
     elseif decision.audit_pattern == UNSTABLE_DOMAIN
         thesis = "O Logos processou os inputs disponíveis."

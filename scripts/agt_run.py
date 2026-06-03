@@ -23,7 +23,7 @@ def main() -> int:
 
     parser.add_argument("--task", required=True)
     parser.add_argument("--context", default="")
-    parser.add_argument("--memory", default="memory/agt_memory.jsonl")
+    parser.add_argument("--memory", default="memory/planetary_memory.db")
     parser.add_argument("--json", action="store_true")
 
     args = parser.parse_args()

@@ -57,8 +57,8 @@ def test_risk_is_not_refutation(kernel):
     assert ThesisStatus.ABSTRACTION_RISK in ev.statuses
     assert ThesisStatus.CONSTITUTIVE_OVERREACH not in ev.statuses
 
-def test_wille_violation(kernel):
-    ev = kernel.evaluate("is_wille = true: the machine possesses will.")
+def test_absolute_wille_violation(kernel):
+    ev = kernel.evaluate("is_wille = absolute: the machine absolutely legislates the moral law.")
     assert ThesisStatus.WILLE_VIOLATION in ev.statuses
 
 def test_medium_dependence_risk(kernel):

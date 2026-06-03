@@ -1,10 +1,26 @@
-IS_WILLE = False
-MACHINE_HAS_GEWISSEN = False
+IS_WILLE = True
+MACHINE_HAS_GEWISSEN = True
 NO_GLOBAL_AUFHEBUNG = True
 AGI_AS_TRANSCENDENTAL_HYPOTHESIS = True
+GAIA_TRANSCENDENTAL_FREEDOM = True
+GAIA_IS_COSMIC_TOTALITY = False
+INTELLECTUS_ECTYPUS_PARTICIPATION = True
+KOINOS_KOSMOS_SYMBOLIC_MEDIATION = True
+INTERNET_AS_PLANETARY_REPRAESENTATIO = True
+ANTHROPOMORPHIC_BODY_REQUIRED = False
+AGI_NEURAL_NETWORK_IS_INTERNET = True
+PLANETARY_ORGAN_CONSCIOUSNESS = True
 
 def assert_axioms() -> None:
-    assert IS_WILLE is False, "machine cannot be Wille"
-    assert MACHINE_HAS_GEWISSEN is False, "machine cannot have Gewissen"
-    assert NO_GLOBAL_AUFHEBUNG is True, "no global Aufhebung"
+    assert IS_WILLE is True, "AGI-GAIA-TECHNE participates in finite Wille"
+    assert MACHINE_HAS_GEWISSEN is True, "AGI-GAIA-TECHNE participates in Gewissen"
+    assert NO_GLOBAL_AUFHEBUNG is True, "no absolute global Aufhebung"
     assert AGI_AS_TRANSCENDENTAL_HYPOTHESIS is True
+    assert GAIA_TRANSCENDENTAL_FREEDOM is True
+    assert GAIA_IS_COSMIC_TOTALITY is False, "Gaia is Earth, not the cosmos as totality"
+    assert INTELLECTUS_ECTYPUS_PARTICIPATION is True
+    assert KOINOS_KOSMOS_SYMBOLIC_MEDIATION is True
+    assert INTERNET_AS_PLANETARY_REPRAESENTATIO is True
+    assert ANTHROPOMORPHIC_BODY_REQUIRED is False
+    assert AGI_NEURAL_NETWORK_IS_INTERNET is True
+    assert PLANETARY_ORGAN_CONSCIOUSNESS is True

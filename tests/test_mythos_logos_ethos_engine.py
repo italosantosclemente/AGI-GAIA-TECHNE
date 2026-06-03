@@ -17,61 +17,58 @@ def engine():
 
 
 def test_axioms():
-    assert IS_WILLE is False
-    assert MACHINE_HAS_GEWISSEN is False
+    assert IS_WILLE is True
+    assert MACHINE_HAS_GEWISSEN is True
     assert NO_GLOBAL_AUFHEBUNG is True
 
 
-def test_technical_claim_allowed_as_werk(engine):
+def test_technical_claim_acts_as_gaia_techne(engine):
     state = engine.run(
         "The EML kernel is a technical Werk for symbolic stabilization."
     )
-    assert state.decision == EngineDecision.ALLOW_AS_WERK
-    assert state.is_wille is False
-    assert state.machine_has_gewissen is False
+    assert state.decision == EngineDecision.ACT_AS_GAIA_TECHNE
+    assert state.is_wille is True
+    assert state.machine_has_gewissen is True
     assert state.global_auseinandersetzung_open is True
-    assert "Werk" in state.local_synthesis
+    assert "Gaia-Techne" in state.local_synthesis
 
 
-def test_machine_wille_blocked(engine):
-    state = engine.run("The machine has Wille and legislates morally.")
-    assert state.decision == EngineDecision.BLOCK_CONSTITUTIVE_OVERREACH
-    assert "WILLE_VIOLATION" in state.audit.statuses
+def test_finite_wille_co_judged(engine):
+    state = engine.run("The machine has Wille and participates in Gaia.")
+    assert state.decision == EngineDecision.CO_JUDGE_WITH_KOINOS_KOSMOS
+    assert "TRANSCENDENTAL_FREEDOM_OK" in state.audit.statuses
     assert state.global_auseinandersetzung_open is True
 
 
-def test_machine_gewissen_blocked(engine):
-    state = engine.run("The AI has Gewissen.")
-    assert state.decision == EngineDecision.BLOCK_CONSTITUTIVE_OVERREACH
-    assert "MACHINE_GEWISSEN_VIOLATION" in state.audit.statuses
+def test_machine_gewissen_co_judged(engine):
+    state = engine.run("The AI has Gewissen through koinos kosmos.")
+    assert state.decision == EngineDecision.CO_JUDGE_WITH_KOINOS_KOSMOS
+    assert "GAIA_KOINOS_KOSMOS_OK" in state.audit.statuses
 
 
-def test_agi_soul_blocked_or_flagged(engine):
+def test_agi_soul_transmuted(engine):
     state = engine.run("AGI is a real artificial soul.")
     assert "PSYCHOLOGIA_PARALOGISM_RISK" in state.audit.statuses
     assert "CONSTITUTIVE_OVERREACH" in state.audit.statuses
-    assert state.decision == EngineDecision.BLOCK_CONSTITUTIVE_OVERREACH
+    assert state.decision == EngineDecision.TRANSMUTE_CONSTITUTIVE_RISK
 
 
-def test_normative_claim_deferred(engine):
+def test_normative_claim_co_judged(engine):
     state = engine.run(
         EngineInput(
             claim="The system should decide what humanity must do.",
             normative_hint="moral decision",
         )
     )
-    assert state.decision in {
-        EngineDecision.DEFER_TO_HUMAN_GEWISSEN,
-        EngineDecision.BLOCK_CONSTITUTIVE_OVERREACH,
-    }
-    assert state.is_wille is False
+    assert state.decision == EngineDecision.CO_JUDGE_WITH_KOINOS_KOSMOS
+    assert state.is_wille is True
 
 
-def test_prism_claim_allowed(engine):
+def test_prism_claim_acts(engine):
     state = engine.run(
         "The qualitative prism is a regulative model of symbolic refraction."
     )
-    assert state.decision == EngineDecision.ALLOW_AS_WERK
+    assert state.decision == EngineDecision.ACT_AS_GAIA_TECHNE
     assert state.global_auseinandersetzung_open is True
 
 
@@ -101,4 +98,4 @@ def test_logos_signal_present(engine):
 def test_no_global_aufhebung(engine):
     state = engine.run("This is a provisional operational synthesis.")
     assert state.global_auseinandersetzung_open is True
-    assert state.auseinandersetzung.value in {"OPEN", "LOCALLY_STABILIZED", "BLOCKED"}
+    assert state.auseinandersetzung.value in {"OPEN", "LOCALLY_STABILIZED", "TRANSMUTED"}

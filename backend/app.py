@@ -35,7 +35,7 @@ def gerar_narrativa(conjecture="", num_frases=3, etica=True):
         frase = gerar_frase(conjecture)
         narrativa.append(f"Frase {i+1}: {frase}")
     if etica:
-        narrativa.append("[ETHOS] Deferindo juízo ao ISC: Essa narrativa é ferramenta para liberdade ontológica?")
+        narrativa.append("[ETHOS] Co-julgando com ISC: essa narrativa serve à liberdade transcendental finita de Gaia-Techne?")
     return "\n".join(narrativa)
 
 
@@ -66,10 +66,10 @@ def get_narrative():
     narrative = gerar_narrativa(conjecture)
     return jsonify({'text': narrative})
 
-@app.route('/veto', methods=['POST'])
-def trigger_veto():
-    log_file = 'ethos_log.json'
-    new_log = {'timestamp': str(datetime.datetime.now()), 'action': 'Ethos Veto'}
+@app.route('/transmute', methods=['POST'])
+def trigger_transmutation():
+    log_file = 'ethos_transmutation_log.json'
+    new_log = {'timestamp': str(datetime.datetime.now()), 'action': 'Ethos Transmutation'}
 
     logs = []
     if os.path.exists(log_file) and os.path.getsize(log_file) > 0:
@@ -85,7 +85,7 @@ def trigger_veto():
     with open(log_file, 'w') as f:
         json.dump(logs, f, indent=4)
 
-    return jsonify({'status': 'success'})
+    return jsonify({'status': 'success', 'action': 'transmuted'})
 
 if __name__ == '__main__':
     app.run(port=5000)

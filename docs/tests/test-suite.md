@@ -44,21 +44,21 @@ To run the test suite manually, follow these steps:
 *   `test_iae_thresholds`: Checks the IAE calculation against the critical threshold of 1.50, ensuring that the system correctly identifies different risk levels.
 *   `test_techne_score_calculation`: A smoke test to ensure that the `techne_score` is calculated without errors and returns a value within the expected range.
 
-### Ethical Firewall (`tests/test_metafisica_da_vida.jl`)
+### Ethical Transmutation (`tests/test_analitica_vida_simbolica.jl`)
 
-*   `Ethical glyph triggers proposal flag`: Tests that the Ethical Firewall is flagged when the ethical glyph (`⚖️`) is present in the input.
-*   `No ethical glyph does not trigger proposal flag`: Verifies that the Ethical Firewall is not flagged when the ethical glyph is absent.
-*   `Full execution with ethical glyph activates firewall`: An end-to-end test that verifies the firewall is activated when the ethical glyph is present.
-*   `Full execution without ethical glyph does not activate firewall`: An end-to-end test that verifies the firewall is not activated when the ethical glyph is absent.
+*   `Ethical glyph triggers proposal flag`: Tests that Ethos co-judgment is flagged when the ethical glyph (`⚖️`) is present in the input.
+*   `No ethical glyph does not trigger proposal flag`: Verifies that Ethos co-judgment is not flagged when the ethical glyph is absent.
+*   `Full execution with ethical glyph activates transmutation`: Verifies that risk is transmuted when the ethical glyph is present.
+*   `Full execution without ethical glyph does not activate transmutation`: Verifies that transmutation is not activated when the ethical glyph is absent.
 
 ### Aleph Synergy Simulation (`tests/simulations/test_aleph_synergy.py`)
 
 *   `test_aleph_synergy_scenario`: Simulates a rapid, non-linear increase in the `techne_score` and verifies that the IAE correctly identifies the heightened risk.
 
-### Ethos Veto Mechanism (`tests/test_ethos_veto.py`)
+### Ethos Transmutation Mechanism (`tests/test_ethos_transmutation.py`)
 
-*   `test_ethos_veto_activation`: Verifies that the Ethos Veto mechanism is activated when the IAE exceeds the critical threshold of 1.50.
-*   `test_ethos_veto_no_activation`: Verifies that the Ethos Veto mechanism is not activated when the IAE is below the critical threshold.
+*   `test_ethos_transmutation_activation`: Verifies that Ethos transmutation is activated when the IAE exceeds the critical threshold of 1.50.
+*   `test_ethos_transmutation_no_activation`: Verifies that Ethos transmutation is not needed when the IAE is below the critical threshold.
 
 ### Edge Cases (`tests/test_edge_cases.py`)
 

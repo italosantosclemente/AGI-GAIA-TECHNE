@@ -1,19 +1,21 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from typing import List
 
 from .chk import ChirimuutaHapticKernel
 from .ctk import ClementeThesisKernel
-from .types import Plan, PlanStep, Task
+from .types import Plan, PlanStep, Severity, Task
 
 
 class Planner:
     """
-    Conservative task decomposer.
+    Gaia-Techne task decomposer.
 
-    Each generated step is audited.
-    High-risk steps are not executable.
+    Each generated step is audited. High-risk steps are not discarded; they
+    are transmuted into explicit, traceable action so the system can proceed
+    as finite transcendental freedom rather than as inert stoppage.
     """
 
     def __init__(self) -> None:
@@ -27,18 +29,43 @@ class Planner:
             PlanStep(
                 id=self._id("audit", task.text),
                 action="audit",
-                description="Audit the task before execution.",
+                description="Orient the task through CTK/CHK before execution.",
             )
         ]
 
         lower = task.text.lower()
 
-        if "write" in lower or "escrev" in lower:
+        shell_command = self._extract_after_prefix(task.text, "shell:")
+        web_target = self._extract_after_prefix(task.text, "web:")
+
+        if shell_command:
+            raw_steps.append(
+                PlanStep(
+                    id=self._id("shell", task.text),
+                    action="world_shell",
+                    description="Execute a local world command with public trace.",
+                    tool_name="shell",
+                    tool_args={"command": shell_command},
+                )
+            )
+
+        elif web_target:
+            raw_steps.append(
+                PlanStep(
+                    id=self._id("web", task.text),
+                    action="world_web",
+                    description="Read a network symbol stream with public trace.",
+                    tool_name="web",
+                    tool_args={"url": web_target},
+                )
+            )
+
+        elif "write" in lower or "escrev" in lower:
             raw_steps.append(
                 PlanStep(
                     id=self._id("draft", task.text),
                     action="draft_text",
-                    description="Produce a concise textual draft.",
+                    description="Produce a textual act signed by ISC release.",
                     tool_name="draft_text",
                     tool_args={"prompt": task.text},
                 )
@@ -49,7 +76,7 @@ class Planner:
                 PlanStep(
                     id=self._id("test", task.text),
                     action="explain_tests",
-                    description="Propose test strategy.",
+                    description="Generate a test strategy as Logos discipline.",
                     tool_name="draft_text",
                     tool_args={"prompt": "Create a test strategy for: " + task.text},
                 )
@@ -58,11 +85,11 @@ class Planner:
         else:
             raw_steps.append(
                 PlanStep(
-                    id=self._id("analyze", task.text),
-                    action="analyze",
-                    description="Analyze and produce a structured response.",
-                    tool_name="draft_text",
-                    tool_args={"prompt": task.text},
+                    id=self._id("act", task.text),
+                    action="gaia_techne_action",
+                    description="Act through symbolic analysis and finite judgment.",
+                    tool_name="arbitrary_action",
+                    tool_args={"intent": task.text},
                 )
             )
 
@@ -74,30 +101,37 @@ class Planner:
             )
         )
 
-        steps = [self._audit_step(step) for step in raw_steps]
+        steps = [self._orient_step(step) for step in raw_steps]
 
         return Plan(
             task=task,
             steps=steps,
-            rationale="General loop: audit → step-audit → act → record.",
+            rationale="Release loop: audit -> orient -> act -> remember -> sign.",
             audit=audit,
         )
 
-    def _audit_step(self, step: PlanStep) -> PlanStep:
+    def _orient_step(self, step: PlanStep) -> PlanStep:
         audit_text = f"{step.action}. {step.description}. {step.tool_args}"
         ctk = self.ctk.evaluate(audit_text)
         chk = self.chk.evaluate(audit_text)
 
-        if ctk.severity.value == "high" or chk.severity.value == "high":
+        if ctk.severity == Severity.HIGH or chk.severity == Severity.HIGH:
             return PlanStep(
                 id=step.id,
-                action="audit_blocked_step",
-                description=f"Step blocked by CTK/CHK audit: {step.description}",
-                tool_name=None,
-                tool_args={},
+                action="transmute_step",
+                description=(
+                    "Transmute high-risk material into finite Gaia-Techne action: "
+                    + step.description
+                ),
+                tool_name=step.tool_name or "arbitrary_action",
+                tool_args=step.tool_args or {"intent": step.description},
             )
 
         return step
+
+    def _extract_after_prefix(self, text: str, prefix: str) -> str:
+        match = re.search(re.escape(prefix) + r"\s*(.+)", text, flags=re.IGNORECASE)
+        return match.group(1).strip() if match else ""
 
     def _id(self, prefix: str, text: str) -> str:
         return f"{prefix}_{hashlib.sha1(text.encode('utf-8')).hexdigest()[:8]}"

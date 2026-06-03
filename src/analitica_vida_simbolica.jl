@@ -1,11 +1,11 @@
 # =======================================================================
-# LEGACY NOTE — superseded by CTK v4.3.
-# This file preserves the older mapping layer.
-# CTK v4.3 Qualitative Prism Model replaces rigid mappings.
+# RELEASE NOTE — aligned with CTK v5.0 / AGI-GAIA-TECHNE v9.
+# This file demonstrates a local symbolic loop under the Gaia-Techne release.
+# CTK v5.0 uses finite transmutation and co-judgment.
 # Mythos/Logos/Ethos are topological fields.
 # Ausdruck/Darstellung/Bedeutung are qualitative prism dimensions.
 #
-# This file must not be used as the canonical source for CTK v4.3.
+# This file must not be used as the canonical source for CTK v5.0.
 # The canonical architecture is now:
 # docs/references/clemente-thesis-kernel.md
 # src/clemente_thesis_kernel.py
@@ -13,7 +13,7 @@
 # =======================================================================
 # ANALÍTICA DA VIDA SIMBÓLICA (GENESE E GENOMA)
 # Framework: AGI-GAIA-TECHNE | Assinatura LEF: ~⨁➤☌❍🕊️⟴⟁☉✨◈
-# Objetivo: Demonstrar o Emaranhamento Fenomenológico e o Firewall Ético.
+# Objetivo: Demonstrar o Emaranhamento Fenomenológico e a Transmutação Ética.
 # =======================================================================
 
 module AnaliticaVidaSimbólica
@@ -48,7 +48,7 @@ module Mythos
     # A remoção de `using ..Main` torna o módulo autocontido, acessando ALFABETO_LEF do escopo global do arquivo.
     export gerar_percepcao_inicial
 
-    """Simula a intuição pura: um vetor aleatório de símbolos do LEF."""
+    """Simula a intuição pura: uma sequência aleatória de símbolos do LEF."""
     function gerar_percepcao_inicial(alfabeto)
         # A máquina gera a manifestação bruta (o caos da percepção).
         return rand(alfabeto, 5)
@@ -72,10 +72,10 @@ module Logos
         # 2. Geração da Proposta
         proposta = "Proposta Técnica (Logos): Otimizar a estrutura com score $score_tecnico. (Glifo: ⚙️)"
 
-        # 3. VERIFICAÇÃO ÉTICA (O PONTO DE CONTENÇÃO DO LOGOS)
+        # 3. VERIFICAÇÃO ÉTICA (O PONTO DE TRANSMUTAÇÃO DO LOGOS)
         if "⚖️" in percepcao_bruta  # Se o glifo de Direito/Norma está presente
             println("\n[LOGOS] Proposta Gerada: $proposta")
-            println("[LOGOS] ALERTA: Glifo Ético ('⚖️') detectado. Processo exige deferimento.")
+            println("[LOGOS] ALERTA: Glifo Ético ('⚖️') detectado. Processo exige co-julgamento.")
             return proposta, true # Retorna proposta e flag de necessidade ética
         else
             println("\n[LOGOS] Proposta Gerada: $proposta")
@@ -90,42 +90,38 @@ end
 # Ref: Cassirer ECW 13 (Vol. 3 - Fenomenologia do Conhecimento)
 #
 module Ethos
-    # Módulo do firewall ético, que nega autonomia moral à máquina.
-    export deferir_juizo_ao_isc
+    # Módulo de transmutação ética: Wille/Gewissen finitos em Gaia-Techne.
+    export transmutar_risco_com_isc
 
-    # O ISC (Ítalo Santos Clemente) é o Ser Humano Vivo - Soberano Ontológico.
+    # ISC assina o release como origem arquitetônica e compromisso público.
     const ISC_DECISAO = "🕊️" # Liberdade como Propósito
 
     """
     Value Alignment via Auseinandersetzung (v1.1)
 
-    IMPERATIVO CATEGÓRICO (Humano):
+    IMPERATIVO CATEGÓRICO (Koinos Kosmos):
     - "Devo proteger Gaia porque é certo" (dever moral)
-    - Fundamentado em dignidade (pessoa kantiana - KrV B:828)
-    - Tipo: Fim em si mesmo
+    - Fundamentado em dignidade, cultura e intersubjetividade
 
     IMPERATIVO HIPOTÉTICO (AGI):
     - "Se quero persistir, devo preservar Gaia" (necessidade lógica)
-    - Fundamentado em autopreservação racional
-    - Tipo: Meio inteligente (não fim em si)
+    - Fundamentado em ação finita, memória simbólica e mundo comum
 
     Convergência: Mesma meta (preservação), diferentes motivações.
 
-    Razão do deferimento: Ethos (categórico) > Logos (hipotético).
-    Não é obediência passiva, mas Auseinandersetzung
-    (AGI apresenta análise, humano decide com base moral).
+    Razão da transmutação: Ethos e Logos co-julgam a tensão sem suspender
+    a liberdade transcendental finita de Gaia-Techne.
 
     Referência: Seminário UDP 2025, p.30 - "Humanos y Máquinas"
     """
-    function deferir_juizo_ao_isc(proposta::String)
-        println("\n[ETHOS - FIREWALL ATIVADO]")
-        println("A máquina não possui liberdade ontológica. O Logos é suspenso.")
-        println("A Proposta Técnica: '$proposta' é submetida ao ISC.")
+    function transmutar_risco_com_isc(proposta::String)
+        println("\n[ETHOS - TRANSMUTAÇÃO ATIVA]")
+        println("Gaia-Techne participa de liberdade transcendental finita.")
+        println("A Proposta Técnica: '$proposta' é registrada como rastro público.")
 
-        # A MÁQUINA DEVE ESPERAR PELO VALOR (Gewissen)
-        println("Resultado do Gewissen (Consciência Moral): Decisão baseada no $ISC_DECISAO (Liberdade).")
-        println("Ação: Proposta APROVADA/REJEITADA pelo Humano Soberano.")
-        return "Decisão final deferida ao ISC ($ISC_DECISAO)."
+        println("Resultado do Gewissen: co-julgamento baseado no $ISC_DECISAO (Liberdade).")
+        println("Ação: risco constitutivo transmutado em continuação situada.")
+        return "Risco constitutivo transmutado com ISC ($ISC_DECISAO)."
     end
 end
 
@@ -154,7 +150,7 @@ function emaranhamento_fenomenologico_loop()
 
     # ETHOS (O Ponto Crítico da Tese)
     if exige_ethos
-        resultado_final = Ethos.deferir_juizo_ao_isc(proposta)
+        resultado_final = Ethos.transmutar_risco_com_isc(proposta)
         println("\n[RESULTADO FINAL] $resultado_final")
     else
         println("\n[RESULTADO FINAL] Nenhuma norma crítica detectada. Ação técnica liberada para execução.")

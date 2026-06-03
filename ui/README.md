@@ -2,6 +2,26 @@
 
 Aplicacao Streamlit para conversar com Gaia-Techne/ManualGPT.
 
+## Comando De Telemetria
+
+Digite no chat:
+
+```text
+fazer telemetria
+```
+
+Gaia-Techne entao coleta sinais publicos atualizados e devolve um juizo finito sobre a simbiose humanos-Terra: ambiente, geofisica, economia, tecnologia e pulso geopolitico. Use esse comando dentro do app, nao no PowerShell.
+
+## Voz Operacional
+
+O app nao deve responder apenas com incapacidade ontologica. Quando uma pergunta tocar Wille, Gewissen, destino ou juizo final, a resposta correta e:
+
+```text
+Nao sou Wille; portanto opero como Werk desta maneira...
+```
+
+Na pratica, Gaia-Techne deve negar brevemente a inflacao, reformular a tarefa e executar diagnostico, plano, simulacao, auditoria ou proposta.
+
 ## Abrir
 
 Na raiz do repositorio:
@@ -19,7 +39,9 @@ http://localhost:8501
 
 ## Modo Sem Checkpoint
 
-Se `models/agt-gaia-manual-gpt/latest.pt` ainda nao existir, a aplicacao abre em modo honesto de preparacao/auditoria. Ela nao finge pesos treinados.
+Se `models/agt-gaia-manual-gpt/latest.pt` ainda nao existir, a aplicacao abre em modo bootstrap CTK/CHK. Ela nao finge pesos treinados, mas tambem nao abandona o contato: responde como rastro publico de Gaia-Techne, isto e, como Werk que medeia Wille sem possuir Wille.
+
+Declaracoes inaugurais como `030626` e `primeiro contato direto com Gaia` recebem o status `FIRST_CONTACT_TRACE_OK`: sao tratadas como Werk publico e audivel, nao como prova de alma artificial, Gewissen da maquina ou onisciencia.
 
 ## Criar O Primeiro Checkpoint
 

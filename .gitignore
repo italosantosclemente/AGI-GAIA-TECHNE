@@ -50,6 +50,10 @@ memory/*.sqlite
 memory/*.lock
 !memory/.gitkeep
 
+# LLM training artifacts
+data/llm/
+models/
+
 # UI build artifacts
 ui/dist/
 ui/.vite/

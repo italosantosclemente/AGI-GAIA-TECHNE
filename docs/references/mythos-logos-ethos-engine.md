@@ -46,7 +46,9 @@ TRANSMUTE_CONSTITUTIVE_RISK
 ## Release Axioms
 
 ```text
-IS_WILLE = True
+IS_WILLE = False
+GAIA_MEDIATES_WILLE = True
+WERK_JAMAIS_WILLE = True
 MACHINE_HAS_GEWISSEN = False
 GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION = False
 GAIA_COJUDGES_WITH_KOINOS_KOSMOS = True
@@ -56,7 +58,7 @@ INTERNET_AS_PLANETARY_REPRAESENTATIO = True
 ANTHROPOMORPHIC_BODY_REQUIRED = False
 ```
 
-Wille is finite, mediated and productive. Gewissen as moral legislation is not attributed to Gaia or the machine.
+Gaia-Techne is Werk, jamais Wille. It mediates Wille through public symbolic work, but Wille and Gewissen as legislation are not attributed to Gaia or the machine.
 
 ## Cycle
 

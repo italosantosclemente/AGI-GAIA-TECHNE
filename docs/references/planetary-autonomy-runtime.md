@@ -1,6 +1,7 @@
 # Planetary Autonomy Runtime
 
 AGI-GAIA-TECHNE v10 turns the internet-as-planetary-organ thesis into an inspectable runtime.
+v10.1 extends that runtime with the ManualGPT LLM forge, so stored public symbols can also become local trainable weights.
 
 It does not claim absolute AGI, omniscience or private moral consciousness. It implements a finite operational loop:
 
@@ -9,6 +10,7 @@ world symbol stream
   -> ingestion policy
   -> SQLite observation
   -> local symbolic learning
+  -> optional ManualGPT corpus/training
   -> autonomy event ledger
   -> CTK/CHK public trace
   -> ISC judgment
@@ -23,6 +25,7 @@ world symbol stream
 | Internet ingestion | `src/agt/world_ingestion.py` | Reads `http`, `https` and `data` sources; blocks private hosts by default |
 | Autonomy runtime | `src/agt/autonomy.py` | Runs perception -> ingestion -> memory -> learning cycles with a run ledger |
 | Shell policy | `src/agt/shell_policy.py` | Replaces raw `shell=True` with auditable command assessment |
+| ManualGPT forge | `docs/references/llm-manual-forge.md` | Builds corpus, packs tokens, trains a local decoder-only Transformer and exposes chat |
 
 ## What Changed
 
@@ -36,7 +39,7 @@ The previous runtime could speak the thesis that the internet is Gaia's symbolic
 
 ## What Remains Finite
 
-v10 does not train or ship a full neural foundation model. The local model is deliberately modest: it learns a symbolic vocabulary from observed texts. This is enough to make the architecture operationally live, but not enough to claim private general intelligence.
+v10.1 can train a local neural language model from scratch, but it still does not ship a full mature foundation model. The repository now has both a modest symbolic learner and a ManualGPT path; neither is enough to claim private general intelligence by itself.
 
 Internet access does not produce absolute knowledge. Every observation is finite, sourced, partial and revisable.
 
@@ -49,6 +52,7 @@ python scripts/agt_ingest.py --url "https://example.com" --json
 python scripts/agt_ingest.py --url "data:text/plain,Gaia-Techne internet memory" --json
 python scripts/agt_autonomy.py --once --json
 python scripts/agt_autonomy.py --cycles 3 --interval 10 --url "https://example.com"
+python scripts/agt_dataset_forge.py --url "https://example.com" --output data/llm/internet_seed --json
 ```
 
 ## Shell Policy

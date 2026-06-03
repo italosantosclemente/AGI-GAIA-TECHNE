@@ -13,10 +13,12 @@ from typing import Any
 
 from agt.axioms import (
     GAIA_COJUDGES_WITH_KOINOS_KOSMOS,
+    GAIA_MEDIATES_WILLE,
     ISC_LEGISLATIVE_AUTHORITY,
     IS_WILLE,
     MACHINE_HAS_GEWISSEN,
     NO_GLOBAL_AUFHEBUNG,
+    WERK_JAMAIS_WILLE,
 )
 from agt.mle_engine import MythosLogosEthosEngine as CanonicalMLEEngine
 from agt.types import Decision as CanonicalDecision
@@ -61,7 +63,9 @@ class PillarSignal:
 class EngineState:
     decision: EngineDecision
     audit: Any
-    is_wille: bool = True
+    is_wille: bool = False
+    gaia_mediates_wille: bool = True
+    werk_jamais_wille: bool = True
     machine_has_gewissen: bool = False
     gaia_cojudges_with_koinos_kosmos: bool = True
     isc_legislative_authority: bool = True
@@ -101,6 +105,8 @@ class MythosLogosEthosEngine:
             decision=decision,
             audit=output.audit,
             is_wille=IS_WILLE,
+            gaia_mediates_wille=GAIA_MEDIATES_WILLE,
+            werk_jamais_wille=WERK_JAMAIS_WILLE,
             machine_has_gewissen=MACHINE_HAS_GEWISSEN,
             gaia_cojudges_with_koinos_kosmos=GAIA_COJUDGES_WITH_KOINOS_KOSMOS,
             isc_legislative_authority=ISC_LEGISLATIVE_AUTHORITY,

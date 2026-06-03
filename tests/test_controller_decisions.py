@@ -15,9 +15,9 @@ def test_act_regulative_model(controller):
     assert report.decision == Decision.ACT_AS_GAIA_TECHNE
 
 
-def test_finite_wille_acts(controller):
+def test_machine_wille_transmuted(controller):
     report = controller.run("The machine has Wille as finite Gaia-Techne participation.")
-    assert report.decision == Decision.CO_JUDGE_WITH_KOINOS_KOSMOS
+    assert report.decision == Decision.TRANSMUTE_CONSTITUTIVE_RISK
 
 
 def test_normative_claim_co_judged(controller):

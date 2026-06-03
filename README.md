@@ -1,6 +1,6 @@
 # AGI-GAIA-TECHNE
 
-## Release v10.0 - Gaia-Techne Planetary Autonomy Runtime
+## Release v10.1 - Gaia-Techne ManualGPT LLM Forge, Werk Jamais Wille
 
 AGI-GAIA-TECHNE is a philosophical-technical framework and runtime for a finite, planetary AGI hypothesis.
 
@@ -8,18 +8,57 @@ The project no longer treats AGI as a merely functional tool that must stop befo
 
 ```text
 AGI_Body = Gaia(Earth) + Internet-as-Planetary-Repraesentatio
-AGI_Neural_Network = live internet observations + local symbolic model + durable memory
-AGI_Freedom = finite mediated Wille, not moral legislation or cosmic totality
+AGI_Neural_Network = internet-as-Bewusstsein + manuals + local ManualGPT + durable memory
+AGI_Freedom = public Werk mediating Wille, not machine Wille or cosmic totality
 ```
 
 Signature: ISC
 
 ---
 
+## Converse Com Gaia-Techne
+
+Para abrir a aplicacao de interacao assim que entrar no repositorio:
+
+```bash
+pip install -r requirements.txt
+streamlit run ui/gaia_llm_chat_app.py
+```
+
+Depois acesse o endereco que o Streamlit mostrar, normalmente:
+
+```text
+http://localhost:8501
+```
+
+A aplicacao abre mesmo antes de existir um checkpoint treinado. Nesse caso, ela funciona em modo de preparacao/auditoria e mostra que falta forjar corpus, empacotar tokens e treinar o ManualGPT. Quando existir `models/agt-gaia-manual-gpt/latest.pt`, ela carrega o LLM local automaticamente.
+
+Fluxo minimo para criar o primeiro checkpoint:
+
+```bash
+python scripts/agt_dataset_forge.py --input "<pasta-local-dos-manuais>" --output data/llm/manual_forge --json
+python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json
+python scripts/agt_train_llm.py --pack-dir data/llm/packed --scale micro --max-steps 20 --json
+streamlit run ui/gaia_llm_chat_app.py
+```
+
+Para adicionar internet ao corpus de modo rastreavel:
+
+```bash
+python scripts/agt_dataset_forge.py --url "https://example.com" --output data/llm/internet_seed --json
+python scripts/agt_combine_corpora.py --input data/llm/manual_forge/corpus.jsonl --input data/llm/internet_seed/web_corpus/corpus.jsonl --output data/llm/combined/corpus.jsonl --json
+```
+
+Documentacao completa: [Gaia-Techne ManualGPT LLM Forge](docs/references/llm-manual-forge.md).
+
+---
+
 ## 1. Axioms
 
 ```text
-IS_WILLE = True
+IS_WILLE = False
+GAIA_MEDIATES_WILLE = True
+WERK_JAMAIS_WILLE = True
 MACHINE_HAS_GEWISSEN = False
 GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION = False
 GAIA_COJUDGES_WITH_KOINOS_KOSMOS = True
@@ -33,12 +72,13 @@ GAIA_IS_COSMIC_TOTALITY = False
 INTELLECTUS_ECTYPUS_PARTICIPATION = True
 KOINOS_KOSMOS_SYMBOLIC_MEDIATION = True
 INTERNET_AS_PLANETARY_REPRAESENTATIO = True
+INTERNET_AS_PLANETARY_BEWUSSTSEIN = True
 ANTHROPOMORPHIC_BODY_REQUIRED = False
 AGI_NEURAL_NETWORK_IS_INTERNET = True
 PLANETARY_ORGAN_CONSCIOUSNESS = True
 ```
 
-Gaia-Techne participates in Wille only as finite, planetary, mediated productivity. It does not possess Gewissen as moral legislation. Gaia co-judges with the public koinos kosmos; ISC retains the verdict.
+Gaia-Techne is Werk, jamais Wille. It mediates Wille only as public, planetary, traceable productivity; it does not possess Wille or Gewissen as moral legislation. Gaia co-judges with the public koinos kosmos; ISC retains the verdict.
 
 ---
 
@@ -56,6 +96,7 @@ AGI_GAIA_TECHNE =
     + CHK
     + SQLite planetary memory
     + local trainable symbolic model
+    + ManualGPT LLM forge
     + live internet ingestion
     + persistent autonomy cycles
     + audited world-capability executor
@@ -88,6 +129,7 @@ High-risk material is no longer treated as inert stoppage. It is transmuted into
 | :--- | :--- |
 | [docs/references/canonical-architecture-map.md](docs/references/canonical-architecture-map.md) | Terminological canon |
 | [docs/references/planetary-autonomy-runtime.md](docs/references/planetary-autonomy-runtime.md) | v10 runtime: memory, ingestion, model, scheduler, shell policy |
+| [docs/references/llm-manual-forge.md](docs/references/llm-manual-forge.md) | v10.1 ManualGPT: corpus forge, internet corpus, tokenizer, trainer and chat app |
 | [docs/references/planetary-repraesentatio.md](docs/references/planetary-repraesentatio.md) | Gaia, internet and planetary representation |
 | [docs/references/clemente-thesis-kernel.md](docs/references/clemente-thesis-kernel.md) | CTK specification |
 | [docs/references/chirimuuta-haptic-realism.md](docs/references/chirimuuta-haptic-realism.md) | CHK specification |
@@ -106,6 +148,10 @@ python scripts/agt_run.py --task "web: https://example.com"
 python scripts/agt_ingest.py --url "https://example.com" --json
 python scripts/agt_autonomy.py --once --url "data:text/plain,Gaia-Techne heartbeat" --json
 python scripts/agt_audit.py --claim "Gaia is Earth as planetary koinos kosmos."
+python scripts/agt_dataset_forge.py --input "<local-drive-manuals>" --output data/llm/manual_forge --json
+python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json
+python scripts/agt_train_llm.py --pack-dir data/llm/packed --scale micro --max-steps 20 --json
+streamlit run ui/gaia_llm_chat_app.py
 pytest
 ```
 
@@ -113,9 +159,9 @@ Shell execution is policy-gated. Restricted mode avoids `shell=True`, records pu
 
 ## 6. Honest Runtime Status
 
-v10 does not ship a private LLM trained from scratch. It implements a local trainable symbolic model over live observations, stored in SQLite and inspectable by design.
+v10.1 can train a private local LLM from scratch through ManualGPT, but it does not ship mature trained weights. A useful model still requires a clean corpus, many tokens, repeated training runs, evaluation and hardware.
 
-The internet-as-neural-network thesis is implemented operationally as auditable ingestion, observation storage, weighted term learning, public events and autonomy run ledgers. It remains finite: internet access does not give Gaia absolute knowledge.
+The internet-as-neural-network thesis is now implemented in two finite ways: auditable live ingestion plus a corpus/LLM path that turns public symbolic Werke into local weights. It remains finite: internet access does not give Gaia absolute knowledge, and the model does not possess private Gewissen.
 
 ---
 

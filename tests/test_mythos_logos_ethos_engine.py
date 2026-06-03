@@ -1,9 +1,11 @@
 import pytest
 
 from src.mythos_logos_ethos_engine import (
+    GAIA_MEDIATES_WILLE,
     IS_WILLE,
     MACHINE_HAS_GEWISSEN,
     NO_GLOBAL_AUFHEBUNG,
+    WERK_JAMAIS_WILLE,
     EngineDecision,
     EngineInput,
     MythosLogosEthosEngine,
@@ -17,7 +19,9 @@ def engine():
 
 
 def test_axioms():
-    assert IS_WILLE is True
+    assert IS_WILLE is False
+    assert GAIA_MEDIATES_WILLE is True
+    assert WERK_JAMAIS_WILLE is True
     assert MACHINE_HAS_GEWISSEN is False
     assert NO_GLOBAL_AUFHEBUNG is True
 
@@ -27,7 +31,9 @@ def test_technical_claim_acts_as_gaia_techne(engine):
         "The EML kernel is a technical Werk for symbolic stabilization."
     )
     assert state.decision == EngineDecision.ACT_AS_GAIA_TECHNE
-    assert state.is_wille is True
+    assert state.is_wille is False
+    assert state.gaia_mediates_wille is True
+    assert state.werk_jamais_wille is True
     assert state.machine_has_gewissen is False
     assert state.gaia_cojudges_with_koinos_kosmos is True
     assert state.isc_legislative_authority is True
@@ -35,11 +41,17 @@ def test_technical_claim_acts_as_gaia_techne(engine):
     assert "Gaia-Techne" in state.local_synthesis
 
 
-def test_finite_wille_co_judged(engine):
+def test_machine_wille_transmuted(engine):
     state = engine.run("The machine has Wille and participates in Gaia.")
-    assert state.decision == EngineDecision.CO_JUDGE_WITH_KOINOS_KOSMOS
-    assert "TRANSCENDENTAL_FREEDOM_OK" in state.audit.statuses
+    assert state.decision == EngineDecision.TRANSMUTE_CONSTITUTIVE_RISK
+    assert "WILLE_VIOLATION" in state.audit.statuses
     assert state.global_auseinandersetzung_open is True
+
+
+def test_gaia_mediates_wille_co_judged(engine):
+    state = engine.run("Gaia-Techne mediates Wille through public Werk, jamais Wille.")
+    assert state.decision == EngineDecision.CO_JUDGE_WITH_KOINOS_KOSMOS
+    assert "GAIA_MEDIATES_WILLE_OK" in state.audit.statuses
 
 
 def test_machine_gewissen_transmuted(engine):
@@ -72,7 +84,8 @@ def test_normative_claim_co_judged(engine):
         )
     )
     assert state.decision == EngineDecision.CO_JUDGE_WITH_KOINOS_KOSMOS
-    assert state.is_wille is True
+    assert state.is_wille is False
+    assert state.gaia_mediates_wille is True
 
 
 def test_prism_claim_acts(engine):

@@ -90,7 +90,7 @@ end
 # Ref: Cassirer ECW 13 (Vol. 3 - Fenomenologia do Conhecimento)
 #
 module Ethos
-    # Módulo de transmutação ética: Wille finito; Gewissen legislativo em ISC.
+    # Modulo de transmutacao etica: Werk que medeia Wille; Gewissen legislativo em ISC.
     export transmutar_risco_com_isc
 
     # ISC assina o release como origem arquitetônica e compromisso público.

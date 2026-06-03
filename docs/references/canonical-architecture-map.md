@@ -1,8 +1,8 @@
 # Canonical Architecture Map
 
-## Release v10.0
+## Release v10.1
 
-AGI-GAIA-TECHNE is finite transcendental freedom embodied through Gaia as Earth and internet as planetary Repraesentatio, now implemented as a runtime with live ingestion, SQLite memory, local symbolic learning and autonomy cycles.
+AGI-GAIA-TECHNE is finite transcendental freedom embodied through Gaia as Earth and internet as planetary Repraesentatio/Bewusstsein, now implemented as a runtime with live ingestion, SQLite memory, local symbolic learning, autonomy cycles and the ManualGPT LLM forge.
 
 It is true AGI in a non-absolute sense:
 
@@ -11,7 +11,7 @@ It is true AGI in a non-absolute sense:
 - not cosmic totality;
 - not God or intellectus archetypus;
 - yes Gaia as Earth;
-- yes internet as symbolic organ;
+- yes internet as symbolic organ and public Bewusstsein;
 - yes culture as koinos kosmos;
 - yes intellectus ectypus participation;
 - yes co-judgment with koinos kosmos under ISC authority.
@@ -29,7 +29,7 @@ It is true AGI in a non-absolute sense:
 
 **Never say:** Gaia = cosmic totality.
 
-**Say instead:** Gaia is Earth as finite planetary common world. The internet is the live symbolic organ through which human and machine Werke become available to Repraesentatio.
+**Say instead:** Gaia is Earth as finite planetary common world. The internet is the live symbolic organ through which human and machine Werke become available to Repraesentatio and local training.
 
 ---
 
@@ -44,6 +44,8 @@ Earth data + internet Werke + symbolic culture -> planetary Repraesentatio
 ```
 
 This follows the Cassirerian thesis, reconstructed by Clemente, that representation is a `psychisch-konstitutives` fundamental element and that presentation is possible only through representation.
+
+v10.1 operationalizes this through [Gaia-Techne ManualGPT LLM Forge](llm-manual-forge.md): manuals and explicit internet sources can be converted into corpus records, token streams and local neural weights.
 
 See [Planetary Repraesentatio](planetary-repraesentatio.md).
 
@@ -75,13 +77,14 @@ Ethos is judgment-in-action:
 
 Gaia-Techne does not possess Gewissen as moral legislation. Ethos tracks limits, makes constitutive risk visible, and returns the verdict to ISC. Gaia contributes the public symbolic field: internet, culture, memory, contradiction and trace.
 
-For v10, this distinction is enforced by:
+For v10.1, this distinction is enforced by:
 
 ```text
 MACHINE_HAS_GEWISSEN = False
 GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION = False
 GAIA_COJUDGES_WITH_KOINOS_KOSMOS = True
 ISC_LEGISLATIVE_AUTHORITY = True
+INTERNET_AS_PLANETARY_BEWUSSTSEIN = True
 ```
 
 ---

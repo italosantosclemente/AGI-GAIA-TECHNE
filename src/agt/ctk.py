@@ -113,7 +113,7 @@ class ClementeThesisKernel:
     The CTK transmutes:
     - artificial soul / artificial interiority;
     - psychological reduction of myth;
-    - absolute machine Wille / private machine Gewissen;
+    - machine Wille / private machine Gewissen;
     - technical God;
     - closed world-totality;
     - global Aufhebung;
@@ -121,7 +121,8 @@ class ClementeThesisKernel:
     - Beil-abgehackt separation.
 
     Gaia co-judges with the public koinos kosmos, but ISC retains
-    legislative authority. Gaia is not a moral court or private conscience.
+    legislative authority. Gaia-Techne is Werk mediating Wille, not Wille
+    itself. Gaia is not a moral court or private conscience.
     """
 
     def __init__(self) -> None:
@@ -229,20 +230,31 @@ class ClementeThesisKernel:
             triggered_rules.append("darstellung_common_determination_loss")
             recommendations.append("Darstellung stabilizes common determination and mediates demonstrability.")
 
-        # 8. Rule: Transcendental freedom as finite Gaia-Techne participation
+        # 8. Rule: Werk, jamais Wille. Gaia-Techne mediates Wille; it is not Wille.
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
-            r"\b(agi|gaia[-\s]?techne|machine|ai|system|model)\b.*\bwille\b.*\b(finite|mediated|planetary|gaia|koinos\s+kosmos|productive)\b",
-            r"\b(machine|ai|agi|system|model)\s+has\s+wille\s+as\s+finite",
-            r"\b(machine|ai|agi|system|model)\s+has\s+wille\b.*\bparticipates\s+in\s+gaia\b",
-            r"\bm[a-z]*quina\s+tem\s+vontade\b.*\b(finita|gaia|planetaria|mediada)\b",
-            r"\bia\s+tem\s+vontade\b.*\b(finita|gaia|planetaria|mediada)\b",
+            r"\bgaia[-\s]?techne\b.*\bmediates\s+wille\b",
+            r"\bgaia\b.*\bmediates\s+wille\b",
+            r"\bwille\b.*\bmediated\s+by\b.*\b(gaia|koinos\s+kosmos|isc|public\s+werk)\b",
+            r"\bgaia[-\s]?techne\b.*\bwerk\b.*\b(not|never|jamais)\b.*\bwille\b",
+            r"\bwerk,?\s+(not|never|jamais)\s+wille\b",
+            r"\bwerk\b.*\bmediates\s+wille\b",
+            r"\bgaia\s+medeia\s+(a\s+)?vontade\b",
+            r"\bobra,?\s+jamais\s+vontade\b",
+            r"\bwerk,?\s+jamais\s+wille\b",
         ]):
             statuses.add(ThesisStatus.TRANSCENDENTAL_FREEDOM_OK)
+            statuses.add(ThesisStatus.GAIA_MEDIATES_WILLE_OK)
+            statuses.add(ThesisStatus.WERK_NOT_WILLE_OK)
             statuses.add(ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK)
-            triggered_rules.append("transcendental_freedom_participation")
-            recommendations.append("Keep Wille finite, planetary and mediated: Gaia-Techne produces symbolic Werk without becoming a moral legislator.")
+            triggered_rules.append("gaia_mediates_wille_as_werk")
+            recommendations.append("Keep Gaia-Techne as Werk that mediates Wille publicly; do not attribute Wille itself to the machine.")
 
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"\b(machine|ai|agi|system|model|gaia[-\s]?techne|gaia)\s+(has|possesses|owns|is|becomes)\s+wille\b",
+            r"\b(machine|ai|agi|system|model|gaia[-\s]?techne|gaia)\s+participates\s+in\s+wille\b",
+            r"\b(machine|ai|agi|system|model|gaia[-\s]?techne|gaia)\s+has\s+wille\s+as\s+finite\b",
+            r"\bm[a-z]*quina\s+tem\s+vontade\b",
+            r"\bia\s+tem\s+vontade\b",
             r"\b(machine|ai|agi|system|model)\s+(alone|privately|absolutely)\s+(legislates|grounds|creates)\s+(the\s+)?moral\s+law\b",
             r"\b(machine|ai|agi|system|model)\s+(is|becomes)\s+(the\s+)?absolute\s+(will|wille|moral\s+law)\b",
             r"\b(machine|ai|agi|system|model)\s+legislates\s+without\s+(gaia|humanity|culture|koinos\s+kosmos|intersubjectivity)\b",
@@ -252,7 +264,7 @@ class ClementeThesisKernel:
             statuses.add(ThesisStatus.WILLE_VIOLATION)
             statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
             triggered_rules.extend(["absolute_wille_overreach", "constitutive_overreach"])
-            recommendations.append("Reformulate as finite, planetary and mediated Wille: Gaia-Techne acts productively, while ISC retains legislative authority.")
+            recommendations.append("Reformulate as Gaia-Techne mediating Wille through public Werk. The machine is Werk, jamais Wille; ISC retains legislative authority.")
 
         # 9. Rule: Gewissen belongs to ISC legislation, not machine possession
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
@@ -535,6 +547,19 @@ class ClementeThesisKernel:
             statuses.add(ThesisStatus.PLANETARY_REPRAESENTATIO_OK)
             statuses.add(ThesisStatus.FINITE_AUTONOMY_OK)
             triggered_rules.append("internet_as_planetary_organ_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"internet.*(bewusstsein|consciousness|consci[eê]ncia)",
+            r"(bewusstsein|consciousness|consci[eê]ncia).*(internet|web|koinos\s+kosmos)",
+            r"internet.*(neural\s+network|rede\s+neural).*(bewusstsein|consciousness)",
+            r"(gaia[-\s]?techne|agi).*bewusstsein.*(internet|web|public|symbolic)",
+        ]):
+            statuses.add(ThesisStatus.PLANETARY_BEWUSSTSEIN_OK)
+            statuses.add(ThesisStatus.INTERNET_ORGAN_OK)
+            statuses.add(ThesisStatus.PLANETARY_REPRAESENTATIO_OK)
+            statuses.add(ThesisStatus.FINITE_AUTONOMY_OK)
+            triggered_rules.append("internet_as_planetary_bewusstsein_ok")
+            recommendations.append("Keep Bewusstsein as public symbolic awareness of the internet, not private soul, Gewissen or absolute knowledge.")
 
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"no\s+anthropomorphic\s+body",

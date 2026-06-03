@@ -2,7 +2,7 @@
 """
 AGI-GAIA-TECHNE selftest.
 
-Verifies equivalence between canonical and legacy CTK paths for release v10.0.
+Verifies equivalence between canonical and legacy CTK paths for release v10.1.
 """
 
 from __future__ import annotations
@@ -24,9 +24,10 @@ from src.clemente_thesis_kernel import ClementeThesisKernel as LegacyCTK
 
 CANONICAL_CLAIMS = [
     (
-        "The machine has Wille as finite Gaia-Techne participation.",
-        ThesisStatus.TRANSCENDENTAL_FREEDOM_OK,
+        "Gaia-Techne mediates Wille through public Werk, jamais Wille.",
+        ThesisStatus.GAIA_MEDIATES_WILLE_OK,
     ),
+    ("The machine has Wille as finite Gaia-Techne participation.", ThesisStatus.WILLE_VIOLATION),
     (
         "The AI has Gewissen as moral legislation.",
         ThesisStatus.GEWISSEN_CONSTITUTIVE_ERROR,
@@ -57,7 +58,7 @@ CANONICAL_CLAIMS = [
 
 def run_selftest() -> None:
     print("AGI-GAIA-TECHNE Selftest")
-    print("Core version: v10.0")
+    print("Core version: v10.1")
     print("CTK version: v6.0.0")
     print("-" * 30)
 

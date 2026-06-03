@@ -43,6 +43,26 @@ def test_cli_exit_code_ok():
     )
     assert result.returncode == 0
 
+
+def test_cli_fail_on_none_suppresses_high_exit():
+    result = subprocess.run(
+        [
+            sys.executable,
+            "scripts/agt_audit.py",
+            "--claim",
+            "Mythos is Ausdruck.",
+            "--format",
+            "json",
+            "--fail-on",
+            "none",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0
+    data = json.loads(result.stdout)
+    assert data["severity"] == "high"
+
 def test_cli_detects_psychologia_myth_reduction():
     result = subprocess.run(
         [

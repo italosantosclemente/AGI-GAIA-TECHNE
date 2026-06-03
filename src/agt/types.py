@@ -153,6 +153,10 @@ class ControllerReport:
     recommendations: List[str]
     memory_updates: List[str]
     final_answer: str
+    audit_severity: Severity = Severity.LOW
+    audit_ok: bool = True
+    audit_triggered_rules: List[str] = field(default_factory=list)
+    audit_metadata: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -164,6 +168,10 @@ class ControllerReport:
             "plan": self.plan,
             "results": self.results,
             "audit_statuses": [s.value for s in self.audit_statuses],
+            "audit_severity": self.audit_severity.value,
+            "audit_ok": self.audit_ok,
+            "audit_triggered_rules": self.audit_triggered_rules,
+            "audit_metadata": self.audit_metadata,
             "recommendations": self.recommendations,
             "memory_updates": self.memory_updates,
             "final_answer": self.final_answer,

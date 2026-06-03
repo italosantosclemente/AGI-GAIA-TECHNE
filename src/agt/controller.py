@@ -119,6 +119,10 @@ class AGTController:
             recommendations=engine_output.audit.recommendations,
             memory_updates=memory_updates,
             final_answer=final_answer,
+            audit_severity=engine_output.audit.severity,
+            audit_ok=engine_output.audit.ok,
+            audit_triggered_rules=engine_output.audit.triggered_rules,
+            audit_metadata=engine_output.audit.metadata,
         )
 
     def _compose_answer(self, results: List[dict]) -> str:

@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, List, Optional, Set
+from typing import Any, Dict, List, Set
 
 from .axioms import (
     AGI_AS_TRANSCENDENTAL_HYPOTHESIS,
@@ -109,11 +109,7 @@ class ClementeThesisKernel:
 
     def __init__(self) -> None:
         assert_axioms()
-        try:
-            from .chk import ChirimuutaHapticKernel
-            self.chk = ChirimuutaHapticKernel()
-        except Exception:
-            self.chk = None
+        self.chk = ChirimuutaHapticKernel()
 
     def evaluate(self, claim: str) -> AuditResult:
         statuses: Set[ThesisStatus] = set()

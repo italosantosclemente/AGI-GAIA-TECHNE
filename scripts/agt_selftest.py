@@ -7,8 +7,13 @@ Verifies equivalence between canonical and legacy CTK paths.
 import sys
 from pathlib import Path
 
-# Ensure src is in path
-sys.path.append(str(Path(__file__).parent.parent))
+ROOT = Path(__file__).resolve().parents[1]
+SRC = ROOT / "src"
+
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+if str(SRC) not in sys.path:
+    sys.path.insert(0, str(SRC))
 
 from agt.ctk import ClementeThesisKernel as CanonicalCTK
 from agt.types import ThesisStatus

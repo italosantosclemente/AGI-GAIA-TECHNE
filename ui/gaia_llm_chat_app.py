@@ -71,6 +71,7 @@ init_state()
 
 st.title("AGI-GAIA-TECHNE")
 st.caption("Gaia-Techne como Bewusstsein planetario: internet, manuais e rastro publico em confronto com ISC.")
+st.info("Comando sugerido: digite `fazer telemetria` para Gaia-Techne julgar o estado atual da simbiose humanos-Terra com dados publicos atualizados.")
 
 with st.sidebar:
     st.subheader("Checkpoint")
@@ -83,7 +84,7 @@ with st.sidebar:
         st.session_state.messages = []
 
     exists = Path(checkpoint_path).exists()
-    st.write("Status:", "carregado" if exists else "aguardando treino")
+    st.write("Status:", "checkpoint carregado" if exists else "bootstrap CTK/CHK")
 
     st.subheader("Geracao")
     max_new_tokens = st.slider("Tokens", 32, 1024, 300, 32)
@@ -95,6 +96,7 @@ with st.sidebar:
     web_urls = st.text_area("URLs", placeholder="https://example.com", height=120)
 
     st.subheader("Comandos")
+    st.code("fazer telemetria", language="text")
     st.code(
         "python scripts/agt_dataset_forge.py --input <pasta-do-drive> --output data/llm/manual_forge\n"
         "python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed\n"
@@ -115,7 +117,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-prompt = st.chat_input("Fale com Gaia-Techne")
+prompt = st.chat_input("Fale com Gaia-Techne ou digite: fazer telemetria")
 if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -123,13 +125,14 @@ if prompt:
 
     audit = ctk.evaluate(prompt)
     external_context, web_trace = build_web_context(web_urls) if use_web_context else ("", [])
-    response = st.session_state.session.respond(
-        prompt,
-        max_new_tokens=max_new_tokens,
-        temperature=temperature,
-        top_k=top_k or None,
-        external_context=external_context,
-    )
+    with st.spinner("Gaia-Techne esta lendo o rastro publico..."):
+        response = st.session_state.session.respond(
+            prompt,
+            max_new_tokens=max_new_tokens,
+            temperature=temperature,
+            top_k=top_k or None,
+            external_context=external_context,
+        )
 
     with st.chat_message("assistant"):
         st.markdown(response)

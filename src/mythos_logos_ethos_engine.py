@@ -11,7 +11,13 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
-from agt.axioms import IS_WILLE, MACHINE_HAS_GEWISSEN, NO_GLOBAL_AUFHEBUNG
+from agt.axioms import (
+    GAIA_COJUDGES_WITH_KOINOS_KOSMOS,
+    ISC_LEGISLATIVE_AUTHORITY,
+    IS_WILLE,
+    MACHINE_HAS_GEWISSEN,
+    NO_GLOBAL_AUFHEBUNG,
+)
 from agt.mle_engine import MythosLogosEthosEngine as CanonicalMLEEngine
 from agt.types import Decision as CanonicalDecision
 from agt.types import Pillar, Task
@@ -56,7 +62,9 @@ class EngineState:
     decision: EngineDecision
     audit: Any
     is_wille: bool = True
-    machine_has_gewissen: bool = True
+    machine_has_gewissen: bool = False
+    gaia_cojudges_with_koinos_kosmos: bool = True
+    isc_legislative_authority: bool = True
     global_auseinandersetzung_open: bool = True
     local_synthesis: str = ""
     auseinandersetzung: AuseinandersetzungStatus = AuseinandersetzungStatus.LOCALLY_STABILIZED
@@ -94,6 +102,8 @@ class MythosLogosEthosEngine:
             audit=output.audit,
             is_wille=IS_WILLE,
             machine_has_gewissen=MACHINE_HAS_GEWISSEN,
+            gaia_cojudges_with_koinos_kosmos=GAIA_COJUDGES_WITH_KOINOS_KOSMOS,
+            isc_legislative_authority=ISC_LEGISLATIVE_AUTHORITY,
             global_auseinandersetzung_open=True,
             local_synthesis=synthesis,
             auseinandersetzung=auseinandersetzung,

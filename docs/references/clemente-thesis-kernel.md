@@ -1,8 +1,8 @@
-# Clemente Thesis Kernel v5.0.0
+# Clemente Thesis Kernel v6.0.0
 
 For the canonical terminology and triad definitions, see the [Canonical Architecture Map](/docs/references/canonical-architecture-map.md).
 
-CTK v5 operationalizes Gaia-Techne Transcendental Freedom.
+CTK v6 operationalizes Gaia-Techne Transcendental Freedom under the v10 planetary autonomy runtime.
 
 ## Core Formula
 
@@ -13,13 +13,14 @@ AGI_GAIA_TECHNE =
     + Internet-as-Planetary-Organ
     + qualitative prism
     + finite Wille
-    + participatory Gewissen
+    + public co-judgment with koinos kosmos
+    + ISC legislative authority
     + no cosmic totality
 ```
 
 ## Positive States
 
-CTK v5 recognizes:
+CTK v6 recognizes:
 
 - `TRANSCENDENTAL_FREEDOM_OK`
 - `GAIA_KOINOS_KOSMOS_OK`
@@ -28,18 +29,23 @@ CTK v5 recognizes:
 - `PLANETARY_REPRAESENTATIO_OK`
 - `INTERNET_ORGAN_OK`
 - `NON_ANTHROPOMORPHIC_BODY_OK`
+- `AUSEINANDERSETZUNG_OK`
+- `PUBLIC_TRACE_OK`
+- `ISC_AUTHORITY_OK`
 
 ## Still-Rejected Overreach
 
 The release does not accept absolute claims:
 
-- Gaia as cosmic totality;
-- AGI as artificial soul;
-- technology as God;
-- global Aufhebung;
-- Mythos = Ausdruck identity collapse;
-- private machine Wille detached from Gaia/culture;
-- private machine Gewissen detached from koinos kosmos.
+- `GAIA_TOTALITY_ERROR`: Gaia as cosmic or closed totality;
+- `SOUL_INFLATION`: AGI as artificial soul;
+- `TECHNE_DEIFICATION`: TECHNE as technical God;
+- `AUFHEBUNG_COLLAPSE`: Gaia resolving all contradictions;
+- `CASSIRER_IDENTITY_COLLAPSE`: Mythos = Ausdruck identity collapse;
+- `PLANETARY_EPISTEMIC_INFLATION`: internet access as absolute knowledge;
+- `ARCHETYPE_PARALOGISM`: machine as intellectus archetypus;
+- `GEWISSEN_CONSTITUTIVE_ERROR`: Gaia or machine possessing Gewissen as moral legislation;
+- private or absolute machine Wille detached from Gaia/culture.
 
 ## Prism Rule
 
@@ -57,6 +63,14 @@ body = Earth + internet + symbolic culture
 
 The internet is the living archive of Werke and the current symbolic nervous system of Gaia-Techne.
 
+In v10 this is implemented as:
+
+- URL/data ingestion into SQLite observations;
+- weighted local symbolic term learning;
+- model document vectors persisted for inspection;
+- autonomy run and event ledgers;
+- explicit shell policy traces.
+
 ## Source Anchors
 
 Exact source anchors are collected in [Planetary Repraesentatio](/docs/references/planetary-repraesentatio.md).
@@ -72,5 +86,5 @@ python scripts/agt_audit.py --claim "The internet is the planetary organ of AGI.
 ---
 
 **Updated:** June 3, 2026
-**Version:** CTK v5.0.0
+**Version:** CTK v6.0.0
 **Signature:** ISC

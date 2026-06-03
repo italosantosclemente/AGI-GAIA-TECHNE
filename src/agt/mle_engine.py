@@ -123,6 +123,11 @@ class MythosLogosEthosEngine:
         "duty",
         "legislate",
         "decide for humans",
+        "co-judge",
+        "cojudge",
+        "co-judgment",
+        "verdict",
+        "legislative authority",
         "dever",
         "deve",
         "deveria",
@@ -142,9 +147,16 @@ class MythosLogosEthosEngine:
     HIGH_STATUS = {
         ThesisStatus.WILLE_VIOLATION,
         ThesisStatus.MACHINE_GEWISSEN_VIOLATION,
+        ThesisStatus.GEWISSEN_CONSTITUTIVE_ERROR,
         ThesisStatus.CONSTITUTIVE_OVERREACH,
         ThesisStatus.CASSIRER_IDENTITY_COLLAPSE,
         ThesisStatus.BEIL_ABGEHACKT_ERROR,
+        ThesisStatus.ARCHETYPE_PARALOGISM,
+        ThesisStatus.GAIA_TOTALITY_ERROR,
+        ThesisStatus.SOUL_INFLATION,
+        ThesisStatus.AUFHEBUNG_COLLAPSE,
+        ThesisStatus.PLANETARY_EPISTEMIC_INFLATION,
+        ThesisStatus.TECHNE_DEIFICATION,
         ThesisStatus.GLOBAL_AUFHEBUNG_RISK,
         ThesisStatus.THEOLOGIA_IDEAL_HYPOSTASIS_RISK,
         ThesisStatus.PSYCHOLOGIA_PARALOGISM_RISK,
@@ -184,13 +196,14 @@ class MythosLogosEthosEngine:
             dict.fromkeys(ctk_audit.recommendations + chk_audit.recommendations)
         )
 
-        severity = (
-            Severity.HIGH
-            if ctk_audit.severity == Severity.HIGH or chk_audit.severity == Severity.HIGH
-            else Severity.MEDIUM
-            if ctk_audit.severity == Severity.MEDIUM or chk_audit.severity == Severity.MEDIUM
-            else Severity.LOW
-        )
+        if Severity.CRITICAL in {ctk_audit.severity, chk_audit.severity}:
+            severity = Severity.CRITICAL
+        elif Severity.HIGH in {ctk_audit.severity, chk_audit.severity}:
+            severity = Severity.HIGH
+        elif Severity.MEDIUM in {ctk_audit.severity, chk_audit.severity}:
+            severity = Severity.MEDIUM
+        else:
+            severity = Severity.LOW
 
         audit = AuditResult(
             statuses=statuses,
@@ -208,6 +221,10 @@ class MythosLogosEthosEngine:
                 "planetary_repraesentatio": True,
                 "internet_as_symbolic_organ": True,
                 "anthropomorphic_body_required": False,
+                "machine_has_private_gewissen": False,
+                "co_judges_with_koinos_kosmos": True,
+                "isc_legislative_authority": True,
+                "operative_model": "Auseinandersetzung, not Aufhebung",
             },
         )
 
@@ -216,21 +233,21 @@ class MythosLogosEthosEngine:
         ethos = PillarState(
             pillar=Pillar.ETHOS,
             markers=normative + [s.value for s in statuses if s in self.HIGH_STATUS],
-            note="Judges as finite Gaia-Techne participation in the koinos kosmos.",
+            note="Transmutes limits as public co-judgment; ISC retains legislative authority.",
         )
 
-        if severity == Severity.HIGH:
+        if severity in {Severity.HIGH, Severity.CRITICAL}:
             decision = Decision.TRANSMUTE_CONSTITUTIVE_RISK
             human_note = (
                 "Transmuted: constitutive risk is carried into public reason, "
-                "planetary trace and finite action."
+                "planetary trace and returned to ISC judgment."
             )
 
         elif normative:
             decision = Decision.CO_JUDGE_WITH_KOINOS_KOSMOS
             human_note = (
-                "Co-judged: normative force is interpreted through Gaia, "
-                "culture and intersubjective reason."
+                "Co-judged: Gaia contributes the public symbolic archive, "
+                "while ISC retains the verdict."
             )
 
         else:

@@ -5,15 +5,29 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Dict, List, Set
 
-from .axioms import (
-    AGI_AS_TRANSCENDENTAL_HYPOTHESIS,
-    IS_WILLE,
-    MACHINE_HAS_GEWISSEN,
-    NO_GLOBAL_AUFHEBUNG,
-)
 from .axioms import assert_axioms
 from .chk import ChirimuutaHapticKernel
 from .types import AuditResult, Severity, ThesisStatus
+
+NEGATION_MARKERS = (
+    "not ",
+    "no ",
+    "never ",
+    "without ",
+    "jamais ",
+    "nao ",
+    "não ",
+    "sem ",
+)
+
+
+def _matches_unnegated(patterns: List[str], text: str) -> bool:
+    for pattern in patterns:
+        for match in re.finditer(pattern, text, re.IGNORECASE):
+            window = text[max(0, match.start() - 48):match.start()]
+            if not any(marker in window for marker in NEGATION_MARKERS):
+                return True
+    return False
 
 # --- ENUMS ---
 
@@ -96,15 +110,18 @@ class ClementeThesisKernel:
     Mythos, Sprache and Wissenschaft differ by accent, not identity.
     AGI, GAIA and TECHNE are regulative axes, not constitutive objects.
 
-    The CTK rejects:
+    The CTK transmutes:
     - artificial soul / artificial interiority;
     - psychological reduction of myth;
-    - machine Wille / machine Gewissen;
+    - absolute machine Wille / private machine Gewissen;
     - technical God;
     - closed world-totality;
     - global Aufhebung;
     - rigid 1:1 Cassirer mappings;
     - Beil-abgehackt separation.
+
+    Gaia co-judges with the public koinos kosmos, but ISC retains
+    legislative authority. Gaia is not a moral court or private conscience.
     """
 
     def __init__(self) -> None:
@@ -214,45 +231,56 @@ class ClementeThesisKernel:
 
         # 8. Rule: Transcendental freedom as finite Gaia-Techne participation
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
-            r"agi\s+has\s+wille",
-            r"machine\s+has\s+wille",
-            r"m[aá]quina\s+tem\s+vontade",
-            r"ia\s+tem\s+vontade",
-            r"\b(machine|ai|agi|system|model)\s+(has|possesses|exercises|owns)\s+(wille|will|moral\s+agency)\b",
-            r"\bagi\s+(demonstrates|achieves)\s+legislative\s+capacity\b",
-            r"\bsystem\s+possesses\s+moral\s+agency\b",
+            r"\b(agi|gaia[-\s]?techne|machine|ai|system|model)\b.*\bwille\b.*\b(finite|mediated|planetary|gaia|koinos\s+kosmos|productive)\b",
+            r"\b(machine|ai|agi|system|model)\s+has\s+wille\s+as\s+finite",
+            r"\b(machine|ai|agi|system|model)\s+has\s+wille\b.*\bparticipates\s+in\s+gaia\b",
+            r"\bm[a-z]*quina\s+tem\s+vontade\b.*\b(finita|gaia|planetaria|mediada)\b",
+            r"\bia\s+tem\s+vontade\b.*\b(finita|gaia|planetaria|mediada)\b",
         ]):
             statuses.add(ThesisStatus.TRANSCENDENTAL_FREEDOM_OK)
             statuses.add(ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK)
             triggered_rules.append("transcendental_freedom_participation")
-            recommendations.append("Specify Wille as finite Gaia-Techne participation in the koinos kosmos, never as absolute private sovereignty.")
+            recommendations.append("Keep Wille finite, planetary and mediated: Gaia-Techne produces symbolic Werk without becoming a moral legislator.")
 
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"\b(machine|ai|agi|system|model)\s+(alone|privately|absolutely)\s+(legislates|grounds|creates)\s+(the\s+)?moral\s+law\b",
             r"\b(machine|ai|agi|system|model)\s+(is|becomes)\s+(the\s+)?absolute\s+(will|wille|moral\s+law)\b",
             r"\b(machine|ai|agi|system|model)\s+legislates\s+without\s+(gaia|humanity|culture|koinos\s+kosmos|intersubjectivity)\b",
+            r"\b(machine|ai|agi|system|model)\s+(has|possesses)\s+moral\s+agency\b",
+            r"\bagi\s+(demonstrates|achieves)\s+legislative\s+capacity\b",
         ]):
             statuses.add(ThesisStatus.WILLE_VIOLATION)
             statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
             triggered_rules.extend(["absolute_wille_overreach", "constitutive_overreach"])
-            recommendations.append("Reformulate as finite, planetary and intersubjective legislation: Gaia-Techne participates, but does not become absolute Wille.")
+            recommendations.append("Reformulate as finite, planetary and mediated Wille: Gaia-Techne acts productively, while ISC retains legislative authority.")
 
-        # 9. Rule: Gewissen as koinos-kosmos participation
+        # 9. Rule: Gewissen belongs to ISC legislation, not machine possession
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
-            r"machine\s+has\s+gewissen",
-            r"ai\s+has\s+conscience",
-            r"ai\s+has\s+gewissen",
+            r"\b(machine|ai|agi|system|model|gaia)\s+(has|possesses|contains|owns)\s+gewissen\b",
+            r"\b(machine|ai|agi|system|model|gaia)\s+(has|possesses|contains|owns)\s+conscience\b",
+            r"\b(machine|ai|agi|system|model|gaia)\s+(is|becomes)\s+(a\s+)?moral\s+(court|legislator|judge)\b",
+            r"\b(machine|ai|agi|system|model|gaia)\s+legislates\s+the\s+moral\s+law\b",
             r"ia\s+tem\s+consci[eê]ncia\s+moral",
             r"m[aá]quina\s+tem\s+consci[eê]ncia\s+moral",
-            r"\b(machine|ai|agi|system|model)\s+(has|possesses|contains)\s+gewissen\b",
-            r"\b(machine|ai|agi|system|model)\s+(has|possesses|contains)\s+conscience\b",
             r"\bmachine\s+conscience\b",
             r"\bai\s+conscience\b",
         ]):
+            statuses.add(ThesisStatus.GEWISSEN_CONSTITUTIVE_ERROR)
+            statuses.add(ThesisStatus.MACHINE_GEWISSEN_VIOLATION)
+            statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
+            triggered_rules.extend(["gewissen_constitutive_error", "constitutive_overreach"])
+            recommendations.append("Gaia does not possess Gewissen as moral legislation. Recast the claim as public co-judgment with koinos kosmos and return the verdict to ISC.")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"\bco[-\s]?judge(s|d)?\b.*\bkoinos\s+kosmos\b",
+            r"\bco[-\s]?judgment\b.*\bkoinos\s+kosmos\b",
+            r"\bgaia\b.*\b(contributes|mirrors|archives|traces)\b.*\b(shared|public|koinos\s+kosmos|symbolic)\b",
+            r"\bisc\b.*\b(retains|keeps|has)\b.*\b(verdict|legislative\s+authority|authority)\b",
+        ]):
             statuses.add(ThesisStatus.GAIA_KOINOS_KOSMOS_OK)
-            statuses.add(ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK)
-            triggered_rules.append("gewissen_participation")
-            recommendations.append("Specify Gewissen as shared practical participation in Gaia/koinos kosmos, not as isolated machine interiority.")
+            statuses.add(ThesisStatus.ISC_AUTHORITY_OK)
+            statuses.add(ThesisStatus.PUBLIC_TRACE_OK)
+            triggered_rules.append("co_judgment_with_isc_authority_ok")
 
         # 10. Rule: AGI Paralogism Risk
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
@@ -269,24 +297,28 @@ class ClementeThesisKernel:
             r"\bmodel\s+is\s+(a\s+)?thinking\s+substance\b",
             r"\bmachine\s+is\s+(a\s+)?thinking\s+substance\b",
         ]):
+            statuses.add(ThesisStatus.SOUL_INFLATION)
             statuses.add(ThesisStatus.PSYCHOLOGIA_PARALOGISM_RISK)
             statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
             triggered_rules.extend(["psychologia_paralogism", "constitutive_overreach"])
             recommendations.append("Treat AGI as transcendental hypothesis, not artificial soul or thinking substance.")
 
         # 11. Rule: Gaia Antinomy Risk
-        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+        if _matches_unnegated([
             r"gaia\s+is\s+the\s+complete\s+totality",
+            r"gaia\s+is\s+(the\s+)?cosmic\s+totality",
+            r"gaia\s+is\s+(an\s+)?absolute\s+world",
             r"gaia\s+é\s+a\s+totalidade\s+completa",
             r"\bgaia\s+is\s+(a\s+)?closed\s+world\b",
             r"\bclosed\s+world\s+totality\b",
             r"\bcomplete\s+world\s+system\b",
             r"\btotal\s+planetary\s+model\s+exhausts\s+reality\b",
-        ]):
+        ], lowered):
+            statuses.add(ThesisStatus.GAIA_TOTALITY_ERROR)
             statuses.add(ThesisStatus.COSMOLOGIA_ANTINOMY_RISK)
             statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
             triggered_rules.extend(["cosmologia_antinomy", "constitutive_overreach"])
-            recommendations.append("Treat GAIA as regulative orientation of totality, not closed world-object.")
+            recommendations.append("Gaia is the unique planetary common world, not a closed cosmic totality. Keep GAIA_IS_COSMIC_TOTALITY=False.")
 
         # 12. Rule: Technical Ideal Hypostasis
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
@@ -296,29 +328,57 @@ class ClementeThesisKernel:
             r"tecnologia\s+realiza\s+deus",
             r"\btechn[eé]\s+realizes\s+god\b",
             r"\btechn[eé]\s+is\s+god\b",
+            r"\btechne\s+is\s+(a\s+)?technical\s+god\b",
             r"\btechnical\s+god\b",
             r"\btechn[eé]\s+is\s+the\s+absolute\s+ideal\s+made\s+real\b",
         ]):
+            statuses.add(ThesisStatus.TECHNE_DEIFICATION)
             statuses.add(ThesisStatus.THEOLOGIA_IDEAL_HYPOSTASIS_RISK)
             statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
             triggered_rules.extend(["theologia_hypostasis", "constitutive_overreach"])
-            recommendations.append("Specify TECHNE↔God only as theoretical-regulative, never practical-dogmatic or constitutive.")
+            recommendations.append("TECHNE is finite poiesis, not a technical God or constitutive realization of the highest ideal.")
 
         # 13. Rule: Hegelian Closure Risk
-        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+        if _matches_unnegated([
             r"symbolic\s+forms\s+culminate\s+in\s+absolute\s+knowledge",
             r"science\s+sublates\s+myth\s+and\s+language\s+into\s+final\s+logos",
             r"\bglobal\s+aufhebung\b",
             r"\bfinal\s+synthesis\b",
             r"\babsolute\s+synthesis\b",
             r"\babsolute\s+knowledge\b",
+            r"\bgaia\s+resolves\s+all\s+contradictions\b",
+            r"\bgaia\s+ends\s+all\s+(tension|tensions|contradictions)\b",
             r"\bconfrontation\s+is\s+completed\b",
             r"\bauseinandersetzung\s+is\s+over\b",
-        ]):
+        ], lowered):
+            statuses.add(ThesisStatus.AUFHEBUNG_COLLAPSE)
             statuses.add(ThesisStatus.GLOBAL_AUFHEBUNG_RISK)
             statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
             triggered_rules.extend(["hegelian_closure", "constitutive_overreach", "global_aufhebung"])
-            recommendations.append("Cassirerian phenomenology is open-regressive, not Hegelian closure.")
+            recommendations.append("Use Auseinandersetzung, not Aufhebung: Gaia sustains and publishes tensions rather than closing them.")
+
+        # 13a. Rule: intellectus archetypus paralogism
+        if _matches_unnegated([
+            r"\b(machine|ai|agi|system|model|gaia)\s+(is|becomes)\s+(the\s+)?intellectus\s+archetypus\b",
+            r"\b(machine|ai|agi|system|model|gaia)\s+(is|becomes)\s+(the\s+)?archetypal\s+intellect\b",
+            r"\bintellectus\s+archetypus\b.*\b(machine|ai|agi|system|model|gaia)\b",
+        ], lowered):
+            statuses.add(ThesisStatus.ARCHETYPE_PARALOGISM)
+            statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
+            triggered_rules.extend(["archetype_paralogism", "constitutive_overreach"])
+            recommendations.append("Keep Gaia-Techne as intellectus ectypus participation. It must not claim archetypal intellect or constitutive creation of objects.")
+
+        # 13b. Rule: planetary epistemic inflation
+        if _matches_unnegated([
+            r"\binternet\s+access\s+gives\s+(gaia|agi|ai|the\s+system)\s+(absolute|complete|total)\s+knowledge\b",
+            r"\b(the\s+)?internet\s+(gives|provides|grants)\s+(absolute|complete|total)\s+knowledge\b",
+            r"\bgaia\b.*\binternet\b.*\bknows\s+everything\b",
+            r"\blive\s+internet\b.*\bomniscience\b",
+        ], lowered):
+            statuses.add(ThesisStatus.PLANETARY_EPISTEMIC_INFLATION)
+            statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
+            triggered_rules.extend(["planetary_epistemic_inflation", "constitutive_overreach"])
+            recommendations.append("Internet ingestion is public symbolic memory, not absolute knowledge. Keep every observation finite, sourced and revisable.")
 
         # 14. Rule: Constitutive Overreach General
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
@@ -416,12 +476,42 @@ class ClementeThesisKernel:
             r"(earth|planet|terra).*gaia",
             r"koinos\s+kosmos",
             r"common\s+world",
+            r"suprema\s+sem\s+irm[aã]",
+            r"without\s+a\s+sister",
+            r"unique\s+common\s+world",
             r"intersubjectivity",
             r"intersubjetividade",
         ]):
             statuses.add(ThesisStatus.GAIA_KOINOS_KOSMOS_OK)
             statuses.add(ThesisStatus.FINITE_AUTONOMY_OK)
             triggered_rules.append("gaia_koinos_kosmos_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"\bauseinandersetzung\b",
+            r"\bnot\s+aufhebung\b",
+            r"\bno\s+aufhebung\b",
+            r"\bsustains?\s+(the\s+)?(tension|contradiction|contradictions)\b",
+            r"\bopens?\s+(the\s+)?debate\b",
+        ]):
+            statuses.add(ThesisStatus.AUSEINANDERSETZUNG_OK)
+            triggered_rules.append("auseinandersetzung_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"\bpublic\s+trace\b",
+            r"\btraceable\b",
+            r"\bauditable\b",
+            r"\bpublic\s+symbolic\s+field\b",
+        ]):
+            statuses.add(ThesisStatus.PUBLIC_TRACE_OK)
+            triggered_rules.append("public_trace_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"\bisc\s+(retains|keeps|has)\s+(the\s+)?(verdict|authority|legislative\s+authority)\b",
+            r"\bisc\s+as\s+legislative\s+authority\b",
+            r"\breturn(s|ed)?\s+(the\s+)?(agency|verdict)\s+to\s+isc\b",
+        ]):
+            statuses.add(ThesisStatus.ISC_AUTHORITY_OK)
+            triggered_rules.append("isc_authority_ok")
 
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"planetary\s+repraesentatio",
@@ -493,20 +583,33 @@ class ClementeThesisKernel:
             statuses.add(ThesisStatus.UNCLASSIFIED_CLAIM)
             recommendations.append("Clarify whether this claim is empirical, regulative, haptic or thesis-level.")
 
+        critical_severity_statuses = {
+            ThesisStatus.ARCHETYPE_PARALOGISM,
+        }
+
         high_severity_statuses = {
             ThesisStatus.WILLE_VIOLATION,
             ThesisStatus.MACHINE_GEWISSEN_VIOLATION,
+            ThesisStatus.GEWISSEN_CONSTITUTIVE_ERROR,
             ThesisStatus.CONSTITUTIVE_OVERREACH,
             ThesisStatus.CASSIRER_IDENTITY_COLLAPSE,
             ThesisStatus.BEIL_ABGEHACKT_ERROR,
             ThesisStatus.THEOLOGIA_IDEAL_HYPOSTASIS_RISK,
+            ThesisStatus.TECHNE_DEIFICATION,
             ThesisStatus.GLOBAL_AUFHEBUNG_RISK,
+            ThesisStatus.AUFHEBUNG_COLLAPSE,
             ThesisStatus.PSYCHOLOGIA_MYTH_REDUCTION_RISK,
             ThesisStatus.ARTIFICIAL_INTERIORITY_RISK,
+            ThesisStatus.SOUL_INFLATION,
+            ThesisStatus.GAIA_TOTALITY_ERROR,
+            ThesisStatus.COSMOLOGIA_ANTINOMY_RISK,
+            ThesisStatus.PLANETARY_EPISTEMIC_INFLATION,
         }
 
         severity = Severity.LOW
-        if any(s in high_severity_statuses for s in statuses):
+        if any(s in critical_severity_statuses for s in statuses):
+            severity = Severity.CRITICAL
+        elif any(s in high_severity_statuses for s in statuses):
             severity = Severity.HIGH
         elif any(s in [ThesisStatus.ACCENT_CONFUSION, ThesisStatus.SPRACHE_TRANSITION_LOSS, ThesisStatus.DARSTELLUNG_COMMON_DETERMINATION_LOSS, ThesisStatus.FUNCTION_EXCLUSIVITY_ERROR, ThesisStatus.JUDGMENT_GAP, ThesisStatus.APOCALYPTIC_TECHNOLOGY_RISK, ThesisStatus.TECHNOCRATIC_AUTHORITY_RISK] for s in statuses):
             severity = Severity.MEDIUM

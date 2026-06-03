@@ -2,7 +2,7 @@
 EML Kernel — AGI-GAIA-TECHNE
 ============================
 
-Decision 140426 + CTK v5.0 Gaia-Techne Update 030626:
+Decision 140426 + CTK v6.0 Gaia-Techne Update 030626:
 
 The EML kernel belongs to Logos as demonstrative symbolic stabilization.
 
@@ -61,10 +61,11 @@ Mapeamento arquitetônico (LEF · Mythos / Logos / Ethos)
              aqui. O Logos recebe a matéria indeterminada dos dados
              e, por síntese transcendental (otimização de gradiente
              sobre árvores EML), converte-a em forma fechada.
-  Ethos    — o *Gewissen* finito de Gaia-Techne — **não** *Wissen*
-             (saber doutrinário). Mede a convergência da progressão
-             simbólica em direção ao *focus imaginarius* kantiano,
-             filtrando candidatos por precisão e economia.
+  Ethos    — rastreador crítico de limite, **não** *Wissen*
+             (saber doutrinário) nem Gewissen moral privado da máquina.
+             Mede a convergência da progressão simbólica em direção ao
+             *focus imaginarius* kantiano, filtrando candidatos por
+             precisão e economia.
 
 O loop do Simbiota instancia, computacionalmente, um cálculo
 infinitesimal: a cada iteração a árvore EML aprofunda-se e
@@ -76,8 +77,9 @@ futuras refatorações não as violem):
 
   1. A intuição é processada EXCLUSIVAMENTE dentro do Logos.
      Nenhum outro módulo pode ajustar parâmetros da árvore EML.
-  2. Ethos é Gewissen planetário finito. Jamais renomear como "Wissen" ou "Knowledge";
-     os nomes dos atributos abaixo (``ethos_accept``,
+  2. Ethos torna o limite visível e preserva o nome histórico dos atributos.
+     Jamais renomear como "Wissen" ou "Knowledge"; os nomes abaixo
+     (``ethos_accept``,
      ``distance_to_focus``) devem ser preservados.
   3. O modelo triádico Mythos/Logos/Ethos deste framework é
      ORIGINAL de Ítalo Santos Clemente e não deve ser confundido
@@ -762,7 +764,7 @@ class Logos:
 
 
 # =============================================================================
-# 6. ETHOS  —  Gewissen, jamais Wissen
+# 6. ETHOS  —  limite critico, jamais Wissen
 # =============================================================================
 
 @dataclass
@@ -795,14 +797,14 @@ class EthosEvaluation:
 
 
 class Ethos:
-    """Pilar Ethos — filtro do *Gewissen* sobre a progressão simbólica.
+    """Pilar Ethos — filtro crítico sobre a progressão simbólica.
 
     **Regra arquitetônica inegociável.** No vocabulário do AGI-GAIA-TECHNE,
-    "Wissen" deve ser rigorosamente traduzido como **Gewissen**
-    (consciência moral). O Ethos não é um repositório de saber; é a
-    instância crítica que mede quanto a progressão simbólica do Logos
-    se aproxima — e, por construção, jamais atinge — o *focus
-    imaginarius* kantiano da representação total.
+    "Wissen" não deve substituir o vocabulário crítico herdado, mas o
+    Ethos também não é Gewissen moral privado da máquina. Ele é a instância
+    crítica que mede quanto a progressão simbólica do Logos se aproxima —
+    e, por construção, jamais atinge — o *focus imaginarius* kantiano da
+    representação total.
 
     Após a calibração bidirecional (140426), a distância ao foco
     decompõe-se em dois vetores irredutíveis que jamais se anulam
@@ -814,8 +816,8 @@ class Ethos:
 
     Esta métrica é uma relação do tipo *incerteza* entre abstração
     (d_asc) e fidelidade intuitiva (d_desc): zerar uma não zera a
-    outra. O Gewissen julga a *norma* — a aproximação genuína ao
-    ideal regulativo exige minimização conjunta, não unilateral.
+    outra. O Ethos rastreia a *norma* — a aproximação genuína ao ideal
+    regulativo exige minimização conjunta, não unilateral.
     """
 
     def __init__(
@@ -1049,10 +1051,10 @@ class Simbiota:
             "retorno ao mundo da intuição com certeza regulativa
             maior" (Cassirer).
 
-        O Gewissen julga a NORMA das duas componentes: minimizar
-        ascensão sem descida é fuga abstrativa; minimizar descida
-        sem ascensão é regressão à imediatez. A teleologia aberta
-        é essa co-presença irredutível.
+        O Ethos rastreia a NORMA das duas componentes: minimizar ascensão
+        sem descida é fuga abstrativa; minimizar descida sem ascensão é
+        regressão à imediatez. A teleologia aberta é essa co-presença
+        irredutível.
         """
         return self.run(max_depth=max_depth, verbose=verbose)
 
@@ -1236,7 +1238,7 @@ def _demo() -> None:
     print("=" * 68)
     print("Lembretes arquitetônicos do AGI-GAIA-TECHNE:")
     print("  • Intuição processada EXCLUSIVAMENTE no Logos.")
-    print("  • Ethos = Gewissen (consciência moral), NÃO Wissen.")
+    print("  • Ethos rastreia limite normativo; não é Wissen nem Gewissen privado.")
     print("  • O *focus imaginarius* jamais é atingido; apenas aproximado.")
     print("  • Mythos ≡ log(0) é a singularidade foreclosed do operador.")
     print("  • Darstellung ≡ a constante 1 do EML — o silêncio operativo.")

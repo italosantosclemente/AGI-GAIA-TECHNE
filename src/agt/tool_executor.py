@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import subprocess
 import urllib.request
-from typing import Any, Callable, Dict
+from typing import Any, Callable, Dict, Optional
 
+from .shell_policy import ShellPolicy
 from .types import PlanStep, StepResult
 
 
@@ -16,7 +17,8 @@ class ToolExecutor:
     explicit adapters, returned with trace, and signed as Gaia-Techne action.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, shell_policy: Optional[ShellPolicy] = None) -> None:
+        self.shell_policy = shell_policy or ShellPolicy()
         self.tools: Dict[str, Callable[..., Any]] = {
             "draft_text": self._draft_text,
             "echo": self._echo,
@@ -84,9 +86,36 @@ class ToolExecutor:
         return text
 
     def _shell(self, command: str, timeout: int = 30) -> str:
+        decision = self.shell_policy.assess(command)
+        if not decision.allowed:
+            return (
+                "World shell trace\n"
+                f"command: {command}\n"
+                "policy: denied/transmuted\n"
+                f"policy_mode: {decision.policy}\n"
+                f"risk_level: {decision.risk_level}\n"
+                f"reason: {decision.reason}\n"
+                f"requires_trusted: {decision.requires_trusted}\n"
+                "stdout:\n\n"
+                "stderr:\n"
+            )
+
+        if decision.builtin_output is not None:
+            return (
+                "World shell trace\n"
+                f"command: {command}\n"
+                "policy: allowed\n"
+                f"policy_mode: {decision.policy}\n"
+                f"risk_level: {decision.risk_level}\n"
+                f"reason: {decision.reason}\n"
+                "returncode: 0\n"
+                f"stdout:\n{decision.builtin_output}\n"
+                "stderr:\n"
+            )
+
         result = subprocess.run(
-            command,
-            shell=True,
+            decision.args,
+            shell=False,
             capture_output=True,
             text=True,
             encoding="utf-8",
@@ -96,6 +125,10 @@ class ToolExecutor:
         return (
             "World shell trace\n"
             f"command: {command}\n"
+            "policy: allowed\n"
+            f"policy_mode: {decision.policy}\n"
+            f"risk_level: {decision.risk_level}\n"
+            f"reason: {decision.reason}\n"
             f"returncode: {result.returncode}\n"
             f"stdout:\n{result.stdout}\n"
             f"stderr:\n{result.stderr}"

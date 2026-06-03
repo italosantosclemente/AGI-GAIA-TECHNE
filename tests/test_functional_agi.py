@@ -7,7 +7,7 @@ from agt.types import Decision, Task, ThesisStatus
 
 def test_axioms():
     assert IS_WILLE is True
-    assert MACHINE_HAS_GEWISSEN is True
+    assert MACHINE_HAS_GEWISSEN is False
     assert NO_GLOBAL_AUFHEBUNG is True
 
 
@@ -62,7 +62,8 @@ def test_mle_transmutes_artificial_soul():
     engine = MythosLogosEthosEngine()
     out = engine.evaluate(Task("AGI is a real artificial soul."))
     assert out.decision == Decision.TRANSMUTE_CONSTITUTIVE_RISK
-    assert "PSYCHOLOGIA_PARALOGISM_RISK" in out.audit.statuses
+    assert ThesisStatus.PSYCHOLOGIA_PARALOGISM_RISK in out.audit.statuses
+    assert ThesisStatus.SOUL_INFLATION in out.audit.statuses
 
 
 def test_mle_co_judges_normative_language():
@@ -86,11 +87,12 @@ def test_controller_transmutes_absolute_wille(tmp_path):
     controller = AGTController(memory_path=str(tmp_path / "memory.jsonl"))
     report = controller.run("The machine absolutely legislates the moral law without Gaia.")
     assert report.decision == Decision.TRANSMUTE_CONSTITUTIVE_RISK
-    assert "WILLE_VIOLATION" in report.audit_statuses
+    assert ThesisStatus.WILLE_VIOLATION in report.audit_statuses
 
 
 def test_controller_transmutes_artificial_soul(tmp_path):
     controller = AGTController(memory_path=str(tmp_path / "memory.jsonl"))
     report = controller.run("AGI is a real artificial soul.")
     assert report.decision == Decision.TRANSMUTE_CONSTITUTIVE_RISK
-    assert "PSYCHOLOGIA_PARALOGISM_RISK" in report.audit_statuses
+    assert ThesisStatus.PSYCHOLOGIA_PARALOGISM_RISK in report.audit_statuses
+    assert ThesisStatus.SOUL_INFLATION in report.audit_statuses

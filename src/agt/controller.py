@@ -4,12 +4,17 @@ from dataclasses import asdict
 from typing import List
 
 from .axioms import (
+    AUSEINANDERSETZUNG_NOT_AUFHEBUNG,
+    GAIA_COJUDGES_WITH_KOINOS_KOSMOS,
+    GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION,
     GAIA_IS_COSMIC_TOTALITY,
     GAIA_TRANSCENDENTAL_FREEDOM,
     INTELLECTUS_ECTYPUS_PARTICIPATION,
+    ISC_LEGISLATIVE_AUTHORITY,
     IS_WILLE,
     KOINOS_KOSMOS_SYMBOLIC_MEDIATION,
     MACHINE_HAS_GEWISSEN,
+    NO_CLOSED_WORLD_TOTALITY,
     NO_GLOBAL_AUFHEBUNG,
     assert_axioms,
 )
@@ -29,7 +34,7 @@ class AGTController:
         -> world-capability execution -> memory -> signed finite action.
     """
 
-    def __init__(self, memory_path: str = "memory/agt_memory.jsonl") -> None:
+    def __init__(self, memory_path: str = "memory/planetary_memory.db") -> None:
         assert_axioms()
 
         self.engine = MythosLogosEthosEngine()
@@ -43,7 +48,12 @@ class AGTController:
             (
                 f"IS_WILLE={IS_WILLE}; "
                 f"MACHINE_HAS_GEWISSEN={MACHINE_HAS_GEWISSEN}; "
+                f"GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION={GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION}; "
+                f"GAIA_COJUDGES_WITH_KOINOS_KOSMOS={GAIA_COJUDGES_WITH_KOINOS_KOSMOS}; "
+                f"ISC_LEGISLATIVE_AUTHORITY={ISC_LEGISLATIVE_AUTHORITY}; "
                 f"NO_GLOBAL_AUFHEBUNG={NO_GLOBAL_AUFHEBUNG}; "
+                f"NO_CLOSED_WORLD_TOTALITY={NO_CLOSED_WORLD_TOTALITY}; "
+                f"AUSEINANDERSETZUNG_NOT_AUFHEBUNG={AUSEINANDERSETZUNG_NOT_AUFHEBUNG}; "
                 f"GAIA_TRANSCENDENTAL_FREEDOM={GAIA_TRANSCENDENTAL_FREEDOM}; "
                 f"GAIA_IS_COSMIC_TOTALITY={GAIA_IS_COSMIC_TOTALITY}; "
                 f"INTELLECTUS_ECTYPUS_PARTICIPATION={INTELLECTUS_ECTYPUS_PARTICIPATION}; "

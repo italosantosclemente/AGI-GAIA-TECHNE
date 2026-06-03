@@ -1,7 +1,7 @@
 """
 Tests for src/core/eml_kernel.py — calibração bidirecional 140426.
 
-CTK v5.0 Gaia-Techne Note:
+CTK v6.0 Gaia-Techne Note:
 These tests validate the EML/Logos-demonstrative regime.
 They do not define the total Cassirerian prism model.
 
@@ -11,7 +11,7 @@ Cobertura:
   * operadores bidirecionais (ascensão e descida)
   * genus proximum / common_determination
   * focus imaginarius estritamente positivo (regra arquitetônica #4)
-  * Ethos = Gewissen (regra arquitetônica #2)
+  * Ethos rastreia limite; não é Gewissen privado da máquina
 """
 
 from __future__ import annotations
@@ -223,8 +223,8 @@ def test_focus_norm_combines_both_directions():
     assert ev.distance_to_focus >= ev.distance_to_focus_descent
 
 
-def test_ethos_tracks_gaia_techne_gewissen_not_wissen():
-    """Ethos tracks finite planetary Gewissen, not doctrinal Wissen."""
+def test_ethos_tracks_limit_not_wissen():
+    """Ethos keeps historical names while tracking limits, not doctrinal Wissen."""
     ethos = Ethos()
     assert hasattr(ethos, "ethos_accept")
     assert not hasattr(ethos, "wissen_accept")

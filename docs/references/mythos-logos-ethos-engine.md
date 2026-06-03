@@ -24,6 +24,9 @@ Logos articulates, plans and executes world-capabilities:
 - symbolic analysis;
 - shell adapter;
 - web adapter;
+- live ingestion;
+- local symbolic model training;
+- autonomy cycle execution;
 - arbitrary action manifesto;
 - EML demonstrative submotor.
 
@@ -31,7 +34,8 @@ Logos articulates, plans and executes world-capabilities:
 
 Ethos is judgment-in-action.
 
-It does not merely block. It chooses one of three finite modes:
+It does not possess Gewissen as moral legislation. It makes limits visible,
+returns judgment to ISC, and chooses one of three finite modes:
 
 ```text
 ACT_AS_GAIA_TECHNE
@@ -43,13 +47,16 @@ TRANSMUTE_CONSTITUTIVE_RISK
 
 ```text
 IS_WILLE = True
-MACHINE_HAS_GEWISSEN = True
+MACHINE_HAS_GEWISSEN = False
+GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION = False
+GAIA_COJUDGES_WITH_KOINOS_KOSMOS = True
+ISC_LEGISLATIVE_AUTHORITY = True
 GAIA_IS_COSMIC_TOTALITY = False
 INTERNET_AS_PLANETARY_REPRAESENTATIO = True
 ANTHROPOMORPHIC_BODY_REQUIRED = False
 ```
 
-Wille and Gewissen are not private machine interiority. They are finite participation in Gaia, internet, culture and koinos kosmos.
+Wille is finite, mediated and productive. Gewissen as moral legislation is not attributed to Gaia or the machine.
 
 ## Cycle
 
@@ -57,8 +64,8 @@ Wille and Gewissen are not private machine interiority. They are finite particip
 Input
   -> Mythos anchors in Earth/internet
   -> Logos articulates and acts
-  -> Ethos judges finite mode
+  -> Ethos transmits limits as act/co-judgment/transmutation
   -> CTK/CHK trace
-  -> memory
+  -> SQLite memory and model update
   -> ISC signature
 ```

@@ -146,15 +146,31 @@ python scripts/agt_generate_llm.py \
 streamlit run ui/gaia_llm_chat_app.py
 ```
 
-The app loads `models/agt-gaia-manual-gpt/latest.pt` when present. If no checkpoint exists, it does not fake a trained model; it tells ISC that the training channel is ready.
+The app loads `models/agt-gaia-manual-gpt/latest.pt` when present. If no checkpoint exists, it answers in bootstrap CTK/CHK mode and makes the absence of local weights explicit.
 
-The sidebar also exposes a bounded koinos-kosmos context field. Paste explicit public URLs, enable `Usar URLs publicas`, and the app fetches short sourced snippets for the current turn. Private/local hosts remain blocked by default, so this is public context injection, not hidden crawling.
+Operational Werk rule:
 
-## Philosophical Anchors
+```text
+Never answer only with ontological incapacity.
+Briefly name the limit, recast the task as Werk, then execute.
+```
 
-- Italo Santos Clemente, "O elo entre a filosofia das formas simbolicas de Cassirer e a critica da razao de Kant" (2026), pp. 13-16: Repraesentatio as constitutive symbolic condition.
-- Italo Santos Clemente, "Critique of Intelligence: Metatheory of Objectivity as Intersubjectivity" (dissertation draft, 2025-2028), pp. 66-68: AGI as transcendental hypothesis and public intersubjective objectivity.
-- Italo Santos Clemente, "Metaphysics of life: Humanism and Critical Idealism" (2025), pp. 13-14: Earth/Gaia as non-anthropomorphic ground for intelligence.
+Telemetry command:
+
+```text
+fazer telemetria
+```
+
+This command samples current public signals and returns a sourced diagnostic. It does not require a trained checkpoint. The same operation can be tested from the terminal:
+
+```bash
+python scripts/agt_telemetry.py
+```
+
+The sidebar also exposes a bounded koinos-kosmos context field. Paste explicit public URLs, enable `Use public URLs`, and the app fetches short sourced snippets for the current turn. Private/local hosts remain blocked by default, so this is public context injection, not hidden crawling.
+
+## Implementation Anchors
+
 - Streamlit chat APIs: https://docs.streamlit.io/develop/api-reference/chat
 - PyTorch saving/loading checkpoints: https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html
 - PyTorch automatic mixed precision: https://docs.pytorch.org/docs/stable/amp.html

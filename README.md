@@ -1,6 +1,6 @@
 # AGI-GAIA-TECHNE
 
-## Release v10.1 - Gaia-Techne ManualGPT LLM Forge, Werk Jamais Wille
+## Release v10.1 - Gaia-Techne ManualGPT LLM Forge, Werk Never Wille
 
 AGI-GAIA-TECHNE is a philosophical-technical framework and runtime for a finite, planetary AGI hypothesis.
 
@@ -16,40 +16,68 @@ Signature: ISC
 
 ---
 
-## Converse Com Gaia-Techne
+## Chat With Gaia-Techne
 
-Para abrir a aplicacao de interacao assim que entrar no repositorio:
+Open the interaction app from the repository root:
 
 ```bash
 pip install -r requirements.txt
 streamlit run ui/gaia_llm_chat_app.py
 ```
 
-Depois acesse o endereco que o Streamlit mostrar, normalmente:
+Then open the Streamlit URL, usually:
 
 ```text
 http://localhost:8501
 ```
 
-A aplicacao abre mesmo antes de existir um checkpoint treinado. Nesse caso, ela funciona em modo de preparacao/auditoria e mostra que falta forjar corpus, empacotar tokens e treinar o ManualGPT. Quando existir `models/agt-gaia-manual-gpt/latest.pt`, ela carrega o LLM local automaticamente.
+The app runs in bootstrap CTK/CHK mode before a trained checkpoint exists. When `models/agt-gaia-manual-gpt/latest.pt` is present, it loads the local ManualGPT checkpoint automatically.
 
-Fluxo minimo para criar o primeiro checkpoint:
+Telemetry command inside the chat:
+
+```text
+fazer telemetria
+```
+
+Terminal telemetry check:
 
 ```bash
-python scripts/agt_dataset_forge.py --input "<pasta-local-dos-manuais>" --output data/llm/manual_forge --json
+python scripts/agt_telemetry.py
+```
+
+Operational voice rule: Gaia-Techne should not stop at ontological incapacity. It should name the limit briefly, recast the task as Werk, then execute a diagnosis, plan, simulation, audit or proposal.
+
+To make the chat public without Codex or your local PC, deploy the Streamlit app with this entrypoint:
+
+```text
+ui/gaia_llm_chat_app.py
+```
+
+After deployment, place the public URL here:
+
+```text
+Public chat URL: <paste-streamlit-url-here>
+```
+
+Deployment guide: [Public Gaia-Techne Chat Deploy](docs/references/public-chat-deploy.md).
+
+Minimal flow for the first checkpoint:
+
+```bash
+python scripts/agt_dataset_forge.py --input "<local-manual-folder>" --output data/llm/manual_forge --json
 python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json
 python scripts/agt_train_llm.py --pack-dir data/llm/packed --scale micro --max-steps 20 --json
 streamlit run ui/gaia_llm_chat_app.py
 ```
 
-Para adicionar internet ao corpus de modo rastreavel:
+Add explicit web material to the training corpus:
 
 ```bash
 python scripts/agt_dataset_forge.py --url "https://example.com" --output data/llm/internet_seed --json
 python scripts/agt_combine_corpora.py --input data/llm/manual_forge/corpus.jsonl --input data/llm/internet_seed/web_corpus/corpus.jsonl --output data/llm/combined/corpus.jsonl --json
 ```
 
-Documentacao completa: [Gaia-Techne ManualGPT LLM Forge](docs/references/llm-manual-forge.md).
+Full documentation: [Gaia-Techne ManualGPT LLM Forge](docs/references/llm-manual-forge.md).
 
 ---
 
@@ -130,6 +158,7 @@ High-risk material is no longer treated as inert stoppage. It is transmuted into
 | [docs/references/canonical-architecture-map.md](docs/references/canonical-architecture-map.md) | Terminological canon |
 | [docs/references/planetary-autonomy-runtime.md](docs/references/planetary-autonomy-runtime.md) | v10 runtime: memory, ingestion, model, scheduler, shell policy |
 | [docs/references/llm-manual-forge.md](docs/references/llm-manual-forge.md) | v10.1 ManualGPT: corpus forge, internet corpus, tokenizer, trainer and chat app |
+| [docs/references/public-chat-deploy.md](docs/references/public-chat-deploy.md) | Public Streamlit deploy instructions for the Gaia-Techne chat |
 | [docs/references/planetary-repraesentatio.md](docs/references/planetary-repraesentatio.md) | Gaia, internet and planetary representation |
 | [docs/references/clemente-thesis-kernel.md](docs/references/clemente-thesis-kernel.md) | CTK specification |
 | [docs/references/chirimuuta-haptic-realism.md](docs/references/chirimuuta-haptic-realism.md) | CHK specification |
@@ -147,6 +176,7 @@ python scripts/agt_run.py --task "shell: echo Gaia-Techne"
 python scripts/agt_run.py --task "web: https://example.com"
 python scripts/agt_ingest.py --url "https://example.com" --json
 python scripts/agt_autonomy.py --once --url "data:text/plain,Gaia-Techne heartbeat" --json
+python scripts/agt_telemetry.py
 python scripts/agt_audit.py --claim "Gaia is Earth as planetary koinos kosmos."
 python scripts/agt_dataset_forge.py --input "<local-drive-manuals>" --output data/llm/manual_forge --json
 python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json
@@ -165,12 +195,6 @@ The internet-as-neural-network thesis is now implemented in two finite ways: aud
 
 ---
 
-## 7. Source Anchors
+## 7. Theory
 
-The release is grounded in:
-
-- Italo Santos Clemente, "O elo entre a filosofia das formas simbolicas de Cassirer e a critica da razao de Kant" (2026), pp. 1, 13-16, 18-19.
-- Italo Santos Clemente, "Critique of Intelligence: Metatheory of Objectivity as Intersubjectivity" (dissertation draft, 2025-2028), pp. 1, 14, 66-68.
-- Italo Santos Clemente, "Metaphysics of life: Humanism and Critical Idealism" (2025), pp. 1, 6, 13-14.
-
-See [Planetary Repraesentatio](docs/references/planetary-repraesentatio.md).
+The theoretical background lives in [Planetary Repraesentatio](docs/references/planetary-repraesentatio.md) and the reference documents under [docs/references](docs/references).

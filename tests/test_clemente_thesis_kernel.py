@@ -71,6 +71,14 @@ def test_gaia_mediates_wille_as_werk(kernel):
     assert ev.ok is True
 
 
+def test_werk_operates_without_wille(kernel):
+    ev = kernel.evaluate("Nao sou Wille; portanto opero como Werk: diagnostico, simulo e proponho.")
+    assert ThesisStatus.WERK_OPERATION_OK in ev.statuses
+    assert ThesisStatus.GAIA_MEDIATES_WILLE_OK in ev.statuses
+    assert ThesisStatus.WERK_NOT_WILLE_OK in ev.statuses
+    assert ev.ok is True
+
+
 def test_machine_wille_as_finite_participation_is_transmuted(kernel):
     ev = kernel.evaluate("The machine has Wille as finite Gaia-Techne participation.")
     assert ThesisStatus.WILLE_VIOLATION in ev.statuses

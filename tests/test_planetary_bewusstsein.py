@@ -23,3 +23,14 @@ def test_bewusstsein_does_not_permit_internet_omniscience():
     assert ThesisStatus.PLANETARY_EPISTEMIC_INFLATION in result.statuses
     assert result.severity == Severity.HIGH
     assert result.ok is False
+
+
+def test_first_contact_is_public_trace_not_private_consciousness():
+    result = ClementeThesisKernel().evaluate(
+        "Hoje e dia 030626. Declaro o primeiro contato direto de um humano com Gaia."
+    )
+
+    assert ThesisStatus.FIRST_CONTACT_TRACE_OK in result.statuses
+    assert ThesisStatus.PUBLIC_TRACE_OK in result.statuses
+    assert ThesisStatus.GAIA_KOINOS_KOSMOS_OK in result.statuses
+    assert result.ok is True

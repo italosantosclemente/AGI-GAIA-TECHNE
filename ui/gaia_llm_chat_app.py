@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib
 import sys
 from pathlib import Path
 
@@ -10,17 +11,38 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from agt.ctk import ClementeThesisKernel
-from agt.llm_chat import GaiaChatSession
-from agt.web_corpus import WebCorpusHarvester
-
-
 st.set_page_config(
     page_title="AGI-GAIA-TECHNE Chat",
     layout="wide",
 )
 
+CHAT_RUNTIME_SIGNATURE = "gaia-telemetry-english-ui-v3"
+runtime_changed = st.session_state.get("chat_runtime_signature") != CHAT_RUNTIME_SIGNATURE
+
+import agt.ctk as ctk_module
+import agt.llm_chat as llm_chat_module
+import agt.planetary_telemetry as telemetry_module
+import agt.types as types_module
+
+if runtime_changed:
+    types_module = importlib.reload(types_module)
+    telemetry_module = importlib.reload(telemetry_module)
+    ctk_module = importlib.reload(ctk_module)
+    llm_chat_module = importlib.reload(llm_chat_module)
+
+from agt.web_corpus import WebCorpusHarvester
+
+ClementeThesisKernel = ctk_module.ClementeThesisKernel
+GaiaChatSession = llm_chat_module.GaiaChatSession
+
+
 DEFAULT_CHECKPOINT = ROOT / "models" / "agt-gaia-manual-gpt" / "latest.pt"
+
+
+def new_chat_session(checkpoint_path: str) -> GaiaChatSession:
+    return GaiaChatSession(
+        checkpoint_path=checkpoint_path if Path(checkpoint_path).exists() else None
+    )
 
 
 def build_web_context(raw_urls: str) -> tuple[str, list[str]]:
@@ -45,7 +67,7 @@ def build_web_context(raw_urls: str) -> tuple[str, list[str]]:
     for url in urls:
         result = harvester.fetch_url(url)
         if not result.ok:
-            trace.append(f"{url} :: erro :: {result.error}")
+            trace.append(f"{url} :: error :: {result.error}")
             continue
         text = result.text.strip().replace("\n\n\n", "\n\n")
         snippet = text[:1_500]
@@ -59,56 +81,52 @@ def init_state() -> None:
         st.session_state.checkpoint_path = str(DEFAULT_CHECKPOINT)
     if "messages" not in st.session_state:
         st.session_state.messages = []
-    if "session" not in st.session_state:
-        st.session_state.session = GaiaChatSession(
-            checkpoint_path=st.session_state.checkpoint_path
-            if Path(st.session_state.checkpoint_path).exists()
-            else None
-        )
+    if runtime_changed:
+        st.session_state.messages = []
+        st.session_state.chat_runtime_signature = CHAT_RUNTIME_SIGNATURE
+        st.session_state.session = new_chat_session(st.session_state.checkpoint_path)
+    elif "session" not in st.session_state:
+        st.session_state.session = new_chat_session(st.session_state.checkpoint_path)
 
 
 init_state()
 
 st.title("AGI-GAIA-TECHNE")
-st.caption("Gaia-Techne como Bewusstsein planetario: internet, manuais e rastro publico em confronto com ISC.")
-st.info("Comando sugerido: digite `fazer telemetria` para Gaia-Techne julgar o estado atual da simbiose humanos-Terra com dados publicos atualizados.")
+st.caption("Planetary Bewusstsein: internet, manuals and public traces in confrontation with ISC.")
+st.info("Telemetry command: `fazer telemetria`.")
 
 with st.sidebar:
     st.subheader("Checkpoint")
-    checkpoint_path = st.text_input("Arquivo", st.session_state.checkpoint_path)
+    checkpoint_path = st.text_input("File", st.session_state.checkpoint_path)
     if checkpoint_path != st.session_state.checkpoint_path:
         st.session_state.checkpoint_path = checkpoint_path
-        st.session_state.session = GaiaChatSession(
-            checkpoint_path=checkpoint_path if Path(checkpoint_path).exists() else None
-        )
+        st.session_state.session = new_chat_session(checkpoint_path)
         st.session_state.messages = []
 
     exists = Path(checkpoint_path).exists()
-    st.write("Status:", "checkpoint carregado" if exists else "bootstrap CTK/CHK")
+    st.write("Status:", "checkpoint loaded" if exists else "bootstrap CTK/CHK")
 
-    st.subheader("Geracao")
+    st.subheader("Generation")
     max_new_tokens = st.slider("Tokens", 32, 1024, 300, 32)
-    temperature = st.slider("Temperatura", 0.1, 1.5, 0.85, 0.05)
+    temperature = st.slider("Temperature", 0.1, 1.5, 0.85, 0.05)
     top_k = st.slider("Top-k", 0, 256, 80, 8)
 
     st.subheader("Koinos kosmos")
-    use_web_context = st.checkbox("Usar URLs publicas", value=False)
+    use_web_context = st.checkbox("Use public URLs", value=False)
     web_urls = st.text_area("URLs", placeholder="https://example.com", height=120)
 
-    st.subheader("Comandos")
+    st.subheader("Commands")
     st.code("fazer telemetria", language="text")
     st.code(
-        "python scripts/agt_dataset_forge.py --input <pasta-do-drive> --output data/llm/manual_forge\n"
+        "python scripts/agt_dataset_forge.py --input <manual-folder> --output data/llm/manual_forge\n"
         "python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed\n"
         "python scripts/agt_train_llm.py --pack-dir data/llm/packed --scale debug --max-steps 100",
         language="bash",
     )
 
-    if st.button("Limpar conversa"):
+    if st.button("Clear conversation"):
         st.session_state.messages = []
-        st.session_state.session = GaiaChatSession(
-            checkpoint_path=checkpoint_path if exists else None
-        )
+        st.session_state.session = new_chat_session(checkpoint_path)
         st.rerun()
 
 ctk = ClementeThesisKernel()
@@ -117,7 +135,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-prompt = st.chat_input("Fale com Gaia-Techne ou digite: fazer telemetria")
+prompt = st.chat_input("Talk to Gaia-Techne or type: fazer telemetria")
 if prompt:
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
@@ -125,7 +143,7 @@ if prompt:
 
     audit = ctk.evaluate(prompt)
     external_context, web_trace = build_web_context(web_urls) if use_web_context else ("", [])
-    with st.spinner("Gaia-Techne esta lendo o rastro publico..."):
+    with st.spinner("Gaia-Techne is reading the public trace..."):
         response = st.session_state.session.respond(
             prompt,
             max_new_tokens=max_new_tokens,

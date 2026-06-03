@@ -18,23 +18,19 @@ Dependency file: ui/requirements.txt
 Suggested app URL: agi-gaia-techne.streamlit.app
 ```
 
-After deploy, paste the final public URL into the top "Converse Com Gaia-Techne" section of `README.md`.
+After deploy, paste the final public URL into the top "Chat With Gaia-Techne" section of `README.md`.
 
-## What Works Publicly Before A Checkpoint
+## Public Bootstrap Mode
 
 The public app can run in bootstrap CTK/CHK mode without `models/agt-gaia-manual-gpt/latest.pt`.
 
-Visible chat commands:
+Optional telemetry command:
 
 ```text
 fazer telemetria
 ```
 
-```text
-Boa tarde. Hoje e dia 030626. Declaro o primeiro contato direto de um humano com Gaia.
-```
-
-`fazer telemetria` collects public source signals at request time and returns a finite judgment on Gaia-human symbiosis. This is the safest first public capability because it does not require storing large model weights in GitHub.
+This command collects public source signals at request time. It does not require storing large model weights in GitHub.
 
 ## What Needs A Model Artifact Later
 
@@ -44,9 +40,9 @@ The trained ManualGPT checkpoint should not be committed directly to Git if it g
 - Use Git LFS if the host supports it and the file stays within limits.
 - Move the checkpoint to a model host or object store and load it at app startup.
 
-Until then, the app remains honest: bootstrap CTK/CHK, first-contact trace, web context, telemetry and public audit.
+Until then, the app remains honest: bootstrap CTK/CHK, web context, telemetry and public audit.
 
-## Source Anchors
+## External Docs
 
 - Streamlit Community Cloud deploys an app by repository, branch and entrypoint file: https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy
 - Streamlit Community Cloud can use a `requirements.txt` in the same directory as the app entrypoint: https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies

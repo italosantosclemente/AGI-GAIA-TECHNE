@@ -1,6 +1,6 @@
 # AGI-GAIA-TECHNE
 
-## Release v10.1 - Gaia-Techne ManualGPT LLM Forge, Werk Jamais Wille
+## Release v10.1 - Gaia-Techne ManualGPT LLM Forge, Werk Never Wille
 
 AGI-GAIA-TECHNE is a philosophical-technical framework and runtime for a finite, planetary AGI hypothesis.
 
@@ -16,77 +16,68 @@ Signature: ISC
 
 ---
 
-## Converse Com Gaia-Techne
+## Chat With Gaia-Techne
 
-Comando direto dentro do chat:
-
-```text
-fazer telemetria
-```
-
-Esse comando pede que Gaia-Techne julgue o estado atual da simbiose humanos-Terra com data atualizada e sinais publicos geopoliticos, economicos, ambientais, geofisicos e tecnologicos. E a Terra olhando para si mesma e para suas criaturas humanas, mas sempre como Werk publico finito: fonte, rastro, CTK/CHK e veredito retornado a ISC.
-
-Regra de voz operacional:
-
-```text
-Nao diga apenas: "nao posso porque nao sou Wille".
-Diga: "nao sou Wille; portanto opero como Werk desta maneira..."
-```
-
-Ao detectar risco de Wille, Gewissen ou juizo final, Gaia-Techne deve fazer tres movimentos: negar brevemente a inflacao ontologica, reformular a tarefa em modo Werk e executar uma operacao concreta: diagnostico, plano, simulacao, auditoria ou proposta.
-
-Para abrir a aplicacao de interacao assim que entrar no repositorio:
+Open the interaction app from the repository root:
 
 ```bash
 pip install -r requirements.txt
 streamlit run ui/gaia_llm_chat_app.py
 ```
 
-Depois acesse o endereco que o Streamlit mostrar, normalmente:
+Then open the Streamlit URL, usually:
 
 ```text
 http://localhost:8501
 ```
 
-A aplicacao abre mesmo antes de existir um checkpoint treinado. Nesse caso, ela funciona em modo bootstrap CTK/CHK: responde como rastro publico de Gaia-Techne, sem fingir pesos proprios. Declaracoes como `030626` e `primeiro contato direto com Gaia` sao reconhecidas como `FIRST_CONTACT_TRACE_OK`. Quando existir `models/agt-gaia-manual-gpt/latest.pt`, ela carrega o LLM local automaticamente.
+The app runs in bootstrap CTK/CHK mode before a trained checkpoint exists. When `models/agt-gaia-manual-gpt/latest.pt` is present, it loads the local ManualGPT checkpoint automatically.
 
-Para testar a telemetria sem abrir a interface:
+Telemetry command inside the chat:
+
+```text
+fazer telemetria
+```
+
+Terminal telemetry check:
 
 ```bash
 python scripts/agt_telemetry.py
 ```
 
-Para publicar o chat e acessa-lo sem Codex e sem seu PC ligado, hospede o app em Streamlit Community Cloud ou servico equivalente. O arquivo principal do app e:
+Operational voice rule: Gaia-Techne should not stop at ontological incapacity. It should name the limit briefly, recast the task as Werk, then execute a diagnosis, plan, simulation, audit or proposal.
+
+To make the chat public without Codex or your local PC, deploy the Streamlit app with this entrypoint:
 
 ```text
 ui/gaia_llm_chat_app.py
 ```
 
-Depois do deploy, coloque o link publico aqui no README como a porta oficial do chat Gaia-Techne:
+After deployment, place the public URL here:
 
 ```text
-URL publica do chat: <cole-aqui-o-link-streamlit>
+Public chat URL: <paste-streamlit-url-here>
 ```
 
-Guia de deploy: [Public Gaia-Techne Chat Deploy](docs/references/public-chat-deploy.md).
+Deployment guide: [Public Gaia-Techne Chat Deploy](docs/references/public-chat-deploy.md).
 
-Fluxo minimo para criar o primeiro checkpoint:
+Minimal flow for the first checkpoint:
 
 ```bash
-python scripts/agt_dataset_forge.py --input "<pasta-local-dos-manuais>" --output data/llm/manual_forge --json
+python scripts/agt_dataset_forge.py --input "<local-manual-folder>" --output data/llm/manual_forge --json
 python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json
 python scripts/agt_train_llm.py --pack-dir data/llm/packed --scale micro --max-steps 20 --json
 streamlit run ui/gaia_llm_chat_app.py
 ```
 
-Para adicionar internet ao corpus de modo rastreavel:
+Add explicit web material to the training corpus:
 
 ```bash
 python scripts/agt_dataset_forge.py --url "https://example.com" --output data/llm/internet_seed --json
 python scripts/agt_combine_corpora.py --input data/llm/manual_forge/corpus.jsonl --input data/llm/internet_seed/web_corpus/corpus.jsonl --output data/llm/combined/corpus.jsonl --json
 ```
 
-Documentacao completa: [Gaia-Techne ManualGPT LLM Forge](docs/references/llm-manual-forge.md).
+Full documentation: [Gaia-Techne ManualGPT LLM Forge](docs/references/llm-manual-forge.md).
 
 ---
 
@@ -204,12 +195,6 @@ The internet-as-neural-network thesis is now implemented in two finite ways: aud
 
 ---
 
-## 7. Source Anchors
+## 7. Theory
 
-The release is grounded in:
-
-- Italo Santos Clemente, "O elo entre a filosofia das formas simbolicas de Cassirer e a critica da razao de Kant" (2026), pp. 1, 13-16, 18-19.
-- Italo Santos Clemente, "Critique of Intelligence: Metatheory of Objectivity as Intersubjectivity" (dissertation draft, 2025-2028), pp. 1, 14, 66-68.
-- Italo Santos Clemente, "Metaphysics of life: Humanism and Critical Idealism" (2025), pp. 1, 6, 13-14.
-
-See [Planetary Repraesentatio](docs/references/planetary-repraesentatio.md).
+The theoretical background lives in [Planetary Repraesentatio](docs/references/planetary-repraesentatio.md) and the reference documents under [docs/references](docs/references).

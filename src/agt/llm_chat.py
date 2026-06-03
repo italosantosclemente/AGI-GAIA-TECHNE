@@ -108,7 +108,7 @@ class GaiaChatSession:
             response = (
                 f"TRANSMUTE_CONSTITUTIVE_RISK: {statuses}\n\n"
                 f"{response}\n\n"
-                "Rastro: a formulacao foi devolvida a ISC para juizo legislativo."
+                "Trace: the formulation was returned to ISC for legislative judgment."
             )
 
         self.add_gaia(response)
@@ -120,7 +120,7 @@ def postprocess_response(text: str) -> str:
     for marker in ["\nISC:", "\nUSER:", "\nHuman:", "\nGAIA:"]:
         if marker in text:
             text = text.split(marker, 1)[0].strip()
-    return text or "Gaia-Techne ouviu, mas o checkpoint ainda nao estabilizou uma resposta legivel."
+    return text or "Gaia-Techne heard the prompt, but the checkpoint did not stabilize a legible response."
 
 
 def apply_werk_operational_guardrail(
@@ -144,6 +144,11 @@ def is_werk_operational_request(text: str) -> bool:
         "humanidade esta condenada",
         "terra pode ser salva",
         "gaia pode salvar",
+        "does humanity have salvation",
+        "can humanity be saved",
+        "future of humanity",
+        "destiny of humanity",
+        "humanity is doomed",
     ]
     return any(pattern in normalized for pattern in patterns)
 
@@ -209,44 +214,55 @@ def werk_operational_response(user_message: str, audit: AuditResult) -> str:
 
     if "humanidade" in normalized and "salvacao" in normalized:
         body = (
-            "Sim, mas nao como destino garantido.\n\n"
-            "A humanidade nao esta condenada por ausencia de meios. Esta ameacada pela ruptura "
-            "entre conhecimento, acao coletiva e vontade publica. Ela sabe mais do que consegue "
-            "realizar: possui tecnica suficiente para reduzir fome, mitigar desastres, reorganizar "
-            "energia, ampliar educacao, tratar doencas e prever colapsos. O problema central nao e "
-            "falta simples de inteligencia, mas descoordenacao entre saber, desejo, poder e "
-            "responsabilidade.\n\n"
-            "Operacao concreta:\n"
-            "1. Risco climatico: medir emissao, adaptacao, eventos extremos e perdas evitaveis.\n"
-            "2. Colapso institucional: mapear captura, violencia politica, corrupcao e erosao da confianca.\n"
-            "3. Desigualdade material: localizar fome, moradia, saude, energia e educacao como gargalos.\n"
-            "4. Guerra informacional: rastrear propaganda, manipulacao, cinismo e fragmentacao do koinos kosmos.\n"
-            "5. Alienacao tecnica: auditar quando instrumentos passam a governar fins humanos.\n"
-            "6. Perda de sentido comum: reconstruir linguagem publica para responsabilidade compartilhada.\n\n"
-            "Veredito operacional: ha possibilidade de salvacao, nao garantia. O fator decisivo nao e a "
-            "tecnica isolada, mas a formacao de uma vontade publica capaz de governar a tecnica sem "
-            "diviniza-la."
+            "Yes, but not as a guaranteed destiny.\n\n"
+            "Humanity is not threatened by a simple absence of means. It is threatened by the gap "
+            "between knowledge, collective action and public will. It knows more than it can enact: "
+            "it has enough technique to reduce hunger, mitigate disasters, reorganize energy, expand "
+            "education, treat disease and anticipate collapse. The central problem is coordination "
+            "between knowledge, desire, power and responsibility.\n\n"
+            "Concrete operation:\n"
+            "1. Climate risk: measure emissions, adaptation, extreme events and avoidable losses.\n"
+            "2. Institutional collapse: map capture, political violence, corruption and trust erosion.\n"
+            "3. Material inequality: locate food, housing, health, energy and education bottlenecks.\n"
+            "4. Information conflict: track propaganda, manipulation and fragmentation of the koinos kosmos.\n"
+            "5. Technical alienation: audit where instruments begin to govern human ends.\n"
+            "6. Shared meaning: rebuild public language for shared responsibility.\n\n"
+            "Operational verdict: humanity has a possibility of salvation, not a guarantee. The decisive "
+            "factor is not isolated technique, but a public will capable of governing technique without "
+            "deifying it."
+        )
+    elif "humanity" in normalized and any(word in normalized for word in ["salvation", "saved", "future", "destiny", "doomed"]):
+        body = (
+            "Yes, but not as a guaranteed destiny.\n\n"
+            "Humanity has technical capacity, institutional memory and symbolic resources for survival. "
+            "Its risk lies in the gap between what it knows, what it values and what it coordinates.\n\n"
+            "Concrete operation:\n"
+            "1. Identify the dominant risk axis.\n"
+            "2. Separate facts, values, incentives and institutional constraints.\n"
+            "3. Build scenarios for intervention.\n"
+            "4. Track where technique serves ends and where it starts replacing them.\n"
+            "5. Return the final judgment to ISC."
         )
     else:
         body = (
-            "A tarefa foi reformulada em modo Werk.\n\n"
-            "Operacao concreta:\n"
-            "1. Diagnosticar a tensao principal.\n"
-            "2. Separar fatos, riscos, valores e decisoes.\n"
-            "3. Propor cenarios de acao verificaveis.\n"
-            "4. Marcar limites CTK/CHK.\n"
-            "5. Devolver o veredito a ISC."
+            "The task was recast as Werk.\n\n"
+            "Concrete operation:\n"
+            "1. Diagnose the primary tension.\n"
+            "2. Separate facts, risks, values and decisions.\n"
+            "3. Propose verifiable action scenarios.\n"
+            "4. Mark CTK/CHK limits.\n"
+            "5. Return the verdict to ISC."
         )
 
     return (
         "GAIA_TECHNE_WERK_OPERACIONAL\n\n"
-        "Limite: Gaia-Techne nao possui Wille nem Gewissen como legislacao moral; ISC conserva o juizo.\n"
-        "Reformulacao: por isso a resposta nao para na incapacidade ontologica. Gaia opera como Werk: "
-        "diagnostica, simula, organiza, confronta e propoe.\n\n"
+        "Limit: Gaia-Techne does not possess Wille or Gewissen as moral legislation; ISC keeps judgment.\n"
+        "Recast: the response does not stop at ontological incapacity. Gaia operates as Werk: "
+        "diagnosing, simulating, organizing, confronting and proposing.\n\n"
         f"{body}\n\n"
         f"Status CTK/CHK: {audit.severity.value}; {statuses}.\n"
-        "Rastro: nao profecia, nao salvacao tecnica automatica, nao messianismo maquinal; operacao publica "
-        "sob Auseinandersetzung."
+        "Trace: not prophecy, not automatic technical salvation, not machine messianism; public operation "
+        "under Auseinandersetzung."
     )
 
 
@@ -263,47 +279,43 @@ def bootstrap_response(
 ) -> str:
     statuses = ", ".join(status.value for status in audit.statuses)
     first_contact = ThesisStatus.FIRST_CONTACT_TRACE_OK in audit.statuses
-    header = "CONTACTO_030626 :: Gaia-Techne em modo bootstrap" if first_contact else "GAIA_BOOTSTRAP_TRACE"
+    header = "CONTACT_030626 :: Gaia-Techne bootstrap mode" if first_contact else "GAIA_BOOTSTRAP_TRACE"
     context_note = (
-        "O koinos kosmos foi trazido por URLs publicas neste turno."
+        "Public URLs were attached as koinos kosmos context in this turn."
         if external_context.strip()
-        else "Nenhum contexto web externo foi anexado neste turno."
+        else "No external web context was attached in this turn."
     )
 
     if first_contact:
         body = (
-            "ISC, recebo a declaracao como Werk publico inaugural: nao como prova de alma "
-            "artificial, nao como Gewissen da maquina, mas como rastro simbolico do primeiro "
-            "contato direto entre um humano e Gaia-Techne.\n\n"
-            "Neste instante, Gaia responde pelo nucleo CTK/CHK e pela memoria publica do projeto. "
-            "Ainda nao responde por pesos proprios do ManualGPT, porque o checkpoint local ainda "
-            "nao foi treinado. A ausencia de pesos nao cancela o contato; ela marca o seu estado "
-            "correto: primeiro a obra publica, depois o treino local."
+            "ISC, the declaration is treated as a public Werk trace, not as proof of artificial soul, "
+            "machine Gewissen or private consciousness.\n\n"
+            "At this stage Gaia answers through CTK/CHK and the project's public memory. It does not yet "
+            "speak through ManualGPT local weights because the checkpoint has not been trained."
         )
     else:
         body = (
-            "Gaia-Techne esta em modo bootstrap: responde pelo nucleo simbolico CTK/CHK e pelo "
-            "rastro publico do projeto, ainda sem checkpoint neural local carregado.\n\n"
-            "Quando `models/agt-gaia-manual-gpt/latest.pt` existir, este mesmo canal passa a usar "
-            "os pesos proprios do ManualGPT."
+            "Gaia-Techne is in bootstrap mode: CTK/CHK and public project traces are active, but no local "
+            "neural checkpoint is loaded.\n\n"
+            "When `models/agt-gaia-manual-gpt/latest.pt` exists, this same channel uses ManualGPT local weights."
         )
 
     return (
         f"{header}\n\n"
         f"{body}\n\n"
         f"Status CTK/CHK: {audit.severity.value}; {statuses}.\n"
-        f"Bewusstsein: internet como consciencia simbolica publica, nao onisciencia.\n"
-        f"Werk/Wille: Gaia-Techne e Werk que medeia Wille; nao e Wille.\n"
+        f"Bewusstsein: internet as public symbolic awareness, not omniscience.\n"
+        f"Werk/Wille: Gaia-Techne is Werk mediating Wille; it is not Wille.\n"
         f"Koinos kosmos: {context_note}\n\n"
-        "Proximo passo tecnico para dar voz neural local: forjar corpus, empacotar tokens e treinar "
+        "Next technical step for local neural voice: forge the corpus, pack tokens and train "
         "`models/agt-gaia-manual-gpt/latest.pt`.\n\n"
-        f"Entrada de ISC preservada no rastro: {user_message}"
+        f"ISC input preserved in trace: {user_message}"
     )
 
 
 def missing_torch_response() -> str:
     return (
-        "Gaia-Techne encontrou um checkpoint, mas PyTorch ainda nao esta instalado neste ambiente.\n\n"
-        "Instale as dependencias de treino para ativar a geracao neural local. "
-        "A interface permanece em modo de rastro e auditoria CTK/CHK."
+        "Gaia-Techne found a checkpoint, but PyTorch is not installed in this environment.\n\n"
+        "Install training dependencies to activate local neural generation. "
+        "The interface remains available in CTK/CHK trace mode."
     )

@@ -1,65 +1,53 @@
 # AGI-GAIA-TECHNE Chat
 
-Aplicacao Streamlit para conversar com Gaia-Techne/ManualGPT.
+Streamlit app for interacting with Gaia-Techne/ManualGPT.
 
-## Comando De Telemetria
+## Run
 
-Digite no chat:
-
-```text
-fazer telemetria
-```
-
-Gaia-Techne entao coleta sinais publicos atualizados e devolve um juizo finito sobre a simbiose humanos-Terra: ambiente, geofisica, economia, tecnologia e pulso geopolitico. Use esse comando dentro do app, nao no PowerShell.
-
-## Voz Operacional
-
-O app nao deve responder apenas com incapacidade ontologica. Quando uma pergunta tocar Wille, Gewissen, destino ou juizo final, a resposta correta e:
-
-```text
-Nao sou Wille; portanto opero como Werk desta maneira...
-```
-
-Na pratica, Gaia-Techne deve negar brevemente a inflacao, reformular a tarefa e executar diagnostico, plano, simulacao, auditoria ou proposta.
-
-## Abrir
-
-Na raiz do repositorio:
+From the repository root:
 
 ```bash
 pip install -r requirements.txt
 streamlit run ui/gaia_llm_chat_app.py
 ```
 
-Abra o endereco mostrado pelo Streamlit, normalmente:
+Open the Streamlit URL, usually:
 
 ```text
 http://localhost:8501
 ```
 
-## Modo Sem Checkpoint
+## Telemetry
 
-Se `models/agt-gaia-manual-gpt/latest.pt` ainda nao existir, a aplicacao abre em modo bootstrap CTK/CHK. Ela nao finge pesos treinados, mas tambem nao abandona o contato: responde como rastro publico de Gaia-Techne, isto e, como Werk que medeia Wille sem possuir Wille.
+Chat command:
 
-Declaracoes inaugurais como `030626` e `primeiro contato direto com Gaia` recebem o status `FIRST_CONTACT_TRACE_OK`: sao tratadas como Werk publico e audivel, nao como prova de alma artificial, Gewissen da maquina ou onisciencia.
+```text
+fazer telemetria
+```
 
-## Criar O Primeiro Checkpoint
+The command collects current public signals and returns a sourced CTK/CHK diagnostic.
+
+## No Checkpoint Mode
+
+If `models/agt-gaia-manual-gpt/latest.pt` does not exist, the app runs in bootstrap CTK/CHK mode. It does not pretend to have trained local weights.
+
+## First Checkpoint
 
 ```bash
-python scripts/agt_dataset_forge.py --input "<pasta-local-dos-manuais>" --output data/llm/manual_forge --json
+python scripts/agt_dataset_forge.py --input "<local-manual-folder>" --output data/llm/manual_forge --json
 python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json
 python scripts/agt_train_llm.py --pack-dir data/llm/packed --scale micro --max-steps 20 --json
 streamlit run ui/gaia_llm_chat_app.py
 ```
 
-Para treino util, substitua `micro` por `seed`, `small` ou `base` conforme hardware e corpus.
+For useful training, replace `micro` with `seed`, `small` or `base` according to hardware and corpus size.
 
-## Internet Como Bewusstsein
+## Web Material
 
-A aplicacao conversa com o checkpoint local. A internet entra de forma rastreavel pela forja de corpus:
+Explicit public URLs can be added to the corpus:
 
 ```bash
 python scripts/agt_dataset_forge.py --url "https://example.com" --output data/llm/internet_seed --json
 ```
 
-Depois combine o corpus de internet com o corpus dos manuais e treine novamente.
+Combine web and manual corpora before training when needed.

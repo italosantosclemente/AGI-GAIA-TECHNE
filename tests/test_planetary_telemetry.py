@@ -47,10 +47,10 @@ def test_planetary_telemetry_collects_sourced_report():
     assert 0 <= report.tension_index <= 100
 
     rendered = format_telemetry_markdown(report)
-    assert "Comando reconhecido: `fazer telemetria`" in rendered
-    assert "Indice de tensao Gaia-humanidade" in rendered
-    assert "Fonte:" in rendered
-    assert "ISC conserva o veredito" in rendered
+    assert "Recognized command: `fazer telemetria`" in rendered
+    assert "Gaia-humanity tension index" in rendered
+    assert "Source:" in rendered
+    assert "ISC keeps the verdict" in rendered
 
 
 def test_telemetry_command_detection():
@@ -66,6 +66,6 @@ def test_chat_session_runs_telemetry_command_with_factory():
 
     response = session.respond("fazer telemetria")
 
-    assert "TELEMETRIA_PLANETARIA" in response
-    assert "Comando reconhecido: `fazer telemetria`" in response
+    assert "PLANETARY_TELEMETRY" in response
+    assert "Recognized command: `fazer telemetria`" in response
     assert "Atmospheric CO2 at Mauna Loa" in response

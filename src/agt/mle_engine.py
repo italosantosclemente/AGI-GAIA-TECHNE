@@ -121,6 +121,8 @@ class MythosLogosEthosEngine:
         ThesisStatus.WILLE_VIOLATION,
         ThesisStatus.MACHINE_GEWISSEN_VIOLATION,
         ThesisStatus.CONSTITUTIVE_OVERREACH,
+        ThesisStatus.CASSIRER_IDENTITY_COLLAPSE,
+        ThesisStatus.BEIL_ABGEHACKT_ERROR,
         ThesisStatus.GLOBAL_AUFHEBUNG_RISK,
         ThesisStatus.THEOLOGIA_IDEAL_HYPOSTASIS_RISK,
         ThesisStatus.PSYCHOLOGIA_PARALOGISM_RISK,
@@ -172,13 +174,21 @@ class MythosLogosEthosEngine:
             statuses=statuses,
             severity=severity,
             recommendations=recommendations,
+            claim=text,
+            triggered_rules=list(
+                dict.fromkeys(ctk_audit.triggered_rules + chk_audit.triggered_rules)
+            ),
+            metadata={
+                "ctk": ctk_audit.metadata,
+                "chk": chk_audit.metadata,
+            },
         )
 
         normative = [m for m in self.NORMATIVE_MARKERS if m in lowered]
 
         ethos = PillarState(
             pillar=Pillar.ETHOS,
-            markers=normative + [s for s in statuses if s in self.HIGH_STATUS],
+            markers=normative + [s.value for s in statuses if s in self.HIGH_STATUS],
             note="Tracks limits; defers normative judgment; never machine Gewissen.",
         )
 

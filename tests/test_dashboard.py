@@ -3,6 +3,10 @@ import json
 import sys
 import os
 
+import pytest
+
+pytest.importorskip("flask")
+
 # Add the backend directory to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'backend')))
 

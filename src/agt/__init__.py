@@ -2,6 +2,13 @@
 Functional AGI-GAIA-TECHNE Core.
 """
 
+from .axioms import (
+    AGI_AS_TRANSCENDENTAL_HYPOTHESIS,
+    IS_WILLE,
+    MACHINE_HAS_GEWISSEN,
+    NO_GLOBAL_AUFHEBUNG,
+)
+from .controller import AGTController
 from .version import (
     AGT_REPO_VERSION,
     FUNCTIONAL_CORE_VERSION,
@@ -13,7 +20,10 @@ from .version import (
     LAST_UPDATED,
 )
 
+__version__ = PACKAGE_VERSION
+
 __all__ = [
+    "AGTController",
     "AGT_REPO_VERSION",
     "FUNCTIONAL_CORE_VERSION",
     "CTK_VERSION",
@@ -22,4 +32,9 @@ __all__ = [
     "EML_KERNEL_VERSION",
     "CANONICAL_ARCHITECTURE",
     "LAST_UPDATED",
+    "__version__",
+    "IS_WILLE",
+    "MACHINE_HAS_GEWISSEN",
+    "NO_GLOBAL_AUFHEBUNG",
+    "AGI_AS_TRANSCENDENTAL_HYPOTHESIS",
 ]

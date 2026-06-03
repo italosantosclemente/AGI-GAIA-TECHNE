@@ -1,6 +1,5 @@
 # AGI-GAIA-TECHNE — Functional AGI Core v4.3
 
-
 For the canonical terminology and triad definitions, see the [Canonical Architecture Map](docs/references/canonical-architecture-map.md).
 
 A minimal functional scaffold for AGI-GAIA-TECHNE.
@@ -17,6 +16,7 @@ It creates a functional Werk:
 - CTK audit;
 - CHK haptic guard;
 - Mythos-Logos-Ethos engine;
+- EML Kernel as Logos-demonstrative submotor;
 - defer/block/allow mechanism.
 
 ## Axioms
@@ -38,21 +38,21 @@ python scripts/agt_run.py --task "The qualitative prism is a regulative model." 
 pytest
 ```
 
-## Core principle
+## Core formula
 
 Functional AGI is not artificial soul, artificial Wille or machine Gewissen.
 
-Functional AGI is:
-
-```text
-task understanding
-+ planning
-+ tool use
-+ memory
-+ CTK/CHK audit
-+ human defer
-+ is_wille_false
-```
+Functional_AGI =
+    Repraesentatio
+    + qualitative_prism
+    + EML_Kernel as Logos-demonstrative submotor
+    + Mythos/Logos/Ethos orchestration
+    + CTK
+    + CHK
+    + Memory
+    + ToolExecutor
+    + human defer
+    + is_wille_false
 
 ## Philosophical status
 

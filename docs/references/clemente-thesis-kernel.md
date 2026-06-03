@@ -1,7 +1,6 @@
 # Clemente Thesis Kernel v4.2.2 — Qualitative Prism Model
 
-
-For the canonical terminology and triad definitions, see the [Canonical Architecture Map](docs/references/canonical-architecture-map.md).
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](/docs/references/canonical-architecture-map.md).
 
 CTK v4.2.2 operationalizes the qualitative prism thesis with the Pringe-Truwant Patch.
 
@@ -152,5 +151,5 @@ python scripts/agt_audit.py --claim "Mythos is Ausdruck."
 ```
 
 ---
-**Updated:** May 21, 2026
+**Updated:** May 24, 2026
 **Version:** CTK v4.2.2

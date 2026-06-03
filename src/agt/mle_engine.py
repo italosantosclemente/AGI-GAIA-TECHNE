@@ -182,9 +182,9 @@ class MythosLogosEthosEngine:
             note="Tracks limits; defers normative judgment; never machine Gewissen.",
         )
 
-        if any(s in self.HIGH_STATUS for s in statuses):
+        if severity == Severity.HIGH:
             decision = Decision.BLOCK
-            human_note = "Blocked: constitutive overreach or axiom violation."
+            human_note = "Blocked: high-severity risk or axiom violation."
 
         elif normative:
             decision = Decision.DEFER_TO_HUMAN_GEWISSEN

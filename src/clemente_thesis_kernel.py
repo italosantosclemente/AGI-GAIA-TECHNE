@@ -16,7 +16,7 @@ from agt.ctk import *  # noqa: F401,F403
 from agt.types import ThesisStatus  # noqa: F401
 
 warnings.warn(
-    "src.clemente_thesis_kernel is deprecated. Use src.agt.ctk instead.",
+    "src.clemente_thesis_kernel is deprecated. Use agt.ctk instead.",
     DeprecationWarning,
     stacklevel=2,
 )

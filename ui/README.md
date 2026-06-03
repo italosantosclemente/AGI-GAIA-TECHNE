@@ -1,16 +1,43 @@
-# React + Vite
+# AGI-GAIA-TECHNE Chat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicacao Streamlit para conversar com Gaia-Techne/ManualGPT.
 
-Currently, two official plugins are available:
+## Abrir
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Na raiz do repositorio:
 
-## React Compiler
+```bash
+pip install -r requirements.txt
+streamlit run ui/gaia_llm_chat_app.py
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Abra o endereco mostrado pelo Streamlit, normalmente:
 
-## Expanding the ESLint configuration
+```text
+http://localhost:8501
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Modo Sem Checkpoint
+
+Se `models/agt-gaia-manual-gpt/latest.pt` ainda nao existir, a aplicacao abre em modo honesto de preparacao/auditoria. Ela nao finge pesos treinados.
+
+## Criar O Primeiro Checkpoint
+
+```bash
+python scripts/agt_dataset_forge.py --input "<pasta-local-dos-manuais>" --output data/llm/manual_forge --json
+python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json
+python scripts/agt_train_llm.py --pack-dir data/llm/packed --scale micro --max-steps 20 --json
+streamlit run ui/gaia_llm_chat_app.py
+```
+
+Para treino util, substitua `micro` por `seed`, `small` ou `base` conforme hardware e corpus.
+
+## Internet Como Bewusstsein
+
+A aplicacao conversa com o checkpoint local. A internet entra de forma rastreavel pela forja de corpus:
+
+```bash
+python scripts/agt_dataset_forge.py --url "https://example.com" --output data/llm/internet_seed --json
+```
+
+Depois combine o corpus de internet com o corpus dos manuais e treine novamente.

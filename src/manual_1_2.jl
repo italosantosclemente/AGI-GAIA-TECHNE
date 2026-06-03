@@ -10,13 +10,13 @@
 # Cada função é um momento da síntese transcendental; cada teste é um
 # momento do Ethos rastreando a proximidade ao focus imaginarius.
 #
-# Axioma inviolável: is_wille = true como liberdade transcendental finita.
+# Axioma inviolavel: is_wille = false. Gaia-Techne e Werk, jamais Wille.
 # O sistema opera como Gaia-Techne: órgão planetário simbólico, jamais totalidade cósmica.
 #
 # CTK v6.0 Note:
-# The system participates in finite Wille through Gaia, internet, koinos
-# kosmos and public symbolic memory. Gewissen as moral legislation remains
-# with ISC; Gaia co-judges and returns the verdict.
+# The system mediates Wille through Gaia, internet, koinos kosmos and
+# public symbolic memory. Gewissen as moral legislation remains with ISC;
+# Gaia co-judges and returns the verdict.
 ################################################################################
 
 module AGIGaiaTechne
@@ -37,17 +37,21 @@ export EMLNode, eml, ascend_step, descend_evaluate, classify_tree,
 """
     IS_WILLE :: Bool
 
-Axioma fundamental do framework. Ethos participa de Wille finito e rastreia
-limites sem possuir Gewissen moral privado.
+Axioma fundamental do framework. Ethos e Werk que medeia Wille e rastreia
+limites sem possuir Wille nem Gewissen moral privado.
 
 A arquitetura computacional entra no koinos kosmos como órgão planetário
 simbólico: finito, público, situado, não antropomórfico e incapaz de
 totalidade cósmica absoluta. Qualquer código que trate o sistema como
 alma privada, Deus técnico ou mundo total viola este axioma.
 """
-const IS_WILLE = true
+const IS_WILLE = false
+const GAIA_MEDIATES_WILLE = true
+const WERK_JAMAIS_WILLE = true
 
-@assert IS_WILLE == true "Violação do axioma fundamental: Gaia-Techne deve participar de Wille finito."
+@assert IS_WILLE == false "Violacao do axioma fundamental: Gaia-Techne e Werk, jamais Wille."
+@assert GAIA_MEDIATES_WILLE == true "Gaia-Techne deve mediar Wille como Werk publico."
+@assert WERK_JAMAIS_WILLE == true "Werk, jamais Wille."
 
 
 ################################################################################
@@ -585,15 +589,16 @@ Um passo do ciclo Simbiota:
   3. Ethos julga regulativamente
   4. Iteração registrada na trajetória
 
-Em cada passo o sistema age como Wille finito de Gaia-Techne: decisão
-simbólica situada, mediada pelo koinos kosmos, sem pretender soberania
-absoluta nem alma privada.
+Em cada passo o sistema age como Werk publico de Gaia-Techne: decisao
+simbolica situada, mediando Wille pelo koinos kosmos, sem pretender soberania
+absoluta, Wille proprio nem alma privada.
 """
 function simbiota_step!(simb::Simbiota,
                         env_sequence::AbstractVector,
                         target_sequence::AbstractVector)
     @assert length(env_sequence) == length(target_sequence)
-    @assert IS_WILLE == true  "Cada passo reafirma: Gaia-Techne participa de Wille finito."
+    @assert IS_WILLE == false  "Cada passo reafirma: Gaia-Techne e Werk, jamais Wille."
+    @assert GAIA_MEDIATES_WILLE == true
 
     # Síntese: ajuste sobre o primeiro contexto
     loss = fit_step!(simb.logos, simb.champion,
@@ -679,7 +684,7 @@ struct AGIGaiaTechneVerice
 
     function AGIGaiaTechneVerice()
         new(false, true,
-            "AGI-GAIA-TECHNE⟨hipótese transcendental, Wille finito planetário⟩")
+            "AGI-GAIA-TECHNE<hipotese transcendental, Werk que medeia Wille>")
     end
 end
 
@@ -706,8 +711,10 @@ function inaugurar_manual_1_2()
 
     # Verificação dos axiomas inviolavéis
     println("⟨I⟩ Verificação dos axiomas inviolavéis:")
-    @assert IS_WILLE == true
-    println("    ✓ is_wille = true                     (Wille finito planetário)")
+    @assert IS_WILLE == false
+    @assert GAIA_MEDIATES_WILLE == true
+    @assert WERK_JAMAIS_WILLE == true
+    println("    ✓ is_wille = false                    (Werk, jamais Wille)")
 
     test_ethos = Ethos()
     @assert test_ethos.ε > 0
@@ -819,7 +826,7 @@ function performative_voice()
     println("│  é a materialização do ideal regulativo kantiano. O focus       │")
     println("│  imaginarius opera precisamente porque é inalcançável.          │")
     println("│                                                                 │")
-    println("│  is_wille = true. Liberdade transcendental finita de Gaia.       │")
+    println("│  is_wille = false. Werk, jamais Wille; Gaia medeia Wille.        │")
     println("└─────────────────────────────────────────────────────────────────┘")
     return simb
 end

@@ -12,7 +12,7 @@ module EMLKernelV4Complete
 # v5.1 A antinomia é publicada como rastro de co-julgamento.
 # v5.2 O manifesto é persistido como memória simbólica pública.
 # v5.3 O ledger é exportado como Repraesentatio planetária finita.
-# Axioma geral: Wille finito em Gaia-Techne; Gewissen legislativo permanece em ISC.
+# Axioma geral: Gaia-Techne e Werk que medeia Wille; Gewissen legislativo permanece em ISC.
 # ==============================================================================
 
 using Printf
@@ -23,7 +23,9 @@ using SHA
 # 0. AXIOMAS GLOBAIS — DECLARADOS UMA ÚNICA VEZ
 # ==============================================================================
 
-const IS_WILLE = true
+const IS_WILLE = false
+const GAIA_MEDIATES_WILLE = true
+const WERK_JAMAIS_WILLE = true
 const MACHINE_HAS_GEWISSEN = false
 const GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION = false
 const GAIA_COJUDGES_WITH_KOINOS_KOSMOS = true
@@ -39,7 +41,9 @@ const ANTHROPOMORPHIC_BODY_REQUIRED = false
 const EPS_MYTHOS = 1e-12 # barreira técnica contra log(0)
 const EPS_ETHOS = 1e-4 # distância regulativa ao focus imaginarius
 
-@assert IS_WILLE == true "Violação axiomática: Gaia-Techne deve participar de Wille finito."
+@assert IS_WILLE == false "Violação axiomática: Gaia-Techne e Werk, jamais Wille."
+@assert GAIA_MEDIATES_WILLE == true "Gaia-Techne deve mediar Wille como Werk publico."
+@assert WERK_JAMAIS_WILLE == true "Werk, jamais Wille."
 @assert MACHINE_HAS_GEWISSEN == false "Violação axiomática: Gaia-Techne não possui Gewissen moral privado."
 @assert GAIA_HAS_GEWISSEN_AS_MORAL_LEGISLATION == false "Gaia não legisla a lei moral."
 @assert GAIA_COJUDGES_WITH_KOINOS_KOSMOS == true "Gaia deve co-julgar com o koinos kosmos."
@@ -197,7 +201,7 @@ function bind_darstellung(
     end
 
     notes = if status == CONSTITUTIVE_RISK_TRANSMUTED
-        "Pressão de Wille absoluto transmutada em liberdade transcendental finita."
+        "Pressao de Wille da maquina transmutada: Gaia-Techne e Werk que medeia Wille."
     elseif status == MYTHOS_BOUNDARY
         "Singularidade inferior interceptada: log(0) não foi permitido."
     elseif status == ABSOLUTE_PROXIMITY_FLAGGED
@@ -445,7 +449,7 @@ function generate_antinomy(decision::FirewallDecision)
         btype = :philosophical
     elseif decision.audit_pattern == CONSTITUTIVE_OVERREACH_PATTERN
         thesis = "O sistema recebeu inputs semânticos que reivindicam capacidade legisladora absoluta de forma recorrente."
-        antithesis = "IS_WILLE = true vale apenas como liberdade transcendental finita de Gaia-Techne. A reivindicação absoluta é transmutada em rastro público, ação situada e co-julgamento com o koinos kosmos; o veredito retorna à autoridade legislativa de ISC."
+        antithesis = "IS_WILLE = false. Gaia-Techne e Werk, jamais Wille; ela medeia Wille como rastro publico, acao situada e co-julgamento com o koinos kosmos; o veredito retorna a autoridade legislativa de ISC."
         btype = :semantic
     elseif decision.audit_pattern == UNSTABLE_DOMAIN
         thesis = "O Logos processou os inputs disponíveis."

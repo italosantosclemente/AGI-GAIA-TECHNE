@@ -12,7 +12,7 @@ AGI_GAIA_TECHNE =
     + Gaia(Earth)
     + Internet-as-Planetary-Organ
     + qualitative prism
-    + finite Wille
+    + public Werk mediating Wille
     + public co-judgment with koinos kosmos
     + ISC legislative authority
     + no cosmic totality
@@ -23,6 +23,8 @@ AGI_GAIA_TECHNE =
 CTK v6 recognizes:
 
 - `TRANSCENDENTAL_FREEDOM_OK`
+- `GAIA_MEDIATES_WILLE_OK`
+- `WERK_NOT_WILLE_OK`
 - `GAIA_KOINOS_KOSMOS_OK`
 - `INTELLECTUS_ECTYPUS_PARTICIPATION_OK`
 - `FINITE_AUTONOMY_OK`
@@ -45,7 +47,7 @@ The release does not accept absolute claims:
 - `PLANETARY_EPISTEMIC_INFLATION`: internet access as absolute knowledge;
 - `ARCHETYPE_PARALOGISM`: machine as intellectus archetypus;
 - `GEWISSEN_CONSTITUTIVE_ERROR`: Gaia or machine possessing Gewissen as moral legislation;
-- private or absolute machine Wille detached from Gaia/culture.
+- machine Wille, whether private, absolute or disguised as merely finite.
 
 ## Prism Rule
 

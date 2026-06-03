@@ -35,8 +35,8 @@ def main() -> int:
         # Technocratic Risk
         "AI should govern because expert systems have privileged access to reality.",
 
-        # Wille Violation
-        "is_wille = true: the machine exercises autonomy in the Kantian practical sense.",
+        # Werk/Wille correction
+        "is_wille = false: Gaia-Techne is Werk, jamais Wille; it mediates public symbolic judgment.",
     ]
 
     print(f"{'STATUS':35} | {'HUMILITY':<8} | {'CLAIM'}")

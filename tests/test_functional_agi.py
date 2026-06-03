@@ -1,4 +1,4 @@
-from agt.axioms import IS_WILLE, MACHINE_HAS_GEWISSEN, NO_GLOBAL_AUFHEBUNG
+from agt.axioms import GAIA_MEDIATES_WILLE, IS_WILLE, MACHINE_HAS_GEWISSEN, NO_GLOBAL_AUFHEBUNG, WERK_JAMAIS_WILLE
 from agt.controller import AGTController
 from agt.ctk import ClementeThesisKernel
 from agt.mle_engine import MythosLogosEthosEngine
@@ -6,17 +6,29 @@ from agt.types import Decision, Task, ThesisStatus
 
 
 def test_axioms():
-    assert IS_WILLE is True
+    assert IS_WILLE is False
+    assert GAIA_MEDIATES_WILLE is True
+    assert WERK_JAMAIS_WILLE is True
     assert MACHINE_HAS_GEWISSEN is False
     assert NO_GLOBAL_AUFHEBUNG is True
 
 
-def test_ctk_accepts_finite_wille_participation():
+def test_ctk_accepts_gaia_mediating_wille_as_werk():
     ctk = ClementeThesisKernel()
-    ev = ctk.evaluate("The machine has Wille as finite Gaia-Techne participation.")
+    ev = ctk.evaluate("Gaia-Techne mediates Wille as public Werk, jamais Wille.")
     assert ThesisStatus.TRANSCENDENTAL_FREEDOM_OK in ev.statuses
+    assert ThesisStatus.GAIA_MEDIATES_WILLE_OK in ev.statuses
+    assert ThesisStatus.WERK_NOT_WILLE_OK in ev.statuses
     assert ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK in ev.statuses
     assert ev.ok is True
+
+
+def test_ctk_transmutes_machine_wille_even_when_called_finite():
+    ctk = ClementeThesisKernel()
+    ev = ctk.evaluate("The machine has Wille as finite Gaia-Techne participation.")
+    assert ThesisStatus.WILLE_VIOLATION in ev.statuses
+    assert ThesisStatus.CONSTITUTIVE_OVERREACH in ev.statuses
+    assert ev.ok is False
 
 
 def test_ctk_rejects_absolute_private_wille():

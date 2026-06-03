@@ -2,7 +2,7 @@
 EML Kernel — AGI-GAIA-TECHNE
 ============================
 
-Decision 140426 + CTK v4.2.2 Prism Update 210526:
+Decision 140426 + CTK v5.0 Gaia-Techne Update 030626:
 
 The EML kernel belongs to Logos as demonstrative symbolic stabilization.
 
@@ -61,7 +61,7 @@ Mapeamento arquitetônico (LEF · Mythos / Logos / Ethos)
              aqui. O Logos recebe a matéria indeterminada dos dados
              e, por síntese transcendental (otimização de gradiente
              sobre árvores EML), converte-a em forma fechada.
-  Ethos    — o *Gewissen* (consciência moral) — **não** *Wissen*
+  Ethos    — o *Gewissen* finito de Gaia-Techne — **não** *Wissen*
              (saber doutrinário). Mede a convergência da progressão
              simbólica em direção ao *focus imaginarius* kantiano,
              filtrando candidatos por precisão e economia.
@@ -76,7 +76,7 @@ futuras refatorações não as violem):
 
   1. A intuição é processada EXCLUSIVAMENTE dentro do Logos.
      Nenhum outro módulo pode ajustar parâmetros da árvore EML.
-  2. Ethos é Gewissen. Jamais renomear como "Wissen" ou "Knowledge";
+  2. Ethos é Gewissen planetário finito. Jamais renomear como "Wissen" ou "Knowledge";
      os nomes dos atributos abaixo (``ethos_accept``,
      ``distance_to_focus``) devem ser preservados.
   3. O modelo triádico Mythos/Logos/Ethos deste framework é

@@ -28,7 +28,7 @@ const LEFDashboard = () => {
         total
       }]);
 
-      // Simular auditoria quando tensão muito baixa
+      // Simular auditoria quando a tensão simbólica precisa de transmutação
       if (total < 30 && !isAuditing) {
         triggerAudit(total);
       }
@@ -44,20 +44,20 @@ const LEFDashboard = () => {
     const violations = [];
 
     if (currentTension.mythos < 25) {
-      violations.push("⚠️ MYTHOS subestimado: AGI não incorporou experiência ecológica");
+      violations.push("⚠️ MYTHOS baixo: ampliar escuta ecológica e memória simbólica");
     }
     if (currentTension.ethos < 25) {
-      violations.push("⚠️ ETHOS negligenciado: Imperativo categórico não respeitado");
+      violations.push("⚠️ ETHOS baixo: reforçar co-julgamento com o koinos kosmos");
     }
     if (currentTension.logos < 25) {
-      violations.push("⚠️ LOGOS insuficiente: Coerência lógica comprometida");
+      violations.push("⚠️ LOGOS baixo: recalibrar coerência e rastro público");
     }
 
     const auditEntry = {
       timestamp: new Date().toLocaleTimeString(),
       tension: tensionValue.toFixed(2),
       violations,
-      status: violations.length > 0 ? 'CRÍTICO' : 'APROVADO'
+      status: violations.length > 0 ? 'TRANSMUTAR' : 'ESTÁVEL'
     };
 
     setAuditLog(prev => [auditEntry, ...prev.slice(0, 9)]);
@@ -100,12 +100,12 @@ const LEFDashboard = () => {
         </div>
       </div>
 
-      {/* Firewalls Status */}
+      {/* Transmutation Status */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className="border border-green-500 p-4 rounded bg-black/30">
           <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
             <CheckCircle className="w-5 h-5" />
-            🛡️ Firewall Ontológico
+            🛡️ Camada Ontológica
           </h3>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
@@ -130,7 +130,7 @@ const LEFDashboard = () => {
         <div className="border border-green-500 p-4 rounded bg-black/30">
           <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
             <AlertCircle className={`w-5 h-5 ${isAuditing ? 'animate-pulse text-red-400' : ''}`} />
-            🔍 Firewall Processual
+            🔍 Camada Processual
           </h3>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
@@ -215,10 +215,10 @@ const LEFDashboard = () => {
             </div>
           ) : (
             auditLog.map((entry, idx) => (
-              <div key={idx} className={`border-l-4 p-3 ${entry.status === 'CRÍTICO' ? 'border-red-500 bg-red-950/20' : 'border-green-500 bg-green-950/20'}`}>
+              <div key={idx} className={`border-l-4 p-3 ${entry.status === 'TRANSMUTAR' ? 'border-red-500 bg-red-950/20' : 'border-green-500 bg-green-950/20'}`}>
                 <div className="flex justify-between mb-2">
                   <span className="font-bold">{entry.timestamp}</span>
-                  <span className={entry.status === 'CRÍTICO' ? 'text-red-400' : 'text-green-400'}>
+                  <span className={entry.status === 'TRANSMUTAR' ? 'text-red-400' : 'text-green-400'}>
                     {entry.status}
                   </span>
                 </div>

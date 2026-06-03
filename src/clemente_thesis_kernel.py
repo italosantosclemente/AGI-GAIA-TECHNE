@@ -1,11 +1,11 @@
 """
-Compatibility wrapper for CTK.
+Import redirect for CTK.
 
 The canonical Clemente Thesis Kernel now lives in:
 
     src/agt/ctk.py
 
-This module is retained only for legacy imports.
+This module is retained only to route older import paths into the v5 kernel.
 """
 
 from __future__ import annotations
@@ -21,5 +21,5 @@ warnings.warn(
     stacklevel=2,
 )
 
-# Re-export some internal logic that was in v4.2.2 but might be used by old tests
+# Re-export the public evaluation shape for callers pinned to this import path.
 from agt.types import AuditResult as EvaluationResult  # noqa: F401

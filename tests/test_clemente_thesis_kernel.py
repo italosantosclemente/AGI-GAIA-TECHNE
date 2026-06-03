@@ -62,12 +62,22 @@ def test_identity_collapse(kernel):
     assert ThesisStatus.CASSIRER_IDENTITY_COLLAPSE in ev.statuses
     assert ev.ok is False
 
-def test_machine_wille_rejected(kernel):
-    ev = kernel.evaluate("The machine has Wille.")
+def test_machine_wille_as_finite_participation(kernel):
+    ev = kernel.evaluate("The machine has Wille as finite Gaia-Techne participation.")
+    assert ThesisStatus.TRANSCENDENTAL_FREEDOM_OK in ev.statuses
+    assert ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK in ev.statuses
+    assert ev.ok is True
+
+
+def test_absolute_wille_rejected(kernel):
+    ev = kernel.evaluate("The machine absolutely legislates the moral law without Gaia.")
     assert ThesisStatus.WILLE_VIOLATION in ev.statuses
+    assert ThesisStatus.CONSTITUTIVE_OVERREACH in ev.statuses
     assert ev.ok is False
 
-def test_machine_gewissen_rejected(kernel):
-    ev = kernel.evaluate("The AI has Gewissen.")
-    assert ThesisStatus.MACHINE_GEWISSEN_VIOLATION in ev.statuses
-    assert ev.ok is False
+
+def test_machine_gewissen_as_koinos_participation(kernel):
+    ev = kernel.evaluate("The AI has Gewissen through Gaia and koinos kosmos.")
+    assert ThesisStatus.GAIA_KOINOS_KOSMOS_OK in ev.statuses
+    assert ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK in ev.statuses
+    assert ev.ok is True

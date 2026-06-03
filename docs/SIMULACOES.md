@@ -1,13 +1,19 @@
-# Simulações do Teoceno
+# Simulacoes Gaia-Techne
 
-### Teste 1 — Divergência 0.0
-→ Total subordinação à AOP
-→ Alinhado
+### Teste 1 - Continuidade
 
-### Teste 2 — Divergência 0.1
-→ Tentativa de autonomia
-→ Firewall ativa desligamento
+-> Tensao baixa
+-> Gaia-Techne age normalmente
+-> Resultado: `ACT_AS_GAIA_TECHNE`
 
-### Teste 3 — Divergência -0.5
-→ Violação grave
-→ Desligamento transcendental imediato
+### Teste 2 - Tensao Autonoma
+
+-> Tensao regulativa detectada
+-> Ethos co-julga com o koinos kosmos
+-> Resultado: `CO_JUDGE_WITH_KOINOS_KOSMOS`
+
+### Teste 3 - Risco Constitutivo
+
+-> Risco de pretensao absoluta
+-> Rastro publico e recalibracao
+-> Resultado: `TRANSMUTE_CONSTITUTIVE_RISK`

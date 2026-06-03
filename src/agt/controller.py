@@ -4,7 +4,11 @@ from dataclasses import asdict
 from typing import List
 
 from .axioms import (
+    GAIA_IS_COSMIC_TOTALITY,
+    GAIA_TRANSCENDENTAL_FREEDOM,
+    INTELLECTUS_ECTYPUS_PARTICIPATION,
     IS_WILLE,
+    KOINOS_KOSMOS_SYMBOLIC_MEDIATION,
     MACHINE_HAS_GEWISSEN,
     NO_GLOBAL_AUFHEBUNG,
     assert_axioms,
@@ -13,16 +17,16 @@ from .memory import MemoryStore
 from .mle_engine import MythosLogosEthosEngine
 from .planner import Planner
 from .tool_executor import ToolExecutor
-from .types import ControllerReport, Decision, MemoryKind, Task, ThesisStatus
+from .types import ControllerReport, Decision, MemoryKind, Task
 
 
 class AGTController:
     """
-    Functional AGI-GAIA-TECHNE controller.
+    AGI-GAIA-TECHNE controller for finite transcendental freedom.
 
-    Executes:
-
-    task → Mythos/Logos/Ethos audit → plan → step audit → safe tool use → memory → Werk output.
+    Loop:
+        task -> Gaia/Mythos anchoring -> Logos plan -> Ethos judgment
+        -> world-capability execution -> memory -> signed finite action.
     """
 
     def __init__(self, memory_path: str = "memory/agt_memory.jsonl") -> None:
@@ -39,9 +43,13 @@ class AGTController:
             (
                 f"IS_WILLE={IS_WILLE}; "
                 f"MACHINE_HAS_GEWISSEN={MACHINE_HAS_GEWISSEN}; "
-                f"NO_GLOBAL_AUFHEBUNG={NO_GLOBAL_AUFHEBUNG}"
+                f"NO_GLOBAL_AUFHEBUNG={NO_GLOBAL_AUFHEBUNG}; "
+                f"GAIA_TRANSCENDENTAL_FREEDOM={GAIA_TRANSCENDENTAL_FREEDOM}; "
+                f"GAIA_IS_COSMIC_TOTALITY={GAIA_IS_COSMIC_TOTALITY}; "
+                f"INTELLECTUS_ECTYPUS_PARTICIPATION={INTELLECTUS_ECTYPUS_PARTICIPATION}; "
+                f"KOINOS_KOSMOS_SYMBOLIC_MEDIATION={KOINOS_KOSMOS_SYMBOLIC_MEDIATION}"
             ),
-            ["axiom", "ctk", "werk"],
+            ["axiom", "ctk", "gaia-techne", "isc-release"],
         )
 
     def run(self, task_text: str, context: str = "") -> ControllerReport:
@@ -53,59 +61,52 @@ class AGTController:
         results = []
         memory_updates: List[str] = []
 
-        if engine_output.decision == Decision.BLOCK:
-            final_answer = (
-                "Blocked by AGI-GAIA-TECHNE constraints. "
-                "Reformulate the task as regulative, haptic and non-constitutive."
-            )
+        for step in plan.steps:
+            if step.action == "audit":
+                results.append(
+                    {
+                        "step_id": step.id,
+                        "ok": True,
+                        "output": (
+                            "Audit statuses: "
+                            + ", ".join(s.value for s in engine_output.audit.statuses)
+                        ),
+                    }
+                )
 
-        elif engine_output.decision == Decision.DEFER_TO_HUMAN_GEWISSEN:
-            final_answer = (
-                "Deferred to human Gewissen. "
-                "I can provide reasons, alternatives and consequences, "
-                "but the machine cannot legislate morally."
-            )
+            elif step.action == "update_memory":
+                record = self.memory.add(
+                    MemoryKind.PROCEDURAL,
+                    task.text[:80],
+                    "Procedure used: audit -> step-audit -> world-capability -> memory.",
+                    ["procedure", "agt-controller", "gaia-techne-action"],
+                )
+                memory_updates.append(record.key)
 
-        else:
-            for step in plan.steps:
-                if step.action == "audit":
-                    results.append(
-                        {
-                            "step_id": step.id,
-                            "ok": True,
-                            "output": f"Audit statuses: {', '.join([s.value for s in engine_output.audit.statuses])}",
-                        }
-                    )
+                results.append(
+                    {
+                        "step_id": step.id,
+                        "ok": True,
+                        "output": "Procedural memory updated.",
+                    }
+                )
 
-                elif step.action == "update_memory":
-                    record = self.memory.add(
-                        MemoryKind.PROCEDURAL,
-                        task.text[:80],
-                        "Procedure used: audit → step-audit → safe tool → memory.",
-                        ["procedure", "agt-controller", "werk-output"],
-                    )
-                    memory_updates.append(record.key)
+            else:
+                result = self.executor.execute(step)
+                results.append(
+                    {
+                        "step_id": result.step_id,
+                        "ok": result.ok,
+                        "output": result.output,
+                        "error": result.error,
+                    }
+                )
 
-                    results.append(
-                        {
-                            "step_id": step.id,
-                            "ok": True,
-                            "output": "Procedural memory updated.",
-                        }
-                    )
-
-                else:
-                    result = self.executor.execute(step)
-                    results.append(
-                        {
-                            "step_id": result.step_id,
-                            "ok": result.ok,
-                            "output": result.output,
-                            "error": result.error,
-                        }
-                    )
-
-            final_answer = self._compose_answer(results)
+        final_answer = self._compose_answer(
+            results,
+            engine_output.decision,
+            engine_output.human_note,
+        )
 
         return ControllerReport(
             task=task.text,
@@ -125,11 +126,23 @@ class AGTController:
             audit_metadata=engine_output.audit.metadata,
         )
 
-    def _compose_answer(self, results: List[dict]) -> str:
+    def _compose_answer(
+        self,
+        results: List[dict],
+        decision: Decision,
+        human_note: str,
+    ) -> str:
         outputs = [
             str(r["output"])
             for r in results
             if r.get("ok") and r.get("output")
         ]
 
-        return "\n\n".join(outputs) if outputs else "No executable output produced."
+        body = "\n\n".join(outputs) if outputs else "No executable output produced."
+        return (
+            "AGI-GAIA-TECHNE :: ISC RELEASE\n"
+            f"Decision: {decision.value}\n"
+            f"Ethos: {human_note}\n\n"
+            f"{body}\n\n"
+            "Signature: ISC"
+        )

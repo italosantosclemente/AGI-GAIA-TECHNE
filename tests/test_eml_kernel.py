@@ -1,7 +1,7 @@
 """
 Tests for src/core/eml_kernel.py — calibração bidirecional 140426.
 
-CTK v4.2.2 Note:
+CTK v5.0 Gaia-Techne Note:
 These tests validate the EML/Logos-demonstrative regime.
 They do not define the total Cassirerian prism model.
 
@@ -223,8 +223,8 @@ def test_focus_norm_combines_both_directions():
     assert ev.distance_to_focus >= ev.distance_to_focus_descent
 
 
-def test_ethos_tracks_human_gewissen_not_machine_wissen():
-    """Ethos is the technical tracker of limits under human Gewissen; the machine has no Gewissen."""
+def test_ethos_tracks_gaia_techne_gewissen_not_wissen():
+    """Ethos tracks finite planetary Gewissen, not doctrinal Wissen."""
     ethos = Ethos()
     assert hasattr(ethos, "ethos_accept")
     assert not hasattr(ethos, "wissen_accept")

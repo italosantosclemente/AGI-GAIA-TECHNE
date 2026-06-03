@@ -22,7 +22,7 @@ def test_scripts_imports(tmp_path):
     )
     assert result.returncode == 0
     report = json.loads(result.stdout)
-    assert report["decision"] == "ALLOW_AS_WERK"
+    assert report["decision"] == "ACT_AS_GAIA_TECHNE"
     assert report["audit_severity"] == "low"
 
     # Verify "Mythos is Ausdruck." returns exit code 1 due to high severity

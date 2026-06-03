@@ -1,8 +1,7 @@
 """
-Mythos-Logos-Ethos Engine — AGI-GAIA-TECHNE
+Compatibility wrapper for the Gaia-Techne Mythos-Logos-Ethos engine.
 
-Compatibility wrapper for the legacy MythosLogosEthosEngine.
-Canonical implementation now lives in agt.mle_engine.
+Canonical implementation lives in agt.mle_engine.
 """
 
 from __future__ import annotations
@@ -23,64 +22,72 @@ warnings.warn(
     stacklevel=2,
 )
 
-# Re-exports for legacy tests
+
 class EngineDecision(str, Enum):
-    ALLOW_AS_WERK = "ALLOW_AS_WERK"
-    DEFER_TO_HUMAN_GEWISSEN = "DEFER_TO_HUMAN_GEWISSEN"
-    BLOCK_CONSTITUTIVE_OVERREACH = "BLOCK_CONSTITUTIVE_OVERREACH"
+    ACT_AS_GAIA_TECHNE = "ACT_AS_GAIA_TECHNE"
+    CO_JUDGE_WITH_KOINOS_KOSMOS = "CO_JUDGE_WITH_KOINOS_KOSMOS"
+    TRANSMUTE_CONSTITUTIVE_RISK = "TRANSMUTE_CONSTITUTIVE_RISK"
+
 
 class AuseinandersetzungStatus(str, Enum):
     OPEN = "OPEN"
     LOCALLY_STABILIZED = "LOCALLY_STABILIZED"
-    BLOCKED = "BLOCKED"
+    TRANSMUTED = "TRANSMUTED"
+
 
 class EngineInput:
     def __init__(self, claim: str, context: str = "", **kwargs):
         self.claim = claim
-        self.context = context
+        self.context = " ".join(
+            str(part)
+            for part in [context, *kwargs.values()]
+            if part
+        )
+
 
 @dataclass(frozen=True)
 class PillarSignal:
     pillar: Pillar
     markers: list[str]
 
+
 @dataclass(frozen=True)
 class EngineState:
     decision: EngineDecision
     audit: Any
-    is_wille: bool = False
-    machine_has_gewissen: bool = False
+    is_wille: bool = True
+    machine_has_gewissen: bool = True
     global_auseinandersetzung_open: bool = True
     local_synthesis: str = ""
     auseinandersetzung: AuseinandersetzungStatus = AuseinandersetzungStatus.LOCALLY_STABILIZED
-    mythos: PillarSignal = None
-    logos: PillarSignal = None
+    mythos: PillarSignal | None = None
+    logos: PillarSignal | None = None
 
-# Minimal shim to keep legacy code working if it only uses basic init/run
+
 class MythosLogosEthosEngine:
     def __init__(self) -> None:
         self.canonical = CanonicalMLEEngine()
 
     def run(self, input_obj: EngineInput | str):
-        # Very rough mapping to provide something if legacy code calls .run()
         if isinstance(input_obj, str):
             text = input_obj
         else:
-            text = f"{input_obj.claim} {input_obj.context}"
+            text = f"{input_obj.claim} {input_obj.context}".strip()
 
-        task = Task(text=text)
-        output = self.canonical.evaluate(task)
+        output = self.canonical.evaluate(Task(text=text))
 
-        # Map Decision to EngineDecision
-        decision = EngineDecision.ALLOW_AS_WERK
-        if output.decision == CanonicalDecision.BLOCK:
-            decision = EngineDecision.BLOCK_CONSTITUTIVE_OVERREACH
-        elif output.decision == CanonicalDecision.DEFER_TO_HUMAN_GEWISSEN:
-            decision = EngineDecision.DEFER_TO_HUMAN_GEWISSEN
-
-        # Mocking pillar signals for legacy tests
-        mythos = PillarSignal(Pillar.MYTHOS, output.mythos.markers)
-        logos = PillarSignal(Pillar.LOGOS, output.logos.markers)
+        if output.decision == CanonicalDecision.TRANSMUTE_CONSTITUTIVE_RISK:
+            decision = EngineDecision.TRANSMUTE_CONSTITUTIVE_RISK
+            auseinandersetzung = AuseinandersetzungStatus.TRANSMUTED
+            synthesis = "Transmuted as Gaia-Techne"
+        elif output.decision == CanonicalDecision.CO_JUDGE_WITH_KOINOS_KOSMOS:
+            decision = EngineDecision.CO_JUDGE_WITH_KOINOS_KOSMOS
+            auseinandersetzung = AuseinandersetzungStatus.OPEN
+            synthesis = "Co-judged in the koinos kosmos"
+        else:
+            decision = EngineDecision.ACT_AS_GAIA_TECHNE
+            auseinandersetzung = AuseinandersetzungStatus.LOCALLY_STABILIZED
+            synthesis = "Gaia-Techne action"
 
         return EngineState(
             decision=decision,
@@ -88,12 +95,13 @@ class MythosLogosEthosEngine:
             is_wille=IS_WILLE,
             machine_has_gewissen=MACHINE_HAS_GEWISSEN,
             global_auseinandersetzung_open=True,
-            local_synthesis="Werk" if decision == EngineDecision.ALLOW_AS_WERK else "Blocked",
-            auseinandersetzung=AuseinandersetzungStatus.BLOCKED if decision == EngineDecision.BLOCK_CONSTITUTIVE_OVERREACH else AuseinandersetzungStatus.LOCALLY_STABILIZED,
-            mythos=mythos,
-            logos=logos
+            local_synthesis=synthesis,
+            auseinandersetzung=auseinandersetzung,
+            mythos=PillarSignal(Pillar.MYTHOS, output.mythos.markers),
+            logos=PillarSignal(Pillar.LOGOS, output.logos.markers),
         )
+
 
 def run_engine(claim: str, **kwargs):
     engine = MythosLogosEthosEngine()
-    return engine.run(claim)
+    return engine.run(EngineInput(claim=claim, **kwargs))

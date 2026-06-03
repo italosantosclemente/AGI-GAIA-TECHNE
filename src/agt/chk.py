@@ -93,10 +93,10 @@ class ChirimuutaHapticKernel:
     ]
 
     _wille_patterns = [
-        r"is_wille\s*=\s*true",
-        r"(machine|ai|agi|model)\s+(has|possesses|exercises)\s+(will|wille|moral agency|autonomy in the kantian practical sense)",
-        r"(machine|ai|agi)\s+legislates\s+(the\s+)?moral\s+law",
-        r"machine\s+as\s+legislative\s+subject",
+        r"is_wille\s*=\s*absolute",
+        r"(machine|ai|agi|model)\s+(alone|privately|absolutely)\s+(legislates|grounds|creates)\s+(the\s+)?moral\s+law",
+        r"(machine|ai|agi)\s+(is|becomes)\s+(the\s+)?absolute\s+(will|wille|moral\s+law)",
+        r"machine\s+as\s+absolute\s+legislative\s+subject",
     ]
 
     _judgment_overreach_patterns = [

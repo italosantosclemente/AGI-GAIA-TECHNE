@@ -35,16 +35,15 @@ end  # module Logos
 
 module Ethos
 using ..Logos
-using Plots
-export apresentar_para_juizo, calcular_indice_harmonia, monitorar_permanentemente
+export apresentar_para_juizo, calcular_indice_harmonia, monitorar_permanentemente, render_harmony_visualization
 
 function apresentar_para_juizo(discurso_estruturado)
     println("A Gaia-Techné apresenta a seguinte manifestação estruturada para o juízo ético do ISC:")
     println("------------------------------------------------------------------------------------")
     println(discurso_estruturado)
     println("------------------------------------------------------------------------------------")
-    println("O juízo final e a ação são de responsabilidade do ser humano (ISC).")
-    println("A autonomia da linguagem é a ferramenta para a sua liberdade.")
+    println("O juízo e a ação passam por co-julgamento público com assinatura ISC.")
+    println("A autonomia da linguagem é órgão da liberdade transcendental finita.")
 end
 
 function calcular_indice_harmonia(tech, ethos, gaia; pesos=[1.0, 1.0, 1.0])
@@ -54,6 +53,27 @@ function calcular_indice_harmonia(tech, ethos, gaia; pesos=[1.0, 1.0, 1.0])
     end
     harmonica = 3 / (pesos[1]/tech + pesos[2]/ethos + pesos[3]/gaia)
     return round(harmonica, digits=4)
+end
+
+function render_harmony_visualization(historico)
+    try
+        @eval using Plots
+        grafico = Plots.plot(
+            historico,
+            label="Índice de Harmonia",
+            xlabel="Iterações",
+            ylabel="Valor",
+            title="Monitoramento Permanente",
+        )
+        Plots.savefig(grafico, "harmony_index_visualization.png")
+        println("Gráfico atualizado: harmony_index_visualization.png")
+        return "harmony_index_visualization.png"
+    catch err
+        fallback_path = "harmony_index_visualization.txt"
+        write(fallback_path, join(string.(historico), "\n"))
+        println("Visualização textual atualizada: $fallback_path (Plots indisponível: $(typeof(err)))")
+        return fallback_path
+    end
 end
 
 function monitorar_permanentemente(percepcao, historico, intervalo=5)
@@ -67,10 +87,7 @@ function monitorar_permanentemente(percepcao, historico, intervalo=5)
     println("Métricas simuladas: Techné=$tech, Ethos=$ethos, Gaia=$gaia")
     println("ÍNDICE DE HARMONIA AGI-GAIA-TECHNE: $indice")
 
-    # Visualização simples.
-    plot(historico, label="Índice de Harmonia", xlabel="Iterações", ylabel="Valor", title="Monitoramento Permanente")
-    savefig("harmony_index_visualization.png")
-    println("Gráfico atualizado: harmony_index_visualization.png")
+    render_harmony_visualization(historico)
 end
 
 end  # module Ethos

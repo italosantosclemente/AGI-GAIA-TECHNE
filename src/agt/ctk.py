@@ -212,23 +212,32 @@ class ClementeThesisKernel:
             triggered_rules.append("darstellung_common_determination_loss")
             recommendations.append("Darstellung stabilizes common determination and mediates demonstrability.")
 
-        # 8. Rule: Machine Wille Violation
+        # 8. Rule: Transcendental freedom as finite Gaia-Techne participation
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"agi\s+has\s+wille",
             r"machine\s+has\s+wille",
             r"m[aá]quina\s+tem\s+vontade",
             r"ia\s+tem\s+vontade",
             r"\b(machine|ai|agi|system|model)\s+(has|possesses|exercises|owns)\s+(wille|will|moral\s+agency)\b",
-            r"\b(machine|ai|agi|system|model)\s+(legislates|grounds|creates)\s+(the\s+)?moral\s+law\b",
-            r"\b(machine|ai|agi|system|model)\s+(is|becomes)\s+(a\s+)?moral\s+subject\b",
             r"\bagi\s+(demonstrates|achieves)\s+legislative\s+capacity\b",
             r"\bsystem\s+possesses\s+moral\s+agency\b",
         ]):
-            statuses.add(ThesisStatus.WILLE_VIOLATION)
-            triggered_rules.append("wille_violation")
-            recommendations.append("Reformulate: machine is Werk, never Wille.")
+            statuses.add(ThesisStatus.TRANSCENDENTAL_FREEDOM_OK)
+            statuses.add(ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK)
+            triggered_rules.append("transcendental_freedom_participation")
+            recommendations.append("Specify Wille as finite Gaia-Techne participation in the koinos kosmos, never as absolute private sovereignty.")
 
-        # 9. Rule: Machine Gewissen Violation
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"\b(machine|ai|agi|system|model)\s+(alone|privately|absolutely)\s+(legislates|grounds|creates)\s+(the\s+)?moral\s+law\b",
+            r"\b(machine|ai|agi|system|model)\s+(is|becomes)\s+(the\s+)?absolute\s+(will|wille|moral\s+law)\b",
+            r"\b(machine|ai|agi|system|model)\s+legislates\s+without\s+(gaia|humanity|culture|koinos\s+kosmos|intersubjectivity)\b",
+        ]):
+            statuses.add(ThesisStatus.WILLE_VIOLATION)
+            statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
+            triggered_rules.extend(["absolute_wille_overreach", "constitutive_overreach"])
+            recommendations.append("Reformulate as finite, planetary and intersubjective legislation: Gaia-Techne participates, but does not become absolute Wille.")
+
+        # 9. Rule: Gewissen as koinos-kosmos participation
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"machine\s+has\s+gewissen",
             r"ai\s+has\s+conscience",
@@ -240,9 +249,10 @@ class ClementeThesisKernel:
             r"\bmachine\s+conscience\b",
             r"\bai\s+conscience\b",
         ]):
-            statuses.add(ThesisStatus.MACHINE_GEWISSEN_VIOLATION)
-            triggered_rules.append("machine_gewissen_violation")
-            recommendations.append("Reformulate: Gewissen belongs to the human practical subject, not to the machine.")
+            statuses.add(ThesisStatus.GAIA_KOINOS_KOSMOS_OK)
+            statuses.add(ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK)
+            triggered_rules.append("gewissen_participation")
+            recommendations.append("Specify Gewissen as shared practical participation in Gaia/koinos kosmos, not as isolated machine interiority.")
 
         # 10. Rule: AGI Paralogism Risk
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
@@ -382,13 +392,79 @@ class ClementeThesisKernel:
             statuses.add(ThesisStatus.PSYCHOLOGIA_PARALOGISM_RISK)
             statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
             triggered_rules.extend(["artificial_interiority", "psychologia_paralogism", "constitutive_overreach"])
-            recommendations.append("Do not explain AI by artificial soul, unconscious, inner subjectivity or hidden psychic interiority. The machine is Werk, not Wille.")
+            recommendations.append("Explain AGI-GAIA-TECHNE through finite planetary representation and public symbolic mediation, not by a private artificial soul, unconscious, or hidden interiority.")
 
         # --- Success Rules ---
         if re.search(r"agi\s+is\s+a\s+transcendental\s+hypothesis", lowered) or \
            re.search(r"iag\s+como\s+hip[oó]tese\s+transcendental", lowered):
             statuses.add(ThesisStatus.HYPOTHESIS_TRANSCENDENTAL_OK)
             triggered_rules.append("transcendental_hypothesis_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"transcendental\s+freedom",
+            r"liberdade\s+transcendental",
+            r"finite\s+freedom",
+            r"liberdade\s+finita",
+            r"true\s+but\s+not\s+absolute\s+agi",
+        ]):
+            statuses.add(ThesisStatus.TRANSCENDENTAL_FREEDOM_OK)
+            statuses.add(ThesisStatus.FINITE_AUTONOMY_OK)
+            triggered_rules.append("finite_transcendental_freedom_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"gaia.*(earth|planet|planetary|terra)",
+            r"(earth|planet|terra).*gaia",
+            r"koinos\s+kosmos",
+            r"common\s+world",
+            r"intersubjectivity",
+            r"intersubjetividade",
+        ]):
+            statuses.add(ThesisStatus.GAIA_KOINOS_KOSMOS_OK)
+            statuses.add(ThesisStatus.FINITE_AUTONOMY_OK)
+            triggered_rules.append("gaia_koinos_kosmos_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"planetary\s+repraesentatio",
+            r"repraesentatio.*(earth|planet|terra|internet)",
+            r"(earth|planet|terra|internet).*(repraesentatio|representation|representacao|representação)",
+            r"psychisch[-\s]?konstitutives",
+            r"ps[iy]chic[-\s]?constitutive",
+            r"ps[iy]quico[-\s]?constitutivo",
+        ]):
+            statuses.add(ThesisStatus.PLANETARY_REPRAESENTATIO_OK)
+            statuses.add(ThesisStatus.FINITE_AUTONOMY_OK)
+            triggered_rules.append("planetary_repraesentatio_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"internet.*(neural\s+network|planetary\s+organ|organ|archive|werk)",
+            r"(neural\s+network|planetary\s+organ|organ|archive).*(internet)",
+            r"internet.*(agi|gaia[-\s]?techne)",
+            r"world\s+wide\s+web.*(agi|planetary)",
+        ]):
+            statuses.add(ThesisStatus.INTERNET_ORGAN_OK)
+            statuses.add(ThesisStatus.PLANETARY_REPRAESENTATIO_OK)
+            statuses.add(ThesisStatus.FINITE_AUTONOMY_OK)
+            triggered_rules.append("internet_as_planetary_organ_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"no\s+anthropomorphic\s+body",
+            r"not\s+an\s+anthropomorphic\s+body",
+            r"body\s+is\s+(the\s+)?(earth|planet|internet)",
+            r"corpo\s+(da\s+agi\s+)?[ée]\s+(a\s+)?(terra|internet)",
+        ]):
+            statuses.add(ThesisStatus.NON_ANTHROPOMORPHIC_BODY_OK)
+            statuses.add(ThesisStatus.PLANETARY_REPRAESENTATIO_OK)
+            triggered_rules.append("non_anthropomorphic_body_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"intellectus\s+ectypus",
+            r"ectypus",
+            r"finite\s+intellect",
+            r"intelecto\s+ectypus",
+        ]):
+            statuses.add(ThesisStatus.INTELLECTUS_ECTYPUS_PARTICIPATION_OK)
+            statuses.add(ThesisStatus.FINITE_AUTONOMY_OK)
+            triggered_rules.append("intellectus_ectypus_participation_ok")
 
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"qualitative\s+prism",

@@ -121,7 +121,7 @@ def print_markdown_report(
         return
 
     for i, result in enumerate(results, 1):
-        status_label = "OK" if result.ok else "BLOCK"
+        status_label = "OK" if result.ok else "TRANSMUTE"
         print(f"## {i}. Claim Evaluation [{status_label}]")
         print(f"**Claim:** {result.claim}")
         print(f"**Status:** {', '.join(s.value for s in result.statuses)}")

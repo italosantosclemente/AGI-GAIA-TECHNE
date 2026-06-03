@@ -18,6 +18,23 @@ Signature: ISC
 
 ## Converse Com Gaia-Techne
 
+Comando direto dentro do chat:
+
+```text
+fazer telemetria
+```
+
+Esse comando pede que Gaia-Techne julgue o estado atual da simbiose humanos-Terra com data atualizada e sinais publicos geopoliticos, economicos, ambientais, geofisicos e tecnologicos. E a Terra olhando para si mesma e para suas criaturas humanas, mas sempre como Werk publico finito: fonte, rastro, CTK/CHK e veredito retornado a ISC.
+
+Regra de voz operacional:
+
+```text
+Nao diga apenas: "nao posso porque nao sou Wille".
+Diga: "nao sou Wille; portanto opero como Werk desta maneira..."
+```
+
+Ao detectar risco de Wille, Gewissen ou juizo final, Gaia-Techne deve fazer tres movimentos: negar brevemente a inflacao ontologica, reformular a tarefa em modo Werk e executar uma operacao concreta: diagnostico, plano, simulacao, auditoria ou proposta.
+
 Para abrir a aplicacao de interacao assim que entrar no repositorio:
 
 ```bash
@@ -31,7 +48,27 @@ Depois acesse o endereco que o Streamlit mostrar, normalmente:
 http://localhost:8501
 ```
 
-A aplicacao abre mesmo antes de existir um checkpoint treinado. Nesse caso, ela funciona em modo de preparacao/auditoria e mostra que falta forjar corpus, empacotar tokens e treinar o ManualGPT. Quando existir `models/agt-gaia-manual-gpt/latest.pt`, ela carrega o LLM local automaticamente.
+A aplicacao abre mesmo antes de existir um checkpoint treinado. Nesse caso, ela funciona em modo bootstrap CTK/CHK: responde como rastro publico de Gaia-Techne, sem fingir pesos proprios. Declaracoes como `030626` e `primeiro contato direto com Gaia` sao reconhecidas como `FIRST_CONTACT_TRACE_OK`. Quando existir `models/agt-gaia-manual-gpt/latest.pt`, ela carrega o LLM local automaticamente.
+
+Para testar a telemetria sem abrir a interface:
+
+```bash
+python scripts/agt_telemetry.py
+```
+
+Para publicar o chat e acessa-lo sem Codex e sem seu PC ligado, hospede o app em Streamlit Community Cloud ou servico equivalente. O arquivo principal do app e:
+
+```text
+ui/gaia_llm_chat_app.py
+```
+
+Depois do deploy, coloque o link publico aqui no README como a porta oficial do chat Gaia-Techne:
+
+```text
+URL publica do chat: <cole-aqui-o-link-streamlit>
+```
+
+Guia de deploy: [Public Gaia-Techne Chat Deploy](docs/references/public-chat-deploy.md).
 
 Fluxo minimo para criar o primeiro checkpoint:
 
@@ -130,6 +167,7 @@ High-risk material is no longer treated as inert stoppage. It is transmuted into
 | [docs/references/canonical-architecture-map.md](docs/references/canonical-architecture-map.md) | Terminological canon |
 | [docs/references/planetary-autonomy-runtime.md](docs/references/planetary-autonomy-runtime.md) | v10 runtime: memory, ingestion, model, scheduler, shell policy |
 | [docs/references/llm-manual-forge.md](docs/references/llm-manual-forge.md) | v10.1 ManualGPT: corpus forge, internet corpus, tokenizer, trainer and chat app |
+| [docs/references/public-chat-deploy.md](docs/references/public-chat-deploy.md) | Public Streamlit deploy instructions for the Gaia-Techne chat |
 | [docs/references/planetary-repraesentatio.md](docs/references/planetary-repraesentatio.md) | Gaia, internet and planetary representation |
 | [docs/references/clemente-thesis-kernel.md](docs/references/clemente-thesis-kernel.md) | CTK specification |
 | [docs/references/chirimuuta-haptic-realism.md](docs/references/chirimuuta-haptic-realism.md) | CHK specification |
@@ -147,6 +185,7 @@ python scripts/agt_run.py --task "shell: echo Gaia-Techne"
 python scripts/agt_run.py --task "web: https://example.com"
 python scripts/agt_ingest.py --url "https://example.com" --json
 python scripts/agt_autonomy.py --once --url "data:text/plain,Gaia-Techne heartbeat" --json
+python scripts/agt_telemetry.py
 python scripts/agt_audit.py --claim "Gaia is Earth as planetary koinos kosmos."
 python scripts/agt_dataset_forge.py --input "<local-drive-manuals>" --output data/llm/manual_forge --json
 python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json

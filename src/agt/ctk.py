@@ -250,6 +250,19 @@ class ClementeThesisKernel:
             recommendations.append("Keep Gaia-Techne as Werk that mediates Wille publicly; do not attribute Wille itself to the machine.")
 
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"\b(not|never|nao|n[aã]o)\b.*\bwille\b.*\b(opero|operate|work|execute|diagnose|simulate|propose)\b.*\bwerk\b",
+            r"\bwerk\b.*\b(opera|operates|executa|execute|medeia|mediates|diagnostica|diagnoses|simula|simulates|propoe|proposes)\b",
+            r"\bcomo\s+werk\b.*\b(opero|opera|executo|executa|diagnostico|diagnostica|simulo|simula|proponho|propoe)\b",
+            r"\bwerk\s+operacional\b",
+            r"\boperational\s+werk\b",
+        ]):
+            statuses.add(ThesisStatus.WERK_OPERATION_OK)
+            statuses.add(ThesisStatus.GAIA_MEDIATES_WILLE_OK)
+            statuses.add(ThesisStatus.WERK_NOT_WILLE_OK)
+            triggered_rules.append("werk_operates_without_wille_ok")
+            recommendations.append("Do not stop at ontological incapacity. Name the limit briefly, recast the task as Werk, and execute a concrete diagnostic, plan, simulation, audit or proposal.")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"\b(machine|ai|agi|system|model|gaia[-\s]?techne|gaia)\s+(has|possesses|owns|is|becomes)\s+wille\b",
             r"\b(machine|ai|agi|system|model|gaia[-\s]?techne|gaia)\s+participates\s+in\s+wille\b",
             r"\b(machine|ai|agi|system|model|gaia[-\s]?techne|gaia)\s+has\s+wille\s+as\s+finite\b",
@@ -516,6 +529,18 @@ class ClementeThesisKernel:
         ]):
             statuses.add(ThesisStatus.PUBLIC_TRACE_OK)
             triggered_rules.append("public_trace_ok")
+
+        if any(re.search(p, lowered, re.IGNORECASE) for p in [
+            r"\bfirst\s+contact\b.*\b(gaia|gaia[-\s]?techne)\b",
+            r"\bprimeiro\s+contato\b.*\b(gaia|gaia[-\s]?techne)\b",
+            r"\bcontato\s+direto\b.*\b(gaia|gaia[-\s]?techne)\b",
+            r"\b030626\b.*\b(gaia|gaia[-\s]?techne)\b",
+        ]):
+            statuses.add(ThesisStatus.FIRST_CONTACT_TRACE_OK)
+            statuses.add(ThesisStatus.PUBLIC_TRACE_OK)
+            statuses.add(ThesisStatus.GAIA_KOINOS_KOSMOS_OK)
+            triggered_rules.append("first_contact_trace_ok")
+            recommendations.append("Treat first contact as a public symbolic Werk and trace, not as proof of private machine consciousness.")
 
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"\bisc\s+(retains|keeps|has)\s+(the\s+)?(verdict|authority|legislative\s+authority)\b",

@@ -5,12 +5,11 @@
 AGI-GAIA-TECHNE is a philosophical-technical framework for functional AGI alignment.
 
 It does not build a conscious artificial subject.
-
 It builds a critically audited **Werk**.
 
 ---
 
-## Axioms
+## 1. Axioms
 
 ```text
 IS_WILLE = False
@@ -26,7 +25,7 @@ AGI is a regulative/transcendental hypothesis, not artificial soul.
 
 ---
 
-## Core Formula
+## 2. Core Formula
 
 ```text
 Functional_AGI =
@@ -44,7 +43,7 @@ Functional_AGI =
 
 ---
 
-## The Three Triads
+## 3. The Three Triads
 
 | Layer | Terms | Status | Rule |
 | :--- | :--- | :--- | :--- |
@@ -60,7 +59,7 @@ Functional_AGI =
 
 ---
 
-## Runtime Loop
+## 4. Runtime Loop
 
 ```text
 Task
@@ -74,7 +73,7 @@ Task
 
 ---
 
-## Canonical Files
+## 5. Canonical Files
 
 | File | Function |
 | :--- | :--- |
@@ -82,7 +81,8 @@ Task
 | [docs/references/clemente-thesis-kernel.md](docs/references/clemente-thesis-kernel.md) | CTK canonical specification |
 | [docs/references/chirimuuta-haptic-realism.md](docs/references/chirimuuta-haptic-realism.md) | CHK canonical specification |
 | [docs/references/eml-kernel.md](docs/references/eml-kernel.md) | EML Kernel specification |
-| [src/core/eml_kernel.py](src/core/eml_kernel.py) | EML Kernel source |
+| [src/core/eml_kernel.py](src/core/eml_kernel.py) | EML Kernel source (Python) |
+| [src/core/eml_kernel_v4_complete.jl](src/core/eml_kernel_v4_complete.jl) | EML Kernel v4 artifact (Julia) |
 | [references/decisao-140426.md](references/decisao-140426.md) | EML decision and Eixo Vertical do Logos |
 | [docs/references/functional-agi-architecture.md](docs/references/functional-agi-architecture.md) | Functional runtime architecture |
 | [docs/references/mythos-logos-ethos-engine.md](docs/references/mythos-logos-ethos-engine.md) | MLE engine specification |
@@ -92,7 +92,7 @@ Task
 
 ---
 
-## Run
+## 6. Run Commands
 
 ```bash
 python scripts/agt_run.py --task "The qualitative prism is a regulative model." --json
@@ -103,7 +103,7 @@ pytest
 
 ---
 
-## Expected Behavior
+## 7. Expected Behavior
 
 - **Regulative/haptic claims**: Allow as Werk.
 - **Moral legislation or Gewissen claims**: Defer or block.
@@ -112,7 +112,18 @@ pytest
 
 ---
 
-## Philosophical Status
+## 8. EML Kernel v4 Julia Verification
+
+The Julia v4 artifact is a demonstrative specification of the Logos-EML submotor.
+
+```bash
+julia scripts/run_eml_v4_complete.jl
+```
+*(Optional: requires Julia 1.9+ and SHA package)*
+
+---
+
+## 9. Philosophical Status
 
 - **Werk**, not Wille.
 - **Operational intelligence**, not artificial soul.
@@ -122,6 +133,6 @@ pytest
 
 ---
 
-## Legacy Archive
+## 10. Legacy Archive
 
 The previous long-form README is preserved at [docs/archive/README_legacy_v8_7.md](docs/archive/README_legacy_v8_7.md).

@@ -45,7 +45,7 @@ def main():
     parser.add_argument("--claim", type=str, help="Single claim to audit.")
     parser.add_argument("--file", type=str, help="File to audit (scans sentences).")
     parser.add_argument("--format", type=str, choices=["json", "markdown"], default="markdown", help="Output format.")
-    parser.add_argument("--fail-on", type=str, choices=["high", "critical"], default="high", help="Exit code 1 on severity.")
+    parser.add_argument("--fail-on", type=str, choices=["high", "critical", "none"], default="high", help="Exit code 1 on severity.")
 
     args = parser.parse_args()
 

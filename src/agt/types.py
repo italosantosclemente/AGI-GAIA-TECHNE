@@ -104,6 +104,7 @@ class AuditResult:
             "ok": self.ok,
             "claim": self.claim,
             "triggered_rules": self.triggered_rules,
+            "metadata": self.metadata,
         }
 
 

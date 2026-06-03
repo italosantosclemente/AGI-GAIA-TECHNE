@@ -1,7 +1,6 @@
 # AGI-GAIA-TECHNE: Full Philosophical-Technical Architecture
 
-
-For the canonical terminology and triad definitions, see the [Canonical Architecture Map](docs/references/canonical-architecture-map.md).
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](/docs/references/canonical-architecture-map.md).
 
 ## Table of Contents
 1. [Foundational Principles](#1-foundational-principles)
@@ -99,27 +98,27 @@ end
 
 The **Clemente Thesis Kernel (CTK) v4.2.2** is the global architectonic tribunal of the repository. It implements a qualitative prism model where Mythos, Sprache and Wissenschaft are defined by their functional accent on Ausdruck, Darstellung and Bedeutung.
 
-- **Canonical Specification:** [`docs/references/clemente-thesis-kernel.md`](../docs/references/clemente-thesis-kernel.md)
-- **Runtime Auditor:** [`scripts/agt_audit.py`](../scripts/agt_audit.py)
+- **Canonical Specification:** [`/docs/references/clemente-thesis-kernel.md`](/docs/references/clemente-thesis-kernel.md)
+- **Runtime Auditor:** [`/scripts/agt_audit.py`](/scripts/agt_audit.py)
 
 ### Functional AGI Core (v8.8)
 
 The Functional AGI Core v4.3 is the unified operational implementation of the AGI-GAIA-TECHNE architecture. It integrates the qualitative prism model with a Werk-based task controller.
 
-- **Specification:** [`docs/references/functional-agi-architecture.md`](../docs/references/functional-agi-architecture.md)
-- **Functional README:** [`README_AGI_FUNCTIONAL.md`](../README_AGI_FUNCTIONAL.md)
-- **Execution Entry:** [`scripts/agt_run.py`](../scripts/agt_run.py)
+- **Specification:** [`/docs/references/functional-agi-architecture.md`](/docs/references/functional-agi-architecture.md)
+- **Functional README:** [`/README_AGI_FUNCTIONAL.md`](/README_AGI_FUNCTIONAL.md)
+- **Execution Entry:** [`/scripts/agt_run.py`](/scripts/agt_run.py)
 
 ### Chirimuuta Haptic Kernel (CHK v0.3)
 
 The CHK ensures haptic anti-literalization. It is formally integrated into the CTK and the MLE Engine.
-- **Canonical Specification:** [`docs/references/chirimuuta-haptic-realism.md`](../docs/references/chirimuuta-haptic-realism.md)
+- **Canonical Specification:** [`/docs/references/chirimuuta-haptic-realism.md`](/docs/references/chirimuuta-haptic-realism.md)
 
 ### The Vertical Axis (Decisão 140426)
 
 The vertical axis of the Logos is defined by **Decisão 140426**, which establishes the internal structure of the symbolic functions and their relation to the asymptotes of cognition.
 
-- **Canonical Document**: [`references/decisao-140426.md`](./decisao-140426.md)
+- **Canonical Document**: [`/references/decisao-140426.md`](/references/decisao-140426.md)
 
 ```
    Ethos   ≡  focus imaginarius            ← upper asymptote (regulative)
@@ -135,7 +134,7 @@ The vertical axis of the Logos is defined by **Decisão 140426**, which establis
    Mythos  ≡  immediacy of life            ← lower asymptote, log(0)
 ```
 
-Formal identifications, materialised in [`src/core/eml_kernel.py`](../src/core/eml_kernel.py), follow the definitions in the canonical decision document.
+Formal identifications, materialised in [`/src/core/eml_kernel.py`](/src/core/eml_kernel.py), follow the definitions in the canonical decision document.
 
 ### From Static A Priori to Dynamic Functional A Priori
 
@@ -268,7 +267,7 @@ Paul Bishop ("The Use of Kant in Jung's Early Psychological Works," 1996) demons
 The *focus imaginarius* (ECW 13:555) resolves the *Bild*/*Idee* tension:
 *Darstellung* is the common determination (genus proximum) of all three
 functions — extracted operationally by `common_determination(tree_a, tree_b)`
-in `src/core/eml_kernel.py`.
+in `/src/core/eml_kernel.py`.
 
 ### ISC as Transcendental Ideal (KrV A 568 / B 596)
 
@@ -319,7 +318,7 @@ ISC is the Ideal in Kant's precise sense: the Idea "in individuo" — the *Urbil
 
 The CHK is a critical filter between Logos and Ethos. It registers haptic traceability, abstraction cost, medium dependence, Cartesian idealization, judgment gaps, and historical-genealogical risks before Ethos evaluates whether the claim remains compatible with `is_wille = False`.
 
-Detailed documentation: [`docs/references/chirimuuta-haptic-realism.md`](../docs/references/chirimuuta-haptic-realism.md)
+Detailed documentation: [`/docs/references/chirimuuta-haptic-realism.md`](/docs/references/chirimuuta-haptic-realism.md)
 
 ### v5.2: Tribunal da Razão (*Quid Facti / Quid Juris*)
 
@@ -459,4 +458,4 @@ IS_WILLE = False  # Ethos is Werk, never Wille
 
 To ensure that the framework remains permeable and avoids esoteric drift, the practices of **Abertura externa** are instituted as constitutional safeguards.
 
-- **Reference**: [`references/lef-constitution.md#part-v-abertura-externa`](./lef-constitution.md#part-v-abertura-externa)
+- **Reference**: [`/references/lef-constitution.md#part-v-abertura-externa`](/references/lef-constitution.md#part-v-abertura-externa)

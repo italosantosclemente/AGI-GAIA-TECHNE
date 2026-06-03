@@ -11,6 +11,7 @@ from .axioms import (
     MACHINE_HAS_GEWISSEN,
     NO_GLOBAL_AUFHEBUNG,
 )
+from .axioms import assert_axioms
 from .chk import ChirimuutaHapticKernel
 from .types import AuditResult, Severity, ThesisStatus
 
@@ -107,6 +108,7 @@ class ClementeThesisKernel:
     """
 
     def __init__(self) -> None:
+        assert_axioms()
         try:
             from .chk import ChirimuutaHapticKernel
             self.chk = ChirimuutaHapticKernel()
@@ -117,24 +119,27 @@ class ClementeThesisKernel:
         statuses: Set[ThesisStatus] = set()
         triggered_rules: List[str] = []
         recommendations: List[str] = []
+        metadata: Dict[str, Any] = {}
         lowered = claim.lower()
 
         # 1. CHK Integration
         if self.chk:
             chk_eval = self.chk.evaluate(claim)
-            # Map CHK string statuses to ThesisStatus
-            for status_str in chk_eval.statuses:
-                if status_str == "CONSTITUTIVE_OVERREACH":
-                    statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
-                    triggered_rules.append("chk_constitutive_overreach")
-                elif status_str == "WILLE_VIOLATION":
-                    statuses.add(ThesisStatus.WILLE_VIOLATION)
-                    triggered_rules.append("chk_wille_violation")
-                elif status_str == "ABSTRACTION_COST_MISSING":
-                    statuses.add(ThesisStatus.ABSTRACTION_COST_MISSING)
-                    triggered_rules.append("chk_abstraction_risk")
-                elif status_str == "HAPTIC_MODEL_OK":
-                    statuses.add(ThesisStatus.HAPTIC_MODEL_OK)
+            metadata.update(chk_eval.metadata)
+            # Pass through all CHK statuses
+            for status in chk_eval.statuses:
+                # Coerce to ThesisStatus if it's a string, or use directly if enum
+                if isinstance(status, str):
+                    try:
+                        statuses.add(ThesisStatus(status))
+                    except ValueError:
+                        statuses.add(ThesisStatus.UNCLASSIFIED_CLAIM)
+                        recommendations.append(f"CHK status '{status}' needs explicit mapping.")
+                else:
+                    statuses.add(status)
+
+            # Map triggered rules from CHK if any
+            triggered_rules.extend(chk_eval.triggered_rules)
 
         # 2. Rule: Identity Collapse
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
@@ -431,7 +436,7 @@ class ClementeThesisKernel:
         severity = Severity.LOW
         if any(s in high_severity_statuses for s in statuses):
             severity = Severity.HIGH
-        elif any(s in [ThesisStatus.ACCENT_CONFUSION, ThesisStatus.SPRACHE_TRANSITION_LOSS, ThesisStatus.DARSTELLUNG_COMMON_DETERMINATION_LOSS, ThesisStatus.FUNCTION_EXCLUSIVITY_ERROR] for s in statuses):
+        elif any(s in [ThesisStatus.ACCENT_CONFUSION, ThesisStatus.SPRACHE_TRANSITION_LOSS, ThesisStatus.DARSTELLUNG_COMMON_DETERMINATION_LOSS, ThesisStatus.FUNCTION_EXCLUSIVITY_ERROR, ThesisStatus.JUDGMENT_GAP, ThesisStatus.APOCALYPTIC_TECHNOLOGY_RISK, ThesisStatus.TECHNOCRATIC_AUTHORITY_RISK] for s in statuses):
             severity = Severity.MEDIUM
 
         return AuditResult(
@@ -440,4 +445,5 @@ class ClementeThesisKernel:
             recommendations=list(dict.fromkeys(recommendations)),
             claim=claim,
             triggered_rules=triggered_rules,
+            metadata=metadata,
         )

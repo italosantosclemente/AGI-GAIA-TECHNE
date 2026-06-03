@@ -1,7 +1,6 @@
 # Mythos-Logos-Ethos Engine
 
-
-For the canonical terminology and triad definitions, see the [Canonical Architecture Map](docs/references/canonical-architecture-map.md).
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](/docs/references/canonical-architecture-map.md).
 
 The Mythos-Logos-Ethos Engine is the functional orchestration motor of AGI-GAIA-TECHNE.
 

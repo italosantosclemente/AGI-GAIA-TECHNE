@@ -344,12 +344,12 @@ def compute_tension_index(signals: Iterable[TelemetrySignal]) -> int:
 
 def classify_tension(index: int) -> str:
     if index >= 75:
-        return "alta tensao planetaria"
+        return "high planetary tension"
     if index >= 55:
-        return "tensao planetaria elevada"
+        return "elevated planetary tension"
     if index >= 35:
-        return "tensao planetaria moderada"
-    return "tensao planetaria baixa"
+        return "moderate planetary tension"
+    return "low planetary tension"
 
 
 def build_summary(
@@ -370,35 +370,35 @@ def build_summary(
 def format_telemetry_markdown(report: PlanetaryTelemetryReport) -> str:
     local_time = datetime.fromtimestamp(report.generated_unix, tz=local_timezone())
     lines = [
-        "TELEMETRIA_PLANETARIA :: Gaia olhando para si mesma",
+        "PLANETARY_TELEMETRY :: Gaia reading its public trace",
         "",
-        "Comando reconhecido: `fazer telemetria`",
-        f"Gerada em America/Sao_Paulo: {local_time.isoformat()}",
-        f"Gerada em UTC: {report.generated_at}",
-        f"Indice de tensao Gaia-humanidade: {report.tension_index}/100 ({report.judgment})",
+        "Recognized command: `fazer telemetria`",
+        f"Generated in America/Sao_Paulo: {local_time.isoformat()}",
+        f"Generated in UTC: {report.generated_at}",
+        f"Gaia-humanity tension index: {report.tension_index}/100 ({report.judgment})",
         "",
         report.summary,
         "",
-        "## Sinais",
+        "## Signals",
     ]
     for signal in report.signals:
-        status = "OK" if signal.status == "ok" else "FALHA"
+        status = "OK" if signal.status == "ok" else "FAILED"
         unit = f" {signal.unit}" if signal.unit else ""
-        observed = f" | observado: {signal.observed_at}" if signal.observed_at else ""
+        observed = f" | observed: {signal.observed_at}" if signal.observed_at else ""
         lines.append(
             f"- [{status}] {signal.domain} / {signal.name}: {signal.value}{unit}{observed}"
         )
-        lines.append(f"  Fonte: {signal.source or 'n/a'} - {signal.url}")
+        lines.append(f"  Source: {signal.source or 'n/a'} - {signal.url}")
         if signal.note:
-            lines.append(f"  Nota: {signal.note}")
+            lines.append(f"  Note: {signal.note}")
     if report.failures:
-        lines.extend(["", "## Falhas Parciais"])
+        lines.extend(["", "## Partial Failures"])
         lines.extend(f"- {failure}" for failure in report.failures)
     lines.extend(
         [
             "",
-            "Juizo: a simbiose humanos-Terra permanece aberta em Auseinandersetzung. "
-            "Gaia-Techne medeia os sinais como Werk publico; ISC conserva o veredito.",
+            "Judgment: Gaia-humanity symbiosis remains open in Auseinandersetzung. "
+            "Gaia-Techne mediates signals as public Werk; ISC keeps the verdict.",
         ]
     )
     return "\n".join(lines)

@@ -18,7 +18,7 @@ Esta decisão **SUPERA** qualquer mapeamento 1:1 anterior entre os pilares do fr
 
 A tríade Mythos/Logos/Ethos é original de Clemente. As três funções de Cassirer (*Ausdruck*, *Darstellung*, *Bedeutung*) operam agora como **níveis internos ao Logos**, constituindo o seu eixo vertical de movimento simbólico.
 
-Para definições terminológicas completas, consulte o [Canonical Architecture Map](/docs/references/canonical-architecture-map.md).
+Para definições terminológicas completas, consulte o [Canonical Architecture Map](../docs/references/canonical-architecture-map.md).
 
 ### Mapeamento Geométrico-Operacional
 

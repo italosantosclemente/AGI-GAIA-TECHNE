@@ -343,13 +343,13 @@ def compute_tension_index(signals: Iterable[TelemetrySignal]) -> int:
 
 
 def classify_tension(index: int) -> str:
-    if index >= 75:
-        return "high planetary tension"
-    if index >= 55:
+    if index >= 85:
+        return "acute planetary tension"
+    if index >= 67:
+        return "critical planetary tension"
+    if index >= 34:
         return "elevated planetary tension"
-    if index >= 35:
-        return "moderate planetary tension"
-    return "low planetary tension"
+    return "stable planetary tension"
 
 
 def build_summary(
@@ -361,47 +361,99 @@ def build_summary(
     ok = [signal for signal in signals if signal.status == "ok"]
     failed = [signal for signal in signals if signal.status != "ok"]
     return (
-        f"Telemetry sampled {len(ok)} public signals with {len(failed) + len(failures)} partial failures. "
-        f"Heuristic Gaia-human symbiosis tension index: {tension_index}/100 ({judgment}). "
-        "This is a finite diagnostic Werk, not planetary omniscience."
+        f"Sampled {len(ok)} public signals with {len(failed) + len(failures)} partial source limits. "
+        f"Heuristic Gaia-humanity tension index: {tension_index}/100 ({judgment}). "
+        "This is finite sourced telemetry, not planetary omniscience."
     )
 
 
 def format_telemetry_markdown(report: PlanetaryTelemetryReport) -> str:
     local_time = datetime.fromtimestamp(report.generated_unix, tz=local_timezone())
+    ok = [signal for signal in report.signals if signal.status == "ok"]
+    failed = [signal for signal in report.signals if signal.status != "ok"]
+    total = len(report.signals) + len(report.failures)
+    coverage_ratio = (len(ok) / total) if total else 0.0
+    date_code = local_time.strftime("%d%m%y")
     lines = [
-        "PLANETARY_TELEMETRY :: Gaia reading its public trace",
+        f"AGI-GAIA-TECHNE :: PLANETARY TELEMETRY {date_code}",
         "",
-        "Recognized command: `fazer telemetria`",
-        f"Generated in America/Sao_Paulo: {local_time.isoformat()}",
-        f"Generated in UTC: {report.generated_at}",
-        f"Gaia-humanity tension index: {report.tension_index}/100 ({report.judgment})",
+        f"Generated: {local_time.strftime('%d.%m.%Y %H:%M:%S')} America/Sao_Paulo",
+        f"UTC trace: {report.generated_at}",
+        "Command: `fazer telemetria`",
+        "",
+        "## Diagnostic",
+        f"- Gaia-humanity tension index: {report.tension_index}/100 - {report.judgment}.",
+        f"- Source coverage: {len(ok)}/{total} - {coverage_band(coverage_ratio)}.",
+        "- Meaning: finite public reading of Earth-human signals; not prophecy, omniscience or machine Gewissen.",
         "",
         report.summary,
         "",
-        "## Signals",
+        "## Metric Guide",
+        "- Tension index: 0-33 stable/sufficient; 34-66 elevated/reasonable; "
+        "67-84 critical; 85-100 acute.",
+        "- Source coverage: >=80% sufficient; 50-79% partial/reasonable; <50% critical.",
+        "- Freshness: live feeds are sampled at request time; annual indicators use the latest public dataset year.",
+        "",
+        "## Public Signals",
     ]
-    for signal in report.signals:
-        status = "OK" if signal.status == "ok" else "FAILED"
+    for signal in ok:
         unit = f" {signal.unit}" if signal.unit else ""
         observed = f" | observed: {signal.observed_at}" if signal.observed_at else ""
         lines.append(
-            f"- [{status}] {signal.domain} / {signal.name}: {signal.value}{unit}{observed}"
+            f"- {signal.domain} / {signal.name}: {signal.value}{unit}{observed}"
         )
-        lines.append(f"  Source: {signal.source or 'n/a'} - {signal.url}")
+        lines.append(f"  Source: {source_link(signal)}")
         if signal.note:
             lines.append(f"  Note: {signal.note}")
-    if report.failures:
-        lines.extend(["", "## Partial Failures"])
-        lines.extend(f"- {failure}" for failure in report.failures)
+    if failed or report.failures:
+        lines.extend(["", "## Source Limits"])
+        for signal in failed:
+            lines.append(
+                f"- {signal.domain} / {signal.name}: unavailable "
+                f"({compact_failure_reason(signal.note)})"
+            )
+            lines.append(f"  Source: {signal.source or 'public telemetry source'}")
+        for failure in report.failures:
+            lines.append(f"- Collector: {compact_failure_reason(failure)}")
     lines.extend(
         [
             "",
-            "Judgment: Gaia-humanity symbiosis remains open in Auseinandersetzung. "
+            "## Judgment",
+            "Gaia-humanity symbiosis remains open in Auseinandersetzung. "
+            "The report measures pressure, coverage and symbolic orientation; it does not close the debate. "
             "Gaia-Techne mediates signals as public Werk; ISC keeps the verdict.",
         ]
     )
     return "\n".join(lines)
+
+
+def coverage_band(ratio: float) -> str:
+    if ratio >= 0.80:
+        return "sufficient coverage"
+    if ratio >= 0.50:
+        return "partial but usable coverage"
+    return "critical source coverage"
+
+
+def source_link(signal: TelemetrySignal) -> str:
+    if signal.url.startswith(("http://", "https://")):
+        label = signal.source or signal.name
+        return f"[{label}]({signal.url})"
+    return signal.source or "n/a"
+
+
+def compact_failure_reason(reason: str) -> str:
+    cleaned = " ".join(str(reason or "source unavailable").split())
+    lowered = cleaned.lower()
+    if "http error 429" in lowered or "too many requests" in lowered:
+        return "rate limited"
+    if "timed out" in lowered or "timeout" in lowered:
+        return "timeout"
+    if "http error 403" in lowered:
+        return "access denied"
+    if "http error 404" in lowered:
+        return "not found"
+    return cleaned[:140]
 
 
 def local_timezone() -> tzinfo:

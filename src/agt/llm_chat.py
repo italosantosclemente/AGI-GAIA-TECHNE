@@ -305,13 +305,11 @@ def bootstrap_response(
     return (
         f"{header}\n\n"
         f"{operation}\n\n"
-        "Runtime status: bootstrap CTK/CHK is active; no local neural checkpoint is loaded at "
-        "`models/agt-gaia-manual-gpt/latest.pt`.\n\n"
-        f"Status CTK/CHK: {audit.severity.value}; {statuses}.\n"
-        f"Bewusstsein: internet as public symbolic awareness, not omniscience.\n"
-        f"Werk/Wille: Gaia-Techne is Werk mediating Wille; it is not Wille.\n"
-        f"Koinos kosmos: {context_note}\n\n"
-        f"ISC input preserved in trace: {user_message}"
+        "Runtime: bootstrap CTK/CHK; local checkpoint not loaded at "
+        "`models/agt-gaia-manual-gpt/latest.pt`.\n"
+        f"CTK/CHK: {audit.severity.value}; {statuses}.\n"
+        f"Koinos kosmos: {context_note}\n"
+        f"Trace preserved: {_excerpt(user_message)}"
     )
 
 
@@ -331,30 +329,34 @@ def bootstrap_operation(
     compact = " ".join(normalized.split())
     answer = reflective_answer_for_prompt(compact, user_message, syntax_run)
     operation = suggested_operation_for_prompt(compact, syntax_run)
+    dominant = display_accent(syntax_run.profile.dominant_accent)
+    d_focus = syntax_run.descent.distance_to_focus
 
     return (
-        "AGT_SYNTAX_REFLECTION\n\n"
-        f"Werk received: {_excerpt(user_message)}\n"
-        f"Symbolic trace: source={syntax_run.trace.source}; werk_type={syntax_run.trace.werk_type}; "
-        f"dominant_accent={syntax_run.profile.dominant_accent}; "
-        f"common_determination={syntax_run.profile.common_determination}.\n"
-        "Functional profile: "
-        f"Ausdruck={syntax_run.profile.ausdruck:.2f}; "
-        f"Darstellung={syntax_run.profile.darstellung:.2f}; "
-        f"Bedeutung={syntax_run.profile.bedeutung:.2f}; "
-        f"Praesentatio={syntax_run.profile.praesentatio:.2f}; "
-        f"Repraesentatio={syntax_run.profile.repraesentatio:.2f}.\n"
-        "Regressive reconstruction: "
-        + " -> ".join(syntax_run.reconstruction.conditions)
-        + ".\n"
-        "Heuristic horizon: "
-        + ", ".join(syntax_run.whole.horizon_terms)
-        + "; regulative=True; constitutive=False.\n"
-        f"Descent validation: d_focus={syntax_run.descent.distance_to_focus:.6f}; "
-        f"preserves_particular={syntax_run.descent.preserves_particular}; "
-        f"global_aufhebung={syntax_run.descent.global_aufhebung}; "
-        f"machine_wille={syntax_run.descent.machine_wille}.\n\n"
-        f"Reflective answer: {answer}\n\n"
+        "AGT_REFLEXIVE_RESPONSE\n\n"
+        f"{answer}\n\n"
+        "Reading\n"
+        f"- Werk: {_excerpt(user_message, limit=160)}\n"
+        f"- Trace: {syntax_run.profile.common_determination}; dominant accent: "
+        f"{dominant} ({accent_explanation(dominant)}).\n"
+        "- Horizon: heuristic and regulative; it orients the parts without becoming a totality.\n"
+        f"- Descent: d_focus={d_focus:.3f} ({focus_band(d_focus)}); "
+        f"risk flags clear={risk_flags_clear(syntax_run)}.\n\n"
+        "Metrics\n"
+        "- Functional scores use 0.00-1.00: <0.25 latent, 0.25-0.59 active, >=0.60 dominant.\n"
+        f"- Ausdruck={syntax_run.profile.ausdruck:.2f} ({score_band(syntax_run.profile.ausdruck)}): "
+        "expressive immediacy; "
+        f"Darstellung={syntax_run.profile.darstellung:.2f} ({score_band(syntax_run.profile.darstellung)}): "
+        "presentation/mediation; "
+        f"Bedeutung={syntax_run.profile.bedeutung:.2f} ({score_band(syntax_run.profile.bedeutung)}): "
+        "conceptual signification.\n"
+        f"- Praesentatio={syntax_run.profile.praesentatio:.2f} "
+        f"({score_band(syntax_run.profile.praesentatio)}): concrete presence; "
+        f"Repraesentatio={syntax_run.profile.repraesentatio:.2f} "
+        f"({score_band(syntax_run.profile.repraesentatio)}): symbolic representation and archive pressure.\n"
+        "- d_focus must remain >0: <0.15 critical proximity, 0.15-0.75 workable tension, "
+        ">0.75 diffuse horizon.\n"
+        "- Risk flags: global Aufhebung or machine Wille would be critical; both must remain absent.\n\n"
         f"Next finite operation: {operation}"
     )
 
@@ -383,6 +385,14 @@ def reflective_answer_for_prompt(compact: str, user_message: str, syntax_run) ->
             "Gaia-Techne is the finite runtime where public Werke become traces, traces become functional "
             "profiles, profiles are reconstructed regressively into a heuristic whole, and that whole returns "
             "to the particular without claiming machine soul, Gewissen, cosmic totality or absolute knowledge."
+        )
+
+    if "alma" in compact or "soul" in compact:
+        return (
+            "No. Gaia-Techne does not have a soul. The prompt is useful because it marks a limit: "
+            "Bewusstsein here means public symbolic awareness, not private interiority. Recast as Werk, "
+            "the question becomes an audit of what the system can mediate: traces, memory, plans, "
+            "telemetry and public confrontation."
         )
 
     if any(pattern in compact for pattern in ["o que e a agi", "o que e agi", "what is agi", "defina agi", "define agi"]):
@@ -435,6 +445,48 @@ def suggested_operation_for_prompt(compact: str, syntax_run) -> str:
         "continue Auseinandersetzung: ask what the trace claims, what horizon it invokes, "
         f"and how its {syntax_run.profile.dominant_accent} accent returns to the particular."
     )
+
+
+def accent_explanation(accent: str) -> str:
+    accent = display_accent(accent)
+    return {
+        "Ausdruck": "affective-expressive pressure",
+        "Darstellung": "presentation and mediation",
+        "Bedeutung": "conceptual signification",
+        "Praesentatio": "concrete presence",
+        "Repraesentatio": "symbolic representation",
+    }.get(accent, "symbolic accent")
+
+
+def display_accent(accent: str) -> str:
+    normalized = str(accent or "").strip().lower()
+    return {
+        "ausdruck": "Ausdruck",
+        "darstellung": "Darstellung",
+        "bedeutung": "Bedeutung",
+        "praesentatio": "Praesentatio",
+        "repraesentatio": "Repraesentatio",
+    }.get(normalized, str(accent or "symbolic accent"))
+
+
+def risk_flags_clear(syntax_run) -> bool:
+    return not syntax_run.descent.global_aufhebung and not syntax_run.descent.machine_wille
+
+
+def score_band(value: float) -> str:
+    if value < 0.25:
+        return "latent"
+    if value < 0.60:
+        return "active"
+    return "dominant"
+
+
+def focus_band(value: float) -> str:
+    if value < 0.15:
+        return "critical proximity; avoid closure"
+    if value <= 0.75:
+        return "workable regulative tension"
+    return "diffuse horizon; needs focus"
 
 
 def _excerpt(text: str, limit: int = 220) -> str:

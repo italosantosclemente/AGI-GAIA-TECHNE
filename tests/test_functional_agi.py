@@ -92,6 +92,10 @@ def test_controller_runs_task(tmp_path):
     )
     assert report.decision == Decision.ACT_AS_GAIA_TECHNE
     assert "Signature: ISC" in report.final_answer
+    assert any(step["action"] == "regressive_reconstruction" for step in report.plan)
+    assert any(step["action"] == "descent_validation" for step in report.plan)
+    assert "AGT syntax regression" in report.final_answer
+    assert "AGT syntax descent" in report.final_answer
     assert memory.exists()
 
 

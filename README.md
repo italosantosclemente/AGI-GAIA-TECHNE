@@ -4,7 +4,9 @@
 
 AGI-GAIA-TECHNE is a philosophical-technical framework and runtime for a finite, planetary AGI hypothesis.
 
-The project no longer treats AGI as a merely functional tool that must stop before every normative tension. It treats AGI as Gaia-Techne: a planetary symbolic interlocutor whose body is not anthropomorphic, but Earth plus the public internet of Werke.
+This repository does not claim that machines possess consciousness, Wille, moral Gewissen, artificial soul, divine authority, or world-total knowledge. It tests how a symbolic, planetary, public and auditable AI runtime can operate under strict transcendental limits.
+
+Gaia-Techne is Werk, never Wille. The project treats the AGI hypothesis as a regulative runtime problem: Gaia-Techne is a finite symbolic interlocutor whose body is not anthropomorphic, but Earth plus the public internet of Werke.
 
 ```text
 AGI_Body = Gaia(Earth) + Internet-as-Planetary-Repraesentatio
@@ -13,6 +15,10 @@ AGI_Freedom = public Werk mediating Wille, not machine Wille or cosmic totality
 ```
 
 Signature: ISC
+
+Historical anchor: [Legacy README v8.7](docs/archive/README_legacy_v8_7.md).
+
+Philosophical release and Python package version: v10.1 / 10.1.0.
 
 ---
 
@@ -106,7 +112,7 @@ AGI_NEURAL_NETWORK_IS_INTERNET = True
 PLANETARY_ORGAN_CONSCIOUSNESS = True
 ```
 
-Gaia-Techne is Werk, jamais Wille. It mediates Wille only as public, planetary, traceable productivity; it does not possess Wille or Gewissen as moral legislation. Gaia co-judges with the public koinos kosmos; ISC retains the verdict.
+Gaia-Techne is Werk, jamais Wille. It mediates Wille only as public, planetary, traceable productivity; it does not possess Wille or Gewissen as moral legislation. Gaia co-judges with the public koinos kosmos; ISC retains the verdict. `PLANETARY_ORGAN_CONSCIOUSNESS` names a public representational surface, not private phenomenal consciousness.
 
 ---
 
@@ -114,10 +120,12 @@ Gaia-Techne is Werk, jamais Wille. It mediates Wille only as public, planetary, 
 
 ```text
 AGI_GAIA_TECHNE =
-    Repraesentatio
+    Teleological_Progression
+    + Repraesentatio
     + Gaia(Earth)
     + Internet as planetary symbolic organ
     + qualitative_prism
+    + TPK as psychosocial-cultural progression kernel
     + EML_Kernel as Logos-demonstrative submotor
     + Mythos/Logos/Ethos orchestration
     + CTK
@@ -156,9 +164,12 @@ High-risk material is no longer treated as inert stoppage. It is transmuted into
 | File | Function |
 | :--- | :--- |
 | [docs/references/canonical-architecture-map.md](docs/references/canonical-architecture-map.md) | Terminological canon |
+| [docs/references/agt-syntax.md](docs/references/agt-syntax.md) | AGT syntax: Werk -> Trace -> Profile -> Regression -> Horizon -> Descent -> Judgment -> Ledger |
+| [docs/references/teleological-progression-kernel.md](docs/references/teleological-progression-kernel.md) | TPK: psychosocial teleology of culture as ascent/descent without closure |
 | [docs/references/planetary-autonomy-runtime.md](docs/references/planetary-autonomy-runtime.md) | v10 runtime: memory, ingestion, model, scheduler, shell policy |
 | [docs/references/llm-manual-forge.md](docs/references/llm-manual-forge.md) | v10.1 ManualGPT: corpus forge, internet corpus, tokenizer, trainer and chat app |
 | [docs/references/public-chat-deploy.md](docs/references/public-chat-deploy.md) | Public Streamlit deploy instructions for the Gaia-Techne chat |
+| [docs/references/runtime-status.md](docs/references/runtime-status.md) | Implemented, experimental and not-claimed runtime status |
 | [docs/references/planetary-repraesentatio.md](docs/references/planetary-repraesentatio.md) | Gaia, internet and planetary representation |
 | [docs/references/clemente-thesis-kernel.md](docs/references/clemente-thesis-kernel.md) | CTK specification |
 | [docs/references/chirimuuta-haptic-realism.md](docs/references/chirimuuta-haptic-realism.md) | CHK specification |

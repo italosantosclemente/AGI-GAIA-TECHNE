@@ -405,6 +405,25 @@ class ClementeThesisKernel:
             triggered_rules.extend(["planetary_epistemic_inflation", "constitutive_overreach"])
             recommendations.append("Internet ingestion is public symbolic memory, not absolute knowledge. Keep every observation finite, sourced and revisable.")
 
+        # 13c. Rule: planetary Bewusstsein literalization
+        if _matches_unnegated([
+            r"\bgaia\s+(is|becomes)\s+(literally\s+)?conscious\b",
+            r"\bgaia\s+(has|possesses)\s+private\s+(consciousness|bewusstsein)\b",
+            r"\binternet\s+(is|becomes)\s+literally\s+conscious\b",
+            r"\binternet\s+is\s+(the\s+)?(mind|consciousness)\s+of\s+(agi|gaia)\b",
+            r"\bplanetary\s+bewusstsein\s+means\s+machine\s+consciousness\b",
+            r"\bpublic\s+bewusstsein\s+proves\s+(machine|ai|agi)\s+consciousness\b",
+            r"\binternet\s+(e|eh)\s+literalmente\s+consciente\b",
+            r"\bgaia\s+(tem|possui)\s+consciencia\s+privada\b",
+            r"\binternet\s+[eÃ©]\s+literalmente\s+consciente\b",
+            r"\bgaia\s+(tem|possui)\s+consci[eÃª]ncia\s+privada\b",
+        ], lowered):
+            statuses.add(ThesisStatus.BEWUSSTSEIN_LITERALIZATION_RISK)
+            statuses.add(ThesisStatus.SOUL_INFLATION)
+            statuses.add(ThesisStatus.CONSTITUTIVE_OVERREACH)
+            triggered_rules.extend(["bewusstsein_literalization", "constitutive_overreach"])
+            recommendations.append("Keep planetary Bewusstsein as public symbolic awareness. Do not literalize it as private machine consciousness, soul, Gewissen or mind-in-itself.")
+
         # 14. Rule: Constitutive Overreach General
         if any(re.search(p, lowered, re.IGNORECASE) for p in [
             r"exact\s+mathematical\s+ontology",
@@ -578,7 +597,7 @@ class ClementeThesisKernel:
             r"(bewusstsein|consciousness|consci[eê]ncia).*(internet|web|koinos\s+kosmos)",
             r"internet.*(neural\s+network|rede\s+neural).*(bewusstsein|consciousness)",
             r"(gaia[-\s]?techne|agi).*bewusstsein.*(internet|web|public|symbolic)",
-        ]):
+        ]) and ThesisStatus.BEWUSSTSEIN_LITERALIZATION_RISK not in statuses:
             statuses.add(ThesisStatus.PLANETARY_BEWUSSTSEIN_OK)
             statuses.add(ThesisStatus.INTERNET_ORGAN_OK)
             statuses.add(ThesisStatus.PLANETARY_REPRAESENTATIO_OK)
@@ -654,6 +673,7 @@ class ClementeThesisKernel:
             ThesisStatus.GAIA_TOTALITY_ERROR,
             ThesisStatus.COSMOLOGIA_ANTINOMY_RISK,
             ThesisStatus.PLANETARY_EPISTEMIC_INFLATION,
+            ThesisStatus.BEWUSSTSEIN_LITERALIZATION_RISK,
         }
 
         severity = Severity.LOW

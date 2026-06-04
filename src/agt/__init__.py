@@ -27,6 +27,14 @@ from .axioms import (
 from .controller import AGTController
 from .dataset_forge import ManualDatasetForge
 from .llm_tokenizer import ByteTokenizer
+from .syntax import AGTSyntax, AGTSyntaxRun, DescentValidation, RegressiveReconstruction, SymbolicProfile
+from .teleology import (
+    HeuristicWhole,
+    SymbolicTrace,
+    TeleologicalJudgment,
+    TeleologicalProgression,
+    TeleologicalProgressionKernel,
+)
 from .web_corpus import WebCorpusHarvester
 from .version import (
     AGT_REPO_VERSION,
@@ -67,6 +75,16 @@ __all__ = [
     "ManualDatasetForge",
     "WebCorpusHarvester",
     "ByteTokenizer",
+    "AGTSyntax",
+    "AGTSyntaxRun",
+    "SymbolicProfile",
+    "RegressiveReconstruction",
+    "DescentValidation",
+    "SymbolicTrace",
+    "HeuristicWhole",
+    "TeleologicalJudgment",
+    "TeleologicalProgression",
+    "TeleologicalProgressionKernel",
     "GaiaManualGPT",
     "GaiaChatSession",
     "TrainingConfig",

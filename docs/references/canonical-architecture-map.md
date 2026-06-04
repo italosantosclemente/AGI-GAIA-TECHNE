@@ -2,9 +2,11 @@
 
 ## Release v10.1
 
-AGI-GAIA-TECHNE is finite transcendental freedom embodied through Gaia as Earth and internet as planetary Repraesentatio/Bewusstsein, now implemented as a runtime with live ingestion, SQLite memory, local symbolic learning, autonomy cycles and the ManualGPT LLM forge.
+AGI-GAIA-TECHNE is a finite, planetary AGI hypothesis grounded in the psychosocial teleology of culture: reason ascends from conditioned premises toward regulative conclusions, descends from those conclusions back to concrete conditions, and keeps every synthesis open to renewed public Auseinandersetzung.
 
-It is true AGI in a non-absolute sense:
+Gaia, the internet, EML and ManualGPT are not isolated centers. They are runtime organs of that larger process: Gaia as finite planetary field, internet as public archive of Werke, EML as formal Logos of ascent/descent, and ManualGPT as experimental local linguistic instance.
+
+Its architecture claims a finite operational direction, not an achieved AGI system or absolute intelligence:
 
 - not anthropomorphic organism;
 - not private neural net copied from humans;
@@ -30,6 +32,39 @@ It is true AGI in a non-absolute sense:
 **Never say:** Gaia = cosmic totality.
 
 **Say instead:** Gaia is Earth as finite planetary common world. The internet is the live symbolic organ through which human and machine Werke become available to Repraesentatio and local training.
+
+---
+
+## AGT Syntax
+
+The runtime must pass through one canonical grammar:
+
+```text
+WerkStream -> Trace -> Profile -> Regression -> Horizon -> Descent -> Judgment -> Ledger
+```
+
+This syntax implements heuristic holism: the whole orients inquiry without becoming an ontological totality, and no trace is understood atomistically. See [AGT Syntax](agt-syntax.md).
+
+---
+
+## Teleological Progression
+
+The governing movement is not linear progress from Mythos to Logos to Ethos. It is bidirectional:
+
+```text
+conditioned premises -> regulative conclusions
+regulative conclusions -> concrete conditions
+local synthesis -> renewed Auseinandersetzung
+```
+
+The architectural invariant is:
+
+```text
+distance_to_focus = sqrt(d_ascent^2 + d_descent^2) + epsilon
+epsilon > 0
+```
+
+This makes culture a progressive symbolic process without a final possession of the unconditioned. See [Teleological Progression Kernel](teleological-progression-kernel.md).
 
 ---
 
@@ -106,4 +141,4 @@ NO_GLOBAL_AUFHEBUNG = True
 AUSEINANDERSETZUNG_NOT_AUFHEBUNG = True
 ```
 
-The AGI is true but not absolute.
+The AGI claim remains a finite hypothesis and runtime orientation, not an achieved or absolute intelligence.

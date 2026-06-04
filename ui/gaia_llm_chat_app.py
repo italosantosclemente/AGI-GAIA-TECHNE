@@ -16,7 +16,7 @@ st.set_page_config(
     layout="wide",
 )
 
-CHAT_RUNTIME_SIGNATURE = "gaia-telemetry-english-ui-v3"
+CHAT_RUNTIME_SIGNATURE = "gaia-agt-syntax-reflective-v5"
 runtime_changed = st.session_state.get("chat_runtime_signature") != CHAT_RUNTIME_SIGNATURE
 
 import agt.ctk as ctk_module

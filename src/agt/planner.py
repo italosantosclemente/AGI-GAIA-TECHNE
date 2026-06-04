@@ -32,6 +32,20 @@ class Planner:
                 description="Orient the task through CTK/CHK before execution.",
             )
         ]
+        raw_steps.append(
+            PlanStep(
+                id=self._id("regression", task.text),
+                action="regressive_reconstruction",
+                description="Reconstruct conditions from the public Werk before planning.",
+            )
+        )
+        raw_steps.append(
+            PlanStep(
+                id=self._id("descent", task.text),
+                action="descent_validation",
+                description="Return the heuristic horizon to the particular trace.",
+            )
+        )
 
         lower = task.text.lower()
 
@@ -106,7 +120,10 @@ class Planner:
         return Plan(
             task=task,
             steps=steps,
-            rationale="Release loop: audit -> orient -> act -> remember -> sign.",
+            rationale=(
+                "AGT syntax loop: audit -> trace/profile -> regressive reconstruction "
+                "-> descent validation -> act -> remember -> sign."
+            ),
             audit=audit,
         )
 

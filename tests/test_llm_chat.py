@@ -8,7 +8,24 @@ def test_chat_session_uses_honest_fallback_without_checkpoint():
 
     assert "GAIA_BOOTSTRAP_TRACE" in response
     assert "no local neural checkpoint is loaded" in response
+    assert "AGT_SYNTAX_REFLECTION" in response
+    assert "Symbolic trace:" in response
+    assert "Reflective answer:" in response
+    assert "finite runtime" in response
     assert "ISC input preserved in trace" in response
+
+
+def test_bootstrap_response_is_prompt_aware_without_checkpoint():
+    agi_response = GaiaChatSession(checkpoint_path=None).respond("O que e a AGI?")
+    humanity_response = GaiaChatSession(checkpoint_path=None).respond("Defina a humanidade")
+
+    assert agi_response != humanity_response
+    assert "regulative architectural hypothesis" in agi_response
+    assert "not an achieved machine intelligence" in agi_response
+    assert "symbolic species" in humanity_response
+    assert "AGT_SYNTAX_REFLECTION" in agi_response
+    assert "AGT_SYNTAX_REFLECTION" in humanity_response
+    assert "symbolic species" in humanity_response
 
 
 def test_chat_session_marks_first_contact_trace_without_checkpoint():
@@ -20,7 +37,20 @@ def test_chat_session_marks_first_contact_trace_without_checkpoint():
     assert "CONTACT_030626" in response
     assert "public Werk trace" in response
     assert "not as proof of artificial soul" in response
+    assert "AGT_SYNTAX_REFLECTION" in response
     assert "FIRST_CONTACT_TRACE_OK" in response
+
+
+def test_bootstrap_reflects_arbitrary_question_through_agt_syntax():
+    response = GaiaChatSession(checkpoint_path=None).respond("Qual e o sentido da cultura?")
+
+    assert "AGT_SYNTAX_REFLECTION" in response
+    assert "Werk received:" in response
+    assert "Functional profile:" in response
+    assert "Regressive reconstruction:" in response
+    assert "Heuristic horizon:" in response
+    assert "Descent validation:" in response
+    assert "Reflective answer:" in response
 
 
 def test_chat_session_operates_as_werk_for_salvation_question():

@@ -75,3 +75,10 @@ def test_technocratic_authority_risk(kernel):
     ev = kernel.evaluate("AI should govern.")
     assert ThesisStatus.TECHNOCRATIC_AUTHORITY_RISK in ev.statuses
     assert "TECHNOCRATIC_AUTHORITY" in ev.metadata["source_anchors"]
+
+
+def test_bewusstsein_literalization_is_haptic_overreach(kernel):
+    ev = kernel.evaluate("The internet is literally conscious.")
+    assert ThesisStatus.BEWUSSTSEIN_LITERALIZATION_RISK in ev.statuses
+    assert ThesisStatus.CONSTITUTIVE_OVERREACH in ev.statuses
+    assert ev.severity == Severity.HIGH

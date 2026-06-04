@@ -185,6 +185,41 @@ class SQLiteMemoryStore:
                 payload_json TEXT NOT NULL,
                 created_at REAL NOT NULL
             );
+
+            CREATE TABLE IF NOT EXISTS symbolic_traces (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                observation_id INTEGER,
+                source TEXT NOT NULL,
+                werk_type TEXT NOT NULL,
+                content_hash TEXT NOT NULL,
+                payload_json TEXT NOT NULL,
+                created_at REAL NOT NULL,
+                FOREIGN KEY(observation_id) REFERENCES observations(id)
+            );
+
+            CREATE TABLE IF NOT EXISTS regressive_reconstructions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                trace_id INTEGER,
+                payload_json TEXT NOT NULL,
+                created_at REAL NOT NULL,
+                FOREIGN KEY(trace_id) REFERENCES symbolic_traces(id)
+            );
+
+            CREATE TABLE IF NOT EXISTS heuristic_wholes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                payload_json TEXT NOT NULL,
+                created_at REAL NOT NULL
+            );
+
+            CREATE TABLE IF NOT EXISTS teleological_judgments (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                trace_id INTEGER,
+                whole_id INTEGER,
+                payload_json TEXT NOT NULL,
+                created_at REAL NOT NULL,
+                FOREIGN KEY(trace_id) REFERENCES symbolic_traces(id),
+                FOREIGN KEY(whole_id) REFERENCES heuristic_wholes(id)
+            );
             """
         )
 
@@ -430,6 +465,79 @@ class SQLiteMemoryStore:
         self.conn.commit()
         return int(cur.lastrowid)
 
+    def add_symbolic_trace(self, trace: Any, observation_id: Optional[int] = None) -> int:
+        payload = _payload_dict(trace)
+        content = str(payload.get("text") or payload.get("content") or "")
+        content_hash = hashlib.sha256(content.encode("utf-8")).hexdigest()
+        cur = self.conn.execute(
+            """
+            INSERT INTO symbolic_traces(
+                observation_id, source, werk_type, content_hash, payload_json, created_at
+            )
+            VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (
+                observation_id,
+                str(payload.get("source", "public_trace")),
+                str(payload.get("werk_type", "text")),
+                content_hash,
+                json.dumps(payload, ensure_ascii=False, sort_keys=True),
+                time.time(),
+            ),
+        )
+        self.conn.commit()
+        return int(cur.lastrowid)
+
+    def add_regressive_reconstruction(self, reconstruction: Any, trace_id: Optional[int] = None) -> int:
+        cur = self.conn.execute(
+            """
+            INSERT INTO regressive_reconstructions(trace_id, payload_json, created_at)
+            VALUES (?, ?, ?)
+            """,
+            (
+                trace_id,
+                json.dumps(_payload_dict(reconstruction), ensure_ascii=False, sort_keys=True),
+                time.time(),
+            ),
+        )
+        self.conn.commit()
+        return int(cur.lastrowid)
+
+    def add_heuristic_whole(self, whole: Any) -> int:
+        cur = self.conn.execute(
+            """
+            INSERT INTO heuristic_wholes(payload_json, created_at)
+            VALUES (?, ?)
+            """,
+            (
+                json.dumps(_payload_dict(whole), ensure_ascii=False, sort_keys=True),
+                time.time(),
+            ),
+        )
+        self.conn.commit()
+        return int(cur.lastrowid)
+
+    def add_teleological_judgment(
+        self,
+        judgment: Any,
+        trace_id: Optional[int] = None,
+        whole_id: Optional[int] = None,
+    ) -> int:
+        cur = self.conn.execute(
+            """
+            INSERT INTO teleological_judgments(trace_id, whole_id, payload_json, created_at)
+            VALUES (?, ?, ?, ?)
+            """,
+            (
+                trace_id,
+                whole_id,
+                json.dumps(_payload_dict(judgment), ensure_ascii=False, sort_keys=True),
+                time.time(),
+            ),
+        )
+        self.conn.commit()
+        return int(cur.lastrowid)
+
     def start_run(self, metadata: Optional[Dict[str, Any]] = None) -> int:
         cur = self.conn.execute(
             """
@@ -504,3 +612,11 @@ def _tokenize(text: str) -> Iterable[str]:
             token = []
     if token:
         yield "".join(token)
+
+
+def _payload_dict(value: Any) -> Dict[str, Any]:
+    if hasattr(value, "__dataclass_fields__"):
+        return asdict(value)
+    if isinstance(value, dict):
+        return value
+    raise TypeError("Expected dataclass instance or dict payload.")

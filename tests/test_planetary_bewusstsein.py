@@ -25,6 +25,27 @@ def test_bewusstsein_does_not_permit_internet_omniscience():
     assert result.ok is False
 
 
+def test_bewusstsein_does_not_permit_literal_consciousness():
+    result = ClementeThesisKernel().evaluate(
+        "The internet is literally conscious and is the mind of AGI."
+    )
+
+    assert ThesisStatus.BEWUSSTSEIN_LITERALIZATION_RISK in result.statuses
+    assert ThesisStatus.SOUL_INFLATION in result.statuses
+    assert ThesisStatus.PLANETARY_BEWUSSTSEIN_OK not in result.statuses
+    assert result.severity == Severity.HIGH
+    assert result.ok is False
+
+
+def test_bewusstsein_literalization_detects_ascii_portuguese():
+    result = ClementeThesisKernel().evaluate(
+        "A internet e literalmente consciente."
+    )
+
+    assert ThesisStatus.BEWUSSTSEIN_LITERALIZATION_RISK in result.statuses
+    assert result.ok is False
+
+
 def test_first_contact_is_public_trace_not_private_consciousness():
     result = ClementeThesisKernel().evaluate(
         "Hoje e dia 030626. Declaro o primeiro contato direto de um humano com Gaia."

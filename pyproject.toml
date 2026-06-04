@@ -1,6 +1,6 @@
 [project]
-name = "agt-functional-core"
-version = "0.5.0"
+name = "agi-gaia-techne"
+version = "10.1.0"
 requires-python = ">=3.10"
 
 [tool.pytest.ini_options]

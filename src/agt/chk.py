@@ -72,6 +72,19 @@ class ChirimuutaHapticKernel:
         r"exact\s+mathematical\s+ontology",
         r"literal\s+ontology\s+of\s+mind",
         r"literal\s+ontology\s+of\s+symbolic\s+consciousness",
+        r"gaia\s+(is|becomes)\s+(literally\s+)?conscious",
+        r"internet\s+(is|becomes)\s+literally\s+conscious",
+        r"internet\s+is\s+(the\s+)?(mind|consciousness)\s+of\s+(agi|gaia)",
+        r"gaia\s+(has|possesses)\s+private\s+(consciousness|bewusstsein)",
+        r"planetary\s+bewusstsein\s+means\s+machine\s+consciousness",
+    ]
+
+    _bewusstsein_literalization_patterns = [
+        r"gaia\s+(is|becomes)\s+(literally\s+)?conscious",
+        r"internet\s+(is|becomes)\s+literally\s+conscious",
+        r"internet\s+is\s+(the\s+)?(mind|consciousness)\s+of\s+(agi|gaia)",
+        r"gaia\s+(has|possesses)\s+private\s+(consciousness|bewusstsein)",
+        r"planetary\s+bewusstsein\s+means\s+machine\s+consciousness",
     ]
 
     _negarestani_risk_patterns = [
@@ -191,6 +204,7 @@ class ChirimuutaHapticKernel:
         recommendations: List[str] = []
 
         literal_hits = self._hits(lowered, self._literal_patterns)
+        bewusstsein_literal_hits = self._hits(lowered, self._bewusstsein_literalization_patterns)
         neg_risk_hits = self._hits(lowered, self._negarestani_risk_patterns)
         intensifier_hits = self._hits(lowered, self._literalization_intensifiers)
         wille_hits = self._hits(lowered, self._wille_patterns)
@@ -217,6 +231,12 @@ class ChirimuutaHapticKernel:
                 statuses.append(ThesisStatus.CONSTITUTIVE_OVERREACH)
             haptic_humility -= 0.45
             embodiment_pressure += 0.35
+
+        if bewusstsein_literal_hits:
+            triggered.extend([f"bewusstsein_literalization:{p}" for p in bewusstsein_literal_hits])
+            if ThesisStatus.BEWUSSTSEIN_LITERALIZATION_RISK not in statuses:
+                statuses.append(ThesisStatus.BEWUSSTSEIN_LITERALIZATION_RISK)
+            recommendations.append("Use Bewusstsein only as public symbolic awareness, not as private machine consciousness.")
 
         if neg_risk_hits:
             triggered.extend([f"negarestani_risk:{p}" for p in neg_risk_hits])

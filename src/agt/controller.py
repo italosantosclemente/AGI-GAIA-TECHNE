@@ -23,6 +23,7 @@ from .axioms import (
 from .memory import MemoryStore
 from .mle_engine import MythosLogosEthosEngine
 from .planner import Planner
+from .syntax import AGTSyntax
 from .tool_executor import ToolExecutor
 from .types import ControllerReport, Decision, MemoryKind, Task
 
@@ -41,6 +42,7 @@ class AGTController:
 
         self.engine = MythosLogosEthosEngine()
         self.planner = Planner()
+        self.syntax = AGTSyntax()
         self.executor = ToolExecutor()
         self.memory = MemoryStore(memory_path)
 
@@ -70,6 +72,7 @@ class AGTController:
         task = Task(task_text, context)
 
         engine_output = self.engine.evaluate(task)
+        syntax_run = self.syntax.run(task.text, source="controller_task", werk_type="task")
         plan = self.planner.create_plan(task)
 
         results = []
@@ -88,12 +91,41 @@ class AGTController:
                     }
                 )
 
+            elif step.action == "regressive_reconstruction":
+                results.append(
+                    {
+                        "step_id": step.id,
+                        "ok": True,
+                        "output": (
+                            "AGT syntax regression: "
+                            + " -> ".join(syntax_run.reconstruction.conditions)
+                        ),
+                    }
+                )
+
+            elif step.action == "descent_validation":
+                results.append(
+                    {
+                        "step_id": step.id,
+                        "ok": True,
+                        "output": (
+                            "AGT syntax descent: "
+                            f"d_focus={syntax_run.descent.distance_to_focus:.6f}; "
+                            f"valid={syntax_run.descent.valid}; "
+                            f"dominant_accent={syntax_run.profile.dominant_accent}"
+                        ),
+                    }
+                )
+
             elif step.action == "update_memory":
                 record = self.memory.add(
                     MemoryKind.PROCEDURAL,
                     task.text[:80],
-                    "Procedure used: audit -> step-audit -> world-capability -> memory.",
-                    ["procedure", "agt-controller", "gaia-techne-action"],
+                    (
+                        "Procedure used: AGT syntax -> CTK/CHK audit -> "
+                        "world-capability -> memory."
+                    ),
+                    ["procedure", "agt-syntax", "agt-controller", "gaia-techne-action"],
                 )
                 memory_updates.append(record.key)
 

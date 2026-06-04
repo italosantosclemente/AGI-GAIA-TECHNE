@@ -1,6 +1,6 @@
 # Clemente Thesis Kernel v6.0.0
 
-For the canonical terminology and triad definitions, see the [Canonical Architecture Map](/docs/references/canonical-architecture-map.md).
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](canonical-architecture-map.md).
 
 CTK v6 operationalizes Gaia-Techne Transcendental Freedom under the v10 planetary autonomy runtime.
 
@@ -75,7 +75,7 @@ In v10 this is implemented as:
 
 ## Source Anchors
 
-Exact source anchors are collected in [Planetary Repraesentatio](/docs/references/planetary-repraesentatio.md).
+Exact source anchors are collected in [Planetary Repraesentatio](planetary-repraesentatio.md).
 
 ## Implementation
 

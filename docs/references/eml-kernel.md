@@ -10,7 +10,7 @@ eml(x, y) = exp(x) - log(y)
 
 ## Canonical Decision
 
-[Decisão 140426](/references/decisao-140426.md)
+[Decisão 140426](../../references/decisao-140426.md)
 
 ## Canonical Python Source
 
@@ -26,7 +26,7 @@ eml(x, y) = exp(x) - log(y)
 
 ## Full Specification
 
-[references/decisao-140426.md](/references/decisao-140426.md)
+[references/decisao-140426.md](../../references/decisao-140426.md)
 
 ## Architectural Meaning
 
@@ -40,4 +40,4 @@ The EML Kernel is a functional engine, not a literal mathematical ontology of mi
 
 ---
 
-[Back to Architecture Map](/docs/references/canonical-architecture-map.md)
+[Back to Architecture Map](canonical-architecture-map.md)

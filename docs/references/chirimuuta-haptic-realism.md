@@ -1,6 +1,6 @@
 # Chirimuuta Haptic Kernel (CHK) — v0.3 Canonical
 
-For the canonical terminology and triad definitions, see the [Canonical Architecture Map](/docs/references/canonical-architecture-map.md).
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](canonical-architecture-map.md).
 
 The Chirimuuta Haptic Kernel (CHK) serves as the anti-literalization layer for AGI-GAIA-TECHNE. It ensures that every abstraction registers its cost and that computational models are not converted into ontologies of the mind.
 

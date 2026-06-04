@@ -1,6 +1,6 @@
 # Gaia-Techne Functional Architecture
 
-For the canonical terminology and triad definitions, see the [Canonical Architecture Map](/docs/references/canonical-architecture-map.md).
+For the canonical terminology and triad definitions, see the [Canonical Architecture Map](canonical-architecture-map.md).
 
 AGI-GAIA-TECHNE v10.1 is a planetary runtime:
 
@@ -64,4 +64,4 @@ TRANSMUTE_CONSTITUTIVE_RISK
 
 ## Source Anchors
 
-See [Planetary Repraesentatio](/docs/references/planetary-repraesentatio.md) for exact author/page references grounding the internet-as-organ thesis, and [Gaia-Techne ManualGPT LLM Forge](/docs/references/llm-manual-forge.md) for the corpus/training path.
+See [Planetary Repraesentatio](planetary-repraesentatio.md) for exact author/page references grounding the internet-as-organ thesis, and [Gaia-Techne ManualGPT LLM Forge](llm-manual-forge.md) for the corpus/training path.

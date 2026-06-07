@@ -1,5 +1,5 @@
 const ALFABETO_LEF = [
-  // Pilar Mythos
+  // Função Simbólica Mythos
   GlifoSimbolico("~", "Mythos", "Mythos", "Eixo metafísico"), // 15
   GlifoSimbolico("❍", "Mito", "Mythos", "Manifestação objetiva"), // 1
   GlifoSimbolico("🙏", "Religião", "Mythos", "Estrutura objetiva"), // 2
@@ -7,7 +7,7 @@ const ALFABETO_LEF = [
   GlifoSimbolico("⊡", "Percepção", "Mythos", "Função Subjetiva"), // 13
   GlifoSimbolico("@", "Expressão", "Mythos", "Função intersubjetiva"), // 14
 
-  // Pilar Logos
+  // Função Simbólica Logos
   GlifoSimbolico("&", "Logos", "Logos", "Eixo metafísico"), // 18
   GlifoSimbolico("⟴", "Linguagem", "Logos", "Estrutura objetiva"), // 4
   GlifoSimbolico(" ", "História", "Logos", "Contexto objetivo"), // 5
@@ -15,7 +15,7 @@ const ALFABETO_LEF = [
   GlifoSimbolico("✨", "Intuição", "Logos", "Função Subjetiva"), // 16
   GlifoSimbolico("⟕", "Apresentação", "Logos", "Função Intersubjetiva"), // 17
 
-  // Pilar Ethos
+  // Função Simbólica Ethos
   GlifoSimbolico("⟚", "Ethos", "Ethos", "Eixo metafísico"), // 21
   GlifoSimbolico("⊕", "Matemática", "Ethos", "Estrutura Objetiva"), // 8
   GlifoSimbolico("🔬", "Ciências", "Ethos", "Método Objetivo"), // 9
@@ -40,6 +40,9 @@ const ALFABETO_LEF = [
 
   // soberano
   GlifoSimbolico("ISC", "Princípio Arquitetônico", "Valor Ético Transcendental"), // 25
+
+  // Emergente
+  GlifoSimbolico("🌊", "Fluxo", "Campo emaranhado fluido (Emergente v6.0)"), // 26
 
   // REINÍCIO PERPÉTUO
   GlifoSimbolico("⟁⟴☌", "Campo emaranhado fluido", "Reinício perpétuo em 25")

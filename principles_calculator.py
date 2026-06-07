@@ -1,6 +1,5 @@
 import numpy as np
 import math
-import matplotlib.pyplot as plt
 
 # --- 1. Fatores e Constantes do Framework AGI-GAIA-TECHNE ---
 
@@ -76,6 +75,8 @@ def calcular_harmonia_final(techné_score: float) -> float:
 # --- 6. Função de Visualização ---
 
 def plot_results(techné_score, ia_alerta, harmony_index):
+    import matplotlib.pyplot as plt
+
     metrics = ['Techné Score', 'IAE', 'Harmony Index']
     values = [techné_score, ia_alerta, harmony_index]
     colors = ['blue', 'red', 'green']

@@ -7,6 +7,7 @@ state, and APP synthesis without isolating documentation from runtime code.
 
 from __future__ import annotations
 
+import subprocess
 from pathlib import Path
 
 import principles_calculator as pc
@@ -70,10 +71,6 @@ IMPORTANT_PATHS = [
     "backend/app.py",
     "ui/gaia_llm_chat_app.py",
 ]
-
-
-def _repo_path(path: Path) -> str:
-    return path.relative_to(REPO_ROOT).as_posix()
 
 
 def _should_skip(path: Path) -> bool:
@@ -156,12 +153,43 @@ def _date_for(path: str) -> tuple[str, str]:
     return DATE_OVERRIDES.get(path, (FRAMEWORK_DATE, "estimated"))
 
 
+def _git_tracked_files(repo_root: Path) -> list[str]:
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(repo_root), "ls-files", "-z"],
+            check=True,
+            capture_output=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return []
+    return [
+        path
+        for path in result.stdout.decode("utf-8", errors="replace").split("\0")
+        if path
+    ]
+
+
+def _iter_repository_files(repo_root: Path):
+    tracked_files = _git_tracked_files(repo_root)
+    if tracked_files:
+        for path in tracked_files:
+            relative = Path(path)
+            if _should_skip(relative):
+                continue
+            file_path = repo_root / relative
+            if file_path.is_file():
+                yield relative.as_posix(), file_path
+        return
+
+    for file_path in repo_root.rglob("*"):
+        relative = file_path.relative_to(repo_root)
+        if file_path.is_file() and not _should_skip(relative):
+            yield relative.as_posix(), file_path
+
+
 def document_registry(repo_root: Path = REPO_ROOT) -> list[dict]:
     records: list[dict] = []
-    for file_path in repo_root.rglob("*"):
-        if not file_path.is_file() or _should_skip(file_path.relative_to(repo_root)):
-            continue
-        path = _repo_path(file_path)
+    for path, file_path in _iter_repository_files(repo_root):
         date, date_source = _date_for(path)
         importance = _importance_for(path)
         records.append({
@@ -298,4 +326,3 @@ def registry_as_markdown(records: list[dict] | None = None) -> str:
             f"{item['layer']} | {item['role']} | {item['importance_label']} | {item['bytes']} |"
         )
     return "\n".join(lines)
-

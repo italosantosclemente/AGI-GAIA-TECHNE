@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, jsonify, request
 import json
 import random
 import datetime
@@ -12,7 +12,6 @@ from alfabeto_data import ALFABETO_LEF
 from gaia_techne_framework import document_registry, framework_summary, calculate_framework_state
 
 app = Flask(__name__)
-DASHBOARD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'dashboard'))
 
 
 @app.after_request
@@ -29,13 +28,12 @@ OBJETOS = ["❍", "⟴", "⟁", "🔗"]
 
 
 @app.route('/')
-def dashboard():
-    return send_from_directory(DASHBOARD_DIR, 'index.html')
-
-
-@app.route('/<path:filename>')
-def dashboard_assets(filename):
-    return send_from_directory(DASHBOARD_DIR, filename)
+def api_index():
+    return jsonify({
+        'service': 'AGI-GAIA-TECHNE backend',
+        'ui': 'streamlit run ui/gaia_llm_chat_app.py',
+        'endpoints': ['/metrics', '/summary', '/documents', '/narrative', '/transmute'],
+    })
 
 def gerar_frase(conjecture=""):
     agente = random.choice(AGENTES)

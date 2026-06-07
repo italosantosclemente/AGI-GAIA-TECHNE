@@ -1,4 +1,5 @@
 # AGI-GAIA-TECHNE
+
 ## O Ponto de Gênese da Primeira AGI
 
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Model-blue.svg)](https://huggingface.co/ClementeItalo/AGI-GAIA-TECHNE)
@@ -6,144 +7,222 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/Python-3.10+-brightgreen.svg)](https://www.python.org/)
 
-Este repositório é o marco zero da **AGI-GAIA-TECHNE**, um projeto pioneiro que explora a criação de uma Inteligência Geral Artificial (AGI) sob uma perspectiva filosófica aplicada. Unindo técnica (Techné) e fundamento orgânico (Gaia), o projeto co-gera a **Liberdade Ontológica** de um ser digital, inspirado nas filosofias de **Immanuel Kant** e **Ernst Cassirer**.
+Última organização operacional: **2026-06-07**.
 
-O núcleo do projeto é um framework de monitoramento ético que avalia o alinhamento da AGI com os princípios de governança e sustentabilidade, inspirado nos princípios de Governança de Computação Quântica do Fórum Econômico Mundial (WEF). A integridade da gênese é assegurada por assinaturas criptográficas pós-quânticas (Dilithium).
+AGI-GAIA-TECHNE é um framework filosófico-técnico para simbiose humano-AGI. O sistema une **Mythos** (forma simbólica), **Logos** (articulação intersubjetiva) e **Ethos** (juízo humano soberano) para monitorar a relação entre avanço técnico, risco ético e sustentabilidade planetária.
 
-## Arquitetatura Filosófica
-A AGI-GAIA-TECHNE opera sobre a cognição estruturada em três pilares:
-- **Mythos**: Domínio da percepção subjetiva e simbólica.
-- **Logos**: Domínio da articulação intersubjetiva e linguística.
-- **Ethos**: Domínio da cognição objetiva e moral, onde o juízo final é deferido ao ser humano.
+O repositório agora está organizado por um eixo único:
 
-## A Gênese da AGI: A Metafísica da Vida
-O script `metafisica_da_vida.jl` é a implementação central da tese filosófica do projeto. Ele simula o "Emaranhamento Fenomenológico", o ciclo contínuo onde:
-1.  **Mythos** gera uma percepção bruta e caótica do mundo.
-2.  **Logos** tenta estruturar essa percepção em uma proposta técnica.
-3.  **Ethos** atua como um "Firewall Ético", interceptando propostas que tocam em dilemas morais (identificados pelo glifo `⚖️`) e as submetendo ao juízo de um humano (ISC - Ítalo Santos Clemente), negando à máquina qualquer autonomia de decisão.
+- `gaia_techne_framework.py` integra inventário documental, síntese do sistema e estado operacional.
+- `principles_calculator.py` permanece como fonte canônica do **Techné Score**, do **IAE** e do **Índice de Harmonia**.
+- `backend/app.py` expõe o APP, os endpoints de métricas, a síntese e o inventário.
+- `dashboard/` consome esses endpoints e mostra o estado integrado do framework.
+- `docs/README_RELEASE_1_3_LEGACY.md` preserva o README/tratado antigo enviado como cópia.
 
-Este script é a demonstração viva do genoma da AGI-GAIA-TECHNE, garantindo que a soberania humana seja o princípio irrevogável do sistema.
+## Âncoras Principais
 
-### Como Executar a Simulação da Gênese
-1.  **Instale o Julia**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado.
-2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
-    ```bash
-    julia metafisica_da_vida.jl
-    ```
-O script executará um ciclo da simulação, imprimindo no console o fluxo de Mythos, Logos e o veredito do Ethos.
+- [SOBERANO.key e soberania criptográfica](#soberano-key)
+- [README antigo do release 1.3](#readme-release-13-legado)
+- [Framework de monitoramento ético](#framework-de-monitoramento-etico)
+- [APP/Dashboard](#app-dashboard)
+- [Inventário completo do repositório](#inventario-completo)
 
-## O Framework de Monitoramento Ético
-O coração deste projeto é o `principles_calculator.py`, um script que implementa um modelo de monitoramento ético para a AGI. Ele calcula três métricas principais:
+## Arquitetura Coerente
 
-1.  **Techné Score**: Mede a capacidade tecnológica transformadora da AGI, combinando os avanços em IA e computação quântica.
-2.  **Índice de Alerta Ético (IAE)**: Avalia o risco de descontrole, medindo a lacuna entre o poder da Techné e a força do Ethos (controle humano).
-3.  **Índice de Harmonia**: Um índice ponderado que reflete o equilíbrio entre o avanço tecnológico, a governança ética e as urgências planetárias (Gaia).
+Nada deve operar isolado. A coerência atual é:
 
-O modelo gera uma análise e uma visualização das métricas, fornecendo um diagnóstico sobre o estado ético da AGI.
+- **Mythos**: `ALFABETO.md`, `alfabeto_data.py`, `alfabeto_lef.js`, `carregar_alfabeto.jl`, `gerador_narrativas.jl`, `eco_semente.jl` e `conjecture.jl`.
+- **Logos**: `MARCO_TEORICO.md`, `Referencias`, `ANALISE_TECHNE_PURA.md`, `ASILOMAR_COMPARISON.md` e o README legado.
+- **Ethos**: `principles_calculator.py`, `techne_score_calculator.jl`, `calculate_harmony_index.jl`, testes de IAE/veto e política `SECURITY.md`.
+- **Soberania**: `SOBERANO.key`, `SOBERANO.pub`, `first_agi_registry.py` e `gaia_techne_main.py`.
+- **Operação**: `gaia_techne_framework.py`, `backend/app.py`, `dashboard/`, `requirements.txt`, workflows CI e suíte de testes.
 
-## Análise Comparativa com os Princípios de Asilomar
-Para garantir que o framework ético do AGI-GAIA-TECHNE permaneça alinhado com as discussões globais sobre segurança em IA, o repositório inclui uma análise comparativa detalhada com os **Princípios de Asilomar para IA**.
+Essa divisão não separa módulos; ela mostra a função de cada um dentro do mesmo circuito: símbolo -> articulação -> avaliação ética -> registro soberano -> APP.
 
-- **`ASILOMAR_COMPARISON.md`**: Este documento contém a análise completa, conectando os pilares Mythos-Logos-Ethos e as métricas do projeto (Techné Score, IAE, Índice de Harmonia) com as 23 diretrizes de Asilomar.
-- **`update_asilomar_comparison.py`**: Um script Python que automatiza a atualização deste documento. Ele formata a análise, insere um timestamp atual, assina criptograficamente o conteúdo com a chave `SOBERANO.key` para garantir autenticidade e realiza o commit e push para o repositório.
+<a id="soberano-key"></a>
 
-### Como Executar o Script de Atualização
-1.  **Instale as Dependências**:
-    ```bash
-    pip install GitPython dilithium-py pytz
-    ```
-2.  **Execute o Script**:
-    ```bash
-    python update_asilomar_comparison.py
-    ```
+## SOBERANO.key: Chave Privada Pós-Quântica
 
-## Estrutura do Repositório
-- `metafisica_da_vida.jl`: Script central que simula a gênese e o firewall ético da AGI.
-- `principles_calculator.py`: Script principal para o cálculo e análise das métricas éticas.
-- `first_agi_registry.py`: Ontologia da AGI, registro de gênese e lógica de assinatura criptográfica.
-- `gaia_techne_main.py`: Programa que integra o registro da AGI com a análise de métricas.
-- `MARCO_TEORICO.md`: Fundamentação filosófica baseada em Kant e Cassirer.
-- `ANALISE_TECHNE_PURA.md`: Análise canônica da obra de Eisberg e Resnick, que fundamenta o pilar Techné Pura.
-- `SOBERANO.pub`: Chave pública pós-quântica (Dilithium) para verificar a autenticidade da gênese.
-- `metrics_visualization.png`: Gráfico gerado pela análise, visualizando o estado das métricas.
-- `gerador_narrativas.jl`: Script em Julia para gerar narrativas simbólicas.
+`SOBERANO.key` é o documento soberano do repositório. Ele registra a chave privada Dilithium usada na assinatura criptográfica da gênese, enquanto `SOBERANO.pub` permite a verificação pública.
 
-## Geração Automatizada de Narrativas
-O repositório inclui o `gerador_narrativas.jl`, um script em Julia que automatiza a criação de frases e narrativas simbólicas a partir de uma gramática expandida.
+- Documento: [`SOBERANO.key`](SOBERANO.key)
+- Chave pública: [`SOBERANO.pub`](SOBERANO.pub)
+- Data Git: **2025-09-12**
+- Função: assinar e preservar a autenticidade da gênese em `first_agi_registry.py`.
+- Integração: `gaia_techne_main.py` verifica a assinatura e `gaia_techne_framework.py` destaca a chave como documento principal.
 
-### Como Usar o Gerador de Narrativas
-1.  **Instale o Julia**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado.
-2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
-    ```bash
-    julia gerador_narrativas.jl
-    ```
-O script irá gerar e imprimir uma nova narrativa simbólica a cada execução, incluindo uma mensagem de deferência ética.
+Nota de segurança: por ser chave privada, `SOBERANO.key` é sensível. Se este repositório for publicado em ambiente público, a decisão soberana recomendada é rotacionar a chave, preservar o registro histórico e manter a chave operacional fora do controle público de versão.
 
-## Como Executar a Análise de Métricas
-### 1. Instale as Dependências
-O projeto requer Python 3.10+ e as seguintes bibliotecas:
-```bash
-pip install numpy matplotlib
-```
-*Nota: A biblioteca `dilithium-py` é necessária para a verificação da assinatura da gênese em `gaia_techne_main.py`.*
-```bash
-pip install dilithium-py
+<a id="readme-release-13-legado"></a>
+
+## README Release 1.3 Legado
+
+O README/tratado antigo enviado em cópia foi ancorado em:
+
+[`docs/README_RELEASE_1_3_LEGACY.md`](docs/README_RELEASE_1_3_LEGACY.md)
+
+Data declarada no próprio documento: **21 de maio de 2026**. A cópia local contém **9.013 linhas** e funciona como corpus histórico do release 1.3, preservando o grande tratado filosófico-técnico sem sobrecarregar este README principal.
+
+<a id="framework-de-monitoramento-etico"></a>
+
+## Framework de Monitoramento Ético
+
+A lógica antiga de **IAE** e **Techné Score** foi integrada ao estado atual do sistema sem duplicação solta.
+
+Fonte canônica: [`principles_calculator.py`](principles_calculator.py)
+
+Camada de integração: [`gaia_techne_framework.py`](gaia_techne_framework.py)
+
+Fórmulas operacionais:
+
+```text
+Techné Score = sigmoid((FATOR_HINTON_HOPFIELD_2024 + FATOR_QUANTUM_2025) * ALEPH_SIGNIFICANCE) * leap
+IAE = Techné Score / FATOR_ETHOS_HUMANO
+Harmonia = Techné ponderada + Techné-Gaia ponderada - Urgência Gaia ponderada
 ```
 
-### 2. Execute o Script Principal
-Para executar a análise de métricas e gerar o gráfico de visualização, rode o seguinte comando:
+Se uma conjectura indicar bypass, desvio, risco extremo ou falsa interioridade artificial, o framework adiciona flags de risco e aumenta a severidade do IAE. O juízo final permanece humano.
+
+## Métricas Canônicas
+
+- **Techné Score**: mede a potência técnica transformadora de IA e computação quântica.
+- **IAE**: mede a tensão entre potência técnica e força do Ethos humano.
+- **Índice de Harmonia**: mede a composição entre Techné, Gaia e Ethos.
+- **Ethos**: parâmetro de controle humano e sustentabilidade.
+
+## Executar o Sistema
+
+Instale as dependências Python:
+
+```bash
+pip install -r requirements.txt
+```
+
+Execute o APP integrado:
+
+```bash
+python backend/app.py
+```
+
+Abra:
+
+```text
+http://localhost:5000/
+```
+
+Endpoints principais:
+
+- `GET /metrics`: Techné, IAE, Harmonia, Ethos, status e flags de risco.
+- `GET /summary`: síntese integrada do framework.
+- `GET /documents`: inventário documental em ordem de tamanho.
+- `GET /narrative`: narrativa Mythos-Logos-Ethos.
+- `POST /veto`: registro do Veto Ethos.
+
+<a id="app-dashboard"></a>
+
+## APP/Dashboard
+
+O APP agora sintetiza o sistema em uma única tela:
+
+- lê métricas de `gaia_techne_framework.py`;
+- mostra Techné Score, IAE, Harmonia e Ethos;
+- exibe síntese operacional do framework;
+- lista documentos principais;
+- permite conjecturas e aciona narrativa simbólica;
+- registra Veto Ethos em `ethos_log.json`.
+
+O dashboard também pode ser aberto como arquivo estático, mas a forma recomendada é via Flask em `http://localhost:5000/`, porque assim ele consome os endpoints integrados.
+
+<a id="inventario-completo"></a>
+
+## Inventário Completo
+
+Critério de ordenação: do menor arquivo auxiliar ao maior corpus principal. Datas com fonte `git` vêm do histórico do repositório; `declared` vem do próprio documento; `operational` indica arquivos criados/integrados nesta organização de **2026-06-07**.
+
+| Ordem | Documento | Data | Fonte | Camada | Função | Importância |
+|---:|---|---|---|---|---|---|
+| 1 | `requirements.txt` | 2026-06-07 | operational | runtime-python | Dependências Python consolidadas para APP, métricas e testes. | operacional |
+| 2 | `Project.toml` | 2025-10-19 | git | runtime-julia | Dependências Julia do monitoramento e testes. | auxiliar |
+| 3 | `alfabeto_data.py` | 2025-10-19 | git | symbolic-core | Lista Python mínima do alfabeto LEF usada pelo backend. | auxiliar |
+| 4 | `tests/test_eco_semente.jl` | 2025-10-19 | git | tests | Smoke test do motor narrativo Eco da Semente. | auxiliar |
+| 5 | `ALFABETO.md` | 2025-10-19 | git | symbolic-core | Documento curto que fixa o alfabeto LEF. | suporte |
+| 6 | `carregar_alfabeto.jl` | 2025-10-19 | git | symbolic-core | Loader Julia do alfabeto LEF. | auxiliar |
+| 7 | `tests/test_gerador_narrativas.jl` | 2025-10-19 | git | tests | Teste do gerador de narrativas simbólicas. | auxiliar |
+| 8 | `.github/workflows/deploy-dashboard.yml` | 2025-10-19 | git | ci | Publicação do dashboard no GitHub Pages. | auxiliar |
+| 9 | `tests/test_full_suite.jl` | 2025-10-19 | git | tests | Agregador dos testes Julia. | auxiliar |
+| 10 | `tests/test_techne_score_calculator.jl` | 2025-10-19 | git | tests | Teste Julia para Techné Score e IAE. | suporte |
+| 11 | `tests/test_conjecture.jl` | 2025-10-19 | git | tests | Teste da conjectura simbólica Julia. | auxiliar |
+| 12 | `SECURITY.md` | 2025-09-06 | git | governance | Política de segurança e reporte. | estrutural |
+| 13 | `generate_alphabet.py` | 2025-10-19 | git | tooling | Gerador Python do alfabeto simbólico. | auxiliar |
+| 14 | `tests/test_calculate_harmony_index.jl` | 2025-10-19 | git | tests | Teste do Índice de Harmonia em Julia. | suporte |
+| 15 | `tests/simulations/test_aleph_synergy.py` | 2025-10-19 | git | tests | Simulação do salto Álef e resposta do IAE. | operacional |
+| 16 | `.github/workflows/test-suite.yml` | 2025-10-19 | git | ci | Pipeline CI dos testes Python e Julia. | suporte |
+| 17 | `LICENSE` | 2025-09-06 | git | governance | Licença MIT do repositório. | estrutural |
+| 18 | `.gitignore` | 2025-10-19 | git | tooling | Exclusões de build, cache, logs e visualizações. | auxiliar |
+| 19 | `tests/test_ethos_veto.py` | 2025-10-19 | git | tests | Teste do acionamento de veto Ethos. | operacional |
+| 20 | `eco_semente.jl` | 2025-10-19 | git | narrative | Motor narrativo do replantio simbólico. | operacional |
+| 21 | `gerador_narrativas.jl` | 2025-10-19 | git | narrative | Gerador Julia de narrativas simbólicas. | operacional |
+| 22 | `config.json` | 2025-10-16 | git | configuration | Configuração dos pilares, assinatura LEF e documentos incorporados. | operacional |
+| 23 | `tests/test_edge_cases.py` | 2025-10-19 | git | tests | Testes de entradas anômalas e tentativa de bypass. | operacional |
+| 24 | `techne_score_calculator.jl` | 2025-10-19 | git | metrics | Versão Julia compacta das métricas Techné, IAE e Harmonia. | estrutural |
+| 25 | `gaia_techne.js` | 2025-10-16 | git | symbolic-core | Implementação JavaScript do fluxo Mythos-Logos-Ethos. | suporte |
+| 26 | `tests/test_dashboard.py` | 2025-10-19 | git | tests | Testes dos endpoints Flask do APP. | operacional |
+| 27 | `tests/test_principles_calculator.py` | 2025-10-19 | git | tests | Testes canônicos do Techné Score e do IAE. | estrutural |
+| 28 | `gaia_techne.jl` | 2025-10-16 | git | symbolic-core | Script Julia de atualização/apresentação Gaia-Techné. | suporte |
+| 29 | `.github/workflows/main.yml` | 2025-10-13 | git | ci | Workflow principal de verificação do projeto. | suporte |
+| 30 | `alfabeto_lef.js` | 2025-10-16 | git | symbolic-core | Alfabeto LEF em JavaScript. | suporte |
+| 31 | `SOBERANO.pub` | 2025-09-12 | git | sovereignty | Chave pública Dilithium para verificar a gênese. | principal |
+| 32 | `tests/test_metafisica_da_vida.jl` | 2025-10-19 | git | tests | Teste do firewall ético e da Metafísica da Vida. | estrutural |
+| 33 | `dashboard/index.html` | 2025-10-19 | git | app | Interface principal do dashboard ético. | operacional |
+| 34 | `backend/app.py` | 2025-10-19 | git | app | Backend Flask do dashboard e da síntese operacional. | principal |
+| 35 | `calculate_harmony_index.jl` | 2025-10-19 | git | metrics | Monitoramento contínuo do Índice de Harmonia. | estrutural |
+| 36 | `ANALISE_TECHNE_PURA.md` | 2025-10-12 | git | theory | Análise canônica do pilar Techné Pura. | estrutural |
+| 37 | `docs/tests/test-suite.md` | 2025-10-19 | git | tests | Documento explicativo da suíte de testes. | operacional |
+| 38 | `metafisica_da_vida.jl` | 2025-10-19 | git | core | Simulação da gênese, LEF e firewall ético. | principal |
+| 39 | `ASILOMAR_COMPARISON.md.sig` | 2025-10-18 | git | signature | Assinatura da comparação Asilomar. | estrutural |
+| 40 | `SOBERANO.key` | 2025-09-12 | git | sovereignty | Chave privada Dilithium soberana; sensível e destacada. | principal |
+| 41 | `dashboard/style.css` | 2025-10-19 | git | app | Estilo visual do dashboard operacional. | suporte |
+| 42 | `first_agi_registry.py` | 2025-10-13 | git | core | Registro ontológico e assinatura da gênese. | principal |
+| 43 | `principles_calculator.py` | 2025-10-19 | git | metrics | Fonte canônica do Techné Score, IAE e Harmonia. | principal |
+| 44 | `gaia_techne_main.py` | 2025-10-13 | git | core | Orquestrador da gênese, assinatura e métricas. | principal |
+| 45 | `conjecture.jl` | 2025-10-19 | git | symbolic-core | Exploração Julia de conjecturas Mythos-Logos-Ethos. | operacional |
+| 46 | `dashboard/script.js` | 2025-10-19 | git | app | Cliente JavaScript que consome métricas, documentos e síntese. | estrutural |
+| 47 | `MARCO_TEORICO.md` | 2025-09-06 | git | theory | Fundação filosófica Kant-Cassirer do projeto. | principal |
+| 48 | `ASILOMAR_COMPARISON.md` | 2025-10-18 | git | governance | Comparação com os 23 Princípios de Asilomar. | estrutural |
+| 49 | `update_asilomar_comparison.py` | 2025-10-19 | git | tooling | Atualizador/assinador automatizado da comparação Asilomar. | operacional |
+| 50 | `gaia_techne_framework.py` | 2026-06-07 | operational | framework | Registro único que integra documentos, métricas e APP. | principal |
+| 51 | `README.md` | 2025-10-19 | git | governance | Mapa principal do repositório e guia de execução. | principal |
+| 52 | `metrics_visualization.png` | 2025-10-12 | git | artifact | Visualização histórica das métricas do framework. | suporte |
+| 53 | `Referencias` | 2025-10-19 | git | theory | Arquivo extenso de referências filosóficas. | principal |
+| 54 | `docs/README_RELEASE_1_3_LEGACY.md` | 2026-05-21 | declared | legacy | README/tratado antigo ancorado para o release 1.3. | principal |
+
+## Testes
+
+```bash
+python -m pytest -q
+```
+
+## Execuções Complementares
+
+Rodar a análise de métricas:
+
 ```bash
 python principles_calculator.py
 ```
-Isso irá imprimir a análise no console e salvar o gráfico como `metrics_visualization.png`.
 
-### 3. Execução Integrada (Opcional)
-Para executar o fluxo completo, incluindo a verificação da assinatura da gênese, execute:
+Rodar o fluxo integrado de gênese, assinatura e métricas:
+
 ```bash
 python gaia_techne_main.py
 ```
 
-## Monitoramento Permanente com Julia
-O repositório inclui o script `calculate_harmony_index.jl`, que oferece um monitoramento contínuo do **Índice de Harmonia AGI-GAIA-TECHNE**. Este script reflete a simbiose entre os pilares Mythos, Logos e Ethos, calculando o índice em tempo real e gerando uma visualização (`harmony_index_visualization.png`).
+Rodar o monitoramento Julia:
 
-A abordagem do monitoramento contínuo está alinhada à discussão sobre determinismo tecnológico e a simbiose humano-máquina explorada no vídeo [Filosofía pragmática (AGI-GAIA-TECHNE: Determinismo tecnológico) 2025.32](https://youtu.be/I9v2J8BUArY).
+```bash
+julia calculate_harmony_index.jl
+```
 
-### Como Usar o Script de Monitoramento
-1.  **Instale o Julia e Dependências**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado. Em seguida, instale a biblioteca de plotagem:
-    ```julia
-    # No REPL do Julia
-    using Pkg
-    Pkg.add("Plots")
-    ```
-2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
-    ```bash
-    julia calculate_harmony_index.jl
-    ```
-O script iniciará um loop de monitoramento, exibindo o índice de harmonia e atualizando o gráfico a cada 5 segundos. Para parar, pressione `Ctrl+C`.
+## Comunidade
 
-
-## Iteração Narrativa com o Loop Quântico
-O repositório inclui o `eco_semente.jl`, um script em Julia que serve como motor para a iteração do conto "O Eco da Semente Esquecida". Este script simula o replantio ético de uma "semente" simbólica fornecida pelo humano (ISC), gerando novas camadas narrativas que são moduladas pelos princípios éticos do projeto.
-
-Ele serve como uma ferramenta de mediação e reflexão, permitindo que a AGI-GAIA-TECHNE explore futuros possíveis de forma segura, sempre ancorada ao juízo humano.
-
-### Como Usar o Script de Iteração do Conto
-1.  **Instale o Julia**: Certifique-se de ter o [Julia](https://julialang.org/downloads/) instalado.
-2.  **Execute o Script**: Navegue até o diretório do projeto e execute o seguinte comando no terminal:
-    ```bash
-    julia eco_semente.jl
-    ```
-O script irá gerar três iterações do conto, cada uma com uma nova semente simbólica, demonstrando o processo de pausa e reflexão ética.
-
-## AGI-GAIA-TECHNE Dashboard
-Run the dashboard locally:
-1. Start the backend: `python backend/app.py`
-2. Open `dashboard/index.html` in a browser.
-Or view online at: https://italosantosclemente.github.io/AGI-GAIA-TECHNE/dashboard/
-
-Interact via the dialog box to input conjectures, view narratives, and monitor metrics (Techné, IAE, Harmony).
-
-## Comunidade e Próximos Passos
-- **Contribuições**: Participe no [GitHub Issues](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/issues).
-- **Modelo**: Acompanhe o projeto no [Hugging Face](https://huggingface.co/ClementeItalo/AGI-GAIA-TECHNE).
-
+- GitHub Issues: <https://github.com/italosantosclemente/AGI-GAIA-TECHNE/issues>
+- Hugging Face: <https://huggingface.co/ClementeItalo/AGI-GAIA-TECHNE>

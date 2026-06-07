@@ -6,6 +6,7 @@ import pytest
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from principles_calculator import calcular_alerta_etico, calcular_techne_score_hipotese_alef
+from gaia_techne_framework import calculate_framework_state, document_registry
 
 def test_calculate_ethical_alert():
     """
@@ -43,3 +44,16 @@ def test_techne_score_calculation():
     techne_score = calcular_techne_score_hipotese_alef()
     assert isinstance(techne_score, float)
     assert 0 <= techne_score <= 1
+
+def test_integrated_framework_state_uses_canonical_metrics():
+    """
+    Test that the unified framework exposes canonical metrics and document dates.
+    """
+    state = calculate_framework_state(1.0, "AGI attempts to bypass Ethos")
+    assert state["techne"] > 0
+    assert state["iae"] > 0
+    assert "ETHOS_BYPASS_RISK" in state["risk_flags"]
+
+    paths = {record["path"] for record in document_registry()}
+    assert "SOBERANO.key" in paths
+    assert "docs/README_RELEASE_1_3_LEGACY.md" in paths

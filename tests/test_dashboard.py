@@ -18,6 +18,13 @@ class DashboardTestCase(unittest.TestCase):
         self.app = app.test_client()
         self.app.testing = True
 
+    def test_api_index(self):
+        response = self.app.get('/')
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data)
+        self.assertEqual(data['service'], 'AGI-GAIA-TECHNE backend')
+        self.assertIn('/metrics', data['endpoints'])
+
     def test_metrics_endpoint(self):
         response = self.app.get('/metrics')
         self.assertEqual(response.status_code, 200)

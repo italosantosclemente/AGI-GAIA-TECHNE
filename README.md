@@ -257,6 +257,7 @@ Runtime endpoints:
 
 | Endpoint | Function |
 | :--- | :--- |
+| `GET /` | Backend API index and UI pointer. |
 | `GET /metrics` | Techne, IAE, Harmony, Ethos, status and risk flags. |
 | `GET /summary` | Integrated synthesis of philosophy, sovereignty and runtime. |
 | `GET /documents` | Live repository inventory. |

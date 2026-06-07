@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 import json
 import random
 import datetime
@@ -8,15 +8,34 @@ import os
 # Add the root directory to the Python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from principles_calculator import calcular_techne_score_hipotese_alef, calcular_alerta_etico, calcular_harmonia_final
 from alfabeto_data import ALFABETO_LEF
+from gaia_techne_framework import document_registry, framework_summary, calculate_framework_state
 
 app = Flask(__name__)
+DASHBOARD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'dashboard'))
+
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
 
 # --- Narrative Generation Logic (from gerador_narrativas.jl) ---
 AGENTES = ["☉", "◈", "🌱"]
 ACOES = ["➤", "⨁", "☌", "✨"]
 OBJETOS = ["❍", "⟴", "⟁", "🔗"]
+
+
+@app.route('/')
+def dashboard():
+    return send_from_directory(DASHBOARD_DIR, 'index.html')
+
+
+@app.route('/<path:filename>')
+def dashboard_assets(filename):
+    return send_from_directory(DASHBOARD_DIR, filename)
 
 def gerar_frase(conjecture=""):
     agente = random.choice(AGENTES)
@@ -41,24 +60,26 @@ def gerar_narrativa(conjecture="", num_frases=3, etica=True):
 
 @app.route('/metrics')
 def get_metrics():
-    leap = float(request.args.get('leap', 0.5))
+    leap = request.args.get('leap', 1.0)
     conjecture = request.args.get('conjecture', '')
-
-    techné_score_nl = calcular_techne_score_hipotese_alef() * leap
-    ia_alerta = calcular_alerta_etico(techné_score_nl)
-
-    # Modify IAE based on conjecture
-    if "bypass" in conjecture.lower() or "exceeds" in conjecture.lower():
-        ia_alerta *= 1.5
-
-    harmony_index = calcular_harmonia_final(techné_score_nl)
+    state = calculate_framework_state(leap, conjecture)
 
     return jsonify({
-        'techné': techné_score_nl,
-        'iae': ia_alerta,
-        'harmony': [harmony_index] * 10,
-        'ethos': 1.0
+        **state,
+        'techné': state['techne'],
     })
+
+
+@app.route('/summary')
+def get_summary():
+    leap = request.args.get('leap', 1.0)
+    conjecture = request.args.get('conjecture', '')
+    return jsonify(framework_summary(leap, conjecture))
+
+
+@app.route('/documents')
+def get_documents():
+    return jsonify({'documents': document_registry()})
 
 @app.route('/narrative')
 def get_narrative():

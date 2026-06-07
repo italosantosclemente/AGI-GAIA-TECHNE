@@ -1,9 +1,10 @@
-numpy>=1.24.0
+﻿numpy>=1.24.0
 scipy
 streamlit
 plotly
 matplotlib
-pytest
-flask
+pytest>=8.0
+flask>=3.0
 torch
 pypdf
+dilithium-py>=1.2

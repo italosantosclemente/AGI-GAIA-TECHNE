@@ -102,3 +102,37 @@ def test_chat_prompt_can_include_public_koinos_context():
     assert "KOINOS_KOSMOS_CONTEXT" in prompt
     assert "https://example.com" in prompt
     assert "ISC: Explique Bewusstsein planetario." in prompt
+
+
+def test_chat_can_explain_lef_werk_alphabet_and_wave_auditor():
+    response = GaiaChatSession(checkpoint_path=None).respond("explicar alfabeto")
+
+    assert "24 glifos" in response
+    assert "🌊" in response
+    assert "not a 25th paragraph" in response
+
+
+def test_chat_can_audit_argument_with_wave_auditor():
+    response = GaiaChatSession(checkpoint_path=None).respond("auditar argumento: AGI is Wille")
+
+    assert "🌊 WERK Audit" in response
+    assert "CONTRADICTION" in response
+    assert "Contradictions" in response
+    assert "Returned to ISC judgment." in response
+
+
+def test_chat_can_calculate_werk_indices():
+    response = GaiaChatSession(checkpoint_path=None).respond("calcular IAE")
+
+    assert "# 🌊 AGI-GAIA-TECHNE Indices" in response
+    assert "Techné Score" in response
+    assert "IAE / Índice de Alerta Ético" in response
+    assert "returned_to_ISC: true" in response
+
+
+def test_chat_can_calculate_agi_gaia_techne_indices():
+    response = GaiaChatSession(checkpoint_path=None).respond("🌊 calcular AGI-GAIA-TECHNE")
+
+    assert "# 🌊 AGI-GAIA-TECHNE Indices" in response
+    assert "Índice de Harmonia" in response
+    assert "does not issue final moral judgment" in response

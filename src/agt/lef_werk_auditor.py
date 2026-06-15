@@ -1,4 +1,4 @@
-"""GL25 WERK auditor for LEF -> WERK thesis development."""
+"""Transversal WERK auditor for LEF -> WERK thesis development."""
 
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ from .lef_werk import (
     describe_glifo,
     validate_lef_werk_mapping,
 )
+from .werk_indices import calculate_werk_indices, is_indices_request
 
 assert len(LEF_WERK_SIGNATURE) == 24
 
@@ -23,8 +24,69 @@ GL25_AUDITOR: dict[str, Any] = {
     "status": "transversal, not part of the 24-cell signature",
     "not_part_of_signature": True,
     "function": "audit, relocate, improve, document, return to ISC judgment",
-    "authority": "Final judgment returns to ISC; GL25 suggests but does not legislate.",
+    "authority": "Final judgment returns to ISC; 🌊 suggests but does not legislate.",
 }
+
+CONTINGENT_EXTERNAL_CASE_CATEGORY = "contingent_external_case"
+
+CONTINGENT_CASE_AFFECTED_GLIFOS = ["🜄", "🜁", "⚘", "🜛", "🜜"]
+
+CONTINGENT_CASE_ROUTING: tuple[dict[str, str], ...] = (
+    {
+        "glifo": "🜄",
+        "layer": "technical layer",
+        "receives": "jailbreak, safeguards, model behavior, formal objectivation",
+    },
+    {
+        "glifo": "🜁",
+        "layer": "frontier-AI layer",
+        "receives": "deployment risk, AGI hypothesis, model governance, safety discourse",
+    },
+    {
+        "glifo": "⚘",
+        "layer": "political-myth layer",
+        "receives": "public narrative of danger, emergency framing, symbolic production of threat",
+    },
+    {
+        "glifo": "🜛",
+        "layer": "servitude/revolution layer",
+        "receives": "access control, sovereign interruption, technical dependence, domination risk",
+    },
+    {
+        "glifo": "🜜",
+        "layer": "digital-ecological layer",
+        "receives": "infrastructure, data retention, monitoring, public digital commons",
+    },
+)
+
+CONTINGENT_CASE_QUESTIONS: tuple[str, ...] = (
+    "Which glifos receive this case?",
+    "Which part of the case belongs to technical objectivation?",
+    "Which part belongs to political myth?",
+    "Which part belongs to access, servitude, sovereignty or governance?",
+    "Which part belongs to digital ecology?",
+    "What contradicts the system?",
+    "What can be improved?",
+    "What is already sufficiently handled by the current invariants?",
+    "What should be proposed creatively beyond ISC's initial formulation?",
+    "What must be returned to ISC judgment?",
+)
+
+_CONTINGENT_CASE_TERMS = [
+    "anthropic",
+    "fable",
+    "mythos",
+    "jailbreak",
+    "safeguard",
+    "model access",
+    "access suspension",
+    "model recall",
+    "frontier ai",
+    "frontier-ai",
+    "public ai event",
+    "evento publico de ia",
+    "evento público de ia",
+]
 
 AUDIT_VERDICTS: tuple[str, ...] = (
     "CONTRADICTION",
@@ -103,12 +165,12 @@ _BLOCK_RULES: list[tuple[str, list[str]]] = [
 
 
 def explain_alphabet(include_gl25: bool = True) -> str:
-    """Explain the 24-cell LEF/WERK alphabet and the GL25 audit flow."""
+    """Explain the 24-cell LEF/WERK alphabet and the 🌊 audit flow."""
 
     validation = validate_lef_werk_mapping()
     signature = " ".join(LEF_WERK_SIGNATURE)
     blocks = ", ".join(
-        f"{name} / {meta['pt']} GL{meta['range'][0]:02d}-GL{meta['range'][1]:02d}"
+        f"{name} / {meta['pt']} ({LEF_WERK_SIGNATURE[meta['range'][0] - 1]} … {LEF_WERK_SIGNATURE[meta['range'][1] - 1]})"
         for name, meta in QUALIFICATION_BLOCKS.items()
     )
     lines = [
@@ -124,8 +186,8 @@ def explain_alphabet(include_gl25: bool = True) -> str:
         lines.extend(
             [
                 "",
-                "GL25 🌊 = WERK Auditor / ISC-return.",
-                "GL25 is not a 25th paragraph and is not part of the 24-glifo signature.",
+                "🌊 = WERK Auditor / ISC-return.",
+                "🌊 is not a 25th paragraph and is not part of the 24-glifo signature.",
                 "It audits, relocates, improves, documents and returns judgment to ISC.",
             ]
         )
@@ -133,9 +195,11 @@ def explain_alphabet(include_gl25: bool = True) -> str:
 
 
 def audit_trace(text: str, source: str = "manual") -> dict[str, Any]:
-    """Audit a thesis/system trace with deterministic GL25 heuristics."""
+    """Audit a thesis/system trace with deterministic 🌊 heuristics."""
 
     normalized = _normalize(text)
+    contingent_case = _contingent_external_case(normalized)
+    category = CONTINGENT_EXTERNAL_CASE_CATEGORY if contingent_case else "thesis_trace"
     verdicts: list[str] = []
     contradictions: list[str] = []
     improvements: list[str] = []
@@ -157,6 +221,47 @@ def audit_trace(text: str, source: str = "manual") -> dict[str, Any]:
         add_verdict("CONTRADICTION")
         contradictions.append(
             "The trace risks Wille, Gewissen as moral legislation, artificial soul, technical God, cosmic totality or global Aufhebung."
+        )
+
+    if any(token in normalized for token in ["government directive", "diretiva governamental", "ordem governamental"]) and any(
+        token in normalized for token in ["philosophical legitimacy", "legitimidade filosofica", "legitimidade filosófica"]
+    ):
+        add_verdict("IMPROVEMENT")
+        improvements.append(
+            "A government directive must not become automatic philosophical legitimacy; separate public authority from WERK justification."
+        )
+
+    if any(token in normalized for token in ["model recall", "access suspension", "suspensao de acesso", "suspensão de acesso"]) and any(
+        token in normalized for token in ["proof", "prova", "proves", "demonstra"]
+    ) and any(
+        token in normalized for token in ["wille", "gewissen", "soul", "alma", "god", "deus"]
+    ):
+        add_verdict("CONTRADICTION")
+        contradictions.append(
+            "Model recall or access suspension cannot prove Wille, Gewissen, soul, God or inner moral legislation."
+        )
+
+    if "jailbreak" in normalized and not any(
+        token in normalized
+        for token in ["narrow", "estrito", "especifico", "específico", "universal", "systemic", "sistemico", "sistêmico"]
+    ):
+        add_verdict("IMPROVEMENT")
+        improvements.append(
+            "Distinguish narrow jailbreak evidence from universal safeguard failure before drawing architectural conclusions."
+        )
+
+    if any(token in normalized for token in ["frontier model access", "frontier-model access", "model access", "acesso ao modelo"]) and not all(
+        token in normalized for token in ["technical", "political", "public"]
+    ):
+        add_verdict("IMPROVEMENT")
+        improvements.append(
+            "Separate technical risk, political authority and public justification when auditing frontier-model access."
+        )
+
+    if contingent_case:
+        add_verdict("RELOCATION")
+        sufficient.append(
+            "The external case is treated as contingent public trace, not doctrine, special category or structural pillar."
         )
 
     if (
@@ -201,12 +306,12 @@ def audit_trace(text: str, source: str = "manual") -> dict[str, Any]:
         add_verdict("RELOCATION")
 
     if not contradictions:
-        sufficient.append("No direct GL25 contradiction was detected by deterministic rules.")
+        sufficient.append("No direct 🌊 contradiction was detected by deterministic rules.")
     if not improvements:
         improvements.append("No mandatory improvement was detected; further refinement remains optional.")
 
     creative_suggestions.append(
-        "Suggestion: create or update a dated GL25 ledger entry so the thesis can evolve without premature closure."
+        "Suggestion: create or update a dated 🌊 ledger entry so the thesis can evolve without premature closure."
     )
     next_actions.append(
         "Return this audit to ISC, then revise only the parts marked as contradiction, improvement or relocation."
@@ -214,12 +319,15 @@ def audit_trace(text: str, source: str = "manual") -> dict[str, Any]:
 
     return {
         "source": source,
+        "category": category,
         "object_audited": _excerpt(text),
         "verdicts": verdicts or ["SUFFICIENT"],
         "contradictions": contradictions,
         "improvements": improvements,
         "sufficient": sufficient,
         "relocation": relocation,
+        "contingent_case": _contingent_case_payload(text) if contingent_case else None,
+        "indices": calculate_werk_indices(conjecture=text) if is_indices_request(text) else None,
         "creative_suggestions": creative_suggestions,
         "next_actions": next_actions,
         "returned_to_ISC": True,
@@ -227,12 +335,13 @@ def audit_trace(text: str, source: str = "manual") -> dict[str, Any]:
 
 
 def format_audit_markdown(audit: dict[str, Any]) -> str:
-    """Format a GL25 audit as stable Markdown."""
+    """Format a 🌊 audit as stable Markdown."""
 
     lines = [
-        "# GL25 WERK Audit",
+        "# 🌊 WERK Audit",
         "",
         f"**Source:** {audit.get('source', 'manual')}",
+        f"**Category:** {audit.get('category', 'thesis_trace')}",
         f"**Verdicts:** {', '.join(audit.get('verdicts', []))}",
         "",
         "## Contradictions",
@@ -248,15 +357,48 @@ def format_audit_markdown(audit: dict[str, Any]) -> str:
     ]
     relocation = audit.get("relocation") or {}
     if relocation:
+        target = relocation.get("glifo") or relocation.get("target")
+        title = relocation.get("title")
+        label = f"{target} — {title}" if target and title else str(target)
         lines.extend(
             [
-                f"- Target: {relocation.get('target')}",
+                f"- Target: {label}",
                 f"- Block: {relocation.get('block')}",
                 f"- Reason: {relocation.get('reason')}",
             ]
         )
     else:
         lines.append("- None suggested.")
+    contingent = audit.get("contingent_case") or {}
+    if contingent:
+        lines.extend(
+            [
+                "",
+                "## Contingent External Case",
+                "- Status: contingent public trace, not doctrine.",
+                f"- Affected glifos: {', '.join(contingent.get('affected_glifos', []))}",
+                "- 🌊 audits the case and reinscribes it in the 24-glifo syntax.",
+                "",
+                "### Routing",
+            ]
+        )
+        for route in contingent.get("routing", []):
+            lines.append(f"- {route['glifo']} receives the {route['layer']}: {route['receives']}.")
+        lines.extend(["", "### Audit Questions"])
+        lines.extend(f"{index}. {question}" for index, question in enumerate(contingent.get("questions", []), start=1))
+    indices = audit.get("indices")
+    if indices:
+        lines.extend(
+            [
+                "",
+                "## Index Calculation",
+                "- 🌊 calculated existing AGI-GAIA-TECHNE indices for this trace.",
+                f"- Techné Score: {indices['framework'].get('techne')}",
+                f"- IAE: {indices['framework'].get('iae')}",
+                f"- Harmonia: {indices['framework'].get('harmony')}",
+                "- The numbers are heuristic and return to ISC judgment.",
+            ]
+        )
     lines.extend(
         [
             "",
@@ -273,13 +415,50 @@ def format_audit_markdown(audit: dict[str, Any]) -> str:
 
 
 def daily_ledger_entry(audit: dict[str, Any], date: str | None = None) -> str:
-    """Create a dated GL25 ledger entry."""
+    """Create a dated 🌊 ledger entry."""
 
     entry_date = date or date_type.today().isoformat()
     relocation = audit.get("relocation") or {}
+    if audit.get("category") == CONTINGENT_EXTERNAL_CASE_CATEGORY:
+        contingent = audit.get("contingent_case") or {}
+        return "\n".join(
+            [
+                "# 🌊 Audit — contingent external case",
+                "",
+                f"date: {entry_date}",
+                f"case: {audit.get('object_audited', '')}",
+                f"source: {audit.get('source', 'manual')}",
+                "status: contingent public trace, not doctrine",
+                f"category: {CONTINGENT_EXTERNAL_CASE_CATEGORY}",
+                "",
+                "primary auditor:",
+                "🌊",
+                "",
+                "affected glifos:",
+                ", ".join(contingent.get("affected_glifos", CONTINGENT_CASE_AFFECTED_GLIFOS)),
+                "",
+                f"diagnosis: {', '.join(audit.get('verdicts', []))}",
+                "",
+                f"contradictions: {_inline(audit.get('contradictions', []))}",
+                "",
+                f"improvements: {_inline(audit.get('improvements', []))}",
+                "",
+                f"sufficient elements: {_inline(audit.get('sufficient', []))}",
+                "",
+                f"relocation among glifos: {', '.join(contingent.get('affected_glifos', CONTINGENT_CASE_AFFECTED_GLIFOS))}",
+                "",
+                f"creative suggestion: {_inline(audit.get('creative_suggestions', []))}",
+                "",
+                f"next action: {_inline(audit.get('next_actions', []))}",
+                "",
+                "returned_to_ISC: true",
+                "",
+                format_audit_markdown(audit),
+            ]
+        )
     return "\n".join(
         [
-            f"# GL25 Daily Ledger — {entry_date}",
+            f"# 🌊 Daily Ledger — {entry_date}",
             "",
             f"date: {entry_date}",
             f"object_audited: {audit.get('object_audited', '')}",
@@ -330,6 +509,21 @@ def relocate_argument(text: str) -> dict[str, Any]:
             }
 
     return {}
+
+
+def _contingent_external_case(normalized: str) -> bool:
+    return any(term in normalized for term in _CONTINGENT_CASE_TERMS)
+
+
+def _contingent_case_payload(text: str) -> dict[str, Any]:
+    return {
+        "case": _excerpt(text),
+        "status": "contingent public trace, not doctrine",
+        "affected_glifos": list(CONTINGENT_CASE_AFFECTED_GLIFOS),
+        "routing": [dict(item) for item in CONTINGENT_CASE_ROUTING],
+        "questions": list(CONTINGENT_CASE_QUESTIONS),
+        "internal_targets": ["GL14", "GL15", "GL19", "GL23", "GL24"],
+    }
 
 
 def _normalize(text: str) -> str:

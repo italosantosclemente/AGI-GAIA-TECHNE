@@ -252,4 +252,4 @@ Canonical cross-links:
 
 - [LEF -> WERK v0.7 -- Qualification Architecture](../docs/references/lef-werk-v07.md)
 - [Decisao 150626 -- LEF -> WERK and the Qualification Axis](../docs/references/decisao-150626-lef-werk.md)
-- [GL25 -- WERK Auditor and Daily Thesis Flow](../docs/references/gl25-werk-auditor.md)
+- [🌊 -- Transversal WERK Auditor and Daily Thesis Flow](../docs/references/gl25-werk-auditor.md)

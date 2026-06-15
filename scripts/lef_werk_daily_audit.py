@@ -23,13 +23,13 @@ from agt.lef_werk_auditor import (  # noqa: E402
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run GL25 LEF/WERK daily audit.")
+    parser = argparse.ArgumentParser(description="Run 🌊 LEF/WERK daily audit.")
     parser.add_argument("--text", help="Text to audit.")
     parser.add_argument("--file", help="UTF-8 text file to audit.")
     parser.add_argument("--source", default="manual", help="Source label for the trace.")
     parser.add_argument("--ledger-dir", default="telemetrias/lef-werk", help="Ledger output directory.")
     parser.add_argument("--write-ledger", action="store_true", help="Write a dated ledger entry.")
-    parser.add_argument("--explain-alphabet", action="store_true", help="Explain LEF/WERK and GL25.")
+    parser.add_argument("--explain-alphabet", action="store_true", help="Explain LEF/WERK and 🌊.")
     args = parser.parse_args()
 
     if args.explain_alphabet:
@@ -52,7 +52,7 @@ def main() -> int:
         ledger_dir = ROOT / args.ledger_dir
         ledger_dir.mkdir(parents=True, exist_ok=True)
         today = __import__("datetime").date.today().isoformat()
-        ledger_path = ledger_dir / f"{today}-gl25-audit.md"
+        ledger_path = ledger_dir / f"{today}-wave-audit.md"
         entry = daily_ledger_entry(audit, date=today)
         if ledger_path.exists():
             ledger_path.write_text(

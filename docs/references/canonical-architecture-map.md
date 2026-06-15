@@ -96,7 +96,7 @@ The dated substitution rule is:
 - **How it changed:** the qualification uses Metatheory / Objectivity / Intersubjectivity as literary-academic blocks, while WERK remains inside Logos in the technical Decision 140426 sense.
 - **Why it changed:** the substitution prevents category collapse between the EML kernel and the public qualification architecture.
 
-GL25 is governed by [GL25 WERK Auditor](gl25-werk-auditor.md). It is not a 25th paragraph and is not part of the 24-glifo signature. It is the transversal audit flow that reopens the whole, relocates parts, documents daily development and returns judgment to ISC.
+🌊 is governed by [Transversal WERK Auditor](gl25-werk-auditor.md). It is not a 25th paragraph and is not part of the 24-glifo signature. It is the transversal audit flow that reopens the whole, audits contingent external cases, calculates existing indices, documents daily development and returns judgment to ISC.
 
 ---
 

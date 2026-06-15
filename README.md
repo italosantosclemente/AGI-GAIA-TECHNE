@@ -54,6 +54,15 @@ Telemetry command inside the chat:
 fazer telemetria
 ```
 
+Index calculation commands inside the chat:
+
+```text
+calcular IAE
+calcular índices da telemetria
+🌊 calcular AGI-GAIA-TECHNE
+calcular Techné Score e Harmonia
+```
+
 Terminal telemetry check:
 
 ```bash
@@ -179,7 +188,7 @@ High-risk material is no longer treated as inert stoppage. It is transmuted into
 | [docs/references/llm-manual-forge.md](docs/references/llm-manual-forge.md) | v10.1 ManualGPT: corpus forge, internet corpus, tokenizer, trainer and chat app |
 | [docs/references/lef-werk-v07.md](docs/references/lef-werk-v07.md) | LEF -> WERK v0.7 qualification architecture and 24-glifo audit map |
 | [docs/references/decisao-150626-lef-werk.md](docs/references/decisao-150626-lef-werk.md) | Dated substitution record for the qualification axis: what, how and why changed on 15 June 2026 |
-| [docs/references/gl25-werk-auditor.md](docs/references/gl25-werk-auditor.md) | v0.8 GL25 WERK Auditor: transversal flow, daily ledger and ISC-return |
+| [docs/references/gl25-werk-auditor.md](docs/references/gl25-werk-auditor.md) | v0.8 🌊 transversal WERK auditor: contingent cases, indices, daily ledger and ISC-return |
 | [docs/references/public-chat-deploy.md](docs/references/public-chat-deploy.md) | Public Streamlit deploy instructions for the Gaia-Techne chat |
 | [docs/references/runtime-status.md](docs/references/runtime-status.md) | Implemented, experimental and not-claimed runtime status |
 | [docs/references/planetary-repraesentatio.md](docs/references/planetary-repraesentatio.md) | Gaia, internet and planetary representation |
@@ -280,6 +289,7 @@ python scripts/agt_run.py --task "web: https://example.com"
 python scripts/agt_ingest.py --url "https://example.com" --json
 python scripts/agt_autonomy.py --once --url "data:text/plain,Gaia-Techne heartbeat" --json
 python scripts/agt_telemetry.py
+python scripts/lef_werk_indices.py
 python scripts/agt_audit.py --claim "Gaia is Earth as planetary koinos kosmos."
 python scripts/agt_dataset_forge.py --input "<local-drive-manuals>" --output data/llm/manual_forge --json
 python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed --json

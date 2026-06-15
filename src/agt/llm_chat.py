@@ -15,6 +15,7 @@ from .planetary_telemetry import (
 )
 from .syntax import AGTSyntax
 from .types import AuditResult, ThesisStatus
+from .werk_indices import calculate_werk_indices, format_werk_indices_markdown, is_indices_request
 
 
 SYSTEM_FRAME = """AGI-GAIA-TECHNE :: ISC
@@ -74,6 +75,10 @@ class GaiaChatSession:
                 else PlanetaryTelemetry(timeout=6).collect()
             )
             response = format_telemetry_markdown(report)
+        elif is_indices_request(user_message):
+            response = format_werk_indices_markdown(
+                calculate_werk_indices(conjecture=user_message)
+            )
         elif is_lef_werk_alphabet_request(user_message):
             response = explain_alphabet(include_gl25=True)
         elif is_lef_werk_audit_request(user_message):
@@ -168,6 +173,10 @@ def is_lef_werk_alphabet_request(text: str) -> bool:
         "explicar lef",
         "explicar werk",
         "glifo 25",
+        "fluxo auditor",
+        "explicar 🌊",
+        "o que e 🌊",
+        "o que é 🌊",
     ]
     return any(pattern in normalized for pattern in patterns)
 
@@ -178,6 +187,18 @@ def is_lef_werk_audit_request(text: str) -> bool:
         "auditar tese",
         "auditar argumento",
         "auditar sistema",
+        "auditar evento publico",
+        "auditar evento público",
+        "auditar noticia",
+        "auditar notícia",
+        "auditar noticia de ia",
+        "auditar notícia de ia",
+        "external event audit",
+        "anthropic",
+        "fable",
+        "mythos",
+        "jailbreak",
+        "model access",
         "relocalizar argumento",
         "o que contradiz",
         "o que pode melhorar",

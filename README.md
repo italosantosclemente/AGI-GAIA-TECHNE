@@ -179,6 +179,7 @@ High-risk material is no longer treated as inert stoppage. It is transmuted into
 | [docs/references/llm-manual-forge.md](docs/references/llm-manual-forge.md) | v10.1 ManualGPT: corpus forge, internet corpus, tokenizer, trainer and chat app |
 | [docs/references/lef-werk-v07.md](docs/references/lef-werk-v07.md) | LEF -> WERK v0.7 qualification architecture and 24-glifo audit map |
 | [docs/references/decisao-150626-lef-werk.md](docs/references/decisao-150626-lef-werk.md) | Dated substitution record for the qualification axis: what, how and why changed on 15 June 2026 |
+| [docs/references/gl25-werk-auditor.md](docs/references/gl25-werk-auditor.md) | v0.8 GL25 WERK Auditor: transversal flow, daily ledger and ISC-return |
 | [docs/references/public-chat-deploy.md](docs/references/public-chat-deploy.md) | Public Streamlit deploy instructions for the Gaia-Techne chat |
 | [docs/references/runtime-status.md](docs/references/runtime-status.md) | Implemented, experimental and not-claimed runtime status |
 | [docs/references/planetary-repraesentatio.md](docs/references/planetary-repraesentatio.md) | Gaia, internet and planetary representation |

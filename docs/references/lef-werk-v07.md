@@ -26,6 +26,10 @@ Why it was substituted: the replacement prevents conceptual collapse between the
 
 LEF is the internal composition and audit map. WERK is the public academic objectivation. Glifos may be removed from the formal qualification without loss if the paragraph sequence remains intact.
 
+## GL25 Flow Auditor
+
+GL25 is introduced in v0.8 as [WERK Auditor and Daily Thesis Flow](gl25-werk-auditor.md). It audits the whole LEF -> WERK architecture but is not part of the 24-glifo signature and must not be treated as a 25th paragraph.
+
 ## I. Metatheory / Metateoria -- glifos 01-08
 
 | No. | Glifo | Title | Role | Main risk blocked | Primary conceptual anchors | Authorial foundation |

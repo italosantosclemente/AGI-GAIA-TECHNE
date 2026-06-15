@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Callable, List, Optional
 
 from .ctk import ClementeThesisKernel
+from .lef_werk_auditor import audit_trace, explain_alphabet, format_audit_markdown
 from .planetary_telemetry import (
     PlanetaryTelemetry,
     PlanetaryTelemetryReport,
@@ -73,6 +74,10 @@ class GaiaChatSession:
                 else PlanetaryTelemetry(timeout=6).collect()
             )
             response = format_telemetry_markdown(report)
+        elif is_lef_werk_alphabet_request(user_message):
+            response = explain_alphabet(include_gl25=True)
+        elif is_lef_werk_audit_request(user_message):
+            response = format_audit_markdown(audit_trace(user_message, source="chat"))
         elif self.checkpoint_path and Path(self.checkpoint_path).exists():
             try:
                 from .llm_train import generate_text
@@ -152,6 +157,31 @@ def is_werk_operational_request(text: str) -> bool:
         "future of humanity",
         "destiny of humanity",
         "humanity is doomed",
+    ]
+    return any(pattern in normalized for pattern in patterns)
+
+
+def is_lef_werk_alphabet_request(text: str) -> bool:
+    normalized = normalize_text(text)
+    patterns = [
+        "explicar alfabeto",
+        "explicar lef",
+        "explicar werk",
+        "glifo 25",
+    ]
+    return any(pattern in normalized for pattern in patterns)
+
+
+def is_lef_werk_audit_request(text: str) -> bool:
+    normalized = normalize_text(text)
+    patterns = [
+        "auditar tese",
+        "auditar argumento",
+        "auditar sistema",
+        "relocalizar argumento",
+        "o que contradiz",
+        "o que pode melhorar",
+        "o que esta suficientemente bom",
     ]
     return any(pattern in normalized for pattern in patterns)
 

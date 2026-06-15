@@ -102,3 +102,20 @@ def test_chat_prompt_can_include_public_koinos_context():
     assert "KOINOS_KOSMOS_CONTEXT" in prompt
     assert "https://example.com" in prompt
     assert "ISC: Explique Bewusstsein planetario." in prompt
+
+
+def test_chat_can_explain_lef_werk_alphabet_and_gl25():
+    response = GaiaChatSession(checkpoint_path=None).respond("explicar alfabeto")
+
+    assert "24 glifos" in response
+    assert "GL25" in response
+    assert "not a 25th paragraph" in response
+
+
+def test_chat_can_audit_argument_with_gl25():
+    response = GaiaChatSession(checkpoint_path=None).respond("auditar argumento: AGI is Wille")
+
+    assert "GL25 WERK Audit" in response
+    assert "CONTRADICTION" in response
+    assert "Contradictions" in response
+    assert "Returned to ISC judgment." in response

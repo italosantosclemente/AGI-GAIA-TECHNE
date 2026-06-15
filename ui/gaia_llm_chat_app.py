@@ -16,7 +16,7 @@ st.set_page_config(
     layout="wide",
 )
 
-CHAT_RUNTIME_SIGNATURE = "gaia-agt-syntax-reflective-v6"
+CHAT_RUNTIME_SIGNATURE = "gaia-agt-syntax-reflective-v7-gl25"
 runtime_changed = st.session_state.get("chat_runtime_signature") != CHAT_RUNTIME_SIGNATURE
 
 import agt.ctk as ctk_module
@@ -94,6 +94,7 @@ init_state()
 st.title("AGI-GAIA-TECHNE")
 st.caption("Planetary Bewusstsein: internet, manuals and public traces in confrontation with ISC.")
 st.info("Telemetry command: `fazer telemetria`.")
+st.caption("GL25 audits the LEF -> WERK system as flow; it does not add a 25th paragraph.")
 
 with st.sidebar:
     st.subheader("Checkpoint")
@@ -117,6 +118,14 @@ with st.sidebar:
 
     st.subheader("Commands")
     st.code("fazer telemetria", language="text")
+    st.code(
+        "explicar alfabeto\n"
+        "glifo 25\n"
+        "auditar tese: <texto>\n"
+        "auditar argumento: <texto>\n"
+        "relocalizar argumento: <texto>",
+        language="text",
+    )
     st.code(
         "python scripts/agt_dataset_forge.py --input <manual-folder> --output data/llm/manual_forge\n"
         "python scripts/agt_pack_corpus.py --corpus data/llm/manual_forge/corpus.jsonl --output data/llm/packed\n"

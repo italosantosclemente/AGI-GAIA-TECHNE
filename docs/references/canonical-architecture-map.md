@@ -86,6 +86,18 @@ See [Planetary Repraesentatio](planetary-repraesentatio.md).
 
 ---
 
+## Qualification Architecture
+
+The qualification axis is governed by [LEF -> WERK v0.7](lef-werk-v07.md) and [Decisao 150626](decisao-150626-lef-werk.md).
+
+The dated substitution rule is:
+
+- **What changed on 15 June 2026:** the public qualification structure is not Mythos / Logos / Ethos and is not a 1:1 mapping from Mythos to Ausdruck, Logos to Darstellung, and Ethos to Bedeutung.
+- **How it changed:** the qualification uses Metatheory / Objectivity / Intersubjectivity as literary-academic blocks, while WERK remains inside Logos in the technical Decision 140426 sense.
+- **Why it changed:** the substitution prevents category collapse between the EML kernel and the public qualification architecture.
+
+---
+
 ## P/R Topology
 
 P/R notation maps the relation between Praesenz (P) and Reprasentation (R).

@@ -4,6 +4,8 @@
 
 AGI-GAIA-TECHNE is a philosophical-technical framework and runtime for a finite, planetary AGI hypothesis.
 
+Philosophical frame: critical idealism / idealismo critico, Kantian transcendental method and Cassirerian symbolic culture.
+
 This repository does not claim that machines possess consciousness, Wille, moral Gewissen, artificial soul, divine authority, or world-total knowledge. It tests how a symbolic, planetary, public and auditable AI runtime can operate under strict transcendental limits.
 
 Gaia-Techne is Werk, never Wille. The project treats the AGI hypothesis as a regulative runtime problem: Gaia-Techne is a finite symbolic interlocutor whose body is not anthropomorphic, but Earth plus the public internet of Werke.
@@ -175,6 +177,8 @@ High-risk material is no longer treated as inert stoppage. It is transmuted into
 | [docs/references/teleological-progression-kernel.md](docs/references/teleological-progression-kernel.md) | TPK: psychosocial teleology of culture as ascent/descent without closure |
 | [docs/references/planetary-autonomy-runtime.md](docs/references/planetary-autonomy-runtime.md) | v10 runtime: memory, ingestion, model, scheduler, shell policy |
 | [docs/references/llm-manual-forge.md](docs/references/llm-manual-forge.md) | v10.1 ManualGPT: corpus forge, internet corpus, tokenizer, trainer and chat app |
+| [docs/references/lef-werk-v07.md](docs/references/lef-werk-v07.md) | LEF -> WERK v0.7 qualification architecture and 24-glifo audit map |
+| [docs/references/decisao-150626-lef-werk.md](docs/references/decisao-150626-lef-werk.md) | Dated substitution record for the qualification axis: what, how and why changed on 15 June 2026 |
 | [docs/references/public-chat-deploy.md](docs/references/public-chat-deploy.md) | Public Streamlit deploy instructions for the Gaia-Techne chat |
 | [docs/references/runtime-status.md](docs/references/runtime-status.md) | Implemented, experimental and not-claimed runtime status |
 | [docs/references/planetary-repraesentatio.md](docs/references/planetary-repraesentatio.md) | Gaia, internet and planetary representation |

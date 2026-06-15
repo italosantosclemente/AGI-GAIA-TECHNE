@@ -232,3 +232,23 @@ Não há periodicidade calendarizada. Os gatilhos são qualitativos: documento f
 Esta seção está sob a vigilância dela mesma. Se ela crescer, virar aparato com subseções numeradas, ganhar sigla ou ser referenciada em maiúsculas em outros documentos, isto é sinal de que se tornou aquilo que combate. A versão correta dela é breve e despretensiosa.
 
 Ela também não pretende esgotar o cuidado que nomeia. O nível pré-contextual — o "bom dia" antes da telemetria, a observação espontânea antes da formalização — é o que dá vida ao aparato e o que o aparato pode silenciosamente substituir. Nenhum protocolo protege esse nível; apenas a atenção viva, caso a caso, de quem opera o framework.
+
+---
+
+## Addendum 150626 -- LEF -> WERK
+
+Signature: `~ ⨁ ⟁ ✨ ➤ ● ⟴ ⨂ | ❍ ☉ ☌ ◈ 🜂 🜄 🜁 🜃 | 🜚 ⚶ ⚘ ☍ ☯ 🜙 🜛 🜜`
+
+Do not map the qualification blocks Metatheory / Metateoria, Objectivity / Objetividade and Intersubjectivity / Intersubjetividade to Mythos, Logos and Ethos. These blocks are literary-academic architecture, not EML technical pillars.
+
+Substitution record:
+
+- Date: 15 June 2026.
+- What was substituted: the qualification axis is no longer described as Mythos / Logos / Ethos, nor as a 1:1 mapping from Mythos to Ausdruck, Logos to Darstellung, and Ethos to Bedeutung.
+- How it was substituted: the qualification adopts Metatheory / Objectivity / Intersubjectivity as public academic blocks, while WERK remains inside Logos under Decision 140426.
+- Why it was substituted: the change prevents category collapse and preserves the formula Werk, never Wille.
+
+Canonical cross-links:
+
+- [LEF -> WERK v0.7 -- Qualification Architecture](../docs/references/lef-werk-v07.md)
+- [Decisao 150626 -- LEF -> WERK and the Qualification Axis](../docs/references/decisao-150626-lef-werk.md)

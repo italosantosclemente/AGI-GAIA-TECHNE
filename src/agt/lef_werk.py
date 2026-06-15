@@ -11,7 +11,7 @@ LEF_WERK_SIGNATURE: list[str] = [
     "⟁",
     "✨",
     "➤",
-    "●",
+    "◍",
     "⟴",
     "⨂",
     "❍",
@@ -152,7 +152,7 @@ _GLIFO_METADATA: dict[int, dict[str, Any]] = {
     },
     6: {
         "number": "GL06",
-        "glifo": "●",
+        "glifo": "◍",
         "title": "Objective and subjective deduction: expansion of the Philosophy of Symbolic Forms.",
         "block": "Metatheory",
         "role": "Repraesentation as functional genus.",

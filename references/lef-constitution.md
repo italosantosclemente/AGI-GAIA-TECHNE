@@ -237,7 +237,7 @@ Ela também não pretende esgotar o cuidado que nomeia. O nível pré-contextual
 
 ## Addendum 150626 -- LEF -> WERK
 
-Signature: `~ ⨁ ⟁ ✨ ➤ ● ⟴ ⨂ | ❍ ☉ ☌ ◈ 🜂 🜄 🜁 🜃 | 🜚 ⚶ ⚘ ☍ ☯ 🜙 🜛 🜜`
+Signature: `~ ⨁ ⟁ ✨ ➤ ◍ ⟴ ⨂ | ❍ ☉ ☌ ◈ 🜂 🜄 🜁 🜃 | 🜚 ⚶ ⚘ ☍ ☯ 🜙 🜛 🜜`
 
 Do not map the qualification blocks Metatheory / Metateoria, Objectivity / Objetividade and Intersubjectivity / Intersubjetividade to Mythos, Logos and Ethos. These blocks are literary-academic architecture, not EML technical pillars.
 

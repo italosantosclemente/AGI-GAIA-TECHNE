@@ -22,7 +22,7 @@ Why it was substituted: the replacement prevents conceptual collapse between the
 
 ## Signature of 24 glifos
 
-`~ ⨁ ⟁ ✨ ➤ ● ⟴ ⨂ | ❍ ☉ ☌ ◈ 🜂 🜄 🜁 🜃 | 🜚 ⚶ ⚘ ☍ ☯ 🜙 🜛 🜜`
+`~ ⨁ ⟁ ✨ ➤ ◍ ⟴ ⨂ | ❍ ☉ ☌ ◈ 🜂 🜄 🜁 🜃 | 🜚 ⚶ ⚘ ☍ ☯ 🜙 🜛 🜜`
 
 LEF is the internal composition and audit map. WERK is the public academic objectivation. Glifos may be removed from the formal qualification without loss if the paragraph sequence remains intact.
 
@@ -35,7 +35,7 @@ LEF is the internal composition and audit map. WERK is the public academic objec
 | GL03 | `⟁` | Haptic realism: analytic of understanding, not ontology. | Anti-literalist discipline of models. | Model = mind / computation = ontology. | Chirimuuta; fallacy of misplaced concreteness; Cassirer ECW 13; thesis introduction. | Thesis introduction and Chirimuuta integration. |
 | GL04 | `✨` | Newton and Einstein: transcendental method and scientific world. | Objectivity as functional reconstruction. | Data accumulation = objectivity. | Cassirer ECW 10, ECW 19, ECW 6; Friedman; Pringe. | Undergraduate thesis on Einstein and Cassirer and BEPE. |
 | GL05 | `➤` | Sense, imagination and understanding in Kant. | Synthesis as condition of cognition. | Raw-data empiricism and computational reduction. | KrV A78/B103; KrV A778-781/B806-809; Longuenesse. | "O Elo" and BEPE. |
-| GL06 | `●` | Objective and subjective deduction: expansion of the Philosophy of Symbolic Forms. | Repraesentation as functional genus. | Glifo as private code instead of public function. | Cassirer ECW 6 and ECW 13; Disposition 1917; Moeckel; Matherne; symbolic pregnance. | Article on symbolic functions. |
+| GL06 | `◍` | Objective and subjective deduction: expansion of the Philosophy of Symbolic Forms. | Repraesentation as functional genus. | Glifo as private code instead of public function. | Cassirer ECW 6 and ECW 13; Disposition 1917; Moeckel; Matherne; symbolic pregnance. | Article on symbolic functions. |
 | GL07 | `⟴` | The three transcendental ideas: soul, world and God. | Negative discipline of intelligence. | Artificial soul, total internet-world, technical God. | KrV A329/B386; KrV B426-428; KrV A644/B672; Grier; Willaschek. | "O Elo" and thesis chapter on transcendental ideas. |
 | GL08 | `⨂` | The system of the three symbolic functions of consciousness. | WERK becomes aware of its own position in Logos. | Confusing Mythos-Clemente with Cassirerian myth. | Cassirer ECW 11, ECW 12, ECW 13; Decision 140426; P=R, P~R, P!=R. | Dissertation and article on symbolic functions. |
 

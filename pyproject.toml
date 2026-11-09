@@ -1,7 +1,13 @@
 [project]
 name = "agi-gaia-techne"
-version = "10.1.0"
+version = "2.0.0"
+description = "A critical architecture for an AGI hypothesis: Werk, never Wille."
+authors = [{ name = "Ítalo Santos Clemente" }]
 requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

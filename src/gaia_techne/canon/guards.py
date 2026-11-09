@@ -32,11 +32,13 @@ _SOUL = [
     r"\b(?:the )?(?:system|model|machine|ai|agi) (?:is|has become) (?:conscious|sentient|a person|alive)\b",
     r"\bmachine (?:conscience|gewissen|will|wille)\b",
     r"\bartificial soul\b",
+    r"\b(?:the )?(?:planet|earth|gaia|internet|network) (?:thinks|wills|wants|is conscious|is a mind)\b",
 ]
 _WORLD = [
     r"\b(?:all|every|the whole|the entire|complete) (?:world|internet|data|knowledge|reality)\b",
     r"\bnothing (?:is )?(?:left out|missing)\b",
     r"\bcosmic totality\b",
+    r"\b(?:all|everything) (?:that )?(?:is|was) (?:ever )?(?:written|recorded|said)\b",
 ]
 _IDEAL = [
     r"\b(?:final|absolute|ultimate|definitive) truth\b",
@@ -44,6 +46,8 @@ _IDEAL = [
     r"\bview from nowhere\b",
     r"\bbeyond (?:all|every) (?:perspective|form|symbol)s?\b",
     r"\bcertainly (?:proves|establishes) that (?:agi|ai) (?:is|has)\b",
+    r"\b(?:produces|creates) (?:its own|the) truths?\b",
+    r"\bsets? its own (?:ends|goals|values)\b",
 ]
 
 

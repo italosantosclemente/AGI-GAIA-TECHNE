@@ -17,6 +17,8 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Set
 
+from .ground import refuse_ground_as_subject
+
 
 @dataclass(frozen=True)
 class Entry:
@@ -39,6 +41,7 @@ class CommonWorld:
         self.participants.add(person)
 
     def record(self, author: str, kind: str, payload: Dict[str, Any], refers_to: Optional[int] = None) -> Entry:
+        refuse_ground_as_subject(author)
         previous = self._entries[-1].digest if self._entries else "genesis"
         at = datetime.now(timezone.utc).isoformat()
         body = json.dumps(

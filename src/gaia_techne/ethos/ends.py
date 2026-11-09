@@ -12,6 +12,8 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
+from ..koinos.ground import refuse_ground_as_subject
+
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -41,6 +43,9 @@ class End:
     proposed_by: str
     community: str
     acknowledgments: List[Acknowledgment] = field(default_factory=list)
+    parent_id: Optional[str] = None  # set when the end was derived from another
+    derived_by_machine: bool = False
+    revisions: List[Dict[str, str]] = field(default_factory=list)
     created_at: str = field(default_factory=_now)
 
     @property
@@ -73,6 +78,7 @@ class EndsRegistry:
         self._ends: Dict[str, End] = {}
 
     def propose(self, end_id: str, statement: str, proposed_by: str, community: str) -> End:
+        refuse_ground_as_subject(proposed_by)
         if proposed_by.strip().lower() in self.MACHINE_AUTHORS:
             raise EndProposedByMachine(
                 "The runtime is technically practical only: it cannot set the ends "
@@ -85,8 +91,42 @@ class EndsRegistry:
         return end
 
     def acknowledge(self, end_id: str, person: str, accepts: bool = True, reason: str = "") -> End:
+        refuse_ground_as_subject(person)
+        if person.strip().lower() in self.MACHINE_AUTHORS:
+            raise EndProposedByMachine("Only people can acknowledge an end.")
         end = self.get(end_id)
         end.acknowledgments.append(Acknowledgment(person=person, accepts=accepts, reason=reason))
+        return end
+
+    def derive(self, parent_id: str, end_id: str, statement: str, derived_by: str) -> End:
+        """Record an instrumental end that a system derived from an acknowledged one.
+
+        The processes by which a system forms and revises the ends it pursues
+        must be public and open to "any of us". A derived end is recorded, linked
+        to its parent, and stays unusable until a person acknowledges it.
+        """
+        parent = self.get(parent_id)
+        if not parent.is_acknowledged:
+            raise ValueError(f"cannot derive from {parent_id!r}: it has not been acknowledged")
+        if end_id in self._ends:
+            raise ValueError(f"end {end_id!r} already registered")
+        end = End(
+            end_id=end_id,
+            statement=statement,
+            proposed_by=derived_by,
+            community=parent.community,
+            parent_id=parent_id,
+            derived_by_machine=derived_by.strip().lower() in self.MACHINE_AUTHORS,
+        )
+        self._ends[end_id] = end
+        return end
+
+    def revise(self, end_id: str, new_statement: str, by: str, reason: str) -> End:
+        """Change an end's statement, keeping the old one public. A revision clears acknowledgment."""
+        end = self.get(end_id)
+        end.revisions.append({"from": end.statement, "to": new_statement, "by": by, "reason": reason, "at": _now()})
+        end.statement = new_statement
+        end.acknowledgments = []
         return end
 
     def get(self, end_id: str) -> End:

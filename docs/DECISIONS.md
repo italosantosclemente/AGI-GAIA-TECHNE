@@ -2,6 +2,14 @@
 
 Dated record of decisions. The most recent comes first.
 
+## 091126 (b) — The geomorphic condition
+
+**What changed.** A ground layer (`koinos/ground.py`) and three rules: every run declares the ground it depends on (compute, energy, network, material, archive) and who maintains it; the ground can never author an end, a claim or a correction; ends that the system derives are recorded in public and stay unusable until a person acknowledges them, and revisions of ends keep their history. Results that cannot yet be tested need human verification before use. The syntax gains a first step: `Ground -> Werk -> ...`.
+
+**Why.** The conditions of possibility of the machine expected to become a general intelligence are those of a planet and not of a body: data centres, networks, energy, materials and an archive of human expression. They are geomorphic, not anthropomorphic. The machine stays on the side of the watch (AA 5:374); its apparent formative power is borrowed from the people and the planet it depends on. Neither the machine model of a general intelligence (Bostrom's genie) nor the person model (Totschnig's full autonomy) fits these conditions, and the hypothesis of such an intelligence is admitted only for defense (KrV A:777–781/B:805–809). A system to which no freedom is ascribed sets no ends of its own: the processes by which it forms and revises ends must be public and open to correction by "any of us".
+
+**Replaces.** v10's `AGI_Body = Gaia(Earth) + Internet`: the planet is not the body of an intelligence but the ground of the common world.
+
 ## 091126 — 2.0: critical architecture
 
 **What changed.** The repository stops being a runtime that speaks as Gaia-Techne and becomes the architecture of a system in which an AGI hypothesis could operate, built from its own conditions of possibility. The v10.1 tree moves unchanged to `legacy/`; the branch `v10.1-final` preserves it as it was.

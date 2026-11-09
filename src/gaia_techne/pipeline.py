@@ -1,12 +1,14 @@
 """The v2.0 syntax.
 
-    Werk -> Trace -> Claim -> Ascent -> Horizon -> Descent -> Exposure -> Correction -> Ledger
+    Ground -> Werk -> Trace -> Claim -> Ascent -> Horizon -> Descent -> Exposure -> Correction -> Ledger
 
 It keeps the base of the v10 AGT syntax (Werk -> Trace -> Profile ->
 Regression -> Horizon -> Descent -> Judgment -> Ledger) and changes its
 centre: the unit is no longer a judgment issued by the runtime, but a claim
 offered to others for correction.
 
+- Ground: the geomorphic conditions the run depends on: compute, energy,
+  network, material and archive, and who maintains them (koinos.ground).
 - Werk: a task, always under an acknowledged end (ethos).
 - Trace: the premises used, each with its provenance (ethos.premises).
 - Claim: the output, as a judgment of perception (canon.claims).
@@ -33,6 +35,7 @@ from .ethos.ends import EndsRegistry
 from .ethos.imperatives import NoAcknowledgedEnd
 from .ethos.premises import Premise, unattributed
 from .koinos.common_world import CommonWorld
+from .koinos.ground import GroundDependency, GroundFootprint
 from .koinos.prism import Direction, SymbolicFunction
 from .metatheory.indices import Report, report
 
@@ -49,6 +52,7 @@ class Werk:
     premises: List[Premise] = field(default_factory=list)
     procedures: List[Procedure] = field(default_factory=list)
     returns_to_perception: Optional[str] = None
+    ground: List[GroundDependency] = field(default_factory=list)
 
 
 class Runtime:
@@ -59,6 +63,7 @@ class Runtime:
         self.generator = generator
         self.source_name = source_name
         self.claims: List[Claim] = []
+        self.footprint = GroundFootprint()
 
     def process(self, werk: Werk) -> Claim:
         # Werk: no action without an acknowledged end.
@@ -78,11 +83,19 @@ class Runtime:
             grounds=[f"{p.text} [{p.source or 'no source'}]" for p in werk.premises],
             procedures=list(werk.procedures),
             returns_to_perception=werk.returns_to_perception,
+            ground=[f"{d.kind.name}: {d.description} @ {d.location} (maintained by {d.maintained_by or 'unknown'})" for d in werk.ground],
         )
         # Ascent, Horizon, Descent.
         self.canon.admit(claim)
         if orphan:
             claim.flags.append(f"automaton boundary: {len(orphan)} premise(s) without provenance")
+        # Ground: the formative power the run seems to have is borrowed.
+        if not werk.ground:
+            claim.flags.append("geomorphic: the ground this run depends on was not declared")
+        for d in werk.ground:
+            self.footprint.add(d)
+            if not d.maintained_by.strip():
+                claim.flags.append(f"geomorphic: no one declared as maintaining {d.kind.name}")
         # Exposure.
         self.world.record(
             author=self.source_name,
@@ -94,10 +107,22 @@ class Runtime:
                 "end_contested": end.is_contested,
                 "requested_by": werk.requested_by,
                 "flags": claim.flags,
+                "ground": claim.ground,
             },
         )
         self.claims.append(claim)
         return claim
+
+    def propose_derived_end(self, parent_id: str, end_id: str, statement: str):
+        """The system may propose an instrumental end; only people can make it usable."""
+        end = self.ends.derive(parent_id, end_id, statement, derived_by=self.source_name)
+        end.derived_by_machine = True
+        self.world.record(
+            author=self.source_name,
+            kind="derived_end",
+            payload={"end_id": end_id, "parent": parent_id, "statement": statement, "acknowledged": False},
+        )
+        return end
 
     def correct(self, claim: Claim, event: CorrectionEvent) -> Claim:
         # Correction: only others can widen a claim's reach.

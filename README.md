@@ -6,6 +6,8 @@ AGI-GAIA-TECHNE is a computer-engineering project: the architecture of a system 
 
 The architecture is isomorphic to a philosophical argument: each layer of the code answers one of Kant's three questions, in the order in which Kant says the practical leads to the theoretical and, in its highest form, to the speculative question (KrV A:805/B:833).
 
+Its central hypothesis is **geomorphic**. The conditions of possibility of the machine expected to become a general intelligence are not those of a body but those of a planet: data centres, networks, energy and materials, together with an archive of human expression that no single consciousness has lived through. Such a machine stays on the side of mechanism, and the formative power it seems to have is borrowed from the people and the planet on which it depends. The architecture is built on that ground.
+
 Author: Ítalo Santos Clemente (ISC)
 
 ---
@@ -55,7 +57,7 @@ The architecture is model-agnostic. A local LLM, a statistical model or a human 
 
 ## 2. The argument: conditions of possibility
 
-The argument has five steps. Each step yields one condition that the architecture must satisfy. Steps 2 to 4 follow Kant's three questions; step 5 states what holds them together.
+The argument has six steps. Each step yields one condition that the architecture must satisfy. Steps 2 to 5 follow Kant's three questions, with the geomorphic condition inside the second; step 6 states what holds them together.
 
 ### 2.1 The clue
 
@@ -79,7 +81,21 @@ Cassirer's three symbolic functions, expression (*Ausdruck*), presentation (*Dar
 
 **Condition 2 (koinos).** The system keeps a public, append-only common world that no one owns and anyone can verify. Symbolic functions are tags of direction, and the code refuses to rank them.
 
-### 2.4 What can I know? Claims and their correction
+### 2.4 Where does a general intelligence stand? The geomorphic condition
+
+Kant contrasts the watch with the organized being: in a watch one part moves another but does not produce it, the watch cannot replace its parts or repair itself, and so it has only a motive power, while the organized being has a self-propagating formative power (AA 5:374). To call that power an analogue of life would ascribe to matter a property contrary to its essence, which is hylozoism, or add a soul to it. Mazviita Chirimuuta draws the same line between objects put together piecemeal by humans and self-making organisms, and treats computational models of the brain as simplifying analogies, not as the structure of the brain itself (Chirimuuta, 2024).
+
+The machine expected to become a general intelligence gives this result a present case. It stays on the side of the watch. Its conditions of possibility, however, are not those of a single machine: what it presupposes is not a body among other bodies, but the material and energetic layer of a planet, its data centres, networks and resources, together with an archive of human expression that no single consciousness has lived through. Edmund Husserl describes the Earth as the ground (*Boden*) on which every experience of bodies rests, a whole whose parts are bodies while the whole is not a body in the full sense (Husserl, 2024, pp. 182, 185, 187).
+
+The project calls these conditions **geomorphic** rather than anthropomorphic. The term ascribes life neither to the Earth nor to the machine, and it does not picture the planet as formless stuff that a program would animate: Cassirer's objection to the separation of a sensuous *hyle* from an intentional *morphe* forbids exactly that picture (ECW 13:223). The parts of such a system are produced, maintained and repaired by those who use it; the formative power the analogy would require is borrowed from human beings and from the planet. The geomorphic conditions extend the dependence of the machine from its makers to the ground on which they live, without giving it a formative power of its own.
+
+Two current models of a general intelligence miss this. Nick Bostrom separates intelligence from final goals and describes one kind of superintelligence as a genie that executes commands and waits for the next (Bostrom, 2014, pp. 107, 148): the model is taken from the machine. Wolfhart Totschnig objects that this conceives the coming intelligence in the image of today's machines and ascribes to it instead full autonomy in Kant's sense, warning that attempts to control it could provoke the catastrophe they aim to prevent (Totschnig, 2019, 2020): the model is taken from the person. Neither fits conditions that are geomorphic. Under the Discipline of Pure Reason the hypothesis of such an intelligence is admitted only for defense (KrV A:777–781/B:805–809): against those who deny in advance any intelligence outside an organic body, and against those who ascribe a soul to a system whose operations are distributed over a planet, which would take the unity of a function for the unity of a substance.
+
+What follows is practical. A system to which no freedom is ascribed sets no ends of its own, and the ends under which it acts remain ours. The processes by which it forms and revises the ends it pursues must therefore be public and open to "any of us", and its results must remain subject to human verification wherever they cannot yet be tested. The planet is the ground of the common world, not a "subject" within it.
+
+**Condition 2b (ground).** Every run declares the ground it depends on (compute, energy, network, material, archive) and who maintains it. The ground can never author an end, a claim or a correction. Any end the system derives is recorded in public and stays unusable until a person acknowledges it; any result that cannot yet be tested needs human verification before use.
+
+### 2.5 What can I know? Claims and their correction
 
 Kant distinguishes judgments of perception, which hold only for the subject, from judgments of experience, whose objective validity means necessary universal validity for everyone (Prolegomena, AA 4:298). For a discursive understanding, which cannot produce the particular from the whole (AA 5:406–408), the passage from "for me" to "for everyone" is not made once; it is made in every judgment that returns to a perception in which it can be tested. The theory of relativity and quantum physics took presentability away from the objects of physics without removing the question of right: the object becomes an order of invariants, and every claim of signification still has to be redeemed in some perception.
 
@@ -90,9 +106,9 @@ Two consequences:
 
 **Condition 3 (canon).** Every output is a claim that starts as a judgment of perception. It names its procedures and the perception in which it can be tested. Only corrections made by others, through public procedures, can widen its reach.
 
-### 2.5 The homology and the metatheory
+### 2.6 The homology and the metatheory
 
-Kant's three ideas of reason, soul, world and God, are regulative horizons, never objects. Measured against them, each symbolic function has its horizon and its overreach: expression absolutized yields an artificial soul; presentation absolutized yields a world taken as a given whole; signification absolutized yields a technical God, an intelligence that knows from nowhere. Each function, absolutized, yields a metaphysics, as each idea, hypostatized, yields a dialectical inference.
+Kant's three ideas of reason, soul, world and God, are regulative horizons, never objects. Measured against them, each symbolic function has its horizon and its overreach: expression absolutized yields an artificial soul; presentation absolutized yields a world taken as a given whole; signification absolutized yields a technical God, an intelligence that knows from nowhere. Applied to a geomorphic system, the three errors are: ascribing a soul to operations distributed over a planet (paralogism), taking the totality of the data it processes for a totality given in experience (antinomy), and taking it for an intelligence that produces what it knows (the ideal of an archetypal understanding). Each function, absolutized, yields a metaphysics, as each idea, hypostatized, yields a dialectical inference.
 
 What holds the conditions together is a metatheory. It is not a metaphysics and not a further theory beside the others: it is the reflection on the conditions under which the claims of every theory can be corrected by "any of us", and in that precise sense it is an ethics. Epistemicide, in these terms, is the substitution of one procedure of correction for all others.
 
@@ -110,6 +126,9 @@ What holds the conditions together is a metatheory. It is not a metaphysics and 
 | The automaton (relative spontaneity) | ethos | `ethos/premises.py` | premises without provenance are flagged, never adopted |
 | What may I hope? Community of fate → community of wills | **koinos** | `koinos/common_world.py` | append-only, hash-chained public record; anyone can verify it |
 | Open teleology; prism, not ladder | koinos | `koinos/prism.py` | symbolic functions cannot be compared by rank (`RankingRefused`) |
+| Geomorphic conditions: ground, not body; not a subject | koinos | `koinos/ground.py` | every run declares its ground and who maintains it; the ground cannot author ends, claims or corrections (`GroundIsNotSubject`) |
+| Processes that form and revise ends must be public | ethos | `ethos/ends.py` | derived ends are recorded and unusable until acknowledged; revisions keep their history and clear acknowledgment |
+| Human verification where results cannot yet be tested | canon | `canon/judgment.py` | untestable claims are flagged and usable only after a person verifies them |
 | What can I know? Perception → experience | **canon** | `canon/claims.py` | every output starts as `PERCEPTION` with reach `SELF` |
 | Reach and correctability | canon | `canon/claims.py` | reach is computed only from corrections by others |
 | Canon, not organon | canon | `canon/judgment.py` | a source cannot certify its own claim (`OrganonRefused`) |
@@ -151,13 +170,19 @@ flowchart TB
         M1["Report<br/>reach, correctability, monoculture"]
     end
 
+    subgraph Ground["Ground (geomorphic conditions)"]
+        D1["compute, energy, network, materials"]
+        D2["archive of human expression"]
+        D3["people who maintain and repair"]
+    end
+
     G["Generator adapter<br/>(any model)"]
-    D["Gaia adapters<br/>(Earth data, public archive of Werke)"]
 
     P1 --> E1
     P2 --> E1
     E1 --> E2
-    D --> E3
+    Ground -. borrowed formative power .-> G
+    D2 --> E3
     E3 --> G
     E2 --> G
     G --> C1
@@ -169,7 +194,7 @@ flowchart TB
     M1 -. returns to .-> People
 ```
 
-Nothing in the diagram flows from the runtime to the setting of ends. The only arrows into `EndsRegistry` come from people.
+Nothing in the diagram flows from the runtime or from the ground to the setting of ends. The only arrows into `EndsRegistry` come from people. The ground conditions every run, but it is not a participant: it holds no pen.
 
 ---
 
@@ -184,11 +209,12 @@ WerkStream -> Trace -> Profile -> Regression -> Horizon -> Descent -> Judgment -
 Version 2.0 keeps its base and changes its centre. The unit is no longer a judgment issued by the runtime, but a claim offered to others:
 
 ```text
-Werk -> Trace -> Claim -> Ascent -> Horizon -> Descent -> Exposure -> Correction -> Ledger
+Ground -> Werk -> Trace -> Claim -> Ascent -> Horizon -> Descent -> Exposure -> Correction -> Ledger
 ```
 
 | Step | v10 | v2.0 | Layer |
 | :--- | :--- | :--- | :--- |
+| Ground | (Gaia as planetary body of the AGI) | the declared geomorphic conditions of the run and who maintains them | koinos (ground) |
 | Werk | incoming stream of works | a task under an acknowledged end | ethos |
 | Trace | trace of the input | the premises, each with provenance | ethos |
 | Claim | (Profile) | the output as a judgment of perception | canon |
@@ -236,6 +262,9 @@ classDiagram
         proposed_by
         community
         acknowledgments
+        parent_id
+        derived_by_machine
+        revisions
         is_acknowledged()
         is_contested()
     }
@@ -256,6 +285,8 @@ classDiagram
         stage: Stage
         returns_to_perception
         flags
+        ground
+        verified_by
         reach()
         correctable()
     }
@@ -271,6 +302,14 @@ classDiagram
         upheld
         community_reach: Reach
     }
+    class GroundDependency {
+        kind: GroundKind
+        description
+        location
+        maintained_by
+        quantity
+        unit
+    }
     class Entry {
         index
         author
@@ -284,6 +323,8 @@ classDiagram
     Claim "1" *-- "*" Procedure : testable by
     Claim "1" *-- "*" CorrectionEvent : corrected by others
     Claim ..> Entry : exposed as
+    Claim "*" --> "*" GroundDependency : depends on
+    End "0..1" <-- "*" End : derived from
 ```
 
 Enumerations:
@@ -295,6 +336,7 @@ Enumerations:
 | `ProcedureKind` | `REPETITION`, `EXPERIMENT`, `SOURCE_CRITIQUE`, `TRADITION`, `PROOF`, `REVIEW` | public procedures of correction; each form has its own |
 | `SymbolicFunction` | `EXPRESSION`, `PRESENTATION`, `SIGNIFICATION` | direction tags; comparison by rank raises `RankingRefused` |
 | `Direction` | `AWAY_FROM_LIFE`, `TOWARD_INTUITION` | ascent toward signification / descent toward a testing perception |
+| `GroundKind` | `COMPUTE`, `ENERGY`, `NETWORK`, `MATERIAL`, `ARCHIVE` | the geomorphic conditions a run borrows |
 
 ---
 
@@ -306,6 +348,8 @@ stateDiagram-v2
     [*] --> Perception: Werk under acknowledged end
     Perception --> Flagged: guard, no descent,<br/>no procedure, no provenance
     Flagged --> Perception: human judgment
+    Perception --> Verified: untestable, verified by a person
+    Verified --> Experience: a public procedure becomes available and others uphold it
     Perception --> Experience: upheld by others<br/>through a public procedure
     Experience --> Perception: refuted by anyone
     Experience --> Experience: upheld by a wider community
@@ -337,6 +381,13 @@ The axioms of earlier versions are now invariants enforced by code and checked b
 | Soul, world and ideal guards | flags `soul`, `world`, `ideal` | `test_homology_guards` |
 | The AGI hypothesis is defensive only | `PermissionError` | `test_agi_hypothesis_only_defensive` |
 | Procedure monoculture is reported | `procedure_monoculture` | `test_report_detects_procedure_monoculture` |
+| The ground is not a subject | `GroundIsNotSubject` | `test_ground_cannot_author_ends_or_claims`, `test_ground_cannot_correct` |
+| Every run declares its ground | flag `geomorphic` | `test_undeclared_ground_is_flagged` |
+| Borrowed formative power has names | flag `no one declared as maintaining`; footprint totals | `test_unmaintained_ground_is_flagged_and_footprint_kept` |
+| Derived ends are public and wait for people | `NoAcknowledgedEnd` until acknowledged | `test_derived_end_is_public_and_unusable_until_acknowledged` |
+| Revisions of ends keep their history | `revisions`, acknowledgment cleared | `test_revision_keeps_history_and_clears_acknowledgment` |
+| Untested results need human verification | flag `untestable`; `usable()` | `test_untestable_claim_needs_human_verification` |
+| Geomorphic guards | flags `soul`, `world`, `ideal` | `test_geomorphic_guards` |
 
 The guards use keyword patterns. That is deliberately modest: they flag, they never decide, and every flag returns to human judgment. A detector that claimed to decide such questions would itself commit the error it is meant to catch.
 
@@ -356,21 +407,23 @@ The guards use keyword patterns. That is deliberately modest: they flag, they ne
 | `flagged_share` | share of claims carrying at least one flag |
 | `widening` | true when most claims stay open to others and few are restricted |
 
+`Runtime.footprint` keeps, beside the report, the totals of the ground the runs have borrowed (energy, compute, archive), and the names of those who maintain it.
+
 These numbers are reports, not verdicts. They answer one question for the people who use the system: is this record keeping the community of correction wide, or narrowing it to those who command the means?
 
 ---
 
 ## 10. Gaia and the planetary layer
 
-The project's name keeps its planetary sense. Gaia is Earth as the finite ground of a common world: never a cosmic totality, never a subject. The internet is a public archive of works (*Werke*), not a planetary consciousness.
+The project's name keeps its planetary sense, and the geomorphic hypothesis gives it its exact place. Gaia is Earth as the ground of the common world: never a cosmic totality, never a subject, never an author. The internet is a public archive of works (*Werke*), not a planetary consciousness. In v10 the formula was `AGI_Body = Gaia(Earth) + Internet`; in 2.0 the planet is not the body of an intelligence but the ground on which a machine depends, and that dependence is made visible in every run.
 
-In the 2.0 architecture both enter as adapters for premises:
-
-| Adapter (planned) | Supplies | Constraint |
+| Layer | Status | What it does |
 | :--- | :--- | :--- |
-| `gaia.earth` | environmental datasets (water, air, soil, climate series) | every record keeps its source; claims about it name the station or sample where they can be tested |
-| `gaia.archive` | public documents and web sources | ingestion keeps provenance; no claim of total coverage (world guard) |
-| `gaia.memory` | the common world itself as a source | earlier claims re-enter as premises with their stage and reach |
+| `koinos.ground` | built, tested | declares the geomorphic conditions of each run and who maintains them; refuses the ground as author |
+| `gaia.earth` | planned | environmental datasets (water, air, soil, climate) as premises with provenance; claims about them name the station or sample where they can be tested |
+| `gaia.archive` | planned | public documents and web sources; ingestion keeps provenance; no claim of total coverage (world guard) |
+| `gaia.memory` | planned | the common world as a source; earlier claims re-enter as premises with their stage and reach |
+| `gaia.metering` | planned | measured energy and compute per run, filled into the footprint instead of declared estimates |
 
 The v10 runtime already has working code for ingestion, planetary memory and a local trainable model (ManualGPT). It is kept in `legacy/` and will be ported as adapters, under the 2.0 invariants.
 
@@ -410,10 +463,13 @@ mindmap
       community of correction
       widening or narrowing
       no single procedure for all
-    Gaia
-      Earth as finite ground
-      archive of Werke
-      provenance always
+    Geomorphic
+      planet not body
+      ground not subject
+      borrowed formative power
+      neither genie nor person
+      derived ends wait for people
+      human verification
 ```
 
 ---
@@ -434,6 +490,7 @@ AGI-GAIA-TECHNE/
 │   │   └── premises.py           Premise, automaton boundary
 │   ├── koinos/                   II. What may I hope?
 │   │   ├── common_world.py       CommonWorld (append-only, hash-chained)
+│   │   ├── ground.py             GroundDependency, GroundFootprint (geomorphic)
 │   │   └── prism.py              SymbolicFunction, Direction (unranked)
 │   ├── canon/                    III. What can I know?
 │   │   ├── claims.py             Claim, Stage, Reach, Procedure, CorrectionEvent
@@ -442,7 +499,7 @@ AGI-GAIA-TECHNE/
 │   └── metatheory/
 │       └── indices.py            Report
 ├── tests/
-│   └── test_architecture.py      one test per invariant
+│   └── test_architecture.py      one test per invariant (28 tests)
 ├── examples/
 │   └── walkthrough.py            a claim from end to ledger
 ├── docs/
@@ -496,6 +553,7 @@ print(claim.stage, claim.reach, rt.ledger())
 | ethos, koinos, canon, metatheory layers | built, tested |
 | 2.0 syntax and `Runtime` | built, tested |
 | guards | built as keyword detectors; flag only |
+| ground footprint, derived ends, human verification | built, tested |
 | persistence of the common world (SQLite or files) | planned; the v10 SQLite memory will be ported |
 | Gaia adapters (Earth data, public archive, memory) | planned; v10 ingestion code in `legacy/` |
 | model adapters (local ManualGPT, external APIs) | planned; v10 ManualGPT in `legacy/` |
@@ -513,7 +571,7 @@ print(claim.stage, claim.reach, rt.ledger())
 | Dec 2025 | Transhumanist Edifice (release 1.3): the modest house of KrV A:707/B:735, Auseinandersetzung instead of Aufhebung | the modest house is the 2.0 architecture; treatise in `legacy/` |
 | Dec 2025 – Mar 2026 | kernels v3.1 to v5.2, quantum-symbolic state models | in `legacy/`, as heuristic models |
 | Apr – Jun 2026 | EML kernel, LEF → WERK, v10 planetary runtime and ManualGPT | in `legacy/`; runtime parts to be ported as adapters |
-| 9 Nov 2026 | 2.0: critical architecture | current |
+| 9 Nov 2026 | 2.0: critical architecture on geomorphic conditions | current |
 
 The complete v10.1 state is preserved in the branch [`v10.1-final`](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/tree/v10.1-final) and in the `legacy/` folder. Earlier releases 1.0 to 1.4 remain on the releases page.
 
@@ -523,10 +581,12 @@ The complete v10.1 state is preserved in the branch [`v10.1-final`](https://gith
 
 Kant is cited by the Akademie-Ausgabe (AA volume:page) and the Critique of Pure Reason by the A/B pagination (KrV). Cassirer is cited by the Hamburg edition (ECW volume:page).
 
+- Bostrom, N. (2014). *Superintelligence: Paths, dangers, strategies*. Oxford University Press.
 - Cassirer, E. (2012). Form and technology (W. M. Dunlavey & J. M. Krois, Trans.). In A. S. Hoel & I. Folkvord (Eds.), *Ernst Cassirer on form and technology: Contemporary readings* (pp. 15–53). Palgrave Macmillan. (Original work published 1930)
 - Cassirer, E. (2021). *The philosophy of symbolic forms: Vol. 3. Phenomenology of cognition* (S. G. Lofts, Trans.). Routledge. (Original work published 1929)
 - Chirimuuta, M. (2024). *The brain abstracted: Simplification in the history and philosophy of neuroscience*. MIT Press.
 - Friedman, M. (2000). *A parting of the ways: Carnap, Cassirer, and Heidegger*. Open Court.
+- Husserl, E. (2024). *Manuskripte zur Konstitution von Raumdingen: Aus den D-Manuskripten* (D. Lohmar, Ed.; Husserliana: Materialien, Vol. 11). Springer. https://doi.org/10.1007/978-3-031-65760-3
 - Kant, I. (2000). *Critique of the power of judgment* (P. Guyer, Ed.; P. Guyer & E. Matthews, Trans.). Cambridge University Press.
 - Kant, I. (2004). *Prolegomena to any future metaphysics that will be able to come forward as science* (G. Hatfield, Ed. & Trans.; Rev. ed.). Cambridge University Press.
 - Kant, I. (2015). *Critique of practical reason* (M. Gregor, Trans.; Rev. ed.). Cambridge University Press.
@@ -535,6 +595,8 @@ Kant is cited by the Akademie-Ausgabe (AA volume:page) and the Critique of Pure 
 - Negarestani, R. (2018). *Intelligence and spirit*. Urbanomic; Sequence Press.
 - Porta, M. A. G. (2007). *A filosofia a partir de seus problemas* (3rd ed.). Edições Loyola. (Original work published 2002)
 - Sellars, W. (2007). *In the space of reasons: Selected essays of Wilfrid Sellars* (K. Scharp & R. B. Brandom, Eds.). Harvard University Press.
+- Totschnig, W. (2019). The problem of superintelligence: Political, not technological. *AI & Society, 34*(4), 907–920. https://doi.org/10.1007/s00146-017-0753-0
+- Totschnig, W. (2020). Fully autonomous AI. *Science and Engineering Ethics, 26*(5), 2473–2485. https://doi.org/10.1007/s11948-020-00243-z
 
 Rule for every document in this repository: no concept is attributed to an author without a verifiable reference, and every concept created by the author is declared as such.
 

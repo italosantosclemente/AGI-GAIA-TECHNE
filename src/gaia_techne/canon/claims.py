@@ -84,6 +84,8 @@ class Claim:
     stage: Stage = Stage.PERCEPTION
     returns_to_perception: Optional[str] = None  # the perception in which it can be tested
     flags: List[str] = field(default_factory=list)
+    ground: List[str] = field(default_factory=list)  # geomorphic dependencies of the run
+    verified_by: List[str] = field(default_factory=list)  # human verification where no test exists yet
     created_at: str = field(default_factory=_now)
 
     @property

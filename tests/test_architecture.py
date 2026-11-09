@@ -4,7 +4,15 @@ from gaia_techne import Runtime, Werk, __version__
 from gaia_techne.canon import Canon, Claim, CorrectionEvent, OrganonRefused, Procedure, ProcedureKind, Reach, Stage
 from gaia_techne.canon.guards import hypothesis_use
 from gaia_techne.ethos import EndProposedByMachine, EndsRegistry, NoAcknowledgedEnd, Premise, SkillExecutor, TechnicalRule
-from gaia_techne.koinos import CommonWorld, Direction, RankingRefused, SymbolicFunction
+from gaia_techne.koinos import (
+    CommonWorld,
+    Direction,
+    GroundDependency,
+    GroundIsNotSubject,
+    GroundKind,
+    RankingRefused,
+    SymbolicFunction,
+)
 from gaia_techne.metatheory import report
 
 
@@ -29,6 +37,7 @@ def werk(**kw):
         premises=[Premise("sensor series 2026", "basin-dataset")],
         procedures=[Procedure(ProcedureKind.REPETITION, "repeat the sampling")],
         returns_to_perception="water sample at station 4",
+        ground=[GroundDependency(GroundKind.COMPUTE, "rented GPU", "Sao Paulo region", "cloud operator staff")],
     )
     base.update(kw)
     return Werk(**base)
@@ -156,3 +165,77 @@ def test_report_detects_procedure_monoculture():
     r = report(rt.claims)
     assert r.procedure_monoculture == 1.0
     assert r.widening is True
+
+
+# II. The ground: geomorphic conditions
+
+def test_ground_cannot_author_ends_or_claims():
+    with pytest.raises(GroundIsNotSubject):
+        EndsRegistry().propose("e", "keep the climate stable", "Gaia", "everyone")
+    with pytest.raises(GroundIsNotSubject):
+        CommonWorld().record("planet", "claim", {"x": 1})
+
+
+def test_ground_cannot_correct():
+    rt = runtime_with_end()
+    c = rt.process(werk())
+    with pytest.raises(GroundIsNotSubject):
+        rt.correct(c, CorrectionEvent("earth", ProcedureKind.REPETITION, True, Reach.EVERYONE))
+
+
+def test_undeclared_ground_is_flagged():
+    c = runtime_with_end().process(werk(ground=[]))
+    assert any("ground this run depends on was not declared" in f for f in c.flags)
+
+
+def test_unmaintained_ground_is_flagged_and_footprint_kept():
+    rt = runtime_with_end()
+    dep = GroundDependency(GroundKind.ENERGY, "grid power", "data centre A", "", 3.5, "kWh")
+    c = rt.process(werk(ground=[dep]))
+    assert any("no one declared as maintaining ENERGY" in f for f in c.flags)
+    assert rt.footprint.totals()["ENERGY:kWh"] == 3.5
+
+
+def test_derived_end_is_public_and_unusable_until_acknowledged():
+    rt = runtime_with_end()
+    end = rt.propose_derived_end("e1", "e1.a", "Prioritize stations near schools")
+    assert end.derived_by_machine and not end.is_acknowledged
+    assert rt.world.entries()[-1].kind == "derived_end"
+    with pytest.raises(NoAcknowledgedEnd):
+        rt.process(werk(end_id="e1.a"))
+    rt.ends.acknowledge("e1.a", "ana")
+    assert rt.process(werk(end_id="e1.a")).end_id == "e1.a"
+
+
+def test_revision_keeps_history_and_clears_acknowledgment():
+    rt = runtime_with_end()
+    rt.ends.revise("e1", "Map river pollution and floods", by="ana", reason="floods matter too")
+    end = rt.ends.get("e1")
+    assert end.revisions[0]["from"].startswith("Map river pollution so")
+    assert not end.is_acknowledged
+
+
+def test_untestable_claim_needs_human_verification():
+    rt = runtime_with_end()
+    c = rt.process(werk(procedures=[]))
+    assert any("untestable" in f for f in c.flags)
+    assert not rt.canon.usable(c)
+    rt.canon.verify(c, "ana")
+    assert rt.canon.usable(c)
+    with pytest.raises(OrganonRefused):
+        rt.canon.verify(c, "model")
+
+
+@pytest.mark.parametrize(
+    "text,guard",
+    [
+        ("The planet thinks through its networks", "soul"),
+        ("It has read everything that was ever written", "world"),
+        ("The system sets its own goals", "ideal"),
+    ],
+)
+def test_geomorphic_guards(text, guard):
+    c = Claim("x", text, "model", "e1", SymbolicFunction.PRESENTATION, Direction.TOWARD_INTUITION,
+              procedures=[Procedure(ProcedureKind.REVIEW, "read it")])
+    Canon().admit(c)
+    assert any(f.startswith(guard) for f in c.flags)

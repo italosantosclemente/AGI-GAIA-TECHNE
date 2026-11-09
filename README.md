@@ -515,7 +515,7 @@ print(claim.stage, claim.reach, rt.ledger())
 | Apr – Jun 2026 | EML kernel, LEF → WERK, v10 planetary runtime and ManualGPT | in `legacy/`; runtime parts to be ported as adapters |
 | 9 Nov 2026 | 2.0: critical architecture | current |
 
-The complete v10.1 state is preserved in the release [`v10.1`](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/releases/tag/v10.1) and in the `legacy/` folder. Earlier releases 1.0 to 1.4 remain on the releases page.
+The complete v10.1 state is preserved in the branch [`v10.1-final`](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/tree/v10.1-final) and in the `legacy/` folder. Earlier releases 1.0 to 1.4 remain on the releases page.
 
 ---
 

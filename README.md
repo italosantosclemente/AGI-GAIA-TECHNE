@@ -69,13 +69,17 @@ Kant's three questions are: "What should I do?", "If I do what I should, what ma
 
 The moral law binds a will because it holds for "any of us": a maxim is a law when its condition holds for the will of every rational being (AA 5:19). Wilfrid Sellars reads this form as a "we" built into the premise itself, and he describes the computer as a logical program that does nothing until a problem is fed in: its spontaneity is relative, the spontaneity of an automaton (Sellars, 2007). A machine can have the formal autonomy of rules, which Sellars grants and Reza Negarestani stresses (Negarestani, 2018); whether a premise that does not come into it from without could ever be its own is not settled by any procedure, because a premise becomes one's own only by being acknowledged in the form of "any of us".
 
-Kant separates the technically practical (rules of skill, which hold under ends they do not set) from the morally practical (the law a will gives itself). Ernst Cassirer, in "Form and Technology" (1930), follows technology from magic through the tool to the machine and concludes that it can only serve, never lead: it has to fit itself into the realm of ends that Kant called ethico-teleology (ECW 17:182–183; Cassirer, 2012).
+Kant separates the technically practical (rules of skill, which hold under ends they do not set) from the morally practical (the law a will gives itself). Ernst Cassirer, in "Form and Technology" (1930), follows technology from magic through the tool to the machine and concludes that it can only serve, never lead: it has to fit itself into the realm of ends that Kant called ethico-teleology (ECW 17:182–183; Cassirer, 2012, pp. 49–50).
 
-**Condition 1 (ethos).** The system never sets an end. It acts only under ends that people have stated in public, acknowledged and left open to dissent. Every premise it uses carries its provenance; a premise without provenance is not treated as the system's own.
+Technology contains a discipline of its own: from magic to the tool, the will learns to let its goal stand at a distance and to acknowledge an order it did not make (ECW 17:158–160). That discipline concerns means, not ends. Kant calls the culture of skill the foremost "subjective" condition of the aptitude for ends in general, but not sufficient for the choice of ends, which requires the culture of discipline, "the liberation of the will from the despotism of desires" (AA 5:431–432; Kant, 2000, pp. 298–299). Skill can prepare discipline without becoming it. Cassirer names the danger when this is forgotten: technology insists on its own norm and threatens to posit it as absolute and impose it on the other spheres, so that a barrier is needed within the life of spirit itself (ECW 17:173). Repairing what technology damages is technically practical; removing the cause is a change in the ends that a community wills, and is morally practical.
+
+The same form decides who may speak for the ends. "A human being is indeed unholy enough but the humanity in his person must be holy to him" (AA 5:87; Kant, 2015, p. 72). The title of humanity is neither granted nor produced: it is acknowledged in the form of "any of us", and it cannot be stratified, since the law holds for every rational will or for none. No system, and no one through a system, speaks in the name of humanity.
+
+**Condition 1 (ethos).** The system never sets an end. It acts only under ends that people have stated in public, acknowledged and left open to dissent, and every acknowledgment counts alike. Every premise it uses carries its provenance; a premise without provenance is not treated as the system's own. Claims that posit the technical norm as absolute, or speak in the name of humanity, are flagged.
 
 ### 2.3 What may I hope? The common world and the prism
 
-Technology creates a community of fate among all who work in it before any community of wills (Cassirer, 2012). Whether the first can become the second cannot be produced; it can only be hoped for, and only where those who share the fate can see and contest the ends it serves.
+Technology creates a community of fate among all who work in it before any community of wills (ECW 17:183; Cassirer, 2012, p. 50). Whether the first can become the second cannot be produced; it can only be hoped for, and only where those who share the fate can see and contest the ends it serves.
 
 Cassirer's three symbolic functions, expression (*Ausdruck*), presentation (*Darstellung*) and signification (*Bedeutung*), are ordered by direction, not ranked. In the image of a prism, each function refracts the same beam with its own index, and the shift of the spectrum marks whether a form moves away from the immediacy of life or back toward intuition, as in the Doppler effect. Kant read the stages of human aptitude off a fragmentary natural history and ranked peoples; a teleology read off nature turns into a hierarchy of human beings. The teleology of culture remains open: its end is set as a "task" and read off no nature.
 
@@ -104,7 +108,9 @@ Two consequences:
 - **Degrees of "objectivity" are degrees of claims, not of forms.** The *reach* of a claim is the extent of the community before which it can be tested: its source, a community that shares a form of life, or everyone who has reason. Its *correctability* is the availability of a public procedure by which others can measure and revise it: repetition of an observation, experiment, critique of a source, comparison with a tradition. Physics has the greatest reach a claim about nature can have, without being the single measure; a form whose claims reach less far is not thereby reduced to opinion.
 - **Canon, not organon.** A canon judges the form of cognitions given to it; an organon would produce them. A system that certified its own outputs would occupy the standpoint of an understanding that produces its own objects, the standpoint no one occupies.
 
-**Condition 3 (canon).** Every output is a claim that starts as a judgment of perception. It names its procedures and the perception in which it can be tested. Only corrections made by others, through public procedures, can widen its reach.
+- **Intersubjectivity is not objectivity.** Holding-to-be-true is conviction when its ground is valid for everyone who has reason, and mere persuasion when its ground lies only in the particular constitution of the subject; persuasion cannot be communicated, and the experiment made on the understanding of others reveals what is merely private in a judgment (KrV A:820–821/B:848–849). Theoretical "objectivity" adds to this claim the determination of an object of possible experience. The judgment of taste claims to hold for everyone without passing through the concept of an object: it does not postulate the agreement of everyone but ascribes it, and "the universal voice is thus only an idea" (AA 5:216; Kant, 2000, p. 101). Cassirer reads this as a universal communicability "from subject to subject" that does not need to pass through the conceptually objective and perish in it (ECW 8:307). "Objectivity" implies intersubjectivity, but not conversely: what holds for everyone without determining an object is intersubjective without being "objective", and its universality is of another kind, not of a lower degree. The community of "any of us" is not only a community of those who correct one another, but of those who can share what cannot be corrected.
+
+**Condition 3 (canon).** Every output is a claim that starts as a judgment of perception. It names its procedures and the perception in which it can be tested. Only corrections made by others, through public procedures, can widen its reach. A claim that determines no object is not corrected but shared: it needs no procedure, dissent does not refute it, and when others share it it reaches the stage `SHARED`, which is not ranked below `EXPERIENCE`.
 
 ### 2.6 The homology and the metatheory
 
@@ -112,7 +118,9 @@ Kant's three ideas of reason, soul, world and God, are regulative horizons, neve
 
 What holds the conditions together is a metatheory. It is not a metaphysics and not a further theory beside the others: it is the reflection on the conditions under which the claims of every theory can be corrected by "any of us", and in that precise sense it is an ethics. Epistemicide, in these terms, is the substitution of one procedure of correction for all others.
 
-**Condition 4 (guards and metatheory).** The system flags claims that absolutize a function, keeps the AGI hypothesis defensive, and reports on its own record whether the community of correction is being widened or narrowed.
+The homology has a limit, and the architecture is built around it. Kant's ideas carry a double title: they are horizons of cognition and conditions of a practical "task". The comparison with the three functions shows only the first title. Nothing in the direction of the three functions alone shows that the progress of cognition serves the progress of the will. That is why the ethos layer comes first in the code, and why no layer of the canon can produce or certify an end.
+
+**Condition 4 (guards and metatheory).** The system flags claims that absolutize a function or the technical norm, keeps the AGI hypothesis defensive, and reports on its own record whether the community of correction is being widened or narrowed.
 
 ---
 
@@ -135,6 +143,9 @@ What holds the conditions together is a metatheory. It is not a metaphysics and 
 | Discursive understanding; return to intuition | canon | `canon/judgment.py` | a claim of signification without a perception to test it is flagged |
 | Homology of functions and ideas | canon | `canon/guards.py` | soul, world and ideal guards flag absolutizations |
 | Hypotheses only as weapons of war | canon | `canon/guards.py` | `hypothesis_use("ground")` is refused |
+| Skill prepares discipline without becoming it; technical norm absolutized | canon | `canon/guards.py` | technique guard |
+| The title of humanity: acknowledged, never spoken for or stratified | canon | `canon/guards.py` | humanity guard; every acknowledgment of an end counts alike |
+| Intersubjectivity is not objectivity; the judgment of taste | canon | `canon/claims.py`, `canon/judgment.py` | claims that determine no object reach `SHARED`, are not refuted by dissent, and are not ranked below `EXPERIENCE` |
 | Metatheory as ethics; epistemicide | **metatheory** | `metatheory/indices.py` | report of correctability, restriction, reach and procedure monoculture |
 
 ---
@@ -279,6 +290,7 @@ classDiagram
         end_id
         function: SymbolicFunction
         direction: Direction
+        determines_object
         grounds
         procedures
         corrections
@@ -331,7 +343,7 @@ Enumerations:
 
 | Enum | Values | Meaning |
 | :--- | :--- | :--- |
-| `Stage` | `PERCEPTION`, `EXPERIENCE` | holds for me / holds for everyone it has been tested before |
+| `Stage` | `PERCEPTION`, `EXPERIENCE`, `SHARED` | holds for me / holds for everyone it has been tested before / shared by others without determining an object; not ranked |
 | `Reach` | `SELF`, `FORM_OF_LIFE`, `EVERYONE` | extent of the community before which the claim was tested |
 | `ProcedureKind` | `REPETITION`, `EXPERIMENT`, `SOURCE_CRITIQUE`, `TRADITION`, `PROOF`, `REVIEW` | public procedures of correction; each form has its own |
 | `SymbolicFunction` | `EXPRESSION`, `PRESENTATION`, `SIGNIFICATION` | direction tags; comparison by rank raises `RankingRefused` |
@@ -353,10 +365,12 @@ stateDiagram-v2
     Perception --> Experience: upheld by others<br/>through a public procedure
     Experience --> Perception: refuted by anyone
     Experience --> Experience: upheld by a wider community
+    Perception --> Shared: no object determined,<br/>shared by others
+    Shared --> Shared: dissent does not refute
     Refused --> [*]
 ```
 
-A claim never reaches `Experience` by the runtime's own act, and it can always fall back. There is no terminal state of truth.
+A claim never reaches `Experience` or `Shared` by the runtime's own act. A claim about an object can always fall back; a claim that determines no object is shared, not refuted. There is no terminal state of truth.
 
 ---
 
@@ -388,6 +402,9 @@ The axioms of earlier versions are now invariants enforced by code and checked b
 | Revisions of ends keep their history | `revisions`, acknowledgment cleared | `test_revision_keeps_history_and_clears_acknowledgment` |
 | Untested results need human verification | flag `untestable`; `usable()` | `test_untestable_claim_needs_human_verification` |
 | Geomorphic guards | flags `soul`, `world`, `ideal` | `test_geomorphic_guards` |
+| Intersubjective without being objective | `Stage.SHARED`; no refutation by dissent | `test_shared_claim_is_intersubjective_not_objective` |
+| Stages are not ranked | `TypeError` | `test_stages_are_not_ranked` |
+| Technical norm and title of humanity | flags `technique`, `humanity` | `test_practical_guards` |
 
 The guards use keyword patterns. That is deliberately modest: they flag, they never decide, and every flag returns to human judgment. A detector that claimed to decide such questions would itself commit the error it is meant to catch.
 
@@ -399,9 +416,10 @@ The guards use keyword patterns. That is deliberately modest: they flag, they ne
 
 | Field | What it measures |
 | :--- | :--- |
-| `correctable_share` | share of claims with at least one public procedure |
+| `correctable_share` | share of claims about objects with at least one public procedure |
 | `restricted_share` | share of claims whose correction is reserved to those who own the means |
 | `experience_share` | share of claims upheld by others |
+| `shared_share` | share of claims shared by others without determining an object |
 | `reach_distribution` | how many claims reach `SELF`, `FORM_OF_LIFE`, `EVERYONE` |
 | `procedure_monoculture` | share of the most used procedure kind among all procedures; 1.0 means a single procedure of correction is doing all the work |
 | `flagged_share` | share of claims carrying at least one flag |
@@ -454,7 +472,10 @@ mindmap
       correctability
       return to intuition
       canon not organon
+      shared without object
     Guards
+      technique: no absolute technical norm
+      humanity: no one speaks in its name
       soul: no artificial inner life
       world: no total coverage
       ideal: no view from nowhere
@@ -499,7 +520,7 @@ AGI-GAIA-TECHNE/
 │   └── metatheory/
 │       └── indices.py            Report
 ├── tests/
-│   └── test_architecture.py      one test per invariant (28 tests)
+│   └── test_architecture.py      one test per invariant (34 tests)
 ├── examples/
 │   └── walkthrough.py            a claim from end to ledger
 ├── docs/
@@ -582,6 +603,8 @@ The complete v10.1 state is preserved in the branch [`v10.1-final`](https://gith
 Kant is cited by the Akademie-Ausgabe (AA volume:page) and the Critique of Pure Reason by the A/B pagination (KrV). Cassirer is cited by the Hamburg edition (ECW volume:page).
 
 - Bostrom, N. (2014). *Superintelligence: Paths, dangers, strategies*. Oxford University Press.
+- Cassirer, E. (2001). *Kants Leben und Lehre* (B. Recki, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 8). Felix Meiner. (Original work published 1918) [ECW 8]
+- Cassirer, E. (2004). *Aufsätze und kleine Schriften (1927–1931)* (T. Berben, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 17; B. Recki, Gen. Ed.). Felix Meiner. [ECW 17]
 - Cassirer, E. (2012). Form and technology (W. M. Dunlavey & J. M. Krois, Trans.). In A. S. Hoel & I. Folkvord (Eds.), *Ernst Cassirer on form and technology: Contemporary readings* (pp. 15–53). Palgrave Macmillan. (Original work published 1930)
 - Cassirer, E. (2021). *The philosophy of symbolic forms: Vol. 3. Phenomenology of cognition* (S. G. Lofts, Trans.). Routledge. (Original work published 1929)
 - Chirimuuta, M. (2024). *The brain abstracted: Simplification in the history and philosophy of neuroscience*. MIT Press.

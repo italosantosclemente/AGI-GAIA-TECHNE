@@ -53,6 +53,7 @@ class Werk:
     procedures: List[Procedure] = field(default_factory=list)
     returns_to_perception: Optional[str] = None
     ground: List[GroundDependency] = field(default_factory=list)
+    determines_object: bool = True
 
 
 class Runtime:
@@ -80,6 +81,7 @@ class Runtime:
             end_id=werk.end_id,
             function=werk.function,
             direction=werk.direction,
+            determines_object=werk.determines_object,
             grounds=[f"{p.text} [{p.source or 'no source'}]" for p in werk.premises],
             procedures=list(werk.procedures),
             returns_to_perception=werk.returns_to_perception,

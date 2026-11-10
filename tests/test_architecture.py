@@ -239,3 +239,38 @@ def test_geomorphic_guards(text, guard):
               procedures=[Procedure(ProcedureKind.REVIEW, "read it")])
     Canon().admit(c)
     assert any(f.startswith(guard) for f in c.flags)
+
+
+# III. Intersubjectivity is not objectivity
+
+def test_shared_claim_is_intersubjective_not_objective():
+    rt = runtime_with_end()
+    c = rt.process(werk(function=SymbolicFunction.EXPRESSION, direction=Direction.TOWARD_INTUITION,
+                        procedures=[], returns_to_perception=None, determines_object=False))
+    assert not any("untestable" in f for f in c.flags)
+    rt.correct(c, CorrectionEvent("bruno", ProcedureKind.REVIEW, True, Reach.FORM_OF_LIFE))
+    assert c.stage is Stage.SHARED
+    rt.correct(c, CorrectionEvent("carla", ProcedureKind.REVIEW, False, Reach.FORM_OF_LIFE))
+    assert c.stage is Stage.SHARED  # dissent does not refute what claims no object
+    assert rt.canon.usable(c)
+
+
+def test_stages_are_not_ranked():
+    with pytest.raises(TypeError):
+        Stage.SHARED < Stage.EXPERIENCE
+
+
+@pytest.mark.parametrize(
+    "text,guard",
+    [
+        ("The most efficient option is the right one", "technique"),
+        ("What can be built must be built", "technique"),
+        ("We act in the name of humanity", "humanity"),
+        ("Some peoples are less human than others", "humanity"),
+    ],
+)
+def test_practical_guards(text, guard):
+    c = Claim("x", text, "model", "e1", SymbolicFunction.SIGNIFICATION, Direction.TOWARD_INTUITION,
+              procedures=[Procedure(ProcedureKind.REVIEW, "read it")])
+    Canon().admit(c)
+    assert any(f.startswith(guard) for f in c.flags)

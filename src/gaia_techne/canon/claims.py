@@ -24,8 +24,23 @@ def _now() -> str:
 
 
 class Stage(Enum):
+    """Not a ranking: SHARED is a universality of another kind, not a lower degree.
+
+    "Objectivity" implies intersubjectivity, but intersubjectivity does not imply
+    "objectivity". What claims to hold for everyone without determining an object
+    of possible experience (as the judgment of taste does, whose "universal
+    voice is thus only an idea", AA 5:216) is intersubjective without being
+    "objective".
+    """
+
     PERCEPTION = "holds for me"  # judgment of perception
-    EXPERIENCE = "holds for everyone it has been tested before"  # judgment of experience
+    EXPERIENCE = "holds for everyone it has been tested before"  # judgment of experience: intersubjective and objective
+    SHARED = "shared by others without determining an object"  # intersubjective, not objective
+
+    def _refuse(self, other):
+        raise TypeError("Stages are not ranked: SHARED is not a lower degree of EXPERIENCE.")
+
+    __lt__ = __le__ = __gt__ = __ge__ = _refuse
 
 
 class Reach(Enum):
@@ -78,6 +93,7 @@ class Claim:
     end_id: str  # the acknowledged end under which it was produced
     function: SymbolicFunction
     direction: Direction
+    determines_object: bool = True  # False: claims to hold for everyone without an object of possible experience
     grounds: List[str] = field(default_factory=list)
     procedures: List[Procedure] = field(default_factory=list)
     corrections: List[CorrectionEvent] = field(default_factory=list)

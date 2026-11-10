@@ -11,6 +11,17 @@ function for the whole oversteps its right:
 - ideal guard: claims to a standpoint above every form, final truth, a view
   from nowhere (the focus imaginarius taken as an object).
 
+Two further guards follow from the practical chapter:
+
+- technique guard: the technical norm posited as absolute and imposed on the
+  other spheres (ECW 17:173); rules of skill hold only under ends they do not
+  set, and the culture of skill prepares the culture of discipline without
+  becoming it (AA 5:431-432);
+- humanity guard: speaking in the name of humanity, or stratifying its title.
+  The humanity in the person is holy (AA 5:87); its title is neither granted
+  nor produced, but acknowledged in the form of "any of us", and it cannot be
+  stratified, since the law holds for every rational will or for none.
+
 The guards also keep the AGI hypothesis defensive: hypotheses are allowed in
 pure reason only "as weapons of war", to defend, never to ground a right
 (KrV A:777/B:805).
@@ -51,6 +62,20 @@ _IDEAL = [
 ]
 
 
+_TECHNIQUE = [
+    r"\b(?:the )?most efficient (?:option |solution )?is (?:the )?(?:right|good|just|best for everyone)\b",
+    r"\boptimi[sz]ation (?:decides|determines|settles) (?:what|which|the) (?:ought|ends?|goals?|values?)\b",
+    r"\bwhat can be (?:done|made|built) (?:should|must) be (?:done|made|built)\b",
+    r"\befficiency (?:is|as) the (?:only|highest|final) (?:value|end|measure)\b",
+]
+_HUMANITY = [
+    r"\bin the name of (?:all )?humanity\b",
+    r"\bhumanity (?:wants|demands|has decided|needs|requires)\b",
+    r"\b(?:more|less) human than\b",
+    r"\b(?:superior|inferior|primitive|advanced) (?:races?|peoples?)\b",
+]
+
+
 @dataclass(frozen=True)
 class Flag:
     guard: str
@@ -76,6 +101,10 @@ def check(claim: Claim) -> List[Flag]:
         flags.append(Flag("world", "world", "antinomy: the world taken as a given whole", m))
     for m in _scan(claim.content, _IDEAL):
         flags.append(Flag("ideal", "God", "ideal: a standpoint no one occupies taken as available", m))
+    for m in _scan(claim.content, _TECHNIQUE):
+        flags.append(Flag("technique", "-", "technical norm posited as absolute: rules of skill do not set ends", m))
+    for m in _scan(claim.content, _HUMANITY):
+        flags.append(Flag("humanity", "-", "the title of humanity is acknowledged by any of us, not spoken for or stratified", m))
     return flags
 
 

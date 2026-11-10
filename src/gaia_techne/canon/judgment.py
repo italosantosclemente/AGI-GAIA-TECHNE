@@ -10,6 +10,13 @@ runtime is a canon in preparation:
 - every claim of signification must name a perception in which it can be
   tested (descent), because our understanding is discursive and cannot
   produce the particular from the whole (AA 5:406-408).
+
+Intuition is that "at which all thought as a means is directed as an end"
+(KrV A:19/B:33); the genuine concept turns away from intuition only to lead
+back to it the more surely (ECW 13:356), and the transition to symbols
+"demands their conservation", not the abandonment of schemata (Pringe, 2007,
+p. 188). The canon questions what it is given as an appointed judge who
+compels the witnesses to answer (KrV B:XIII; ECW 10:6).
 """
 
 from __future__ import annotations
@@ -31,6 +38,9 @@ class Canon:
         """Admit a claim as a judgment of perception, with its guard flags."""
         claim.stage = Stage.PERCEPTION
         claim.flags = [f"{f.guard}: {f.error} ({f.match!r})" for f in guards.check(claim)]
+        if not claim.determines_object:
+            # Shared, not corrected: no procedure of correction is required.
+            return claim
         if not claim.procedures:
             claim.flags.append("untestable: no public procedure yet; requires human verification before use")
         elif not claim.correctable:
@@ -64,10 +74,14 @@ class Canon:
 
     def usable(self, claim: Claim) -> bool:
         """A claim may be acted on if it has been upheld by others or verified by a person."""
-        return claim.stage is Stage.EXPERIENCE or bool(claim.verified_by)
+        return claim.stage in (Stage.EXPERIENCE, Stage.SHARED) or bool(claim.verified_by)
 
     @staticmethod
     def _stage(claim: Claim) -> Stage:
+        if not claim.determines_object:
+            # Dissent does not refute a claim of this kind: it only shows that agreement
+            # is ascribed, not postulated (AA 5:216).
+            return Stage.SHARED if claim.reach.widens(Reach.SELF) else Stage.PERCEPTION
         if claim.refuted:
             return Stage.PERCEPTION
         if claim.reach.widens(Reach.SELF) and claim.correctable:

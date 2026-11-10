@@ -19,6 +19,11 @@ offered to others for correction.
 - Correction: others measure it by public procedures (canon.judgment).
 - Ledger: the record and its metatheoretical report (metatheory).
 
+The runtime is, by design, a practical automaton in Sellars's sense: purposes
+come in from people, facts come in with provenance, procedures transform them,
+claims come out (Sellars, 2007, p. 431). The premise of the form "any of us"
+is never inside it; it stays with those who state and contest ends.
+
 The model that generates text is an adapter. The architecture does not
 depend on any particular model: what it fixes are the conditions under which
 any model's output may count as a claim at all.
@@ -53,6 +58,7 @@ class Werk:
     procedures: List[Procedure] = field(default_factory=list)
     returns_to_perception: Optional[str] = None
     ground: List[GroundDependency] = field(default_factory=list)
+    determines_object: bool = True
 
 
 class Runtime:
@@ -80,6 +86,7 @@ class Runtime:
             end_id=werk.end_id,
             function=werk.function,
             direction=werk.direction,
+            determines_object=werk.determines_object,
             grounds=[f"{p.text} [{p.source or 'no source'}]" for p in werk.premises],
             procedures=list(werk.procedures),
             returns_to_perception=werk.returns_to_perception,

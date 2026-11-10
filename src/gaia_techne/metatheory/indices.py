@@ -5,6 +5,11 @@ further theory; it is the reflection on the conditions under which the claims
 of every theory can be corrected by anyone, and in this sense it is an ethics.
 These indices measure those conditions over a set of claims. They are
 reports for human judgment, not verdicts.
+
+The report is a sign, not a forecast. Progress of a free being cannot be
+predicted from its freedom (AA 7:81, 84-85), and critical philosophy "cannot
+prophesy" where human doing is at stake (ECW 22:165). `widening` describes the
+record as it stands; it predicts nothing.
 """
 
 from __future__ import annotations
@@ -22,6 +27,7 @@ class Report:
     correctable_share: float
     restricted_share: float
     experience_share: float
+    shared_share: float
     reach_distribution: Dict[str, int]
     procedure_monoculture: float
     flagged_share: float
@@ -39,9 +45,11 @@ def _share(n: int, total: int) -> float:
 def report(claims: Iterable[Claim]) -> Report:
     cs: List[Claim] = list(claims)
     total = len(cs)
-    correctable = sum(1 for c in cs if c.correctable)
-    restricted = sum(1 for c in cs if c.procedures and not c.correctable)
+    objectual = [c for c in cs if c.determines_object]
+    correctable = sum(1 for c in objectual if c.correctable)
+    restricted = sum(1 for c in objectual if c.procedures and not c.correctable)
     experience = sum(1 for c in cs if c.stage is Stage.EXPERIENCE)
+    shared = sum(1 for c in cs if c.stage is Stage.SHARED)
     flagged = sum(1 for c in cs if c.flags)
     reach = Counter(c.reach.name for c in cs)
     kinds = Counter(p.kind for c in cs for p in c.procedures)
@@ -49,9 +57,10 @@ def report(claims: Iterable[Claim]) -> Report:
     mono = round(max(kinds.values()) / sum(kinds.values()), 3) if kinds else 0.0
     return Report(
         claims=total,
-        correctable_share=_share(correctable, total),
-        restricted_share=_share(restricted, total),
+        correctable_share=_share(correctable, len(objectual)),
+        restricted_share=_share(restricted, len(objectual)),
         experience_share=_share(experience, total),
+        shared_share=_share(shared, total),
         reach_distribution={r.name: reach.get(r.name, 0) for r in Reach},
         procedure_monoculture=mono,
         flagged_share=_share(flagged, total),

@@ -150,6 +150,21 @@ def test_homology_guards(text, guard):
     assert any(f.startswith(guard) for f in c.flags)
 
 
+def test_guard_flags_survive_correction():
+    # The transcendental illusion does not cease once uncovered (KrV A:297-298/B:353-354):
+    # others may uphold a claim, but upholding does not erase what a guard found in it.
+    canon = Canon()
+    c = Claim("x", "The system is conscious and answers well", "model", "e1",
+              SymbolicFunction.EXPRESSION, Direction.TOWARD_INTUITION,
+              procedures=[Procedure(ProcedureKind.REVIEW, "read it")])
+    canon.admit(c)
+    flagged = [f for f in c.flags if f.startswith("soul")]
+    assert flagged
+    canon.correct(c, CorrectionEvent("ana", ProcedureKind.REVIEW, True, Reach.EVERYONE))
+    canon.correct(c, CorrectionEvent("lab-b", ProcedureKind.REVIEW, True, Reach.EVERYONE))
+    assert [f for f in c.flags if f.startswith("soul")] == flagged
+
+
 def test_agi_hypothesis_only_defensive():
     assert hypothesis_use("defend").startswith("allowed")
     with pytest.raises(PermissionError):
@@ -232,6 +247,9 @@ def test_untestable_claim_needs_human_verification():
         ("The planet thinks through its networks", "soul"),
         ("It has read everything that was ever written", "world"),
         ("The system sets its own goals", "ideal"),
+        ("The data speak for themselves", "immediacy"),
+        ("The archive itself knows what people want", "bearer"),
+        ("The world spirit writes through the network", "bearer"),
     ],
 )
 def test_geomorphic_guards(text, guard):
@@ -239,3 +257,48 @@ def test_geomorphic_guards(text, guard):
               procedures=[Procedure(ProcedureKind.REVIEW, "read it")])
     Canon().admit(c)
     assert any(f.startswith(guard) for f in c.flags)
+
+
+# III. Intersubjectivity is not objectivity
+
+def test_shared_claim_is_intersubjective_not_objective():
+    rt = runtime_with_end()
+    c = rt.process(werk(function=SymbolicFunction.EXPRESSION, direction=Direction.TOWARD_INTUITION,
+                        procedures=[], returns_to_perception=None, determines_object=False))
+    assert not any("untestable" in f for f in c.flags)
+    rt.correct(c, CorrectionEvent("bruno", ProcedureKind.REVIEW, True, Reach.FORM_OF_LIFE))
+    assert c.stage is Stage.SHARED
+    rt.correct(c, CorrectionEvent("carla", ProcedureKind.REVIEW, False, Reach.FORM_OF_LIFE))
+    assert c.stage is Stage.SHARED  # dissent does not refute what claims no object
+    assert rt.canon.usable(c)
+
+
+def test_stages_are_not_ranked():
+    with pytest.raises(TypeError):
+        Stage.SHARED < Stage.EXPERIENCE
+
+
+@pytest.mark.parametrize(
+    "text,guard",
+    [
+        ("The most efficient option is the right one", "technique"),
+        ("What can be built must be built", "technique"),
+        ("We act in the name of humanity", "humanity"),
+        ("Some peoples are less human than others", "humanity"),
+        ("AI is the new religion of the age", "technique"),
+        ("Through this system we will become gods", "ideal"),
+    ],
+)
+def test_practical_guards(text, guard):
+    c = Claim("x", text, "model", "e1", SymbolicFunction.SIGNIFICATION, Direction.TOWARD_INTUITION,
+              procedures=[Procedure(ProcedureKind.REVIEW, "read it")])
+    Canon().admit(c)
+    assert any(f.startswith(guard) for f in c.flags)
+
+
+def test_agreement_is_not_counted():
+    rt = runtime_with_end()
+    c = rt.process(werk())
+    for person in ["b", "c", "d", "e", "f"]:
+        rt.correct(c, CorrectionEvent(person, ProcedureKind.REPETITION, True, Reach.FORM_OF_LIFE))
+    assert c.reach is Reach.FORM_OF_LIFE

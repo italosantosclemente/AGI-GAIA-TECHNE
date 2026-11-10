@@ -6,6 +6,25 @@ them by direction (away from the immediacy of life, or back toward intuition),
 as a prism refracts one beam with different indices and the shift of the
 spectrum marks the movement, as in the Doppler effect. There is deliberately
 no ordering operator: forms cannot be ranked, and neither can peoples.
+
+Sources. The unity of the natural world-image is crossed by the three
+functions "like a uniform and simple beam of light" not yet refracted by
+different media of sense (ECN 1:5-8). The process keeps a constant direction,
+in which the confrontation (Auseinandersetzung) between I and world becomes
+clearer and anthropomorphic components are suppressed (ECW 13:487-490); but
+the direction does not assign each symbolic form to one function, since myth
+already contains all three, with its accent on expression (ECN 1:234). Physics
+cannot "jump over its own shadow": it never dispenses with the medium of
+representation (ECW 13:555-556), which is why the descent is required.
+The two limits of the direction, a pure identity of presence and
+representation and their absolute separation, are never reached (ECN 1:230);
+between them lies the domain of culture.
+
+No single scale. "Not all objective 'configuration' can be understood as
+'legislation'" (ECN 1:55-56): measuring every form by the law of exact science
+would set one function as the measure of all. The forms are related to one
+practical goal, "the transition from the realm of 'nature' into that of
+'freedom'", each "in the direction appropriate and peculiar to it" (ECN 1:109).
 """
 
 from __future__ import annotations

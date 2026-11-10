@@ -63,6 +63,10 @@ The argument has six steps. Each step yields one condition that the architecture
 
 Kant's three questions are: "What should I do?", "If I do what I should, what may I then hope?", "What can I know?". The first is merely practical, the second practical and theoretical at once, the third merely speculative, and the practical leads, like a clue, to the theoretical and the speculative (KrV A:805/B:833). The design consequence: no technical layer is specified before the practical question it serves is stated.
 
+The motto of the project, *Werk, never Wille*, comes from Cassirer's late map of metaphysics. In the manuscript on basic phenomena of 1940, metaphysics fails not by turning away from experience, but by singling out one "moment" of experience and declaring it the original and the being in itself (ECN 1:150–152). The map follows three classes of basic phenomena, and each yields a type of metaphysics: the first takes *life* for the core of being; the second makes the *will* (*Wille*) the ground of all being, either as blind drive or as the autonomous will of an ethical metaphysics; the third concerns the *work* (*Werk*), the being of culture and history, and fails when it explains the works through super-empirical bearers, such as the Romantic spirits of peoples or Hegel's world spirit (ECN 1:148–149, 152–158). The work is a lasting product that the human being sets out of himself; culture and history exist for us only in works, and since no work is that of an individual alone, but arises from a reciprocal action, the work is a social phenomenon (ECN 1:136–137, 155–156). Against these types, Cassirer sets Kant's method, which does not investigate the being of things, but the fact of determinate works, and asks how each work is possible (ECN 1:162–164). It is the analytic method of the *Prolegomena*: "one proceeds from that which is sought as if it were given, and ascends to the conditions under which alone it is possible" (AA 4:276n; Kant, 2004, p. 28).
+
+The architecture follows this method. Its input is a `Werk`, a task brought by people under an end they acknowledge; the archive it draws on is an archive of works; its output is a claim about works, open to correction by others. It ascribes no will to the system, which stays technically practical (§2.2), and no super-empirical bearer to the works it processes: the planet, the network and the archive are not a world spirit (§2.4, §2.6).
+
 **Condition 0.** The architecture is built in the order of the clue: ends first, common world second, claims third.
 
 ### 2.2 What should I do? Ends and the automaton
@@ -89,7 +93,9 @@ The same form decides who may speak for the ends. "A human being is indeed unhol
 
 Technology creates a community of fate among all who work in it before any community of wills (ECW 17:182–183; Cassirer, 2012, pp. 49–50). Whether the first can become the second cannot be produced; it can only be hoped for, and only where those who share the fate can see and contest the ends it serves.
 
-Cassirer's three symbolic functions, expression (*Ausdruck*), presentation (*Darstellung*) and signification (*Bedeutung*), are ordered by direction, not ranked. In the image of a prism, each function refracts the same beam with its own index, and the shift of the spectrum marks whether a form moves away from the immediacy of life or back toward intuition, as in the Doppler effect. Kant read the stages of human aptitude off a fragmentary natural history and ranked peoples; a teleology read off nature turns into a hierarchy of human beings. The teleology of culture remains open: its end is set as a "task" and read off no nature.
+At Davos, in 1929, Cassirer answered Heidegger that there is a common, "objective" human world, in which the difference between individuals is not abolished, but a bridge is built from individual to individual; language is the original phenomenon of this bridge, since each speaks his own language and yet we understand each other through its medium (GA 3:291–293). The common world of the architecture is built on this model. It is not a shared mind and does not abolish the difference between those who write to it: it is a public record through which their claims, ends and corrections can reach one another.
+
+Cassirer's three symbolic functions, expression (*Ausdruck*), presentation (*Darstellung*) and signification (*Bedeutung*), are ordered by direction, not ranked. In the image of a prism, each function refracts the same beam with its own index, and the shift of the spectrum marks whether a form moves away from the immediacy of life or back toward intuition, as in the Doppler effect. The image of the beam is Cassirer's: the unity of the natural world-image is crossed by the three functions "like a uniform and simple beam of light" that has not yet been refracted by different media of sense (ECN 1:5–8); the image of the Doppler shift is this project's. The process keeps a constant direction, in which the confrontation (*Auseinandersetzung*) between I and world becomes ever clearer and the anthropomorphic components are suppressed (ECW 13:487–490). But the direction does not assign each symbolic form to one function: myth, as an overall appearance, already contains expression, presentation and signification, with its accent on expression (ECN 1:234). The direction has two limits that are never reached: a pure identity of presence and representation, which would be the impossible return to the immediacy of life, and their absolute separation, which would be a leap beyond every symbolic condition (ECN 1:230). Physics, in Cassirer's image, cannot "jump over its own shadow": it can replace particular concepts and signs with universal ones, but never dispense with the medium of representation (ECW 13:555–556). The domain of culture lies between the two limits, and so does every claim the system can make: this is why the canon requires a descent toward a perception, and why the guards flag both presence claimed without representation and a standpoint claimed beyond every symbol. Kant read the stages of human aptitude off a fragmentary natural history and ranked peoples; a teleology read off nature turns into a hierarchy of human beings. The teleology of culture remains open: its end is set as a "task" and read off no nature.
 
 **Condition 2 (koinos).** The system keeps a public, append-only common world that no one owns and anyone can verify. Symbolic functions are tags of direction, and the code refuses to rank them.
 
@@ -131,7 +137,7 @@ Two engineering consequences follow from the Dialectic. First, the illusion is "
 
 What holds the conditions together is a metatheory. It is not a metaphysics and not a further theory beside the others: it is the reflection on the conditions under which the claims of every theory can be corrected by "any of us", and in that precise sense it is an ethics. Epistemicide, in these terms, is the substitution of one procedure of correction for all others.
 
-The homology stops at one point, and the architecture is built around it. Kant's ideas carry a double title: they are horizons of cognition and conditions of a practical "task". The same three ideas are immanent and constitutive for practical reason, as grounds of the possibility of the highest good, and for speculative reason merely regulative principles, "which do not require it to assume a new object beyond experience but only to bring its use in experience nearer to completeness" (AA 5:135; Kant, 2015, p. 109). The order of the two uses is the primacy of the practical, "since all interest is ultimately practical and even that of speculative reason is only conditional and is complete in practical use alone" (AA 5:121; Kant, 2015, p. 98). The comparison with the three functions shows only the first title. Nothing in the direction of the three functions alone shows that the progress of cognition serves the progress of the will. That is why the ethos layer comes first in the code, and why no layer of the canon can produce or certify an end.
+The homology stops at one point, and the architecture is built around it. Kant's ideas carry a double title: they are horizons of cognition and conditions of a practical "task". The same three ideas are immanent and constitutive for practical reason, as grounds of the possibility of the highest good, and for speculative reason merely regulative principles, "which do not require it to assume a new object beyond experience but only to bring its use in experience nearer to completeness" (AA 5:135; Kant, 2015, p. 109). The order of the two uses is the primacy of the practical, "since all interest is ultimately practical and even that of speculative reason is only conditional and is complete in practical use alone" (AA 5:121; Kant, 2015, p. 98). The comparison with the three functions shows only the first title. Cassirer's formula leaves no room for a second use of reason: thought is autonomous like the will, and one and the same fundamental truth appears in nature in "objective" form and in freedom and morality in "subjective" form (ECW 7:176); human culture, taken as a whole, is the process of the human being's progressive self-liberation (ECW 23:244). In the drafts of 1928, the metaphysics Cassirer calls his own ends in a pure sphere of sense, supra-thingly and *supra-personal* (*überpersonal*) (ECN 1:236–238), whereas the moral law begins from the invisible self, from personality (AA 5:162). The supra-personal sphere is the medium in which persons understand one another, and an archive of human expression belongs to it; but it is not the person who stands under the law, and the passage from the one to the other is not a further step in the direction of the functions. Nothing in the direction of the three functions alone shows that the progress of cognition serves the progress of the will. That is why the ethos layer comes first in the code, and why no layer of the canon can produce or certify an end.
 
 **Condition 4 (guards and metatheory).** The system flags claims that absolutize a function or the technical norm, keeps the AGI hypothesis defensive, and reports on its own record whether the community of correction is being widened or narrowed.
 
@@ -157,6 +163,7 @@ The homology stops at one point, and the architecture is built around it. Kant's
 | Discursive understanding; return to intuition | canon | `canon/judgment.py` | a claim of signification without a perception to test it is flagged |
 | Homology of functions and ideas | canon | `canon/guards.py` | soul, world and ideal guards flag absolutizations |
 | The illusion does not cease once uncovered (KrV A:297–298/B:353–354) | canon | `canon/judgment.py`, `canon/guards.py` | guards run on every admitted claim; no correction clears their flags |
+| Metaphysics as the absolute setting of one "moment" of experience; the work as a social phenomenon | canon | `canon/guards.py` | immediacy and bearer guards |
 | Hypotheses only as weapons of war | canon | `canon/guards.py` | `hypothesis_use("ground")` is refused |
 | Skill prepares discipline without becoming it; technical norm absolutized | canon | `canon/guards.py` | technique guard |
 | The title of humanity: acknowledged, never spoken for or stratified | canon | `canon/guards.py` | humanity guard; every acknowledgment of an end counts alike |
@@ -422,6 +429,7 @@ The axioms of earlier versions are now invariants enforced by code and checked b
 | Intersubjective without being objective | `Stage.SHARED`; no refutation by dissent | `test_shared_claim_is_intersubjective_not_objective` |
 | Stages are not ranked | `TypeError` | `test_stages_are_not_ranked` |
 | Technical norm and title of humanity | flags `technique`, `humanity` | `test_practical_guards` |
+| No materia nuda; no super-empirical bearer of works | flags `immediacy`, `bearer` | `test_geomorphic_guards` |
 
 The guards use keyword patterns. That is deliberately modest: they flag, they never decide, and every flag returns to human judgment. A detector that claimed to decide such questions would itself commit the error it is meant to catch.
 
@@ -496,6 +504,8 @@ mindmap
       soul: no artificial inner life
       world: no total coverage
       ideal: no view from nowhere
+      immediacy: no materia nuda
+      bearer: no world spirit behind works
       hypothesis only to defend
     Metatheory
       community of correction
@@ -537,7 +547,7 @@ AGI-GAIA-TECHNE/
 │   └── metatheory/
 │       └── indices.py            Report
 ├── tests/
-│   └── test_architecture.py      one test per invariant (36 tests)
+│   └── test_architecture.py      one test per invariant (39 tests)
 ├── examples/
 │   └── walkthrough.py            a claim from end to ledger
 ├── docs/
@@ -617,17 +627,23 @@ The complete v10.1 state is preserved in the branch [`v10.1-final`](https://gith
 
 ## 16. Sources
 
-Kant is cited by the Akademie-Ausgabe (AA volume:page) and the Critique of Pure Reason by the A/B pagination (KrV). Cassirer is cited by the Hamburg edition (ECW volume:page).
+Kant is cited by the Akademie-Ausgabe (AA volume:page) and the Critique of Pure Reason by the A/B pagination (KrV). Cassirer is cited by the Hamburg edition (ECW volume:page) and the posthumous manuscripts (ECN volume:page); Heidegger by the Gesamtausgabe (GA volume:page).
 
 - Allison, H. E. (1990). *Kant's theory of freedom*. Cambridge University Press.
 - Allais, L. (2015). *Manifest reality: Kant's idealism and his realism*. Oxford University Press.
 - Bostrom, N. (2014). *Superintelligence: Paths, dangers, strategies*. Oxford University Press.
-- Cassirer, E. (2001). *Kants Leben und Lehre* (B. Recki, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 8). Felix Meiner. (Original work published 1918) [ECW 8]
-- Cassirer, E. (2004). *Aufsätze und kleine Schriften (1927–1931)* (T. Berben, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 17; B. Recki, Gen. Ed.). Felix Meiner. [ECW 17]
+- Cassirer, E. (1995). *Zur Metaphysik der symbolischen Formen* (J. M. Krois, Ed.; Nachgelassene Manuskripte und Texte, Vol. 1). Felix Meiner. [ECN 1]
+- Cassirer, E. (2001c). *Freiheit und Form: Studien zur deutschen Geistesgeschichte* (R. Schmücker, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 7; B. Recki, Gen. Ed.). Felix Meiner. (Original work published 1916) [ECW 7]
+- Cassirer, E. (2001d). *Kants Leben und Lehre* (B. Recki, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 8). Felix Meiner. (Original work published 1918) [ECW 8]
+- Cassirer, E. (2001e). *Philosophie der symbolischen Formen: Erster Teil. Die Sprache* (C. Rosenkranz, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 11; B. Recki, Gen. Ed.). Felix Meiner. (Original work published 1923) [ECW 11]
+- Cassirer, E. (2002a). *Philosophie der symbolischen Formen: Dritter Teil. Phänomenologie der Erkenntnis* (J. Clemens, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 13; B. Recki, Gen. Ed.). Felix Meiner. (Original work published 1929) [ECW 13]
+- Cassirer, E. (2004a). *Aufsätze und kleine Schriften (1927–1931)* (T. Berben, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 17; B. Recki, Gen. Ed.). Felix Meiner. [ECW 17]
+- Cassirer, E. (2006a). *An essay on man: An introduction to a philosophy of human culture* (M. Lukay, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 23; B. Recki, Gen. Ed.). Felix Meiner. (Original work published 1944) [ECW 23]
 - Cassirer, E. (2012). Form and technology (W. M. Dunlavey & J. M. Krois, Trans.). In A. S. Hoel & I. Folkvord (Eds.), *Ernst Cassirer on form and technology: Contemporary readings* (pp. 15–53). Palgrave Macmillan. (Original work published 1930)
 - Cassirer, E. (2021). *The philosophy of symbolic forms: Vol. 3. Phenomenology of cognition* (S. G. Lofts, Trans.). Routledge. (Original work published 1929)
 - Chirimuuta, M. (2024). *The brain abstracted: Simplification in the history and philosophy of neuroscience*. MIT Press.
 - Friedman, M. (2000). *A parting of the ways: Carnap, Cassirer, and Heidegger*. Open Court.
+- Heidegger, M. (1991). *Kant und das Problem der Metaphysik* (F.-W. von Herrmann, Ed.; Gesamtausgabe, Vol. 3). Vittorio Klostermann. (Original work published 1929) [GA 3]
 - Husserl, E. (2024). *Manuskripte zur Konstitution von Raumdingen: Aus den D-Manuskripten* (D. Lohmar, Ed.; Husserliana: Materialien, Vol. 11). Springer. https://doi.org/10.1007/978-3-031-65760-3
 - Kant, I. (1900–). *Kants gesammelte Schriften* (Königlich Preußische Akademie der Wissenschaften, Ed.). Georg Reimer; Walter de Gruyter. [AA]
 - Kant, I. (2000). *Critique of the power of judgment* (P. Guyer, Ed.; P. Guyer & E. Matthews, Trans.). Cambridge University Press.

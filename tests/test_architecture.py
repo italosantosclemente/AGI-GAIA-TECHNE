@@ -247,6 +247,9 @@ def test_untestable_claim_needs_human_verification():
         ("The planet thinks through its networks", "soul"),
         ("It has read everything that was ever written", "world"),
         ("The system sets its own goals", "ideal"),
+        ("The data speak for themselves", "immediacy"),
+        ("The archive itself knows what people want", "bearer"),
+        ("The world spirit writes through the network", "bearer"),
     ],
 )
 def test_geomorphic_guards(text, guard):

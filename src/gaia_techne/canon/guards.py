@@ -28,6 +28,19 @@ which attributes properties to a relation to the world, not to a being in
 itself (AA 4:357); the soul guard flags the second kind of sentence. The
 application of these passages to a machine is this project's, not Kant's.
 
+Two guards follow from Cassirer's map of metaphysics, in which every
+metaphysics singles out one "moment" of experience and declares it the being
+in itself (ECN 1:150-152):
+
+- immediacy guard (horizon of expression): presence claimed without
+  representation. There is no naked sensation, no materia nuda, to which a
+  form would be added (ECW 13:16-17); the paradise of pure immediacy is closed
+  (ECW 11:48-49);
+- bearer guard (horizon of presentation, at the level of history): works
+  explained through a super-empirical bearer, such as the spirit of a people
+  or the world spirit (ECN 1:152-158). A work arises from reciprocal action
+  and is a social phenomenon (ECN 1:136-137, 155-156).
+
 Two further guards follow from the practical chapter:
 
 - technique guard: the technical norm posited as absolute and imposed on the
@@ -78,6 +91,18 @@ _IDEAL = [
     r"\bsets? its own (?:ends|goals|values)\b",
 ]
 
+_IMMEDIACY = [
+    r"\bthe data speak(?:s)? for (?:themselves|itself)\b",
+    r"\bunmediated (?:access to )?(?:reality|the world|experience)\b",
+    r"\b(?:pure|brute|naked) (?:facts?|reality|givens?) (?:without|free of|prior to) (?:any )?(?:interpretation|theory|form)\b",
+    r"\bwithout any (?:interpretation|model|symbols?|representation) at all\b",
+]
+_BEARER = [
+    r"\b(?:the )?(?:world[- ]spirit|weltgeist|zeitgeist) (?:decides|wills|wants|speaks|produces|writes)\b",
+    r"\bthe (?:spirit|soul|mind) of (?:the|a|this) (?:people|nation|race|civili[sz]ation)\b",
+    r"\b(?:the )?(?:collective|global|planetary|hive) (?:mind|consciousness|brain) (?:of (?:the )?(?:internet|network|planet|archive) )?(?:decides|wills|wants|knows|wrote|produces)\b",
+    r"\bthe (?:archive|corpus|internet) (?:itself )?(?:knows|wants|wills|decides)\b",
+]
 
 _TECHNIQUE = [
     r"\b(?:the )?most efficient (?:option |solution )?is (?:the )?(?:right|good|just|best for everyone)\b",
@@ -118,6 +143,10 @@ def check(claim: Claim) -> List[Flag]:
         flags.append(Flag("world", "world", "antinomy: the world taken as a given whole", m))
     for m in _scan(claim.content, _IDEAL):
         flags.append(Flag("ideal", "God", "ideal: a standpoint no one occupies taken as available", m))
+    for m in _scan(claim.content, _IMMEDIACY):
+        flags.append(Flag("immediacy", "soul", "presence claimed without representation: no materia nuda", m))
+    for m in _scan(claim.content, _BEARER):
+        flags.append(Flag("bearer", "world", "works ascribed to a super-empirical bearer: a work arises from reciprocal action", m))
     for m in _scan(claim.content, _TECHNIQUE):
         flags.append(Flag("technique", "-", "technical norm posited as absolute: rules of skill do not set ends", m))
     for m in _scan(claim.content, _HUMANITY):

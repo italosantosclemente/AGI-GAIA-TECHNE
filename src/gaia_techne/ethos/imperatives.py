@@ -1,6 +1,9 @@
 """Technical rules: hypothetical imperatives bound to acknowledged ends.
 
-"If end E is willed, means M serve it." The runtime may execute such rules,
+"If end E is willed, means M serve it." A necessity of means (necessitas
+problematica) indicates no "binding" at all, only the solution of a problem
+(AA 2:298-299); precepts of skill belong to technique and to the theoretical
+knowledge of nature (AA 20:199-200). The runtime may execute such rules,
 but only under an end found in the EndsRegistry. This is the engineering form
 of Kant's distinction between the technically practical and the morally
 practical (Werk, never Wille).

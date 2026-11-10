@@ -274,3 +274,11 @@ def test_practical_guards(text, guard):
               procedures=[Procedure(ProcedureKind.REVIEW, "read it")])
     Canon().admit(c)
     assert any(f.startswith(guard) for f in c.flags)
+
+
+def test_agreement_is_not_counted():
+    rt = runtime_with_end()
+    c = rt.process(werk())
+    for person in ["b", "c", "d", "e", "f"]:
+        rt.correct(c, CorrectionEvent(person, ProcedureKind.REPETITION, True, Reach.FORM_OF_LIFE))
+    assert c.reach is Reach.FORM_OF_LIFE

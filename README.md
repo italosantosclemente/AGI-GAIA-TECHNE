@@ -79,7 +79,7 @@ The same form decides who may speak for the ends. "A human being is indeed unhol
 
 ### 2.3 What may I hope? The common world and the prism
 
-Technology creates a community of fate among all who work in it before any community of wills (ECW 17:183; Cassirer, 2012, p. 50). Whether the first can become the second cannot be produced; it can only be hoped for, and only where those who share the fate can see and contest the ends it serves.
+Technology creates a community of fate among all who work in it before any community of wills (ECW 17:182–183; Cassirer, 2012, pp. 49–50). Whether the first can become the second cannot be produced; it can only be hoped for, and only where those who share the fate can see and contest the ends it serves.
 
 Cassirer's three symbolic functions, expression (*Ausdruck*), presentation (*Darstellung*) and signification (*Bedeutung*), are ordered by direction, not ranked. In the image of a prism, each function refracts the same beam with its own index, and the shift of the spectrum marks whether a form moves away from the immediacy of life or back toward intuition, as in the Doppler effect. Kant read the stages of human aptitude off a fragmentary natural history and ranked peoples; a teleology read off nature turns into a hierarchy of human beings. The teleology of culture remains open: its end is set as a "task" and read off no nature.
 

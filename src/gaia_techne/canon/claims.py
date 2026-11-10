@@ -12,6 +12,11 @@ No stage is final. The physical object is a limit-idea, and it can never be
 asserted that the last "invariants of experience" have been reached (ECW
 13:552-553): "We do not need the objectivity of absolute things, but we do need
 the objective determinateness of the path of experience itself" (ECW 13:553).
+
+"All of our judgments are at first mere judgments of perception" (AA 4:298):
+every output starts at PERCEPTION. There is no general criterion of truth
+(KrV A:58/B:82), and so no field here declares a claim true; the context of
+experience "is the measure, not the measured" (ECN 1:117).
 """
 
 from __future__ import annotations

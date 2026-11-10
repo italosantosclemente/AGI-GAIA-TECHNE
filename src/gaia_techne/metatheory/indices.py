@@ -5,6 +5,11 @@ further theory; it is the reflection on the conditions under which the claims
 of every theory can be corrected by anyone, and in this sense it is an ethics.
 These indices measure those conditions over a set of claims. They are
 reports for human judgment, not verdicts.
+
+The report is a sign, not a forecast. Progress of a free being cannot be
+predicted from its freedom (AA 7:81, 84-85), and critical philosophy "cannot
+prophesy" where human doing is at stake (ECW 22:165). `widening` describes the
+record as it stands; it predicts nothing.
 """
 
 from __future__ import annotations

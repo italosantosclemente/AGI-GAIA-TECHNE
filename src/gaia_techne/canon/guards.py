@@ -39,7 +39,8 @@ in itself (ECN 1:150-152):
 - bearer guard (horizon of presentation, at the level of history): works
   explained through a super-empirical bearer, such as the spirit of a people
   or the world spirit (ECN 1:152-158). A work arises from reciprocal action
-  and is a social phenomenon (ECN 1:136-137, 155-156).
+  and is a social phenomenon (ECN 1:136-137, 155-156). Before the world spirit, the
+  finite individual becomes a mere marionette (ECW 22:149-152).
 
 Two further guards follow from the practical chapter:
 

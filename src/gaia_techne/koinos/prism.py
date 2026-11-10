@@ -19,6 +19,12 @@ representation (ECW 13:555-556), which is why the descent is required.
 The two limits of the direction, a pure identity of presence and
 representation and their absolute separation, are never reached (ECN 1:230);
 between them lies the domain of culture.
+
+No single scale. "Not all objective 'configuration' can be understood as
+'legislation'" (ECN 1:55-56): measuring every form by the law of exact science
+would set one function as the measure of all. The forms are related to one
+practical goal, "the transition from the realm of 'nature' into that of
+'freedom'", each "in the direction appropriate and peculiar to it" (ECN 1:109).
 """
 
 from __future__ import annotations

@@ -2,6 +2,12 @@
 
 Dated record of decisions. The most recent comes first.
 
+## 101126 — Alignment with the whole thesis
+
+**What changed.** The README and the code were read against the full draft of the thesis, chapter by chapter and with its notes, and every addition carries its exact source. New invariants: claims that determine no object reach `SHARED`, are not refuted by dissent and are not ranked below `EXPERIENCE`; reach is the widest community before which a claim was upheld, never the number of those who upheld it; guard flags survive correction. New guards: technique (including technology as a new creed), humanity, immediacy, bearer, and the claim to become gods. The motto *Werk, never Wille* is grounded in Cassirer's map of metaphysics (ECN 1:148–158) and in Kant's distinction between *Wille* and *Willkür*.
+
+**Why.** "Objectivity" implies intersubjectivity, but intersubjectivity does not imply "objectivity" (AA 5:216; ECW 8:307); corrections test claims, they do not vote them into validity (KrV A:820–821/B:848–849); the dialectical illusion does not cease once uncovered (KrV A:297–298/B:353–354). The formulation of the invariants belongs to this version and can be revised; that they must be formulated does not change (ECW 13:546).
+
 ## 091126 (b) — The geomorphic condition
 
 **What changed.** A ground layer (`koinos/ground.py`) and three rules: every run declares the ground it depends on (compute, energy, network, material, archive) and who maintains it; the ground can never author an end, a claim or a correction; ends that the system derives are recorded in public and stay unusable until a person acknowledges them, and revisions of ends keep their history. Results that cannot yet be tested need human verification before use. The syntax gains a first step: `Ground -> Werk -> ...`.

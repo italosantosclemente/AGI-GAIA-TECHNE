@@ -150,6 +150,21 @@ def test_homology_guards(text, guard):
     assert any(f.startswith(guard) for f in c.flags)
 
 
+def test_guard_flags_survive_correction():
+    # The transcendental illusion does not cease once uncovered (KrV A:297-298/B:353-354):
+    # others may uphold a claim, but upholding does not erase what a guard found in it.
+    canon = Canon()
+    c = Claim("x", "The system is conscious and answers well", "model", "e1",
+              SymbolicFunction.EXPRESSION, Direction.TOWARD_INTUITION,
+              procedures=[Procedure(ProcedureKind.REVIEW, "read it")])
+    canon.admit(c)
+    flagged = [f for f in c.flags if f.startswith("soul")]
+    assert flagged
+    canon.correct(c, CorrectionEvent("ana", ProcedureKind.REVIEW, True, Reach.EVERYONE))
+    canon.correct(c, CorrectionEvent("lab-b", ProcedureKind.REVIEW, True, Reach.EVERYONE))
+    assert [f for f in c.flags if f.startswith("soul")] == flagged
+
+
 def test_agi_hypothesis_only_defensive():
     assert hypothesis_use("defend").startswith("allowed")
     with pytest.raises(PermissionError):

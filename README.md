@@ -2,7 +2,7 @@
 
 **A critical architecture for an AGI hypothesis. Werk, never Wille.**
 
-AGI-GAIA-TECHNE is a computer-engineering project: the architecture of a system in which an artificial general intelligence could operate, designed from that system's own conditions of possibility. It does not build an artificial subject, and it does not claim that one exists. It specifies, in code that runs and tests that pass, the conditions under which anything a machine produces may count as a claim before others, and the limits that no amount of computing power removes.
+AGI-GAIA-TECHNE is a computer-engineering project: the architecture of a system in which an artificial general intelligence could operate, designed from that system's own conditions of possibility. It does not build an artificial subject, and it does not claim that one exists. It specifies, in code that runs and tests that pass, the conditions under which anything a machine produces may count as a claim before others, and the boundaries that no amount of computing power crosses.
 
 The architecture is isomorphic to a philosophical argument: each layer of the code answers one of Kant's three questions, in the order in which Kant says the practical leads to the theoretical and, in its highest form, to the speculative question (KrV A:805/B:833).
 
@@ -123,11 +123,15 @@ Two consequences:
 
 ### 2.6 The homology and the metatheory
 
+An idea is a concept of reason to which no object of experience can be congruent: "A concept made up of notions, which goes beyond the possibility of experience, is an idea or a concept of reason" (KrV A:320/B:376–377; Kant, 2025, pp. 362–363). Kant derives three classes of them, "of which the first contains the absolute (unconditioned) unity of the thinking subject, the second the absolute unity of the series of conditions of appearance, the third the absolute unity of the condition of all objects of thought in general" (KrV A:334/B:391; Kant, 2025, pp. 369–370). Each keeps a regulative horizon once its constitutive use is denied. Of the soul, the unity of consciousness "is only the unity of thinking, through which no object is given" (KrV B:421–422; Kant, 2025, p. 417), and inner appearances are connected as if the mind were a simple substance (KrV A:672/B:700). Of the world, "If the conditioned is given, then through it a regress in the series of all conditions for it is given to us as a problem" (KrV A:497–498/B:526; Kant, 2025, p. 478), and the empirically real world does not exist as a determinate totality (Allais, 2015, pp. 215–216). Of God, the systematic unity of cognition is a *focus imaginarius* toward which all rules of the understanding converge, outside the bounds of possible experience (KrV A:644/B:672): "the idea of reason is an analogue of a schema of sensibility", whose application is "only a rule or principle of the systematic unity of all use of the understanding" (KrV A:665/B:693; Kant, 2025, pp. 566–567). Cassirer traces the three dialectical inferences to one source, the transformation of a relation valid within experience into a self-subsistent entity preceding all experience (ECW 8:191–193). Hernán Pringe adds that the "object" of the ideas is not sensibility but the understanding itself, whose cognitions reason connects into a system (Pringe, 2007, pp. 24–25), and that the unconditioned, as the object in the idea, is "a constant and productive motive of knowledge" (Pringe, 2022b, p. 268).
+
 Kant's three ideas of reason, soul, world and God, are regulative horizons, never objects. Measured against them, each symbolic function has its horizon and its overreach: expression absolutized yields an artificial soul; presentation absolutized yields a world taken as a given whole; signification absolutized yields a technical God, an intelligence that knows from nowhere. Applied to a geomorphic system, the three errors are: ascribing a soul to operations distributed over a planet (paralogism), taking the totality of the data it processes for a totality given in experience (antinomy), and taking it for an intelligence that produces what it knows (the ideal of an archetypal understanding). Each function, absolutized, yields a metaphysics, as each idea, hypostatized, yields a dialectical inference.
+
+Two engineering consequences follow from the Dialectic. First, the illusion is "a natural and unavoidable dialectic of pure reason" (KrV A:298/B:354; Kant, 2025, p. 350) and, unlike a logical illusion, it does not cease once it has been uncovered: critique can keep it from deceiving, but cannot make it stop (KrV A:297–298/B:353–354). The guards are therefore not a filter that better data or a larger model could retire. They run on every claim the canon admits, and their flags survive every correction: others may uphold what a claim says, but upholding it does not erase what a guard found in it. Second, the *Prolegomena* distinguish limits (*Schranken*), mere negations that progress keeps pushing back, from boundaries (*Grenzen*), which presuppose a space outside and contain something positive; mathematics and natural science know limits but not boundaries (AA 4:350–358). More compute, data and speed push back limits; none of them crosses a boundary. At the boundary, reason may speak of what lies beyond only by a symbolic anthropomorphism, which attributes properties to the relation of a being to the world and not to that being in itself, and so concerns language rather than the object (AA 4:357). The repository speaks of the system in this way: it answers, proposes and derives, all relations to the people and the ground it depends on; it does not will, feel or become conscious, and the soul guard flags sentences that say it does. The application of these passages to a machine is this project's, not Kant's.
 
 What holds the conditions together is a metatheory. It is not a metaphysics and not a further theory beside the others: it is the reflection on the conditions under which the claims of every theory can be corrected by "any of us", and in that precise sense it is an ethics. Epistemicide, in these terms, is the substitution of one procedure of correction for all others.
 
-The homology has a limit, and the architecture is built around it. Kant's ideas carry a double title: they are horizons of cognition and conditions of a practical "task". The comparison with the three functions shows only the first title. Nothing in the direction of the three functions alone shows that the progress of cognition serves the progress of the will. That is why the ethos layer comes first in the code, and why no layer of the canon can produce or certify an end.
+The homology stops at one point, and the architecture is built around it. Kant's ideas carry a double title: they are horizons of cognition and conditions of a practical "task". The same three ideas are immanent and constitutive for practical reason, as grounds of the possibility of the highest good, and for speculative reason merely regulative principles, "which do not require it to assume a new object beyond experience but only to bring its use in experience nearer to completeness" (AA 5:135; Kant, 2015, p. 109). The order of the two uses is the primacy of the practical, "since all interest is ultimately practical and even that of speculative reason is only conditional and is complete in practical use alone" (AA 5:121; Kant, 2015, p. 98). The comparison with the three functions shows only the first title. Nothing in the direction of the three functions alone shows that the progress of cognition serves the progress of the will. That is why the ethos layer comes first in the code, and why no layer of the canon can produce or certify an end.
 
 **Condition 4 (guards and metatheory).** The system flags claims that absolutize a function or the technical norm, keeps the AGI hypothesis defensive, and reports on its own record whether the community of correction is being widened or narrowed.
 
@@ -152,6 +156,7 @@ The homology has a limit, and the architecture is built around it. Kant's ideas 
 | Canon, not organon | canon | `canon/judgment.py` | a source cannot certify its own claim (`OrganonRefused`) |
 | Discursive understanding; return to intuition | canon | `canon/judgment.py` | a claim of signification without a perception to test it is flagged |
 | Homology of functions and ideas | canon | `canon/guards.py` | soul, world and ideal guards flag absolutizations |
+| The illusion does not cease once uncovered (KrV A:297–298/B:353–354) | canon | `canon/judgment.py`, `canon/guards.py` | guards run on every admitted claim; no correction clears their flags |
 | Hypotheses only as weapons of war | canon | `canon/guards.py` | `hypothesis_use("ground")` is refused |
 | Skill prepares discipline without becoming it; technical norm absolutized | canon | `canon/guards.py` | technique guard |
 | The title of humanity: acknowledged, never spoken for or stratified | canon | `canon/guards.py` | humanity guard; every acknowledgment of an end counts alike |
@@ -404,6 +409,7 @@ The axioms of earlier versions are now invariants enforced by code and checked b
 | Signification returns to perception | flag `no descent` | `test_signification_without_descent_is_flagged` |
 | Correction reserved to owners of the means is visible | flag `restricted` | `test_restricted_procedure_is_flagged` |
 | Soul, world and ideal guards | flags `soul`, `world`, `ideal` | `test_homology_guards` |
+| Guard flags survive correction | flags kept after upholding | `test_guard_flags_survive_correction` |
 | The AGI hypothesis is defensive only | `PermissionError` | `test_agi_hypothesis_only_defensive` |
 | Procedure monoculture is reported | `procedure_monoculture` | `test_report_detects_procedure_monoculture` |
 | The ground is not a subject | `GroundIsNotSubject` | `test_ground_cannot_author_ends_or_claims`, `test_ground_cannot_correct` |
@@ -531,7 +537,7 @@ AGI-GAIA-TECHNE/
 │   └── metatheory/
 │       └── indices.py            Report
 ├── tests/
-│   └── test_architecture.py      one test per invariant (35 tests)
+│   └── test_architecture.py      one test per invariant (36 tests)
 ├── examples/
 │   └── walkthrough.py            a claim from end to ledger
 ├── docs/
@@ -614,6 +620,7 @@ The complete v10.1 state is preserved in the branch [`v10.1-final`](https://gith
 Kant is cited by the Akademie-Ausgabe (AA volume:page) and the Critique of Pure Reason by the A/B pagination (KrV). Cassirer is cited by the Hamburg edition (ECW volume:page).
 
 - Allison, H. E. (1990). *Kant's theory of freedom*. Cambridge University Press.
+- Allais, L. (2015). *Manifest reality: Kant's idealism and his realism*. Oxford University Press.
 - Bostrom, N. (2014). *Superintelligence: Paths, dangers, strategies*. Oxford University Press.
 - Cassirer, E. (2001). *Kants Leben und Lehre* (B. Recki, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 8). Felix Meiner. (Original work published 1918) [ECW 8]
 - Cassirer, E. (2004). *Aufsätze und kleine Schriften (1927–1931)* (T. Berben, Ed.; Ernst Cassirer Werke: Hamburger Ausgabe, Vol. 17; B. Recki, Gen. Ed.). Felix Meiner. [ECW 17]
@@ -630,6 +637,8 @@ Kant is cited by the Akademie-Ausgabe (AA volume:page) and the Critique of Pure 
 - Longuenesse, B. (1998). *Kant and the capacity to judge* (C. T. Wolfe, Trans.). Princeton University Press. (Original work published 1993)
 - Negarestani, R. (2018). *Intelligence and spirit*. Urbanomic; Sequence Press.
 - Porta, M. A. G. (2007). *A filosofia a partir de seus problemas* (3rd ed.). Edições Loyola. (Original work published 2002)
+- Pringe, H. (2007). *Critique of the quantum power of judgment: A transcendental foundation of quantum objectivity*. Walter de Gruyter.
+- Pringe, H. (2022b). The thing in itself and the freedom of thought: On Cassirer's interpretation of critical philosophy. *Revue Roumaine de Philosophie, 66*(2), 261–278.
 - Sellars, W. (2007). *In the space of reasons: Selected essays of Wilfrid Sellars* (K. Scharp & R. B. Brandom, Eds.). Harvard University Press.
 - Totschnig, W. (2019). The problem of superintelligence: Political, not technological. *AI & Society, 34*(4), 907–920. https://doi.org/10.1007/s00146-017-0753-0
 - Totschnig, W. (2020). Fully autonomous AI. *Science and Engineering Ethics, 26*(5), 2473–2485. https://doi.org/10.1007/s11948-020-00243-z

@@ -11,6 +11,23 @@ function for the whole oversteps its right:
 - ideal guard: claims to a standpoint above every form, final truth, a view
   from nowhere (the focus imaginarius taken as an object).
 
+Each idea keeps a regulative horizon once its constitutive use is denied:
+the unity of consciousness "is only the unity of thinking, through which no
+object is given" (KrV B:421-422); the regress in the series of conditions is
+"given to us as a problem" (KrV A:497-498/B:526); and the systematic unity of
+cognition is a focus imaginarius outside the bounds of possible experience
+(KrV A:644/B:672). Cassirer traces the three dialectical inferences to one
+source: a relation valid within experience turned into a self-subsistent
+entity preceding all experience (ECW 8:191-193).
+
+The illusion is "a natural and unavoidable dialectic of pure reason" (KrV
+A:298/B:354) and does not cease once uncovered (KrV A:297-298/B:353-354).
+Hence the guards run on every admitted claim, and no correction clears their
+flags. Speaking of the system is allowed only as symbolic anthropomorphism,
+which attributes properties to a relation to the world, not to a being in
+itself (AA 4:357); the soul guard flags the second kind of sentence. The
+application of these passages to a machine is this project's, not Kant's.
+
 Two further guards follow from the practical chapter:
 
 - technique guard: the technical norm posited as absolute and imposed on the

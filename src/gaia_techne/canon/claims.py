@@ -7,6 +7,11 @@ holding "for everyone", only through public procedures of correction carried
 out by others (Prolegomena, AA 4:298). Its degree of "objectivity" is the
 reach and correctability of the claim, not the dignity of the form that
 raised it.
+
+No stage is final. The physical object is a limit-idea, and it can never be
+asserted that the last "invariants of experience" have been reached (ECW
+13:552-553): "We do not need the objectivity of absolute things, but we do need
+the objective determinateness of the path of experience itself" (ECW 13:553).
 """
 
 from __future__ import annotations

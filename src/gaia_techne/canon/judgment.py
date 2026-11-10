@@ -10,6 +10,13 @@ runtime is a canon in preparation:
 - every claim of signification must name a perception in which it can be
   tested (descent), because our understanding is discursive and cannot
   produce the particular from the whole (AA 5:406-408).
+
+Intuition is that "at which all thought as a means is directed as an end"
+(KrV A:19/B:33); the genuine concept turns away from intuition only to lead
+back to it the more surely (ECW 13:356), and the transition to symbols
+"demands their conservation", not the abandonment of schemata (Pringe, 2007,
+p. 188). The canon questions what it is given "as an appointed judge who
+compels the witnesses to answer" (KrV B:XIII, as quoted at ECW 10:6).
 """
 
 from __future__ import annotations

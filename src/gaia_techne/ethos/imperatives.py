@@ -7,6 +7,12 @@ knowledge of nature (AA 20:199-200). The runtime may execute such rules,
 but only under an end found in the EndsRegistry. This is the engineering form
 of Kant's distinction between the technically practical and the morally
 practical (Werk, never Wille).
+
+Heteronomy is subjection to a principle whose normative force depends on a
+contingent interest in some object, so that the principle becomes a
+hypothetical imperative (Reath, 2021, p. 214). The executor selects means
+(an analogue of Willkür, the executive faculty of choice); it never gives the
+law (Wille, the legislative faculty) (Wuerth, 2021, p. 512).
 """
 
 from __future__ import annotations

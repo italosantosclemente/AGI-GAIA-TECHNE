@@ -52,6 +52,13 @@ Two further guards follow from the practical chapter:
   nor produced, but acknowledged in the form of "any of us", and it cannot be
   stratified, since the law holds for every rational will or for none.
 
+The technique guard also flags technology posited as a new creed: the modern
+politician acts "as both a homo magus and a homo faber" (ECW 25:277), and the
+programs of convergence expect "a dynamic new creed to replace religion"
+(Weiss, 2012, p. 240). The ideal guard flags the demand "that we become gods"
+(Negarestani, 2018, p. 506): the holiness of the will is an archetype that no
+finite will occupies (AA 5:122, 5:127n).
+
 The guards also keep the AGI hypothesis defensive: hypotheses are allowed in
 pure reason only "as weapons of war", to defend, never to ground a right
 (KrV A:777/B:805).
@@ -89,6 +96,7 @@ _IDEAL = [
     r"\bcertainly (?:proves|establishes) that (?:agi|ai) (?:is|has)\b",
     r"\b(?:produces|creates) (?:its own|the) truths?\b",
     r"\bsets? its own (?:ends|goals|values)\b",
+    r"\b(?:we |it |they |humans |machines )?(?:will |shall |must )?become (?:a )?gods?\b",
 ]
 
 _IMMEDIACY = [
@@ -109,6 +117,8 @@ _TECHNIQUE = [
     r"\boptimi[sz]ation (?:decides|determines|settles) (?:what|which|the) (?:ought|ends?|goals?|values?)\b",
     r"\bwhat can be (?:done|made|built) (?:should|must) be (?:done|made|built)\b",
     r"\befficiency (?:is|as) the (?:only|highest|final) (?:value|end|measure)\b",
+    r"\b(?:technology|ai|agi|science|the machine) (?:is|as|will be) (?:a|the|our) new (?:religion|creed|god|faith)\b",
+    r"\b(?:a )?(?:new )?creed to replace religion\b",
 ]
 _HUMANITY = [
     r"\bin the name of (?:all )?humanity\b",

@@ -285,6 +285,8 @@ def test_stages_are_not_ranked():
         ("What can be built must be built", "technique"),
         ("We act in the name of humanity", "humanity"),
         ("Some peoples are less human than others", "humanity"),
+        ("AI is the new religion of the age", "technique"),
+        ("Through this system we will become gods", "ideal"),
     ],
 )
 def test_practical_guards(text, guard):

@@ -10,6 +10,11 @@ the Earth as the ground (Boden) on which every experience of bodies rests,
 a whole that is not itself a body (Husserl, 2024, pp. 182, 185, 187). These
 conditions are called geomorphic rather than anthropomorphic.
 
+Tools such as a lever are machines, not works of art: they can be used for
+ends but are not possible solely in relation to them (AA 20:219). A causality
+according to ends, made constitutive, would be one "which, however, we merely
+borrow from ourselves and ascribe to other beings" (AA 5:361).
+
 Engineering consequences:
 
 - every run declares the ground it depends on (compute, energy, network,

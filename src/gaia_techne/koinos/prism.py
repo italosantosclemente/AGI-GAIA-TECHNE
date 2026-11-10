@@ -1,0 +1,46 @@
+"""The prism: symbolic functions as directions, never as ranks.
+
+Chapter II/III. Cassirer distinguishes expression, presentation and
+signification within the one function of representation. The project orders
+them by direction (away from the immediacy of life, or back toward intuition),
+as a prism refracts one beam with different indices and the shift of the
+spectrum marks the movement, as in the Doppler effect. There is deliberately
+no ordering operator: forms cannot be ranked, and neither can peoples.
+"""
+
+from __future__ import annotations
+
+from enum import Enum
+
+
+class RankingRefused(TypeError):
+    """Raised when code tries to rank symbolic functions or forms."""
+
+
+class _Unranked(Enum):
+    def _refuse(self, other):  # noqa: D401
+        raise RankingRefused(
+            "Symbolic functions are ordered by direction, not ranked: prism, not ladder."
+        )
+
+    __lt__ = __le__ = __gt__ = __ge__ = _refuse
+
+
+class SymbolicFunction(_Unranked):
+    EXPRESSION = "Ausdruck"
+    PRESENTATION = "Darstellung"
+    SIGNIFICATION = "Bedeutung"
+
+    @property
+    def horizon(self) -> str:
+        """The idea of reason that is this function's regulative horizon."""
+        return {
+            SymbolicFunction.EXPRESSION: "soul: the unity of the lived",
+            SymbolicFunction.PRESENTATION: "world: a totality never given as a whole",
+            SymbolicFunction.SIGNIFICATION: "God: the focus imaginarius of systematic unity",
+        }[self]
+
+
+class Direction(_Unranked):
+    AWAY_FROM_LIFE = "ascent: from perception toward signification"
+    TOWARD_INTUITION = "descent: from signification back to a perception that tests it"

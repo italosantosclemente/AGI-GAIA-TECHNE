@@ -1,0 +1,105 @@
+"""Claims: the unit of everything the runtime produces.
+
+Chapter III ("What can I know?"). Every output is a claim, never a truth.
+A claim begins as a judgment of perception, holding only "for me" (for the
+source or model that produced it). It can become a judgment of experience,
+holding "for everyone", only through public procedures of correction carried
+out by others (Prolegomena, AA 4:298). Its degree of "objectivity" is the
+reach and correctability of the claim, not the dignity of the form that
+raised it.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from datetime import datetime, timezone
+from enum import Enum
+from typing import List, Optional
+
+from ..koinos.prism import Direction, SymbolicFunction
+
+
+def _now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+class Stage(Enum):
+    PERCEPTION = "holds for me"  # judgment of perception
+    EXPERIENCE = "holds for everyone it has been tested before"  # judgment of experience
+
+
+class Reach(Enum):
+    """Extent of the community before which a claim can be tested by its grounds."""
+
+    SELF = 1  # the source in its present state
+    FORM_OF_LIFE = 2  # a community sharing a form of life or of expression
+    EVERYONE = 3  # anyone who has reason
+
+    def widens(self, other: "Reach") -> bool:
+        return self.value > other.value
+
+
+class ProcedureKind(Enum):
+    """Public procedures of correction. Each symbolic form has its own."""
+
+    REPETITION = "repetition of an observation"
+    EXPERIMENT = "experiment devised under the guidance of a law"
+    SOURCE_CRITIQUE = "critique of a source"
+    TRADITION = "comparison of a work with the works of a tradition"
+    PROOF = "proof"
+    REVIEW = "public review by those affected"
+
+
+@dataclass(frozen=True)
+class Procedure:
+    kind: ProcedureKind
+    description: str
+    public: bool = True  # can anyone carry it out?
+    restricted_to: str = ""  # who owns the means, if not public
+
+
+@dataclass(frozen=True)
+class CorrectionEvent:
+    """Someone other than the source measured the claim by a procedure."""
+
+    by: str
+    procedure: ProcedureKind
+    upheld: bool
+    community_reach: Reach
+    note: str = ""
+    at: str = field(default_factory=_now)
+
+
+@dataclass
+class Claim:
+    claim_id: str
+    content: str
+    source: str  # person, model or dataset that raised it
+    end_id: str  # the acknowledged end under which it was produced
+    function: SymbolicFunction
+    direction: Direction
+    grounds: List[str] = field(default_factory=list)
+    procedures: List[Procedure] = field(default_factory=list)
+    corrections: List[CorrectionEvent] = field(default_factory=list)
+    stage: Stage = Stage.PERCEPTION
+    returns_to_perception: Optional[str] = None  # the perception in which it can be tested
+    flags: List[str] = field(default_factory=list)
+    ground: List[str] = field(default_factory=list)  # geomorphic dependencies of the run
+    verified_by: List[str] = field(default_factory=list)  # human verification where no test exists yet
+    created_at: str = field(default_factory=_now)
+
+    @property
+    def reach(self) -> Reach:
+        """Widest community whose members upheld the claim, by others than its source."""
+        upheld = [c.community_reach for c in self.corrections if c.upheld and c.by != self.source]
+        if not upheld:
+            return Reach.SELF
+        return max(upheld, key=lambda r: r.value)
+
+    @property
+    def correctable(self) -> bool:
+        return any(p.public for p in self.procedures)
+
+    @property
+    def refuted(self) -> bool:
+        return any(not c.upheld for c in self.corrections)

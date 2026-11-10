@@ -3,7 +3,7 @@
 Sellars: a computer that embodies a logical program "still does nothing unless
 a problem is 'fed in'" (Sellars, 2007, p. 428); its spontaneity is relative,
 the spontaneitas automatica of a watch or a turnspit (AA 5:97; Allison, 1990,
-pp. 63-65). A practical reason whose premises all come from without is a
+p. 60). A practical reason whose premises all come from without is a
 "sausage machine" (Sellars, 2007, p. 431). Every premise the runtime uses therefore
 carries its provenance. A premise with no external source is not treated as
 the machine's "own": it is flagged and returned to human judgment, because

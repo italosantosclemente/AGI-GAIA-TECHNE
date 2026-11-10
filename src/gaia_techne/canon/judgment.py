@@ -15,8 +15,8 @@ Intuition is that "at which all thought as a means is directed as an end"
 (KrV A:19/B:33); the genuine concept turns away from intuition only to lead
 back to it the more surely (ECW 13:356), and the transition to symbols
 "demands their conservation", not the abandonment of schemata (Pringe, 2007,
-p. 188). The canon questions what it is given "as an appointed judge who
-compels the witnesses to answer" (KrV B:XIII, as quoted at ECW 10:6).
+p. 188). The canon questions what it is given as an appointed judge who
+compels the witnesses to answer (KrV B:XIII; ECW 10:6).
 """
 
 from __future__ import annotations

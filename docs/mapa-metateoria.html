@@ -1,0 +1,551 @@
+<title>Mapa da Metateoria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna de leitura; o "fio" de Kant atravessa três faixas de cor (os três capítulos), como um feixe que o prisma separa */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --ink:#1b2233; --muted:#5b6376; --line:#d8dce4; --soft:#eef0f4;
+  --c1:#0e7470; --c1-soft:#e3f2f1; --c2:#a36500; --c2-soft:#f7eedf; --c3:#6447b5; --c3-soft:#eeeafa;
+  --own:#b3261e; --own-soft:#fbe9e7;
+  --f-display:"Spectral", Georgia, "Times New Roman", serif;
+  --f-body:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#11141b; --surface:#191e28; --ink:#e6e8ee; --muted:#a2a9b8; --line:#2c3442; --soft:#202634;
+  --c1:#4cc3bd; --c1-soft:#16302f; --c2:#e3a93f; --c2-soft:#33281a; --c3:#a993f2; --c3-soft:#262040;
+  --own:#ff8a80; --own-soft:#3a1d1b; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#11141b; --surface:#191e28; --ink:#e6e8ee; --muted:#a2a9b8; --line:#2c3442; --soft:#202634;
+  --c1:#4cc3bd; --c1-soft:#16302f; --c2:#e3a93f; --c2-soft:#33281a; --c3:#a993f2; --c3-soft:#262040;
+  --own:#ff8a80; --own-soft:#3a1d1b; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.6;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 64px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+h2{font-size:1.6rem}
+h3{font-size:1.18rem}
+p{margin:0}
+em{font-style:italic}
+.mono,.ref{font-family:var(--f-mono);font-size:.82em;color:var(--muted)}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--c3);outline-offset:2px;border-radius:4px}
+
+/* barra de navegação */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;gap:6px 16px;flex-wrap:wrap;align-items:center;padding-block:10px}
+nav.top a{text-decoration:none;font-size:.86rem;color:var(--muted);font-weight:500}
+nav.top a:hover{color:var(--ink)}
+nav.top .spacer{flex:1}
+button.toggle{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+button.toggle:hover{border-color:var(--muted)}
+
+/* abertura */
+header.hero{padding-block:40px 28px;display:grid;gap:16px}
+.thesis{font-family:var(--f-display);font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.45;max-width:62ch}
+.thesis em{font-style:italic}
+.gloss{color:var(--muted);max-width:68ch}
+.spectrum{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--c1) 0 33.3%,var(--c2) 33.3% 66.6%,var(--c3) 66.6% 100%);max-width:420px}
+
+section{padding-block:36px 8px;scroll-margin-top:64px}
+section > .head{display:grid;gap:8px;margin-bottom:20px;max-width:75ch}
+section > .head p{color:var(--muted)}
+
+/* problema / hipótese / método */
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:10px;align-content:start;min-width:0}
+.box h3{font-size:1.05rem}
+.box ul{margin:0;padding-left:1.1em;display:grid;gap:6px}
+.quote{border-left:3px solid var(--line);padding-left:12px;font-family:var(--f-display);font-style:italic;color:var(--ink)}
+
+/* espinha dos três capítulos */
+.spine{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;position:relative}
+.ch{border-radius:12px;padding:18px;display:grid;gap:12px;align-content:start;position:relative;min-width:0;border:1px solid var(--line);background:var(--surface)}
+.ch .q{font-family:var(--f-display);font-size:1.15rem;font-style:italic}
+.ch .we{font-weight:600;padding:6px 10px;border-radius:6px;justify-self:start}
+.ch.c1{border-top:5px solid var(--c1)} .ch.c1 .we{background:var(--c1-soft);color:var(--c1)}
+.ch.c2{border-top:5px solid var(--c2)} .ch.c2 .we{background:var(--c2-soft);color:var(--c2)}
+.ch.c3{border-top:5px solid var(--c3)} .ch.c3 .we{background:var(--c3-soft);color:var(--c3)}
+.ch dl{margin:0;display:grid;gap:8px}
+.ch dt{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ch dd{margin:0}
+.ch .hand{border-top:1px dashed var(--line);padding-top:10px;font-size:.93rem}
+.ch .hand b{font-weight:600}
+.spine .ch:not(:last-child)::after{content:"→";position:absolute;right:-27px;top:46%;font-size:1.4rem;color:var(--muted)}
+.thread{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.92rem}
+.thread span.pill{padding:4px 10px;border-radius:999px;font-weight:600}
+.pill.c1{background:var(--c1-soft);color:var(--c1)} .pill.c2{background:var(--c2-soft);color:var(--c2)} .pill.c3{background:var(--c3-soft);color:var(--c3)}
+.thread .arrow{color:var(--muted)}
+
+/* cadeia do capítulo I */
+.chain{display:grid;gap:0}
+.step{display:grid;grid-template-columns:56px minmax(0,1fr);gap:0 16px;position:relative}
+.step .rail{display:flex;flex-direction:column;align-items:center}
+.step .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-weight:600;font-size:1.15rem;color:var(--surface);background:var(--c1);flex:none}
+.step .line{flex:1;width:2px;background:var(--c1);opacity:.35;margin-block:4px}
+.step:last-child .line{display:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:grid;gap:10px;margin-bottom:14px;min-width:0}
+.card .ask{font-family:var(--f-display);font-style:italic;font-size:1.05rem}
+.card .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
+.result{background:var(--soft);border-radius:8px;padding:10px 12px}
+.pass{font-size:.92rem;color:var(--muted)}
+.pass b{color:var(--ink);font-weight:600}
+details{border-top:1px solid var(--line);padding-top:8px}
+details summary{cursor:pointer;font-weight:600;font-size:.92rem;color:var(--ink);list-style-position:outside}
+details[open] summary{margin-bottom:8px}
+.subs{display:grid;gap:10px}
+.sub{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;align-items:start}
+.sub .n{font-family:var(--f-mono);font-size:.85rem;color:var(--c1);font-weight:500;padding-top:1px}
+.c2zone .sub .n{color:var(--c2)} .c3zone .sub .n{color:var(--c3)}
+.sub p + p{margin-top:4px}
+.own{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--own);background:var(--own-soft);border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:1px}
+
+/* capítulos II e III */
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.c2zone .card{border-top:4px solid var(--c2)} .c3zone .card{border-top:4px solid var(--c3)}
+.c2zone h3 .num{color:var(--c2)} .c3zone h3 .num{color:var(--c3)} .c1zone h3 .num{color:var(--c1)}
+.handoff{margin-top:6px;padding:12px 14px;border:1px dashed var(--line);border-radius:10px;font-size:.95rem}
+
+/* tabela */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.92rem}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{font-family:var(--f-display);font-size:1rem;font-weight:600}
+thead th.c1{color:var(--c1)} thead th.c2{color:var(--c2)} thead th.c3{color:var(--c3)}
+tbody th{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;width:150px}
+tr:last-child td,tr:last-child th{border-bottom:none}
+
+/* reunião */
+.meet{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px}
+.pitch ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.qa{display:grid;gap:8px}
+.qa details{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.qa details summary{font-weight:500}
+.qa .cue{display:grid;gap:6px;font-size:.95rem}
+.ownlist{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.ownlist li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px}
+.ownlist .w{font-family:var(--f-mono);font-size:.82rem;color:var(--own)}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:900px){
+  .three,.spine,.cards3,.meet{grid-template-columns:minmax(0,1fr)}
+  .spine{gap:30px}
+  .spine .ch:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-27px;transform:translateX(-50%)}
+  .card .grid2{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:480px){
+  .step{grid-template-columns:40px minmax(0,1fr);gap:0 10px}
+  .step .dot{width:34px;height:34px;font-size:1rem}
+  .sub{grid-template-columns:42px minmax(0,1fr)}
+  .ownlist li{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+html{scroll-behavior:smooth}
+</style>
+
+<nav class="top" aria-label="Seções do mapa">
+  <div class="wrap">
+    <a href="#problema">Problema</a>
+    <a href="#mapa">Os 3 capítulos</a>
+    <a href="#cap1">Cap. I</a>
+    <a href="#cap2">Cap. II</a>
+    <a href="#cap3">Cap. III</a>
+    <a href="#correlacao">Correlação</a>
+    <a href="#reuniao">Reunião</a>
+    <span class="spacer"></span>
+    <button class="toggle" id="toggleAll" type="button">Abrir todos os detalhes</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Seminário com Hernán Pringe · 13/11/2026</div>
+  <h1>Cassirer's Kant: Metatheory of Objectivity as Intersubjectivity</h1>
+  <div class="spectrum" aria-hidden="true"></div>
+  <p class="thesis">"The progress of cognition is an advance of conscience only to the extent that what we know and produce widens, rather than narrows, the community of <em>"any of us"</em> within which we act, hope and can be corrected."</p>
+  <p class="gloss">A tese em uma frase (Conclusão final). Em português: o progresso do conhecimento só é avanço da consciência moral quando amplia, e não estreita, a comunidade do "qualquer um de nós" em que agimos, esperamos e podemos ser corrigidos.</p>
+</header>
+
+<section id="problema">
+  <div class="head">
+    <div class="eyebrow">Introdução</div>
+    <h2>Problema, hipótese e método</h2>
+  </div>
+  <div class="three">
+    <div class="box">
+      <h3>O problema</h3>
+      <ul>
+        <li>O idealismo de Cassirer é <b>progressivo</b> (a cognição teórica é um estrato superior, <span class="ref">ECW 13:VII–VIII</span>) e <b>pluralista</b> (a força do ideal alcança os estratos mais profundos).</li>
+        <li>Friedman (2000): Cassirer não explica como se relacionam a validade da lógica formal e a das formas simbólicas.</li>
+        <li>Porta: além do sentido negativo (nenhuma forma é cópia), em que sentido a física tem a mesma "objetividade" que o mito?</li>
+        <li>Para escapar do relativismo, é preciso admitir <b>graus de "objetividade"</b>, mas sem uma hierarquia unidirecional que vire <b>epistemicídio</b>.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>A hipótese</h3>
+      <p>A pista de Kant fornece a metateoria que falta a Cassirer: o prático conduz ao teórico e, na sua forma mais alta, à pergunta especulativa <span class="ref">KrV A:805/B:833</span>.</p>
+      <p>Cassirer funda a "tarefa" ideal num ato de liberdade, mas não tem o conceito kantiano de liberdade (tudo é prático que é possível pela liberdade, <span class="ref">KrV A:800/B:828</span>). Ele segue Goethe: em cada olhar atento já teorizamos <span class="ref">ECW 13:326</span>.</p>
+      <p class="quote">Metatheory of "objectivity" as intersubjectivity, whose absence Porta diagnosed.</p>
+    </div>
+    <div class="box">
+      <h3>O método</h3>
+      <p>Seguir a pista na ordem kantiana, que inverte a ordem habitual das perguntas:</p>
+      <div class="thread" style="margin-top:0">
+        <span class="pill c1">O que devo fazer?</span><span class="arrow">→</span>
+        <span class="pill c2">O que posso esperar?</span><span class="arrow">→</span>
+        <span class="pill c3">O que posso saber?</span>
+      </div>
+      <p>Kant formula a pista para a pergunta da esperança, que é prática e teórica ao mesmo tempo; a tese a estende ao progresso da cognição teórica como tal.</p>
+      <p class="quote">An investigation is metatheoretical when the practical precedes the theoretical question as its guiding thread.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mapa">
+  <div class="head">
+    <div class="eyebrow">Visão geral</div>
+    <h2>Os três capítulos: o resultado de um é a pergunta do seguinte</h2>
+    <p>O fio que liga os capítulos é o "nós". Cada capítulo lhe dá uma determinação e deixa ao seguinte o que não consegue decidir.</p>
+  </div>
+  <div class="spine">
+    <article class="ch c1">
+      <div class="eyebrow">Capítulo I · Seções 1–4</div>
+      <div class="q">What should I do?</div>
+      <div class="we">O "nós" como forma</div>
+      <dl>
+        <dt>Pergunta-guia</dt><dd>Que <em>binding</em> uma vontade livre pode reconhecer como seu, em que se funda a sua validade, e se algum avanço da cognição ou da técnica pode fornecê-lo.</dd>
+        <dt>Resultado</dt><dd>A lei moral obriga na forma de <em>any of us</em>. A técnica atravessa as três funções simbólicas sem passar do tecnicamente ao moralmente prático. O título de humanidade é reconhecido, não produzido.</dd>
+      </dl>
+      <p class="hand"><b>Deixa ao Cap. II:</b> quem de fato pertence à comunidade que reconhece a lei, e se o avanço da cultura prepara o fim final (<em>Endzweck</em>) que só a liberdade põe.</p>
+    </article>
+    <article class="ch c2">
+      <div class="eyebrow">Capítulo II · Seções 5–7</div>
+      <div class="q">If I do what I should, what may I then hope?</div>
+      <div class="we">O "nós" como medida da esperança</div>
+      <dl>
+        <dt>Pergunta-guia</dt><dd>Se o mundo em que o agente age pode ser pensado como compatível com o fim que a lei põe, e se o progresso da cultura pode ser conhecido como preparação desse fim ou só esperado.</dd>
+        <dt>Resultado</dt><dd>Teleologia aberta: o fim das formas é uma "tarefa" (<em>aufgegeben</em>), não lido na natureza. Espera-se um mundo comum (κοινὸς κόσμος) que cada consciência reconstrói pelos próprios esforços.</dd>
+      </dl>
+      <p class="hand"><b>Deixa ao Cap. III:</b> a esperança não certifica o que as formas valem como cognições. Os graus de "objetividade" pertencem à pergunta especulativa.</p>
+    </article>
+    <article class="ch c3">
+      <div class="eyebrow">Capítulo III · Seções 8–10</div>
+      <div class="q">What can I know?</div>
+      <div class="we">O "nós" como comunidade de correção</div>
+      <dl>
+        <dt>Pergunta-guia</dt><dd>O que pode reivindicar uma cognição que renuncia ao <em>focus imaginarius</em>, no lugar onde Kant respondeu: a relação entre conceitos e intuição.</dd>
+        <dt>Resultado</dt><dd>Graus de "objetividade" são graus de alcance e de corrigibilidade das pretensões perante a comunidade dos que julgam. Cânone em preparação, não órganon.</dd>
+      </dl>
+      <p class="hand"><b>Fecha a pergunta de Porta:</b> física e mito diferem no alcance e na corrigibilidade das pretensões, não na dignidade das formas. Até onde vai a comunidade é questão de ação, não de cognição.</p>
+    </article>
+  </div>
+  <div class="thread" aria-label="Progressão do nós">
+    <span class="pill c1">forma da lei</span><span class="arrow">→</span>
+    <span class="pill c2">medida da esperança</span><span class="arrow">→</span>
+    <span class="pill c3">comunidade de correção</span>
+    <span class="arrow">=</span><span>a metateoria: reflexão sobre as condições em que as pretensões de toda teoria podem ser corrigidas por <em>any of us</em>, ordenada por um fim que o prático põe (uma eticoteleologia, não uma metafísica)</span>
+  </div>
+</section>
+
+<section id="cap1" class="c1zone">
+  <div class="head">
+    <div class="eyebrow">Capítulo I · What should I do?</div>
+    <h2>Mapa do Capítulo I</h2>
+    <p>Quatro passos. Cada seção responde a uma pergunta e entrega à seguinte o que a sua resposta não alcança. Abra os detalhes para o caminho subseção por subseção.</p>
+  </div>
+
+  <div class="chain">
+    <div class="step">
+      <div class="rail"><div class="dot">1</div><div class="line"></div></div>
+      <article class="card">
+        <h3><span class="num">1.</span> The clue of reason</h3>
+        <p class="ask">De onde se pergunta "O que devo fazer?", e que lei responde a essa pergunta?</p>
+        <div class="grid2">
+          <div><div class="label">Premissas</div><p>A pergunta é feita só sob a liberdade prática. A primeira regra de todo <em>binding</em> é indemonstrável (ensaio de 1762). Os preceitos de habilidade pertencem à filosofia teórica.</p></div>
+          <div><div class="label">Fontes</div><p>Cânone, <em>KpV</em>, <em>Fundamentação</em>, Paralogismos; Cassirer, <em>Kants Leben und Lehre</em>; Allison, Brandom, Sellars, Negarestani.</p></div>
+        </div>
+        <div class="result"><div class="label">Resultado</div><p>A lei moral não é derivada: é um fato da razão, e o seu <em>binding</em> vale para <em>any of us</em>. A intersubjetividade é o primeiro resultado da pista de Kant.</p></div>
+        <p class="pass"><b>Passa à Seção 2:</b> a lei diz o que devemos fazer, mas não o que é o ser que age, em que mundo age, nem em que fundamento moralidade e felicidade poderiam concordar.</p>
+        <details>
+          <summary>Caminho argumentativo, subseção por subseção</summary>
+          <div class="subs">
+            <div class="sub"><span class="n">1.1</span><div><p><b>A resposta prática.</b> O Cânone distingue liberdade transcendental e prática e, dentro desta, a regra de prudência (empírica) e a lei moral, que considera só a liberdade de um ser racional em geral. O ensaio premiado de 1762 já declarava indemonstrável a primeira regra de toda obrigação, e o cap. 5 de <em>Kants Leben und Lehre</em> começa por ele. A felicidade não serve de fundamento; os preceitos de habilidade são teóricos (Primeira Introdução à <em>KU</em>).</p><p>Conclusão: só a lei moral é prática em sentido estrito.</p></div></div>
+            <div class="sub"><span class="n">1.2</span><div><p><b>Lei moral e fato da razão.</b> "Objetivo", aqui, não é relação a um objeto: é validade para a vontade de todo ser racional <span class="ref">AA 5:19</span>. A objeção do formalismo. A lei fundamental <span class="ref">AA 5:30</span> é dada, não derivada: o único fato da razão pura. Limite: a incompreensibilidade da necessidade incondicionada (fecho da <em>Fundamentação</em>). Um corolário diz para quem a lei vale.</p></div></div>
+            <div class="sub"><span class="n">1.3</span><div><p><b>A autonomia da vontade.</b> Para Allison, a autonomia já não permite separar liberdade prática e transcendental <span class="ref">Allison 1990, p. 99</span>: a pergunta especulativa que o Cânone deixava de lado volta. Cassirer chega à autonomia transpondo para a vontade o resultado da crítica da cognição: verdade e bem têm uma só raiz, pensar e fazer. Brandom (<em>A Spirit of Trust</em>, 2019) parte da autonomia e tira a consequência oposta.</p></div></div>
+            <div class="sub"><span class="n">1.4</span><div><p><b>O "nós" da lei moral.</b> Brandom liga o individualismo de Kant à objeção de Hegel contra o formalismo. Sellars põe o "nós" na forma da própria lei: o "sujeito" do princípio é <em>any of us</em>, "logically intersubjective" <span class="ref">Sellars 2007, p. 433</span>. Pessoa é aquele com quem estou ligado numa rede de direitos e deveres (o bípede sem penas, o golfinho, o marciano). Sellars (1967) distingue a intersubjetividade do pensamento da "objetividade" em sentido forte.</p><p>Aqui a tese fixa o seu sentido de intersubjetividade e responde à objeção do formalismo.</p></div></div>
+            <div class="sub"><span class="n">1.5</span><div><p><b>O autômato.</b> O eu dos Paralogismos é um sujeito transcendental = x. O computador de Sellars: um "noumenal mechanism" <span class="ref">Sellars 2007, p. 429</span>. Allison: espontaneidade relativa (<em>automatica</em>) contra a absoluta. A espontaneidade do pensar não garante a do agir; a autonomia exige uma premissa prática própria da razão, e essa premissa é a lei moral com <em>any of us</em> como sujeito. A "autonomia lógica" de Negarestani são os procedimentos que a "sausage machine" também tem.</p><p>A pergunta que fica: uma máquina pode ter uma premissa que não lhe venha de fora, ou seja, ser "um de nós"?</p></div></div>
+          </div>
+        </details>
+      </article>
+    </div>
+
+    <div class="step">
+      <div class="rail"><div class="dot">2</div><div class="line"></div></div>
+      <article class="card">
+        <h3><span class="num">2.</span> Soul, World, and God</h3>
+        <p class="ask">O que a lei deixa aberto, e que metafísica ainda é possível depois da crítica?</p>
+        <div class="grid2">
+          <div><div class="label">Premissas</div><p>Os três objetos do Cânone correspondem às três ideias da Dialética. Os postulados dão às ideias uma realidade prática que a especulação não lhes dá.</p></div>
+          <div><div class="label">Fontes</div><p>Dialética da <em>KpV</em>, <em>Prolegômenos</em>, Dialética e Apêndice da <em>KrV</em>, ensaio sobre os progressos da metafísica; Pringe (2022c), Caimi (1989), Allais (2015), Allison.</p></div>
+        </div>
+        <div class="result"><div class="label">Resultado</div><p>As ideias ficam sob um <b>duplo título</b>: horizontes da cognição e condições de uma "tarefa" prática.</p></div>
+        <p class="pass"><b>Passa à Seção 3:</b> Pringe concilia a linha que lê a crítica como teoria da experiência e a que destaca o acesso ao suprassensível. Cassirer está na primeira. A filosofia das formas simbólicas tem lugar também para a segunda?</p>
+        <details>
+          <summary>Caminho argumentativo, subseção por subseção</summary>
+          <div class="subs">
+            <div class="sub"><span class="n">2.1</span><div><p><b>Santidade.</b> A razão prática também tem dialética: pede a totalidade das condições, o sumo bem. O conceito é ambíguo (bem supremo e bem completo). A santidade mede a vontade humana sem ser um estado que ela possa ocupar; só se aproxima num progresso infinito, e daí os postulados da imortalidade e de Deus. Cassirer lê os postulados pelo lado da "tarefa" (já em <em>Freiheit und Form</em>, 1916).</p></div></div>
+            <div class="sub"><span class="n">2.2</span><div><p><b>Primado do prático e possibilidade da metafísica.</b> As mesmas ideias são constitutivas no uso prático e regulativas no especulativo <span class="ref">AA 5:134–135</span>; o primado não autoriza estender a cognição especulativa. A pergunta dos <em>Prolegômenos</em>: a metafísica é possível? Pringe (2022c), seguindo Caimi, mostra a metafísica que a crítica estabelece: na fronteira entre sensível e inteligível, uma cognição por analogia.</p></div></div>
+            <div class="sub"><span class="n">2.3</span><div><p><b>A dialética das ideias.</b> Três formas de inferência dão três classes de ideias, cada uma uma unidade absoluta que nenhuma experiência dá. Alma: o horizonte é a vida. Mundo: a antinomia; Allais explica por que o mundo empiricamente real não é uma totalidade determinada, e Pringe nota que só a ideia cosmológica não pode ser assumida nem problematicamente <span class="ref">KrV A:673/B:701</span>. Deus: o <em>focus imaginarius</em> da unidade sistemática. Para Pringe, o Apêndice contém a dedução transcendental das ideias, e o idealismo funcional de Cassirer vai além de Kant (apaga a afecção e borra constitutivo e regulativo).</p></div></div>
+          </div>
+        </details>
+      </article>
+    </div>
+
+    <div class="step">
+      <div class="rail"><div class="dot">3</div><div class="line"></div></div>
+      <article class="card">
+        <h3><span class="num">3.</span> The problem of metaphysics</h3>
+        <p class="ask">A filosofia das formas simbólicas tem uma metafísica? Guarda os dois títulos das ideias?</p>
+        <div class="grid2">
+          <div><div class="label">Premissas</div><p>Como leitor de Kant, Cassirer defende contra Heidegger que o problema de Kant é o de "ser" e "dever". Como filósofo sistemático, desloca a fronteira para dentro da unidade do fazer espiritual.</p></div>
+          <div><div class="label">Fontes</div><p>Davos (GA 3), resenha de 1931 (ECW 17), manuscrito de 1940 e rascunhos de 1928 (ECN 1), <em>PSF</em> I–III, <em>Zur Einsteinschen Relativitätstheorie</em> (1921), <em>Essay on Man</em>.</p></div>
+        </div>
+        <div class="result"><div class="label">Resultado</div><p>Uma <b>homologia crítica e negativa</b> entre as ideias de Kant e as funções de Cassirer <span class="own">leitura sua</span>. Guarda o primeiro título das ideias (horizontes da cognição), mas não mostra o segundo.</p></div>
+        <p class="pass"><b>Passa à Seção 4:</b> nada na direção das funções mostra que o progresso da cognição serve ao da vontade. Onde essa direção vira poder sobre a natureza, os dois progressos já não se separam por pontos de vista.</p>
+        <details>
+          <summary>Caminho argumentativo, subseção por subseção</summary>
+          <div class="subs">
+            <div class="sub"><span class="n">3.1</span><div><p><b>Davos: dois conceitos de metafísica.</b> Heidegger enraíza a crítica na imaginação transcendental e na finitude: a filosofia deve lançar o homem na dureza do seu destino <span class="ref">GA 3:291</span>. Cassirer: o homem não salta para um infinito além, alcança uma infinitude imanente pelo meio da forma <span class="ref">GA 3:286</span>; na lei moral, a razão rompe para um mundo inteligível <span class="ref">GA 3:276</span>. Medido pela reconstrução de Pringe, Heidegger tem razão em que a <em>KrV</em> é mais que teoria da ciência, mas põe a metafísica numa ontologia do <em>Dasein</em> finito.</p></div></div>
+            <div class="sub"><span class="n">3.2</span><div><p><b>"Ser" e "dever".</b> Na resenha de 1931, o mundo inteligível é um ponto de vista e não uma segunda natureza: dois modos de orientação e de juízo. Heidegger, ao remeter tudo à imaginação, nivela fenômeno e númeno. A razão prática só ultrapassa a sua fronteira quando quer intuir e sentir o mundo inteligível (<em>Freiheit und Form</em>).</p></div></div>
+            <div class="sub"><span class="n">3.3</span><div><p><b>Metafísica como posição absoluta de um "momento".</b> Nos manuscritos de Cassirer, metafísica já não é afastar-se da experiência: é tomar um dos seus momentos pelo todo. Os rascunhos de 1928 chamam "nossa metafísica" ao tornar-se consciente da vida <span class="ref">ECN 1:237–238</span>.</p></div></div>
+            <div class="sub"><span class="n">3.4</span><div><p><b>A vida, condição "subjetiva" de toda experiência.</b> O paraíso da imediatez está fechado: a vida é o ponto zero, nunca apreendida sem símbolo. Em 1921, o erro de toda forma simbólica que se toma pela realidade como tal; a crítica da razão vira crítica da cultura. A "objetivação" é um distanciamento que nunca chega a um ponto de vista além de todo símbolo.</p></div></div>
+            <div class="sub"><span class="n">3.5</span><div><p><b>As ideias de Kant e as funções de Cassirer.</b> Expressão ↔ alma; apresentação ↔ mundo; significação pura ↔ Deus. Cada função absolutizada gera uma metafísica, assim como cada ideia hipostasiada gera uma inferência dialética. A representação é o gênero funcional; as formas simbólicas, as espécies culturais; as funções, os limites críticos e regulativos. <span class="own">leitura sua</span></p></div></div>
+            <div class="sub"><span class="n">3.6</span><div><p><b>Uma razão em dois usos.</b> Em Kant, a fronteira que as ideias traçam para a especulação é o espaço que o uso prático ocupa. Em Cassirer, a autonomia do pensar e a do querer têm uma só raiz, e a autolibertação culmina na ciência. Daí a perda do segundo título.</p></div></div>
+          </div>
+        </details>
+      </article>
+    </div>
+
+    <div class="step">
+      <div class="rail"><div class="dot">4</div><div class="line"></div></div>
+      <article class="card">
+        <h3><span class="num">4.</span> Technically practical and morally practical</h3>
+        <p class="ask">De que lado dessa distinção kantiana cai a técnica?</p>
+        <div class="grid2">
+          <div><div class="label">Premissas</div><p>A Introdução publicada à <em>KU</em> separa as regras de habilidade (tecnicamente práticas) dos preceitos fundados na liberdade (moralmente práticos). "Form und Technik" pergunta pelo sentido e pelo direito da técnica antes do seu valor.</p></div>
+          <div><div class="label">Fontes</div><p>"Form und Technik" (1930), <em>KU</em> §83, <em>Logik der Kulturwissenschaften</em> (1942), <em>The Myth of the State</em>; Negarestani (2018); Simmel, Marx, Rathenau e Bergson como o próprio Cassirer os cita.</p></div>
+        </div>
+        <div class="result"><div class="label">Resultado</div><p>A técnica atravessa as três funções (magia → ferramenta → máquina) sem passar do tecnicamente ao moralmente prático. O título de humanidade é reconhecido na forma de <em>any of us</em>, não produzido.</p></div>
+        <p class="pass"><b>Passa ao Capítulo II:</b> a comunidade de destino que a técnica cria não é ainda uma comunidade de vontades. Quem pertence ao "nós"? A cultura prepara o fim final?</p>
+        <details>
+          <summary>Caminho argumentativo, subseção por subseção</summary>
+          <div class="subs">
+            <div class="sub"><span class="n">4.1</span><div><p><b>O <em>quid juris</em> da técnica.</b> Sentido na <em>forma formans</em> da atividade, não na <em>forma formata</em> dos produtos. Pela homologia: magia ↔ expressão ↔ alma; ferramenta ↔ apresentação ↔ mundo; máquina ↔ significação pura ↔ Deus. Cassirer aceita o diagnóstico de Simmel da "tragédia" da cultura, mas a técnica é o sintoma, não a causa. A máquina obedece à lei da emancipação da barreira orgânica (Marx) e se aproxima do ponto de vista que a Seção 3 deu à ideia de Deus: um demiurgo que seleciona possíveis.</p></div></div>
+            <div class="sub"><span class="n">4.2</span><div><p><b>Habilidade e disciplina.</b> A passagem da magia à ferramenta liberta a vontade do despotismo do desejo: a técnica contém uma disciplina própria. Mas pertence à cultura da habilidade, mesmo quando prepara a da disciplina. Os danos que Rathenau denuncia vêm de uma forma econômica; o que os removeria é uma mudança de fins, e isso é moralmente prático. A técnica só pode servir, nunca conduzir <span class="ref">ECW 17:182</span>.</p></div></div>
+            <div class="sub"><span class="n">4.3</span><div><p><b>A consciência da cultura e o Bem depois da morte de Deus.</b> A filosofia como consciência da cultura (1942). A técnica pode servir a uma nova imagem (<em>The Myth of the State</em>). O lugar vazio do arquétipo pode ser ocupado por uma técnica que vira credo ou por uma que derruba todo ídolo. O Bem de Negarestani recusa todas as imagens, mas a máxima de queimar o sagrado atinge a única santidade que a crítica guarda: a humanidade na pessoa.</p></div></div>
+            <div class="sub"><span class="n">4.4</span><div><p><b>O título de humanidade.</b> Para Negarestani, um título transferível a quem entra no domínio dos juízos, animal ou máquina <span class="ref">Negarestani 2018, p. 62</span>. Kant e Negarestani recusam um critério natural, mas respondem a perguntas diferentes. O título é reconhecido na forma de <em>any of us</em>, cultivado pela educação e transmitido como "tarefa": nenhum professor possui o arquétipo, e o que se transmite é um exercício.</p></div></div>
+          </div>
+        </details>
+      </article>
+    </div>
+  </div>
+  <div class="handoff"><b>Conclusão do Capítulo I.</b> A intersubjetividade apareceu como forma, o "nós" sob o qual uma premissa pode ser própria, e ainda não como medida. A forma decide que o título moral não pode ser estratificado, porque a lei vale para toda vontade racional ou para nenhuma. Os três termos da Introdução se separam pelos dois sentidos do prático: cognição e conhecimento crescem com o tecnicamente prático; a consciência moral pertence ao moralmente prático.</div>
+</section>
+
+<section id="cap2" class="c2zone">
+  <div class="head">
+    <div class="eyebrow">Capítulo II · If I do what I should, what may I then hope?</div>
+    <h2>Mapa do Capítulo II</h2>
+    <p>A pergunta passa da vontade ao mundo: a natureza e a cultura podem ser pensadas como compatíveis com o fim que a lei põe?</p>
+  </div>
+  <div class="cards3">
+    <article class="card">
+      <h3><span class="num">5.</span> The technique of nature</h3>
+      <p>A terceira <em>Crítica</em> julga a natureza como se fosse arte. O princípio é de reflexão: o juízo dá a lei só a si mesmo.</p>
+      <div class="result"><div class="label">Resultado</div><p>A analogia falha no organismo, que tem força formadora; a máquina só tem força motriz. A pergunta dos fins volta ao ser que julga.</p></div>
+      <details>
+        <summary>Passos</summary>
+        <div class="subs">
+          <div class="sub"><span class="n">5.1</span><div><p>Natureza julgada como arte; a técnica da natureza como "tarefa" da investigação, não propriedade das coisas.</p></div></div>
+          <div class="sub"><span class="n">5.2</span><div><p>Organismo e máquina: "análogo da arte" diz pouco, "análogo da vida" diz demais. A utilidade não é a medida do que vive.</p></div></div>
+          <div class="sub"><span class="n">5.3</span><div><p>O entendimento arquetípico, pensado para caracterizar o nosso entendimento discursivo, não para conhecer um ser. A planta originária de Goethe: buscada como real, vira ideia e depois símbolo.</p></div></div>
+          <div class="sub"><span class="n">5.4</span><div><p>De Goethe, a teoria que começa em cada olhar atento; de Kant, a pergunta de direito. Chirimuuta mostra a abstração do vivo virando método de manipulação. As condições geomórficas de uma inteligência geral não lhe dão força formadora, e a hipótese só é admitida para defesa. <span class="own">"geomórfico" é seu</span></p></div></div>
+        </div>
+      </details>
+    </article>
+    <article class="card">
+      <h3><span class="num">6.</span> Nature, art and freedom</h3>
+      <p>O que a natureza pode visar no ser humano? Só a aptidão para pôr fins em geral: a cultura, fim último, não o fim final.</p>
+      <div class="result"><div class="label">Resultado</div><p>Teleologia aberta: o fim é posto como "tarefa" e não lido em natureza nenhuma, de modo que nem povos nem formas podem ser ranqueados por ela.</p></div>
+      <details>
+        <summary>Passos</summary>
+        <div class="subs">
+          <div class="sub"><span class="n">6.1</span><div><p>O belo como símbolo do moralmente bom; o senso comum como contraparte estética do <em>any of us</em>, que pede acordo sem poder forçá-lo.</p></div></div>
+          <div class="sub"><span class="n">6.2</span><div><p>A cultura como fim último; as correções de Höffe deixam o resultado de pé: o que se desenvolve é uma aptidão, não o fim.</p></div></div>
+          <div class="sub"><span class="n">6.3</span><div><p>Os ensaios sobre raça leem na natureza os estágios da aptidão e põem povos inteiros abaixo de toda cultura. Cassirer tira o ranking da biologia mas mantém um ranking de formas (as acusações de Chirimuuta e Luft miram este).</p></div></div>
+          <div class="sub"><span class="n">6.4</span><div><p>Contra a escala única de Natorp: as teleologias abertas de Luft e Kinzel e a teleologia psicossocial, que guarda o fim e lhe nega fundamento na natureza. <span class="own">proposta sua</span></p></div></div>
+        </div>
+      </details>
+    </article>
+    <article class="card">
+      <h3><span class="num">7.</span> Critical and absolute idealism</h3>
+      <p>Como o fim das formas ganhou determinação ética, num diálogo com Hegel: fica a forma da fenomenologia, recusa-se o fim.</p>
+      <div class="result"><div class="label">Resultado</div><p>Espera-se o que a conferência de 1936 chama "much more unassuming": uma gramática da mente humana e um mundo comum que cada um reconstrói.</p></div>
+      <details>
+        <summary>Passos</summary>
+        <div class="subs">
+          <div class="sub"><span class="n">7.1</span><div><p>1927: uma só direção, com auge na ciência. 1928: cada forma colabora, na sua direção, na transição à liberdade, e as culturas são conceitos de "tarefa".</p></div></div>
+          <div class="sub"><span class="n">7.2</span><div><p>1930: a técnica deve encaixar-se na eticoteleologia de Kant. 1936: a liberdade da consciência se atualiza em todo processo de pensar, querer ou sentir que leva da passividade à atividade.</p></div></div>
+          <div class="sub"><span class="n">7.3</span><div><p>O ensaio de 1939 e <em>The Myth of the State</em>: contra um espírito acabado, uma lei de desenvolvimento ou a raça, a ideia como "tarefa" infinita e a liberdade como <em>aufgegeben</em>.</p></div></div>
+          <div class="sub"><span class="n">7.4</span><div><p>Negarestani junta de novo o que Cassirer separou: a "tarefa" como ponto de partida de uma inteligência que remove todo dado. Chirimuuta responde: uma organização funcional abstraída do cérebro não é o sistema vivo.</p></div></div>
+        </div>
+      </details>
+    </article>
+  </div>
+  <div class="handoff"><b>Avanço sobre o Capítulo I.</b> A consciência da liberdade já não está só na vontade: está em todo processo de pensamento, sentimento e vontade. O "nós" deixa de ser só a forma da lei e passa a ser a medida da esperança. Mas a esperança não certifica o valor cognitivo das formas, e isso fica para o Capítulo III.</div>
+</section>
+
+<section id="cap3" class="c3zone">
+  <div class="head">
+    <div class="eyebrow">Capítulo III · What can I know?</div>
+    <h2>Mapa do Capítulo III</h2>
+    <p>A pergunta especulativa, feita no horizonte da lei moral e sem o ponto de vista que ninguém ocupa.</p>
+  </div>
+  <div class="cards3">
+    <article class="card">
+      <h3><span class="num">8.</span> Intuition and the distance from life</h3>
+      <p>A relatividade revisa as formas da intuição sem abolir a pergunta de direito; o "objeto" da física vira uma ordem de invariantes não apresentada em intuição.</p>
+      <div class="result"><div class="label">Resultado</div><p>A distância não vira escala: o prisma ordena as formas pela direção do movimento, não pela distância da vida. <span class="own">imagem sua</span></p></div>
+      <details>
+        <summary>Passos</summary>
+        <div class="subs">
+          <div class="sub"><span class="n">8.1</span><div><p>A Estética transcendental e a leitura de Marburgo (Kant como sistemático da física de Newton).</p></div></div>
+          <div class="sub"><span class="n">8.2</span><div><p>Espaço e tempo sobrevivem como formas de ordem; a unidade do tempo como univocidade da coordenação.</p></div></div>
+          <div class="sub"><span class="n">8.3</span><div><p>Da apresentação à significação. Na leitura que Pringe faz de Bohr, os conceitos quânticos valem regulativa e intersubjetivamente, por apresentação indireta que permite comunicar resultados.</p></div></div>
+          <div class="sub"><span class="n">8.4</span><div><p>Mais perto e mais longe da vida: o prisma. A física também volta à intuição para ser comunicada.</p></div></div>
+        </div>
+      </details>
+    </article>
+    <article class="card">
+      <h3><span class="num">9.</span> The deduction from below and from above</h3>
+      <p>A pergunta de direito tem o seu lugar na Dedução transcendental, que corre de cima e de baixo.</p>
+      <div class="result"><div class="label">Resultado</div><p>Como o entendimento é discursivo, toda pretensão volta a uma percepção em que é testada. A passagem do "vale para mim" ao "vale para todos" se faz em cada juízo empírico.</p></div>
+      <details>
+        <summary>Passos</summary>
+        <div class="subs">
+          <div class="sub"><span class="n">9.1</span><div><p>As três versões da Dedução; Heidegger e Longuenesse leem o mesmo texto por lados opostos.</p></div></div>
+          <div class="sub"><span class="n">9.2</span><div><p>Cassirer dissolve as faculdades em "momentos" de uma função, mas a sua fenomenologia ainda se lê de baixo (pregnância simbólica) e de cima (o objeto da física).</p></div></div>
+          <div class="sub"><span class="n">9.3</span><div><p>O juízo de percepção: Cassirer o declara superado em 1910, Longuenesse o acha indispensável, e os rascunhos de Cassirer apontam além dos dois.</p></div></div>
+        </div>
+      </details>
+    </article>
+    <article class="card">
+      <h3><span class="num">10.</span> Intersubjectivity, truth and the canon</h3>
+      <p>A definição: uma pretensão erguida na forma de um juízo, testada por um procedimento de correção e orientada pela ideia de uma comunidade de todos os que julgam.</p>
+      <div class="result"><div class="label">Resultado</div><p>Cânone em preparação <span class="ref">KrV A:11–12/B:25–26</span>, não órganon. Resposta a Porta: graus de alcance e de corrigibilidade.</p></div>
+      <details>
+        <summary>Passos</summary>
+        <div class="subs">
+          <div class="sub"><span class="n">10.1</span><div><p>Intersubjetividade a partir dos <em>Prolegômenos</em> (validade objetiva = validade universal necessária) e da terceira <em>Crítica</em>; o juízo de gosto marca o resto.</p></div></div>
+          <div class="sub"><span class="n">10.2</span><div><p>Não há critério geral de verdade; o ideal funcional de verdade do discurso de 1929.</p></div></div>
+          <div class="sub"><span class="n">10.3</span><div><p>Negarestani converte a lógica de cânone em órganon e põe o "todos" dentro da forma do pensamento.</p></div></div>
+          <div class="sub"><span class="n">10.4</span><div><p>Um cânone negativo no primeiro papel, que admite hipóteses especulativas só para defesa. A IA: o cânone põe a pergunta sem decidi-la e exige que os processos pelos quais um sistema forma e revisa os seus fins sejam corrigíveis por <em>any of us</em>.</p></div></div>
+        </div>
+      </details>
+    </article>
+  </div>
+  <div class="handoff"><b>Avanço sobre o Capítulo II.</b> O "nós" é agora a comunidade de correção. As duas coisas que a segunda <em>Crítica</em> pôs lado a lado, o céu estrelado e a lei moral, se encontram sem se identificar: a ordem que a física conhece vale como pretensão perante uma comunidade que só a ação pode ampliar.</div>
+</section>
+
+<section id="correlacao">
+  <div class="head">
+    <div class="eyebrow">Para sustentar a correlação</div>
+    <h2>Os três capítulos lado a lado</h2>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th></th><th class="c1">I · What should I do?</th><th class="c2">II · What may I hope?</th><th class="c3">III · What can I know?</th></tr></thead>
+      <tbody>
+        <tr><th>Kant</th><td>Cânone, <em>KpV</em>, <em>Fundamentação</em>, Dialética, <em>Prolegômenos</em>, Introdução à <em>KU</em></td><td><em>KU</em> (técnica da natureza, organismo, cultura), escritos de história, antropologia e raça</td><td>Estética, Dedução (A e B), <em>Prolegômenos</em>, Cânone e órganon</td></tr>
+        <tr><th>Cassirer</th><td><em>Kants Leben und Lehre</em>, Davos e resenha de 1931, <em>PSF</em> I–III, rascunhos de 1928, "Form und Technik"</td><td><em>Kants Leben und Lehre</em>, "Goethe and the Kantian Philosophy", "Kant and Rousseau", conferência de 1936, ensaio de 1939, <em>The Myth of the State</em></td><td><em>Substanzbegriff</em> (1910), relatividade (1921), <em>Determinismus</em>, <em>PSF</em> III, discurso de 1929 sobre a verdade</td></tr>
+        <tr><th>Interlocutores</th><td>Allison, Brandom, Sellars, Negarestani, Heidegger, Pringe, Caimi, Allais</td><td>Chirimuuta, Höffe, Natorp, Porta, Luft, Kinzel, Hegel, Negarestani</td><td>Longuenesse, Heidegger, Pringe (Bohr), Caimi, Allison, Negarestani, Porta</td></tr>
+        <tr><th>O "nós"</th><td>Forma da lei: <em>any of us</em></td><td>Medida da esperança: o mundo comum</td><td>Comunidade de correção</td></tr>
+        <tr><th>A máquina</th><td>Autômato: pode ter uma premissa própria, ser "um de nós"?</td><td>Força motriz, não formadora; condições geomórficas</td><td>Hipótese só para defesa; correção pública dos processos que formam fins</td></tr>
+        <tr><th>Decide</th><td>O título moral não pode ser estratificado</td><td>O fim é "tarefa", não lido na natureza</td><td>"Objetividade" em graus de alcance e corrigibilidade</td></tr>
+        <tr><th>Deixa aberto</th><td>Quem pertence ao "nós"; se a cultura prepara o fim final</td><td>O grau de "objetividade" das formas</td><td>Até onde vai a comunidade: questão de ação</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="reuniao">
+  <div class="head">
+    <div class="eyebrow">Amanhã</div>
+    <h2>Para a reunião</h2>
+  </div>
+  <div class="meet">
+    <div class="box pitch">
+      <h3>A tese em dois minutos</h3>
+      <ol>
+        <li>Cassirer quer um idealismo ao mesmo tempo progressivo e pluralista, e por isso precisa de graus de "objetividade" sem hierarquia; Friedman e Porta mostram que ele não explica esses graus.</li>
+        <li>A hipótese: a pista de Kant, em que o prático conduz ao teórico, dá a Cassirer a metateoria que lhe falta, a da "objetividade" como intersubjetividade.</li>
+        <li>Capítulo I: a lei moral obriga na forma de <em>any of us</em>; esse é o primeiro sentido de intersubjetividade, uma forma e ainda não uma medida.</li>
+        <li>Capítulo II: a esperança não lê o fim na natureza; o fim das formas é uma "tarefa", e o "nós" vira o mundo comum que cada um reconstrói.</li>
+        <li>Capítulo III: o "nós" vira a comunidade de correção, e os graus de "objetividade" são graus de alcance e de corrigibilidade das pretensões.</li>
+        <li>Logo, uma metateoria não é uma metafísica: é a reflexão sobre as condições em que toda teoria pode ser corrigida por qualquer um de nós.</li>
+      </ol>
+    </div>
+    <div class="box">
+      <h3>Os dois pontos da última reunião</h3>
+      <p><b>1. Apresentação dos capítulos e das seções na Introdução.</b> O roteiro atual apresenta os três capítulos pelo conteúdo, e a frase "The present dissertation follows this clue of Kant's through three chapters" anuncia a estrutura. Não há apresentação seção por seção, e hoje saíram os "The first chapter…". Se o Pringe insistir, a Introdução é o lugar em que uma apresentação explícita cabe: você pode rejeitar essas sugestões ou acrescentar um parágrafo com as dez seções.</p>
+      <p><b>2. A correlação dos três capítulos.</b> Use a regra "o resultado de um é a pergunta do seguinte" e a progressão do "nós": forma → medida da esperança → comunidade de correção.</p>
+    </div>
+  </div>
+
+  <div class="head" style="margin-top:28px"><h3>Perguntas prováveis, com a pista da resposta</h3></div>
+  <div class="qa">
+    <details><summary>"Por que a ordem fazer → esperar → saber, e não a ordem da <em>KrV</em>?"</summary><div class="cue"><p>Porque essa é a pista de Kant: o prático conduz ao teórico e, na sua forma mais alta, à pergunta especulativa (A:805/B:833). Kant a formula para a pergunta da esperança; a tese a estende ao progresso da cognição teórica. É ela que distingue o caminho de Kant do de Cassirer, que segue Goethe e começa no olhar.</p></div></details>
+    <details><summary>"O que você chama de metateoria, e por que não é metafísica?"</summary><div class="cue"><p>Não ocupa um ponto de vista acima das formas, porque esse ponto de vista não existe, e quem o reivindica absolutiza um "momento". Também não é uma teoria a mais. É a reflexão sobre as condições em que as pretensões de toda teoria podem ser corrigidas por <em>any of us</em>, ordenada por um fim que o prático põe (eticoteleologia).</p></div></details>
+    <details><summary>"Por que Sellars, e não Brandom, para o 'nós'?"</summary><div class="cue"><p>Brandom liga o individualismo de Kant à objeção de Hegel contra o formalismo; Sellars põe o "nós" na forma da própria lei, com <em>any of us</em> como sujeito. Isso responde à objeção do formalismo (a forma fixa para quem a lei vale) e separa intersubjetividade de "objetividade" em sentido forte (Sellars 1967).</p></div></details>
+    <details><summary>"A homologia entre ideias e funções é de Cassirer ou sua?"</summary><div class="cue"><p>É sua, e é crítica e negativa: cada função absolutizada gera uma metafísica, como cada ideia hipostasiada gera uma inferência dialética. O apoio textual é a crítica de Cassirer à metafísica como posição absoluta de um "momento" e os rascunhos de 1928. A homologia guarda o primeiro título das ideias e não mostra o segundo; é por isso que o capítulo não para nela.</p></div></details>
+    <details><summary>"Como você usa a minha reconstrução da metafísica crítica?"</summary><div class="cue"><p>Como medida, não como oposição de Kant contra Cassirer. Pringe concilia as duas linhas (teoria da experiência e acesso ao suprassensível, por uma cognição prático-dogmática por analogia na fronteira). Cassirer pertence à primeira; a pergunta é se a filosofia das formas simbólicas tem lugar para a segunda, e o duplo título das ideias é o modo de fazê-la.</p></div></details>
+    <details><summary>"Por que a técnica entra já no Capítulo I?"</summary><div class="cue"><p>Porque é onde a direção das funções vira poder sobre a natureza e os dois progressos (da cognição e da vontade) deixam de se separar por pontos de vista. A distinção entre tecnicamente e moralmente prático mostra que a técnica atravessa as três funções sem passar ao moral, e a pergunta da máquina ("um de nós"?) mede isso.</p></div></details>
+    <details><summary>"Cassirer não tem um conceito kantiano de liberdade? Ele fala o tempo todo em liberdade."</summary><div class="cue"><p>Ele funda a "tarefa" ideal num ato de liberdade e lê a autonomia como raiz única do pensar e do querer. O que falta é tomar o prático como ponto de partida que conduz ao teórico: em Cassirer a autolibertação culmina na ciência, e nada na direção das funções mostra que o progresso da cognição serve ao da vontade.</p></div></details>
+    <details><summary>"Qual é, afinal, a sua resposta a Porta?"</summary><div class="cue"><p>Como pergunta sobre formas, não tem resposta. Como pergunta sobre pretensões, responde-se por graus de alcance e de corrigibilidade, medidos na comunidade dos que julgam. Nem ranking nem nivelamento: física e mito diferem no alcance das pretensões, não na dignidade das formas.</p></div></details>
+  </div>
+
+  <div class="box" style="margin-top:18px">
+    <h3>Onde a leitura é sua (para marcar se ele perguntar)</h3>
+    <ul class="ownlist">
+      <li><span class="w">3.5</span><span>A homologia crítica e negativa entre as ideias de Kant e as funções de Cassirer.</span></li>
+      <li><span class="w">5.4, 7.4</span><span>"Geomórfico": as condições de uma inteligência geral são as de um planeta, não de um corpo.</span></li>
+      <li><span class="w">6.4</span><span>A teleologia psicossocial.</span></li>
+      <li><span class="w">8.4</span><span>O prisma, que ordena as formas pela direção do movimento.</span></li>
+      <li><span class="w">10.4</span><span>O cânone em preparação como forma da metateoria.</span></li>
+      <li><span class="w">Introdução</span><span>A "certa distorção de Kant", assumida: a leitura não busca fidelidade exegética.</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer>Feito a partir do rascunho atual no Google Docs, com as sugestões de hoje lidas como aceitas. O Pringe leu uma versão anterior do Capítulo I; os argumentos são os mesmos, mas a redação pode diferir.</footer>
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('toggleAll');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    var all=[].slice.call(document.querySelectorAll('details'));
+    var anyClosed=all.some(function(d){return !d.open});
+    all.forEach(function(d){d.open=anyClosed});
+    btn.textContent=anyClosed?'Fechar todos os detalhes':'Abrir todos os detalhes';
+  });
+})();
+</script>

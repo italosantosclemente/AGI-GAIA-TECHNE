@@ -2,7 +2,9 @@
 
 Final conclusion of the argument: a metatheory is not a metaphysics and not a
 further theory; it is the reflection on the conditions under which the claims
-of every theory can be corrected by anyone, and in this sense it is an ethics.
+of every theory can be corrected by anyone, and in this sense it is an
+ethico-teleology: it orders the advance of every theory by an end that the
+practical sets and that no theory can read off its own progress.
 These indices measure those conditions over a set of claims. They are
 reports for human judgment, not verdicts.
 

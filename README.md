@@ -10,6 +10,8 @@ Its central hypothesis is **geomorphic**. The conditions of possibility of the m
 
 Author: Ítalo Santos Clemente (ISC)
 
+**Thesis map.** The argument this architecture is built on, *Cassirer's Kant: Metatheory of Objectivity as Intersubjectivity*, is mapped chapter by chapter in [docs/mapa-metateoria.html](docs/mapa-metateoria.html) ([open rendered](https://htmlpreview.github.io/?https://github.com/italosantosclemente/AGI-GAIA-TECHNE/blob/main/docs/mapa-metateoria.html)). The map is in Portuguese.
+
 ---
 
 ## Contents

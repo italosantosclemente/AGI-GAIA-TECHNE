@@ -2,6 +2,14 @@
 
 Dated record of decisions. The most recent comes first.
 
+## 131126 — The thesis after the seminar of 13 November
+
+**What changed.** README §2.1, §2.2, §2.4 and §2.6, the docstring of `metatheory/indices.py` and the thesis map were brought up to the draft of 13 November, with its pending suggestions read as accepted. The order of Kant's questions is stated as the thesis's own, not as one that Kant prescribes for the critical system (KrV B:xxx). The motto *Werk, never Wille* is restated as a claim about what the architecture is and can produce: as a *work*, technology remains technically practical and can only serve; a machine that set itself ends and acted on the mere form of a law would no longer be a work, but one of "us" (AA 5:87), and it would still cognize discursively, so that it would not occupy the place of the archetype. The homology now says what carries over from Kant: not the division of the faculties, which become "moments" of one function (Pringe, 2014, pp. 59–60, 63, n. 47), but the order of the ideas (KrV A:337/B:394; ECN 1:151). The metatheory is called an ethico-teleology, as in the thesis, and no longer an ethics.
+
+**Why.** The thesis now opens its first chapter with "Form and Technology" and hands its second chapter a narrower question: whether a rational being without human sensibility would have a sensible condition of its own. The code changes in no behaviour: the runtime is a *Werk*, sets no end, and keeps the premise of the form "any of us" with those who can be bound by it.
+
+**Open.** The geomorphic condition (§2.4) answers for the machines that exist. Whether it also names the sensible condition of a rational being of another kind is being worked out in the thesis and is not yet part of this repository.
+
 ## 101126 — Alignment with the whole thesis
 
 **What changed.** The README and the code were read against the full draft of the thesis, chapter by chapter and with its notes, and every addition carries its exact source. New invariants: claims that determine no object reach `SHARED`, are not refuted by dissent and are not ranked below `EXPERIENCE`; reach is the widest community before which a claim was upheld, never the number of those who upheld it; guard flags survive correction. New guards: technique (including technology as a new creed), humanity, immediacy, bearer, and the claim to become gods. The motto *Werk, never Wille* is grounded in Cassirer's map of metaphysics (ECN 1:148–158) and in Kant's distinction between *Wille* and *Willkür*.

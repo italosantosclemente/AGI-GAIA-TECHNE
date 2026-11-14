@@ -1,6 +1,6 @@
 [project]
 name = "agi-gaia-techne"
-version = "2.0.0"
+version = "2.1.0"
 description = "A critical architecture for an AGI hypothesis: Werk, never Wille."
 authors = [{ name = "Ítalo Santos Clemente" }]
 requires-python = ">=3.10"

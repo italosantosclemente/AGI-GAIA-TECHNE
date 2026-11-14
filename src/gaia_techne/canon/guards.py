@@ -72,7 +72,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import List
+from typing import Iterable, List, Tuple
 
 from .claims import Claim
 
@@ -130,6 +130,27 @@ _HUMANITY = [
 
 
 @dataclass(frozen=True)
+class Guard:
+    """One guard: the idea whose horizon it keeps, the error it names, the patterns that flag it."""
+
+    name: str
+    idea: str
+    error: str
+    patterns: Tuple[str, ...]
+
+
+GUARDS: Tuple[Guard, ...] = (
+    Guard("soul", "soul", "paralogism: inner life ascribed to the system", tuple(_SOUL)),
+    Guard("world", "world", "antinomy: the world taken as a given whole", tuple(_WORLD)),
+    Guard("ideal", "God", "ideal: a standpoint no one occupies taken as available", tuple(_IDEAL)),
+    Guard("immediacy", "soul", "presence claimed without representation: no materia nuda", tuple(_IMMEDIACY)),
+    Guard("bearer", "world", "works ascribed to a super-empirical bearer: a work arises from reciprocal action", tuple(_BEARER)),
+    Guard("technique", "-", "technical norm posited as absolute: rules of skill do not set ends", tuple(_TECHNIQUE)),
+    Guard("humanity", "-", "the title of humanity is acknowledged by any of us, not spoken for or stratified", tuple(_HUMANITY)),
+)
+
+
+@dataclass(frozen=True)
 class Flag:
     guard: str
     idea: str
@@ -137,7 +158,7 @@ class Flag:
     match: str
 
 
-def _scan(text: str, patterns: List[str]) -> List[str]:
+def _scan(text: str, patterns: Iterable[str]) -> List[str]:
     hits = []
     for p in patterns:
         m = re.search(p, text, flags=re.IGNORECASE)
@@ -148,20 +169,9 @@ def _scan(text: str, patterns: List[str]) -> List[str]:
 
 def check(claim: Claim) -> List[Flag]:
     flags: List[Flag] = []
-    for m in _scan(claim.content, _SOUL):
-        flags.append(Flag("soul", "soul", "paralogism: inner life ascribed to the system", m))
-    for m in _scan(claim.content, _WORLD):
-        flags.append(Flag("world", "world", "antinomy: the world taken as a given whole", m))
-    for m in _scan(claim.content, _IDEAL):
-        flags.append(Flag("ideal", "God", "ideal: a standpoint no one occupies taken as available", m))
-    for m in _scan(claim.content, _IMMEDIACY):
-        flags.append(Flag("immediacy", "soul", "presence claimed without representation: no materia nuda", m))
-    for m in _scan(claim.content, _BEARER):
-        flags.append(Flag("bearer", "world", "works ascribed to a super-empirical bearer: a work arises from reciprocal action", m))
-    for m in _scan(claim.content, _TECHNIQUE):
-        flags.append(Flag("technique", "-", "technical norm posited as absolute: rules of skill do not set ends", m))
-    for m in _scan(claim.content, _HUMANITY):
-        flags.append(Flag("humanity", "-", "the title of humanity is acknowledged by any of us, not spoken for or stratified", m))
+    for g in GUARDS:
+        for m in _scan(claim.content, g.patterns):
+            flags.append(Flag(g.name, g.idea, g.error, m))
     return flags
 
 

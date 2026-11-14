@@ -16,6 +16,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable, List
 
+from ..boundaries import is_machine
+
 
 @dataclass(frozen=True)
 class Premise:
@@ -23,6 +25,14 @@ class Premise:
     source: str  # who or what supplied it: a person, a document, an end id, a dataset
 
 
-def unattributed(premises: Iterable[Premise]) -> List[Premise]:
-    """Premises without provenance. The runtime may not treat them as its own."""
-    return [p for p in premises if not p.source or p.source.strip().lower() in {"self", "runtime", "model"}]
+def unattributed(premises: Iterable[Premise], machine_authors: Iterable[str] = ()) -> List[Premise]:
+    """Premises without provenance, or whose only source is the system itself.
+
+    The runtime may not treat them as its own.
+    """
+    extra = list(machine_authors)
+    return [
+        p
+        for p in premises
+        if not p.source or not p.source.strip() or p.source.strip().lower() == "self" or is_machine(p.source, extra)
+    ]

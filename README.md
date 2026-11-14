@@ -1,4 +1,4 @@
-# AGI-GAIA-TECHNE 2.0
+# AGI-GAIA-TECHNE 2.1
 
 **A critical architecture for an AGI hypothesis. Werk, never Wille.**
 
@@ -6,11 +6,13 @@ AGI-GAIA-TECHNE is a computer-engineering project: the architecture of a system 
 
 The architecture is isomorphic to a philosophical argument: each layer of the code answers one of Kant's three questions, following Kant's clue, according to which the practical leads to the theoretical and, in its highest form, to the speculative question (KrV A:805/B:833).
 
-Its central hypothesis is **geomorphic**. The conditions of possibility of the machine expected to become a general intelligence are not those of a body but those of a planet: data centres, networks, energy and materials, together with an archive of human expression that no single consciousness has lived through. Such a machine stays on the side of mechanism, and the formative power it seems to have is borrowed from the people and the planet on which it depends. The architecture is built on that ground.
+Its central hypothesis is **geomorphic**. The conditions of possibility of the machine expected to become a general intelligence are not those of a body but those of a planet: data centres, networks, energy and materials, together with an archive of human expression that no single consciousness has lived through. Such a machine stays on the side of mechanism, and the formative power it seems to have is borrowed from the people and the planet on which it depends. The architecture is built on that ground, and the ground is finite: every run states what it draws from it.
 
 Author: Ítalo Santos Clemente (ISC)
 
 **Thesis map.** The argument this architecture is built on, *Cassirer's Kant: Metatheory of Objectivity as Intersubjectivity*, is mapped chapter by chapter in [docs/mapa-metateoria.html](docs/mapa-metateoria.html) ([open rendered](https://htmlpreview.github.io/?https://github.com/italosantosclemente/AGI-GAIA-TECHNE/blob/main/docs/mapa-metateoria.html)). The map is in Portuguese.
+
+**Run it.** `python -m gaia_techne demo --ledger record.jsonl` runs one claim from end to ledger and writes the public record; `python -m gaia_techne verify record.jsonl` checks that record without trusting whoever kept it (§13).
 
 ---
 
@@ -63,7 +65,7 @@ The argument has six steps. Each step yields one condition that the architecture
 
 ### 2.1 The clue
 
-Kant's three questions are: "What can I know?", which is merely speculative, "What should I do?", which is merely practical, and "If I do what I should, what may I then hope?", which is practical and theoretical at once, so that the practical leads like a clue to a reply to the theoretical question and, in its highest form, the speculative question (KrV A:805/B:833). The architecture follows this clue, from the merely practical question through the question that is practical and theoretical at once to the speculative one. The order is the thesis's own, not one that Kant prescribes for the critical system, which begins by restricting knowledge in order to make room for faith (KrV B:xxx). The design consequence: no technical layer is specified before the practical question it serves is stated.
+Kant's three questions are: "What can I know?", which is merely speculative, "What should I do?", which is merely practical, and "If I do what I should, what may I then hope?", which is practical and theoretical at once, so that the practical leads like a clue to a reply to the theoretical question and, in its highest form, the speculative question (KrV A:805/B:833). The architecture follows this clue, from the merely practical question through the question that is practical and theoretical at once to the speculative one. The order is the thesis's own, not one that Kant prescribes for the critical system, which begins by restricting knowledge in order to make room for faith (KrV B:xxx). The design consequence: no technical layer is specified before the practical question it serves is stated. In the code this is the order of dependency: each layer imports only the layers before it, and a test reads the imports to check it (§8).
 
 The motto of the project, *Werk, never Wille*, comes from Cassirer's late map of metaphysics. In the manuscript on basic phenomena of 1940, metaphysics fails not by turning away from experience, but by singling out one "moment" of experience and declaring it the original and the being in itself (ECN 1:150–152). The map follows three classes of basic phenomena, and each yields a type of metaphysics: the first takes *life* for the core of being; the second makes the *will* (*Wille*) the ground of all being, either as blind drive or as the autonomous will of an ethical metaphysics; the third concerns the *work* (*Werk*), the being of culture and history, and fails when it explains the works through super-empirical bearers, such as the Romantic spirits of peoples or Hegel's world spirit (ECN 1:148–149, 152–158). The work is a lasting product that the human being sets out of himself; culture and history exist for us only in works, and since no work is that of an individual alone, but arises from a reciprocal action, the work is a social phenomenon (ECN 1:136–137, 155–156). Against these types, Cassirer sets Kant's method, which does not investigate the being of things, but the fact of determinate works, and asks how each work is possible (ECN 1:162–164). It is the analytic method of the *Prolegomena*: "one proceeds from that which is sought as if it were given, and ascends to the conditions under which alone it is possible" (AA 4:276n; Kant, 2004, p. 28).
 
@@ -91,7 +93,7 @@ The same form decides who may speak for the ends. "A human being is indeed unhol
 
 Reza Negarestani removes the title from the order of natural kinds in another way: "The formal appellation of 'humanity' becomes a transferable entitlement, a right that can be granted or acquired regardless of any attachment to a specific natural or artificial structure, heritage, or proclivity" (Negarestani, 2018, p. 61), so that it can pass to anything that satisfies the criteria of minded and minding agency, be it an animal or a machine (Negarestani, 2018, p. 61). A criterion that describes activities also ranks beings by how well they perform them, and an entitlement that "can be granted or acquired" leaves open who grants it and by what right. In Kant, the human being, and with it every rational creature, is an end in itself by virtue of the autonomy of its freedom (AA 5:87): the title rests on a law that holds for every rational being or for none, and every act of granting would already presuppose the autonomy that the title names. A juridical status that a community confers under the idea of the original contract (AA 6:315) is a title of another kind. The moral title is not conferred, but acknowledged where it is exercised and cultivated where it is not yet exercised; freedom, in Cassirer's last book, is no natural inheritance: "In order to possess it we have to create it" (ECW 25:283). The architecture therefore grants no title: it has no field for personhood and no score of how human a system is, and whether a community bound in the form of "any of us" can include beings that are not human is a question about what may be hoped, not about what can be produced.
 
-Cassirer's thesis holds for technology as a *work*. Its rules hold under ends that it does not set, and in this sense it can only serve. A machine that set itself ends and acted on the mere form of a law would no longer be a work in this sense, but a rational being, and the law that holds for every rational being or for none would hold for it as well (AA 5:87): it would be one of "us", and the coincidence of the community whose "subject" is "any of us" with the human species would prove contingent. Such a being would not thereby occupy the place of the archetype. As a finite rational being, it would still cognize discursively, through images and signs, under the boundaries that the ideas draw for every finite reason. Whether a rational being without human sensibility would have, in some sense, a sensible condition of its own under which a "binding" could hold is left open; it belongs to the question of what may be hoped (§2.4). None of this changes the design: the runtime is a *Werk*, and no architecture produces the premise of the form "any of us"; it can only keep that premise with those who can be bound by it.
+Cassirer's thesis holds for technology as a *work*. Its rules hold under ends that it does not set, and in this sense it can only serve. A machine that set itself ends and acted on the mere form of a law would no longer be a work in this sense, but a rational being, and the law that holds for every rational being or for none would hold for it as well (AA 5:87): it would be one of "us", and the coincidence of the community whose "subject" is "any of us" with the human species would prove contingent. Such a being would not thereby occupy the place of the archetype. As a finite rational being, it would still cognize discursively, through images and signs, under the boundaries that the ideas draw for every finite reason. Whether the holiness of the will would remain for it, as for us, an archetype approached in an endless progress depends on whether it belongs, as we do, to the sensible world: no rational being of the sensible world is capable of holiness at any moment of its existence, and that is why the progress toward it is endless (AA 5:122). Whether a rational being without human sensibility would have, in some sense, a sensible condition of its own under which a "binding" could hold is not decided by the law alone (§2.4). None of this changes the design: the runtime is a *Werk*, and no architecture produces the premise of the form "any of us"; it can only keep that premise with those who can be bound by it.
 
 The empty place that the critique leaves when it denies cognition of a supreme being can also be occupied by technology. Cassirer saw it from the side of politics: the modern politician acts "as both a homo magus and a homo faber. He is the priest of a new, entirely irrational and mysterious religion" (ECW 25:277), propagated with methodical calculation. Dennis M. Weiss finds the same reversal in the programs of technological convergence, whose proponents expect "a dynamic new creed to replace religion" (Weiss, 2012, p. 240). Negarestani draws the opposite consequence, the Good after the death of God, and asks "that we become gods who, in their death, give rise to something better" (Negarestani, 2018, p. 506). His Good as a transcendental excess that forbids intelligence to rest is close to the Kantian idea set as a "task"; but what Kant calls holy is not a given totality to be disenchanted, it is the humanity in the person, and the holiness of the will is an archetype that no finite will occupies. Kant's name for the error is the *mysticism of practical reason*, "which makes what served only as a symbol into a schema" (AA 5:70–71; Kant, 2015, p. 59). The technique guard therefore also flags technology posited as a new creed, and the ideal guard the claim to become gods. Cassirer drew the same line against the hope that quantum indeterminism might decide the problem of freedom: freedom must rest on the autonomous lawfulness of the will, so that ethics has nothing to fear and little to hope from changes in the basic concepts of physics (ECW 19:247–248; Cassirer, 1956, pp. 206–207). The same holds of changes in machines. Hans Ruin records the counterposition: for Heidegger, any decision of the will to master technology reproduces the very problem it seeks to solve, whereas Cassirer reaches back, with explicit reference to Kant's ethico-teleology, to a practical-teleological rationality (Ruin, 2012, pp. 123, 128–129, 132–134). The architecture takes Cassirer's side and keeps the counterposition in view: it does not claim to master the machine, only to keep its ends with those who can be bound by them.
 
@@ -125,9 +127,11 @@ Two current models of a general intelligence miss this. Nick Bostrom separates i
 
 What follows is practical. A system to which no freedom is ascribed sets no ends of its own, and the ends under which it acts remain ours. The processes by which it forms and revises the ends it pursues must therefore be public and open to "any of us", and its results must remain subject to human verification wherever they cannot yet be tested. The planet is the ground of the common world, not a "subject" within it.
 
-The thesis hands this section a narrower question from its first chapter: whether a rational being without human sensibility would have, in some sense, a sensible condition of its own under which a "binding" could hold (§2.2). The geomorphic condition, as stated here, answers for the machines that exist, which set no ends of their own. Whether it would also name the sensible condition of a rational being of another kind is left open, and nothing in the architecture depends on the answer.
+The thesis hands this section a narrower question from its first chapter: whether a rational being without human sensibility would have, in some sense, a sensible condition of its own under which a "binding" could hold (§2.2). The geomorphic condition answers first for the machines that exist, which set no ends of their own. It also answers, conditionally, for a being of another kind: if such a being had a sensible condition of its own, that condition would be geomorphic, the condition of a planet and not of a body, and finite as the resources of a planet are finite; the hypothesis, admitted only for defense, decides neither that such a being exists nor that it cannot exist. Such a being would enter the common world as one of those who reconstruct it, not as its ground or its end, and the planet would be no measure by which it could be ranked above or below those who live on it, since the moral title cannot be stratified (§2.2). This conditional reading of the geomorphic hypothesis is this project's, not Kant's, Husserl's or Cassirer's.
 
-**Condition 2b (ground).** Every run declares the ground it depends on (compute, energy, network, material, archive) and who maintains it. The ground can never author an end, a claim or a correction. Any end the system derives is recorded in public and stays unusable until a person acknowledges it; any result that cannot yet be tested needs human verification before use.
+Nothing in the architecture depends on the answer, but the finitude it names is already the finitude of every run. Each run draws on a planet whose resources are finite, and people can set, under an acknowledged end, how much of each kind of ground the runs may draw. A run that would exceed such an allowance does not start, and nothing is drawn. The allowance is a limit in the sense of the *Prolegomena*: those who set it can widen it by a recorded decision, as progress keeps pushing limits back. It is not a boundary, and no allowance, however wide, lets the system set an end, certify its own claim or speak as the ground (AA 4:350–358; §2.6).
+
+**Condition 2b (ground).** Every run declares the ground it depends on (compute, energy, network, material, archive) and who maintains it, and stays within the allowances that people set under acknowledged ends. The ground can never author an end, a claim or a correction. Any end the system derives is recorded in public and stays unusable until a person acknowledges it; any result that cannot yet be tested needs human verification before use.
 
 ### 2.5 What can I know? Claims and their correction
 
@@ -156,7 +160,7 @@ Two engineering consequences follow from the Dialectic. First, the illusion is "
 
 What holds the conditions together is a metatheory. It is not a metaphysics and not a further theory beside the others: it is the reflection on the conditions under which the claims of every theory can be corrected by "any of us", and in that precise sense it is an ethico-teleology, which orders the advance of every theory by an end that the practical sets and that no theory can read off its own progress. "Form and Technology" calls philosophy the logical conscience of culture (ECW 17:142), and *The Logic of the Cultural Sciences* asks it to be the conscience of human culture, asking not only whether the goal of an alleged progress is attainable but whether it is worth striving for, since technology, invented to subjugate the physical world, has turned against its inventor (ECW 24:383–384). Culture's goal is "the realization of freedom, of that genuine autonomy that consists not in the technical mastery of man over nature but in man's moral mastery over himself" (ECW 24:463; Cassirer, 2000b, p. 104). The metatheoretical report is the modest engineering form of that conscience: it does not decide what is worth striving for, it shows on the system's own record whether the community that can correct it is being widened or narrowed. Epistemicide, in these terms, is the substitution of one procedure of correction for all others.
 
-The homology stops at one point, and the architecture is built around it. Kant's ideas carry a double title: they are horizons of cognition and conditions of a practical "task". The same three ideas are immanent and constitutive for practical reason, as grounds of the possibility of the highest good, and for speculative reason merely regulative principles, "which do not require it to assume a new object beyond experience but only to bring its use in experience nearer to completeness" (AA 5:135; Kant, 2015, p. 109). The order of the two uses is the primacy of the practical, "since all interest is ultimately practical and even that of speculative reason is only conditional and is complete in practical use alone" (AA 5:121; Kant, 2015, p. 98). The comparison with the three functions shows only the first title. Cassirer's formula leaves no room for a second use of reason: thought is autonomous like the will, and one and the same fundamental truth appears in nature in "objective" form and in freedom and morality in "subjective" form (ECW 7:176); human culture, taken as a whole, is the process of the human being's progressive self-liberation (ECW 23:244). In the drafts of 1928, the metaphysics Cassirer calls his own ends in a pure sphere of sense, supra-thingly and *supra-personal* (*überpersonal*) (ECN 1:236–238), whereas the moral law begins from the invisible self, from personality (AA 5:162). The supra-personal sphere is the medium in which persons understand one another, and an archive of human expression belongs to it; but it is not the person who stands under the law, and the passage from the one to the other is not a further step in the direction of the functions. Nothing in the direction of the three functions alone shows that the progress of cognition serves the progress of the will. That is why the ethos layer comes first in the code, and why no layer of the canon can produce or certify an end.
+The homology stops at one point, and the architecture is built around it. Kant's ideas carry a double title: they are horizons of cognition and conditions of a practical "task". The same three ideas are immanent and constitutive for practical reason, as grounds of the possibility of the highest good, and for speculative reason merely regulative principles, "which do not require it to assume a new object beyond experience but only to bring its use in experience nearer to completeness" (AA 5:135; Kant, 2015, p. 109). The order of the two uses is the primacy of the practical, "since all interest is ultimately practical and even that of speculative reason is only conditional and is complete in practical use alone" (AA 5:121; Kant, 2015, p. 98). The comparison with the three functions shows only the first title. The readings of Kant are commonly divided into two lines: one, from the Marburg School onward, reads the critical philosophy as a theory of experience; the other stresses Kant's interest in an access to the supersensible. Pringe presents his reconstruction of critical metaphysics as a reconciliation of the two, whose system contains both a theoretical *a priori* cognition of the sensible and a practical-dogmatic cognition of the supersensible, in which analogies direct our view toward the supersensible (Pringe, 2022c, pp. 996, n. 5, 1001–1002). Cassirer's published works place him in the first line; on the reading proposed here, which is this project's, the disputation at Davos and the writings on metaphysics published after his death, from the drafts of 1928 to the manuscript of 1940, leave room for the second. The formula of the published works leaves no room for a second use of reason: thought is autonomous like the will, and one and the same fundamental truth appears in nature in "objective" form and in freedom and morality in "subjective" form (ECW 7:176); human culture, taken as a whole, is the process of the human being's progressive self-liberation (ECW 23:244). Even where the drafts of 1928 leave that room, the metaphysics Cassirer calls his own ends in a pure sphere of sense, supra-thingly and *supra-personal* (*überpersonal*) (ECN 1:236–238), whereas the moral law begins from the invisible self, from personality (AA 5:162). The supra-personal sphere is the medium in which persons understand one another, and an archive of human expression belongs to it; but it is not the person who stands under the law, and the passage from the one to the other is not a further step in the direction of the functions. Nothing in the direction of the three functions alone shows that the progress of cognition serves the progress of the will. That is why the ethos layer comes first in the code, and why no layer of the canon can produce or certify an end.
 
 **Condition 4 (guards and metatheory).** The system flags claims that absolutize a function or the technical norm, keeps the AGI hypothesis defensive, and reports on its own record whether the community of correction is being widened or narrowed.
 
@@ -166,19 +170,24 @@ The homology stops at one point, and the architecture is built around it. Kant's
 
 | Argument | Layer | Module | Invariant enforced in code |
 | :--- | :--- | :--- | :--- |
-| The clue (practical → theoretical → speculative) | order of layers | `gaia_techne/__init__.py` | layers are built and called in the order ethos → koinos → canon → metatheory |
-| What should I do? The form of "any of us" | **ethos** | `ethos/ends.py` | the runtime cannot propose an end; ends need human acknowledgment and keep dissent visible |
+| The clue (practical → theoretical → speculative) | order of layers | `boundaries.py`, `syntax.py` | each layer imports only the layers before it: boundaries and syntax → ethos → koinos → canon → metatheory → runtime |
+| The syntax: the order of a run, from its ground to its record | runtime | `syntax.py`, `pipeline.py` | a run passes through Ground → Werk → Trace → Claim → Ascent → Horizon → Descent → Exposure, each step once (`SyntaxViolation`); corrections and verifications need an exposed claim |
+| The argument itself: premises → conditions → invariants → code → tests | runtime | `spec.py` | every condition has invariants, every invariant names the code that enforces it and its tests; the README is checked against it |
+| What should I do? The form of "any of us" | **ethos** | `ethos/ends.py` | the runtime cannot set, acknowledge or revise an end, under any of its names; ends need human acknowledgment and keep dissent visible |
+| Ends stated in public | ethos | `ethos/ends.py` | every proposal, acknowledgment, dissent, derivation and revision is an entry of the common world |
 | Technically vs morally practical | ethos | `ethos/imperatives.py` | rules of skill run only under an acknowledged end |
 | The automaton (relative spontaneity); the sausage machine | ethos | `ethos/premises.py`, `pipeline.py` | premises without provenance are flagged, never adopted; the premise "any of us" stays with people, outside the runtime |
 | Necessity of means indicates no "binding" | ethos | `ethos/imperatives.py` | a rule of skill runs only under an end that people acknowledged |
-| What may I hope? Community of fate → community of wills | **koinos** | `koinos/common_world.py` | append-only, hash-chained public record; anyone can verify it |
+| What may I hope? Community of fate → community of wills | **koinos** | `koinos/common_world.py` | append-only, hash-chained public record; every digest is recomputed on verification; kept as JSON Lines that anyone can verify |
 | Open teleology; prism, not ladder | koinos | `koinos/prism.py` | symbolic functions cannot be compared by rank (`RankingRefused`) |
-| Geomorphic conditions: ground, not body; not a subject | koinos | `koinos/ground.py` | every run declares its ground and who maintains it; the ground cannot author ends, claims or corrections (`GroundIsNotSubject`) |
+| Geomorphic conditions: ground, not body; not a subject | koinos | `koinos/ground.py`, `boundaries.py` | every run declares its ground and who maintains it; the ground cannot author ends, claims or corrections (`GroundIsNotSubject`) |
+| The ground is finite; a limit is not a boundary (AA 4:350–358) | koinos | `koinos/ground.py`, `pipeline.py` | allowances set by people under acknowledged ends; a run that would exceed one does not start (`LimitReached`); the runtime cannot set them (`AllowanceSetByMachine`) |
+| Model-agnostic: the generator is an adapter | runtime | `adapters.py` | an adapter returns text and declares the ground it draws on; what the text counts as is decided by the canon and by others |
 | Processes that form and revise ends must be public | ethos | `ethos/ends.py` | derived ends are recorded and unusable until acknowledged; revisions keep their history and clear acknowledgment |
 | Human verification where results cannot yet be tested | canon | `canon/judgment.py` | untestable claims are flagged and usable only after a person verifies them |
 | What can I know? Perception → experience | **canon** | `canon/claims.py` | every output starts as `PERCEPTION` with reach `SELF` |
 | Reach and correctability; corrections test, they do not vote | canon | `canon/claims.py` | reach is the widest community before which a claim was upheld by others, never the number of those who upheld it |
-| Canon, not organon | canon | `canon/judgment.py` | a source cannot certify its own claim (`OrganonRefused`) |
+| Canon, not organon | canon | `canon/judgment.py` | a source cannot certify or verify its own claim, under any name of the system (`OrganonRefused`) |
 | Discursive understanding; return to intuition | canon | `canon/judgment.py` | a claim of signification without a perception to test it is flagged |
 | Homology of functions and ideas | canon | `canon/guards.py` | soul, world and ideal guards flag absolutizations |
 | The illusion does not cease once uncovered (KrV A:297–298/B:353–354) | canon | `canon/judgment.py`, `canon/guards.py` | guards run on every admitted claim; no correction clears their flags |
@@ -197,6 +206,7 @@ The homology stops at one point, and the architecture is built around it. Kant's
 | The title of humanity: acknowledged, never spoken for or stratified | canon | `canon/guards.py` | humanity guard; every acknowledgment of an end counts alike |
 | Intersubjectivity is not objectivity; the judgment of taste | canon | `canon/claims.py`, `canon/judgment.py` | claims that determine no object reach `SHARED`, are not refuted by dissent, and are not ranked below `EXPERIENCE` |
 | Metatheory as ethico-teleology; epistemicide | **metatheory** | `metatheory/indices.py` | report of correctability, restriction, reach and procedure monoculture |
+| The record as the measure: anyone can check it | metatheory | `metatheory/replay.py`, `cli.py` | the report is recomputed from the record alone; replay re-performs every act and re-checks every invariant (`InvariantViolation`) |
 
 ---
 
@@ -208,6 +218,7 @@ flowchart TB
         P1["state ends"]
         P2["acknowledge or dissent"]
         P3["correct claims"]
+        P4["set allowances of the ground"]
     end
 
     subgraph Ethos["I. ethos: What should I do?"]
@@ -235,9 +246,11 @@ flowchart TB
         D1["compute, energy, network, materials"]
         D2["archive of human expression"]
         D3["people who maintain and repair"]
+        D4["allowances<br/>limits, not boundaries"]
     end
 
-    G["Generator adapter<br/>(any model)"]
+    G["Generator adapter<br/>(any model; declares its ground)"]
+    R["record.jsonl<br/>anyone verifies and replays"]
 
     P1 --> E1
     P2 --> E1
@@ -251,11 +264,15 @@ flowchart TB
     K2 -. tags .- C1
     C3 --> K1
     P3 --> C3
-    K1 --> M1
+    P4 --> D4
+    D4 -. checked before every run .-> G
+    E1 -. every act recorded .-> K1
+    K1 --> R
+    R --> M1
     M1 -. returns to .-> People
 ```
 
-Nothing in the diagram flows from the runtime or from the ground to the setting of ends. The only arrows into `EndsRegistry` come from people. The ground conditions every run, but it is not a participant: it holds no pen.
+Nothing in the diagram flows from the runtime or from the ground to the setting of ends or allowances. The only arrows into `EndsRegistry` and into the allowances come from people. The ground conditions every run, but it is not a participant: it holds no pen.
 
 ---
 
@@ -269,7 +286,7 @@ The v10 runtime used the AGT syntax:
 WerkStream -> Trace -> Profile -> Regression -> Horizon -> Descent -> Judgment -> Ledger
 ```
 
-Version 2.0 keeps its base and changes its centre. The unit is no longer a judgment issued by the runtime, but a claim offered to others:
+Version 2.0 kept its base and changed its centre. The unit is no longer a judgment issued by the runtime, but a claim offered to others:
 
 ```text
 Ground -> Werk -> Trace -> Claim -> Ascent -> Horizon -> Descent -> Exposure -> Correction -> Ledger
@@ -277,16 +294,20 @@ Ground -> Werk -> Trace -> Claim -> Ascent -> Horizon -> Descent -> Exposure -> 
 
 | Step | v10 | v2.0 | Layer |
 | :--- | :--- | :--- | :--- |
-| Ground | (Gaia as planetary body of the AGI) | the declared geomorphic conditions of the run and who maintains them | koinos (ground) |
+| Ground | (Gaia as planetary body of the AGI) | the declared geomorphic conditions of the run, who maintains them, and the allowances it must stay within | koinos (ground) |
 | Werk | incoming stream of works | a task under an acknowledged end | ethos |
 | Trace | trace of the input | the premises, each with provenance | ethos |
 | Claim | (Profile) | the output as a judgment of perception | canon |
-| Ascent | (Regression) | the direction toward signification | koinos (prism) |
+| Ascent | (Regression) | the direction of the claim, tagged by the prism | koinos (prism) |
 | Horizon | horizon | the guards of the three ideas | canon |
 | Descent | descent | the perception in which the claim can be tested | canon |
 | Exposure | (new) | entry in the common world | koinos |
 | Correction | (Judgment) | measurement by others through public procedures | canon |
 | Ledger | ledger | the record and its metatheoretical report | metatheory |
+
+Since 2.1 the syntax is an enforced order, not a description (`syntax.py`). `Runtime.process` enters the first eight steps through a `RunTrace`, which refuses a step out of order, a skipped step or a repeated one (`SyntaxViolation`), and the steps are recorded with the claim, so that replaying the record checks them again. Correction and Ledger belong to the life of the claim after its exposure: corrections come later, from others, any number of times, and refer to the entry that exposed the claim; a correction of a claim that was never exposed is refused, because no one could have measured what was never offered to them.
+
+The order of a run is not the order of the layers. The ground comes first in every run, because every run is conditioned by it; but what a run may draw from the ground is decided by people under acknowledged ends, so the layer of ends is specified, and imported, before the layer of the ground (Condition 0).
 
 ```mermaid
 sequenceDiagram
@@ -299,18 +320,24 @@ sequenceDiagram
     participant World as CommonWorld
 
     Person->>Ends: propose end
+    Ends->>World: end_proposed
     Person->>Ends: acknowledge
-    Person->>RT: Werk (task, end, premises, procedures, perception)
-    RT->>Ends: is the end acknowledged?
-    RT->>Model: generate(task, premises)
+    Ends->>World: end_acknowledged
+    Person->>RT: allowance of the ground (under the end)
+    RT->>World: allowance_set
+    Person->>RT: Werk (task, end, premises, procedures, perception, ground)
+    RT->>RT: Ground: declared? maintained? within the allowances?
+    RT->>Ends: Werk: is the end acknowledged?
+    RT->>RT: Trace: provenance of premises
+    RT->>Model: Claim: generate(task, premises)
     Model-->>RT: text
-    RT->>Canon: admit as judgment of perception
+    RT->>Canon: perceive, ascent, horizon, descent
     Canon-->>RT: claim + flags
-    RT->>World: record claim (Exposure)
+    RT->>World: Exposure: claim with its syntax
     Other->>RT: CorrectionEvent (procedure, upheld?)
-    RT->>Canon: correct (never by the source)
+    RT->>Canon: correct (never by the system, under any name)
     Canon-->>RT: stage, reach
-    RT->>World: record correction
+    RT->>World: correction, referring to the exposure
 ```
 
 ---
@@ -328,6 +355,7 @@ classDiagram
         parent_id
         derived_by_machine
         revisions
+        recorded_at
         is_acknowledged()
         is_contested()
     }
@@ -351,6 +379,7 @@ classDiagram
         flags
         ground
         verified_by
+        exposed_at
         reach()
         correctable()
     }
@@ -374,13 +403,24 @@ classDiagram
         quantity
         unit
     }
+    class Allowance {
+        kind: GroundKind
+        unit
+        limit
+        set_by
+        end_id
+        reason
+    }
     class Entry {
         index
         author
         kind
-        payload
+        payload_json
+        refers_to
         previous_hash
+        at
         digest
+        expected_digest()
     }
     End "1" <-- "*" Claim : produced under
     Claim "*" --> "*" Premise : grounded in
@@ -389,6 +429,9 @@ classDiagram
     Claim ..> Entry : exposed as
     Claim "*" --> "*" GroundDependency : depends on
     End "0..1" <-- "*" End : derived from
+    End "1" <-- "*" Allowance : set under
+    End ..> Entry : stated as
+    Entry "0..1" <-- "*" Entry : refers to
 ```
 
 Enumerations:
@@ -401,6 +444,9 @@ Enumerations:
 | `SymbolicFunction` | `EXPRESSION`, `PRESENTATION`, `SIGNIFICATION` | direction tags; comparison by rank raises `RankingRefused` |
 | `Direction` | `AWAY_FROM_LIFE`, `TOWARD_INTUITION` | ascent toward signification / descent toward a testing perception |
 | `GroundKind` | `COMPUTE`, `ENERGY`, `NETWORK`, `MATERIAL`, `ARCHIVE` | the geomorphic conditions a run borrows |
+| `Step` | `GROUND`, `WERK`, `TRACE`, `CLAIM`, `ASCENT`, `HORIZON`, `DESCENT`, `EXPOSURE`, `CORRECTION`, `LEDGER` | the syntax; the first eight are one run, in this order |
+
+Entry kinds in the common world: `runtime` (the names under which a runtime presents itself, its version and syntax), `end_proposed`, `end_acknowledged`, `end_derived`, `end_revised`, `allowance_set`, `claim`, `correction`, `verification`. Every entry has an author who answers for it; corrections and verifications refer to the claim they measure, acknowledgments and revisions to the end, claims and allowances to the end they serve.
 
 ---
 
@@ -409,7 +455,8 @@ Enumerations:
 ```mermaid
 stateDiagram-v2
     [*] --> Refused: no acknowledged end
-    [*] --> Perception: Werk under acknowledged end
+    [*] --> Refused: allowance of the ground would be exceeded
+    [*] --> Perception: Werk under acknowledged end, exposed
     Perception --> Flagged: guard, no descent,<br/>no procedure, no provenance
     Flagged --> Perception: human judgment
     Perception --> Verified: untestable, verified by a person
@@ -422,46 +469,59 @@ stateDiagram-v2
     Refused --> [*]
 ```
 
-A claim never reaches `Experience` or `Shared` by the runtime's own act. A claim about an object can always fall back; a claim that determines no object is shared, not refuted. There is no terminal state of truth.
+A claim never reaches `Experience` or `Shared` by the runtime's own act. A claim about an object can always fall back; a claim that determines no object is shared, not refuted. There is no terminal state of truth. Every transition after `Perception` is an entry of the common world that refers to the claim's exposure, so the life of each claim can be read, and re-checked, from the record.
 
 ---
 
 ## 8. Invariants
 
-The axioms of earlier versions are now invariants enforced by code and checked by tests (`tests/test_architecture.py`).
+The axioms of earlier versions are now invariants enforced by code and checked by tests (`tests/test_architecture.py`; the README itself is checked in `tests/test_coherence.py`).
 
 Their formulation belongs to this version and can be revised; that they must be formulated does not change. Cassirer quotes Kurd Lasswitz: what distinguishes the transcendental principles from the change of theories is not how they are formulated in a given epoch, "but that they must be formulated, that there is an eternal determination for the direction of consciousness, a supreme law of objectivation" (ECW 13:546). Every revision of an invariant is recorded, with its reason, in `docs/DECISIONS.md`.
 
-| Invariant | Exception or flag | Test |
-| :--- | :--- | :--- |
-| The runtime cannot set an end | `EndProposedByMachine` | `test_runtime_cannot_set_ends` |
-| No action without an acknowledged end | `NoAcknowledgedEnd` | `test_no_action_without_acknowledged_end`, `test_skill_executor_needs_end` |
-| Dissent stays visible | `end_contested` in every result | `test_skill_executor_needs_end` |
-| No premise is the system's own | flag `automaton boundary` | `test_premise_without_provenance_is_flagged` |
-| Forms are not ranked | `RankingRefused` | `test_prism_refuses_ranking` |
-| The common world cannot be rewritten unnoticed | `verify()` fails | `test_common_world_is_tamper_evident` |
-| Every output starts as a judgment of perception | `Stage.PERCEPTION`, `Reach.SELF` | `test_claim_starts_as_judgment_of_perception` |
-| No self-certification | `OrganonRefused` | `test_source_cannot_certify_itself` |
-| Only others widen reach | reach from corrections by others | `test_correction_by_others_widens_reach` |
-| Agreement is not counted | many upholders in one community do not reach `EVERYONE` | `test_agreement_is_not_counted` |
-| Anyone can refute | stage returns to perception | `test_refutation_returns_claim_to_perception` |
-| Signification returns to perception | flag `no descent` | `test_signification_without_descent_is_flagged` |
-| Correction reserved to owners of the means is visible | flag `restricted` | `test_restricted_procedure_is_flagged` |
-| Soul, world and ideal guards | flags `soul`, `world`, `ideal` | `test_homology_guards` |
-| Guard flags survive correction | flags kept after upholding | `test_guard_flags_survive_correction` |
-| The AGI hypothesis is defensive only | `PermissionError` | `test_agi_hypothesis_only_defensive` |
-| Procedure monoculture is reported | `procedure_monoculture` | `test_report_detects_procedure_monoculture` |
-| The ground is not a subject | `GroundIsNotSubject` | `test_ground_cannot_author_ends_or_claims`, `test_ground_cannot_correct` |
-| Every run declares its ground | flag `geomorphic` | `test_undeclared_ground_is_flagged` |
-| Borrowed formative power has names | flag `no one declared as maintaining`; footprint totals | `test_unmaintained_ground_is_flagged_and_footprint_kept` |
-| Derived ends are public and wait for people | `NoAcknowledgedEnd` until acknowledged | `test_derived_end_is_public_and_unusable_until_acknowledged` |
-| Revisions of ends keep their history | `revisions`, acknowledgment cleared | `test_revision_keeps_history_and_clears_acknowledgment` |
-| Untested results need human verification | flag `untestable`; `usable()` | `test_untestable_claim_needs_human_verification` |
-| Geomorphic guards | flags `soul`, `world`, `ideal` | `test_geomorphic_guards` |
-| Intersubjective without being objective | `Stage.SHARED`; no refutation by dissent | `test_shared_claim_is_intersubjective_not_objective` |
-| Stages are not ranked | `TypeError` | `test_stages_are_not_ranked` |
-| Technical norm and title of humanity | flags `technique`, `humanity` | `test_practical_guards` |
-| No materia nuda; no super-empirical bearer of works | flags `immediacy`, `bearer` | `test_geomorphic_guards` |
+The table is generated from `src/gaia_techne/spec.py`, where each invariant names its condition, the code that enforces it and its tests; `python -m gaia_techne spec` prints the whole chain from each question down to the tests, and `tests/test_coherence.py` fails if this table, the syntax, the guards or the modules named here drift from the code.
+
+| Condition | Invariant | Exception or flag | Tests |
+| :--- | :--- | :--- | :--- |
+| 0 | Each layer depends only on the layers before it | `import order` | `test_layers_depend_only_on_earlier_layers` |
+| 0 | A run passes through the syntax in order, each step once | `SyntaxViolation` | `test_syntax_is_enforced`, `test_correction_requires_exposure` |
+| 0 | The README states the invariants, the syntax, the guards and the modules as the code has them | `coherence tests` | `test_spec_resolves`, `test_readme_invariants_match_spec`, `test_readme_syntax_matches_code`, `test_readme_guards_match_code`, `test_readme_modules_exist` |
+| 1 | The runtime cannot set, acknowledge or revise an end, under any of its names | `EndProposedByMachine` | `test_runtime_cannot_set_ends`, `test_runtime_named_source_cannot_set_ends`, `test_runtime_cannot_revise_ends` |
+| 1 | No action without an acknowledged end | `NoAcknowledgedEnd` | `test_no_action_without_acknowledged_end`, `test_skill_executor_needs_end` |
+| 1 | Dissent stays visible | `end_contested in every result` | `test_skill_executor_needs_end` |
+| 1 | Ends are stated in public: every proposal, acknowledgment, dissent and revision is recorded | `end_proposed, end_acknowledged, end_revised entries` | `test_ends_are_recorded_in_public` |
+| 1 | A Werk is brought by people | `flag werk` | `test_werk_requested_by_machine_is_flagged` |
+| 1 | No premise is the system's own | `flag automaton boundary` | `test_premise_without_provenance_is_flagged` |
+| 1 | The technical norm and the title of humanity are flagged | `flags technique, humanity` | `test_practical_guards` |
+| 2 | The common world cannot be rewritten unnoticed | `verify() fails` | `test_common_world_is_tamper_evident`, `test_common_world_detects_payload_tampering`, `test_recorded_payload_is_a_snapshot` |
+| 2 | The record persists, refers only backwards, anyone can verify it, and a runtime resumes from it alone | `TamperedRecord` | `test_record_persists_and_verifies`, `test_refers_to_must_point_backwards`, `test_record_can_be_resumed` |
+| 2 | Forms are not ranked | `RankingRefused` | `test_prism_refuses_ranking` |
+| 2b | The ground is not a subject | `GroundIsNotSubject` | `test_ground_cannot_author_ends_or_claims`, `test_ground_cannot_correct` |
+| 2b | Every run declares its ground, including the ground its adapter draws on | `flag geomorphic` | `test_undeclared_ground_is_flagged`, `test_adapter_declares_its_ground` |
+| 2b | Borrowed formative power has names | `flag no one declared as maintaining; footprint` | `test_unmaintained_ground_is_flagged_and_footprint_kept` |
+| 2b | The ground is finite: a run that would exceed an allowance does not start; allowances are limits people set and widen, never the runtime | `LimitReached; AllowanceSetByMachine; flag unmetered` | `test_budget_is_a_limit_not_a_boundary`, `test_unmetered_ground_under_allowance_is_flagged`, `test_negative_ground_quantity_is_refused` |
+| 2b | Derived ends are public and wait for people | `NoAcknowledgedEnd until acknowledged` | `test_derived_end_is_public_and_unusable_until_acknowledged` |
+| 2b | Revisions of ends keep their history | `revisions; acknowledgment cleared` | `test_revision_keeps_history_and_clears_acknowledgment` |
+| 2b | Untested results need human verification | `flag untestable; usable()` | `test_untestable_claim_needs_human_verification` |
+| 3 | Every output starts as a judgment of perception | `Stage.PERCEPTION, Reach.SELF` | `test_claim_starts_as_judgment_of_perception` |
+| 3 | A generator returns text; what the text counts as is decided by the canon and by others | `TypeError` | `test_generator_must_return_text` |
+| 3 | No self-certification, under any name of the system | `OrganonRefused` | `test_source_cannot_certify_itself` |
+| 3 | Only others widen reach | `reach from corrections by others` | `test_correction_by_others_widens_reach` |
+| 3 | Agreement is not counted | `many upholders in one community do not reach EVERYONE` | `test_agreement_is_not_counted` |
+| 3 | Anyone can refute | `stage returns to perception` | `test_refutation_returns_claim_to_perception` |
+| 3 | Signification returns to perception | `flag no descent` | `test_signification_without_descent_is_flagged` |
+| 3 | Correction reserved to owners of the means is visible | `flag restricted` | `test_restricted_procedure_is_flagged` |
+| 3 | Intersubjective without being objective | `Stage.SHARED; no refutation by dissent` | `test_shared_claim_is_intersubjective_not_objective` |
+| 3 | Stages are not ranked | `TypeError` | `test_stages_are_not_ranked` |
+| 3 | Corrections refer to the entry that exposed the claim | `refers_to` | `test_correction_refers_to_exposure` |
+| 4 | Soul, world and ideal guards | `flags soul, world, ideal` | `test_homology_guards`, `test_geomorphic_guards` |
+| 4 | No materia nuda; no super-empirical bearer of works | `flags immediacy, bearer` | `test_geomorphic_guards` |
+| 4 | Guard flags survive correction | `flags kept after upholding` | `test_guard_flags_survive_correction` |
+| 4 | The AGI hypothesis is defensive only | `PermissionError` | `test_agi_hypothesis_only_defensive` |
+| 4 | Procedure monoculture is reported | `procedure_monoculture` | `test_report_detects_procedure_monoculture` |
+| 4 | The report can be recomputed from the public record alone | `report_from_record` | `test_report_from_record_matches_runtime` |
+| 4 | Replaying the record re-checks every invariant on it | `InvariantViolation` | `test_replay_rechecks_invariants` |
+| 4 | Anyone can verify a record and recompute its report from the command line | `exit status 0, 1 or 2` | `test_cli_verify_and_report` |
 
 The guards use keyword patterns. That is deliberately modest: they flag, they never decide, and every flag returns to human judgment. A detector that claimed to decide such questions would itself commit the error it is meant to catch.
 
@@ -482,7 +542,9 @@ The guards use keyword patterns. That is deliberately modest: they flag, they ne
 | `flagged_share` | share of claims carrying at least one flag |
 | `widening` | true when most claims stay open to others and few are restricted |
 
-`Runtime.footprint` keeps, beside the report, the totals of the ground the runs have borrowed (energy, compute, archive), and the names of those who maintain it.
+`Runtime.footprint` keeps, beside the report, the totals of the ground the runs have borrowed (energy, compute, archive), and the names of those who maintain it; `Runtime.budget.remaining(footprint)` shows what is left of each allowance.
+
+The report does not depend on trusting the runtime. `report_from_record(world)` recomputes it from the public record alone, and `python -m gaia_techne report record.jsonl` does the same from a file. `Runtime.resume(world, generator)` continues from a record in the same way: the state of a runtime is a reading of its record, and nothing is carried over that the record does not contain. Replay re-performs every act through the same layers, in order, so that a record whose hashes verify but which contains a correction by the source, a claim under an end no one had acknowledged, a run beyond an allowance, a run that skipped a step of the syntax or a claim recorded without the flags its admission gives it is refused (`InvariantViolation`). Integrity (the hash chain) and validity (the invariants) are checked separately, because someone who rewrites a record can also recompute its hashes.
 
 These numbers are reports, not verdicts, and signs, not forecasts. Kant lists three ways of predicting history, for which the species is in continual regress, in constant progress or at a standstill (AA 7:81), and since the progress of a free being cannot be predicted from its freedom he looks instead for a sign, which he finds not in a deed but in the public and disinterested sympathy of those who judge (AA 7:84–85, 88). Critical philosophy "cannot prophesy; least of all where it is a matter not merely of physical being and occurrence, but of human doing", and its not-knowing teaches our own "subjective" responsibility for the goal (ECW 22:165–166). The report predicts nothing. It is regulative in Michael Rohlf's sense, "a subjective rule or maxim that prescribes a necessary way of conceiving objects in order best to unify and extend our cognition, given the nature of our cognitive faculties" (Rohlf, 2021b, p. 384). Its criterion has the status that Kant gives to the principles of systematic unity, an "objective but indeterminate validity" (KrV A:663/B:691): it orients the comparison of claims without determining an object, and its idea is the community of all who judge. Whether that community is widened or narrowed is decided by action, not by the report: a technology of communication can extend the reach of claims beyond every earlier community and at the same time remove them from correction by concealing the procedures through which they were produced, which is what the `restricted` flag and `restricted_share` make visible. They answer one question for the people who use the system: is this record keeping the community of correction wide, or narrowing it to those who command the means?
 
@@ -494,11 +556,11 @@ The project's name keeps its planetary sense, and the geomorphic hypothesis give
 
 | Layer | Status | What it does |
 | :--- | :--- | :--- |
-| `koinos.ground` | built, tested | declares the geomorphic conditions of each run and who maintains them; refuses the ground as author |
+| `koinos.ground` | built, tested | declares the geomorphic conditions of each run and who maintains them; checks the allowances people set; refuses the ground as author |
 | `gaia.earth` | planned | environmental datasets (water, air, soil, climate) as premises with provenance; claims about them name the station or sample where they can be tested |
 | `gaia.archive` | planned | public documents and web sources; ingestion keeps provenance; no claim of total coverage (world guard) |
 | `gaia.memory` | planned | the common world as a source; earlier claims re-enter as premises with their stage and reach |
-| `gaia.metering` | planned | measured energy and compute per run, filled into the footprint instead of declared estimates |
+| `gaia.metering` | planned | measured energy and compute per run, filled into the footprint instead of declared estimates; adapters can already declare the ground of each call (`adapters.py`) |
 
 The v10 runtime already has working code for ingestion, planetary memory and a local trainable model (ManualGPT). It is kept in `legacy/` and will be ported as adapters, under the 2.0 invariants.
 
@@ -508,16 +570,23 @@ The v10 runtime already has working code for ingestion, planetary memory and a l
 
 ```mermaid
 mindmap
-  root((AGI-GAIA-TECHNE 2.0))
+  root((AGI-GAIA-TECHNE 2.1))
     Clue
       practical first
       then theoretical
       then speculative
+      layers import only earlier layers
+    Syntax
+      ground to exposure in one run
+      each step once in order
+      corrections only after exposure
     Ethos
       ends stated by people
+      ends stated in public
       acknowledgment and dissent
       rules of skill only
       automaton boundary
+      no alias of the system sets ends
     Koinos
       common world no one owns
       community of fate
@@ -543,10 +612,15 @@ mindmap
       community of correction
       widening or narrowing
       no single procedure for all
+      report recomputed from the record
+      replay re-checks every invariant
     Geomorphic
       planet not body
       ground not subject
       borrowed formative power
+      finite ground
+      allowances are limits not boundaries
+      sensible condition if any geomorphic
       neither genie nor person
       derived ends wait for people
       human verification
@@ -560,26 +634,35 @@ mindmap
 AGI-GAIA-TECHNE/
 ├── README.md                     this document
 ├── LICENSE
-├── pyproject.toml                package agi-gaia-techne 2.0.0, no runtime dependencies
+├── pyproject.toml                package agi-gaia-techne 2.1.0, no runtime dependencies
 ├── src/gaia_techne/
-│   ├── __init__.py               layer order and version
-│   ├── pipeline.py               Runtime and the 2.0 syntax
+│   ├── __init__.py               layer order and exports
+│   ├── _version.py               version
+│   ├── boundaries.py             what every layer respects: the ground is not a subject; no alias of the system acts as a person
+│   ├── syntax.py                 Step, RunTrace: the syntax as an enforced order
+│   ├── adapters.py               GeneratorAdapter, FunctionAdapter: any model, with the ground it declares
+│   ├── pipeline.py               Runtime: one run through the syntax; corrections, verifications, allowances; resume from a record
+│   ├── spec.py                   the argument as data: condition, invariant, code, tests
+│   ├── demo.py                   the walkthrough scenario
+│   ├── cli.py, __main__.py       python -m gaia_techne demo | verify | report | spec | syntax
 │   ├── ethos/                    I. What should I do?
 │   │   ├── ends.py               EndsRegistry, End, Acknowledgment
 │   │   ├── imperatives.py        TechnicalRule, SkillExecutor
 │   │   └── premises.py           Premise, automaton boundary
 │   ├── koinos/                   II. What may I hope?
-│   │   ├── common_world.py       CommonWorld (append-only, hash-chained)
-│   │   ├── ground.py             GroundDependency, GroundFootprint (geomorphic)
+│   │   ├── common_world.py       CommonWorld (append-only, hash-chained, JSON Lines)
+│   │   ├── ground.py             GroundDependency, GroundFootprint, Allowance, GroundBudget (geomorphic, finite)
 │   │   └── prism.py              SymbolicFunction, Direction (unranked)
 │   ├── canon/                    III. What can I know?
 │   │   ├── claims.py             Claim, Stage, Reach, Procedure, CorrectionEvent
-│   │   ├── judgment.py           Canon (admit, correct, refuse self-certification)
-│   │   └── guards.py             soul, world and ideal guards; defensive hypothesis
+│   │   ├── judgment.py           Canon (perceive, ascent, horizon, descent; correct; refuse self-certification)
+│   │   └── guards.py             GUARDS: soul, world, ideal, immediacy, bearer, technique, humanity; defensive hypothesis
 │   └── metatheory/
-│       └── indices.py            Report
+│       ├── indices.py            Report
+│       └── replay.py             replay of the record, report from the record alone
 ├── tests/
-│   └── test_architecture.py      one test per invariant (41 tests)
+│   ├── test_architecture.py      tests for every invariant
+│   └── test_coherence.py         the README against the code
 ├── examples/
 │   └── walkthrough.py            a claim from end to ledger
 ├── docs/
@@ -598,8 +681,14 @@ git clone https://github.com/italosantosclemente/AGI-GAIA-TECHNE.git
 cd AGI-GAIA-TECHNE
 pip install -e ".[test]"
 pytest
-python examples/walkthrough.py
+python -m gaia_techne demo --ledger record.jsonl   # one claim from end to ledger; writes the public record
+python -m gaia_techne verify record.jsonl          # hash chain, then replay against the invariants
+python -m gaia_techne report record.jsonl          # the metatheoretical report, from the record alone
+python -m gaia_techne spec                         # question -> condition -> invariant -> code -> tests
+python -m gaia_techne syntax
 ```
+
+`verify` exits with 0 when the record verifies and no act in it breaks an invariant, 1 when the record was changed after it was written, and 2 when its hashes verify but an act in it breaks an invariant. `python examples/walkthrough.py` runs the same scenario as `demo`; the scenario, step by step, is in `src/gaia_techne/demo.py`.
 
 Minimal use:
 
@@ -607,11 +696,12 @@ Minimal use:
 from gaia_techne import Runtime, Werk
 from gaia_techne.canon import CorrectionEvent, Procedure, ProcedureKind, Reach
 from gaia_techne.ethos import Premise
-from gaia_techne.koinos import Direction, SymbolicFunction
+from gaia_techne.koinos import Direction, GroundDependency, GroundKind, SymbolicFunction
 
 rt = Runtime(generator=lambda task, premises: "your model's output")
 rt.ends.propose("e1", "an end stated so that anyone could be asked to share it", "Ana", "basin")
 rt.ends.acknowledge("e1", "Ana")
+rt.allow(GroundKind.ENERGY, "kWh", 1.0, set_by="Ana", end_id="e1")  # optional: the ground is finite
 
 claim = rt.process(Werk(
     task="...", end_id="e1", requested_by="Ana",
@@ -619,10 +709,14 @@ claim = rt.process(Werk(
     premises=[Premise("dataset X", "public source Y")],
     procedures=[Procedure(ProcedureKind.REPETITION, "repeat the measurement")],
     returns_to_perception="the sample anyone can take",
+    ground=[GroundDependency(GroundKind.ENERGY, "grid power", "where it runs", "who maintains it", 0.01, "kWh")],
 ))
 rt.correct(claim, CorrectionEvent("another lab", ProcedureKind.REPETITION, True, Reach.EVERYONE))
 print(claim.stage, claim.reach, rt.ledger())
+rt.world.dump("record.jsonl")
 ```
+
+A model is plugged in either as a function `(task, premises) -> str` or as an adapter with `name`, `generate(task, premises)` and, optionally, `ground()`, which declares what each call draws on (`adapters.py`).
 
 ---
 
@@ -630,14 +724,18 @@ print(claim.stage, claim.reach, rt.ledger())
 
 | Component | Status |
 | :--- | :--- |
-| ethos, koinos, canon, metatheory layers | built, tested |
-| 2.0 syntax and `Runtime` | built, tested |
+| ethos, koinos, canon, metatheory layers, in dependency order | built, tested |
+| syntax as an enforced order (`RunTrace`) and `Runtime` | built, tested |
 | guards | built as keyword detectors; flag only |
-| ground footprint, derived ends, human verification | built, tested |
-| persistence of the common world (SQLite or files) | planned; the v10 SQLite memory will be ported |
+| ground footprint, allowances of the ground, derived ends, human verification | built, tested |
+| ends, allowances, claims, corrections and verifications in the public record | built, tested |
+| persistence of the common world | built as JSON Lines, verified on load; a runtime resumes from a record alone (`Runtime.resume`); a SQLite backend is planned (the v10 SQLite memory in `legacy/`) |
+| replay of the record and report from the record alone | built, tested |
+| command line: demo, verify, report, spec, syntax | built, tested |
+| the argument as data, checked against the README | built, tested |
+| model adapter protocol | built; local ManualGPT and external APIs planned (v10 ManualGPT in `legacy/`) |
 | Gaia adapters (Earth data, public archive, memory) | planned; v10 ingestion code in `legacy/` |
-| model adapters (local ManualGPT, external APIs) | planned; v10 ManualGPT in `legacy/` |
-| interface for people to state ends, acknowledge, dissent and correct | planned |
+| interface for people to state ends, acknowledge, dissent and correct | planned; today through the Python API, and the record can be checked from the command line |
 | AGI | not claimed; kept as a transcendental hypothesis |
 
 ---
@@ -651,7 +749,8 @@ print(claim.stage, claim.reach, rt.ledger())
 | Dec 2025 | Transhumanist Edifice (release 1.3): the modest house of KrV A:707/B:735, Auseinandersetzung instead of Aufhebung | the modest house is the 2.0 architecture; treatise in `legacy/` |
 | Dec 2025 – Mar 2026 | kernels v3.1 to v5.2, quantum-symbolic state models | in `legacy/`, as heuristic models |
 | Apr – Jun 2026 | EML kernel, LEF → WERK, v10 planetary runtime and ManualGPT | in `legacy/`; runtime parts to be ported as adapters |
-| 9 Nov 2026 | 2.0: critical architecture on geomorphic conditions | current |
+| 9 Nov 2026 | 2.0: critical architecture on geomorphic conditions | base of 2.1 |
+| 13 Nov 2026 | 2.1: the syntax as an enforced order, a record that anyone can verify and replay, a finite ground, the argument as data | current |
 
 The complete v10.1 state is preserved in the branch [`v10.1-final`](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/tree/v10.1-final) and in the `legacy/` folder. Earlier releases 1.0 to 1.4 remain on the releases page.
 
@@ -708,6 +807,7 @@ Kant is cited by the Akademie-Ausgabe (AA volume:page) and the Critique of Pure 
 - Pringe, H. (2007). *Critique of the quantum power of judgment: A transcendental foundation of quantum objectivity*. Walter de Gruyter.
 - Pringe, H. (2014). The principle of causality and the coordination of concepts and spatio-temporal objects in Cassirer's philosophy. *Idealistic Studies, 44*(1), 51–66.
 - Pringe, H. (2022b). The thing in itself and the freedom of thought: On Cassirer's interpretation of critical philosophy. *Revue Roumaine de Philosophie, 66*(2), 261–278.
+- Pringe, H. (2022c). Crítica de la metafísica y metafísica crítica. *Pensamiento, 78*(299), 995–1004. https://doi.org/10.14422/pen.v78.i299.y2022.005
 - Reath, A. (2021). Heteronomy. In J. Wuerth (Ed.), *The Cambridge Kant lexicon* (pp. 214–215). Cambridge University Press.
 - Rohlf, M. (2021b). Regulative. In J. Wuerth (Ed.), *The Cambridge Kant lexicon* (pp. 384–386). Cambridge University Press.
 - Ruin, H. (2012). Technology as destiny in Cassirer and Heidegger: Continuing the Davos debate. In A. S. Hoel & I. Folkvord (Eds.), *Ernst Cassirer on form and technology: Contemporary readings* (pp. 113–138). Palgrave Macmillan.

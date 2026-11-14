@@ -113,6 +113,7 @@ class Claim:
     ground: List[str] = field(default_factory=list)  # geomorphic dependencies of the run
     verified_by: List[str] = field(default_factory=list)  # human verification where no test exists yet
     created_at: str = field(default_factory=_now)
+    exposed_at: Optional[int] = None  # index of the entry that offered the claim to others (Exposure)
 
     @property
     def reach(self) -> Reach:

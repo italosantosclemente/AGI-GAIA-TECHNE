@@ -17,27 +17,50 @@ back to it the more surely (ECW 13:356), and the transition to symbols
 "demands their conservation", not the abandonment of schemata (Pringe, 2007,
 p. 188). The canon questions what it is given as an appointed judge who
 compels the witnesses to answer (KrV B:XIII; ECW 10:6).
+
+The canon's work is split along the syntax: `perceive` (Claim), `ascent`
+(Ascent), `horizon` (Horizon) and `descent` (Descent). `admit` runs the four in
+order for a claim that did not come through a runtime.
 """
 
 from __future__ import annotations
 
-from typing import List
+from typing import Iterable, List
 
-from ..koinos.ground import refuse_ground_as_subject
-from ..koinos.prism import Direction
+from ..boundaries import is_machine, refuse_ground_as_subject, require_author
+from ..koinos.prism import Direction, SymbolicFunction
 from . import guards
 from .claims import Claim, CorrectionEvent, Reach, Stage
 
 
 class OrganonRefused(PermissionError):
-    """Raised when the runtime tries to certify its own claim."""
+    """Raised when the system tries to certify or verify its own claim, under any of its names."""
 
 
 class Canon:
-    def admit(self, claim: Claim) -> Claim:
-        """Admit a claim as a judgment of perception, with its guard flags."""
+    def __init__(self, machine_authors: Iterable[str] = ()) -> None:
+        self.machine_authors = set(machine_authors)
+
+    # -- the steps of admission ---------------------------------------------
+
+    def perceive(self, claim: Claim) -> Claim:
+        """Claim: every output starts as a judgment of perception, holding only for its source."""
         claim.stage = Stage.PERCEPTION
-        claim.flags = [f"{f.guard}: {f.error} ({f.match!r})" for f in guards.check(claim)]
+        return claim
+
+    def ascent(self, claim: Claim) -> Claim:
+        """Ascent: the claim carries a direction from the prism, never a rank."""
+        if not isinstance(claim.function, SymbolicFunction) or not isinstance(claim.direction, Direction):
+            raise TypeError("a claim is tagged with a symbolic function and a direction from the prism")
+        return claim
+
+    def horizon(self, claim: Claim) -> Claim:
+        """Horizon: the guards of the three ideas run on every admitted claim."""
+        claim.flags.extend(f"{f.guard}: {f.error} ({f.match!r})" for f in guards.check(claim))
+        return claim
+
+    def descent(self, claim: Claim) -> Claim:
+        """Descent: a claim about an object names how it can be tested and where."""
         if not claim.determines_object:
             # Shared, not corrected: no procedure of correction is required.
             return claim
@@ -49,12 +72,41 @@ class Canon:
             claim.flags.append("no descent: names no perception in which it can be tested")
         return claim
 
-    def correct(self, claim: Claim, event: CorrectionEvent) -> Claim:
-        refuse_ground_as_subject(event.by)
-        if event.by == claim.source:
+    def admit(self, claim: Claim) -> Claim:
+        """Admit a claim as a judgment of perception, with its guard and descent flags."""
+        claim.flags = []
+        for step in (self.perceive, self.ascent, self.horizon, self.descent):
+            step(claim)
+        return claim
+
+    def admission_flags(self, claim: Claim) -> List[str]:
+        """The flags admission gives this claim, computed afresh (used to re-check a record)."""
+        probe = Claim(
+            claim_id=claim.claim_id,
+            content=claim.content,
+            source=claim.source,
+            end_id=claim.end_id,
+            function=claim.function,
+            direction=claim.direction,
+            determines_object=claim.determines_object,
+            procedures=list(claim.procedures),
+            returns_to_perception=claim.returns_to_perception,
+        )
+        return self.admit(probe).flags
+
+    # -- after exposure ------------------------------------------------------
+
+    def _not_the_source(self, who: str, claim: Claim, act: str) -> None:
+        require_author(who)
+        refuse_ground_as_subject(who)
+        if who == claim.source or is_machine(who, self.machine_authors):
             raise OrganonRefused(
-                "A source cannot certify its own claim: that would be logic as an organon."
+                f"A source cannot {act} its own claim, under its own name or another name of the system: "
+                "that would be logic as an organon."
             )
+
+    def correct(self, claim: Claim, event: CorrectionEvent) -> Claim:
+        self._not_the_source(event.by, claim, "certify")
         claim.corrections.append(event)
         claim.stage = self._stage(claim)
         return claim
@@ -66,9 +118,7 @@ class Canon:
         using an untested result, which is the form that responsibility for the
         system's ends takes when no autonomy is ascribed to it.
         """
-        refuse_ground_as_subject(person)
-        if person == claim.source:
-            raise OrganonRefused("A source cannot verify its own claim.")
+        self._not_the_source(person, claim, "verify")
         claim.verified_by.append(person)
         return claim
 

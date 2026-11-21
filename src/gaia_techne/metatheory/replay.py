@@ -16,16 +16,24 @@ Two checks, in this order:
    correction by the source was added still fails here.
 
 Entries of other kinds are kept as notes and re-check nothing.
+
+Two options serve the kernel. `until` replays the record only up to an entry,
+so that anyone can ask what the record said at that point ("as of"). `admit`
+decides which acts of recognition count: given, it is called for every
+correction, verification and acknowledgment, and an entry it does not admit
+(an unsigned act where signatures are required) counts for nothing and is kept
+in `Projection.not_counted` with the reason.
+After the acts are replayed, `propagate` marks the claims whose premises fell.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Dict, List, Set
+from dataclasses import dataclass, field
+from typing import Callable, Dict, List, Optional, Set, Tuple
 
 from ..boundaries import GroundIsNotSubject, is_machine
 from ..canon.claims import Claim, CorrectionEvent, Procedure, ProcedureKind, Reach
-from ..canon.judgment import Canon, OrganonRefused
+from ..canon.judgment import Canon, OrganonRefused, propagate
 from ..ethos.ends import EndProposedByMachine, EndsRegistry
 from ..ethos.imperatives import NoAcknowledgedEnd
 from ..koinos.common_world import CommonWorld, Entry, TamperedRecord
@@ -51,6 +59,8 @@ class Projection:
     budget: GroundBudget
     machine_authors: Set[str]
     notes: List[Entry]
+    not_counted: List[Tuple[int, str]] = field(default_factory=list)  # (entry index, reason)
+    size: int = 0  # entries replayed
 
 
 def _same(e: Entry, named: str) -> None:
@@ -58,7 +68,12 @@ def _same(e: Entry, named: str) -> None:
         raise InvariantViolation(f"entry {e.index}: signed by {e.author!r} but names {named!r} as the one who acted")
 
 
-def replay(world: CommonWorld) -> Projection:
+RECOGNITION = ("correction", "verification", "end_acknowledged")
+
+
+def replay(world: CommonWorld, until: Optional[int] = None,
+           admit: Optional[Callable[[Entry], Optional[str]]] = None) -> Projection:
+    """Rebuild the record; `until` stops after that entry; `admit` returns None to count an act, or why it does not."""
     bad = world.first_invalid()
     if bad is not None:
         raise TamperedRecord(f"entry {bad} does not verify")
@@ -71,9 +86,20 @@ def replay(world: CommonWorld) -> Projection:
     claims: List[Claim] = []
     exposed: Dict[int, Claim] = {}
     notes: List[Entry] = []
+    not_counted: List[Tuple[int, str]] = []
+    entries = world.entries()
+    if until is not None:
+        if not 0 <= until < len(entries):
+            raise ValueError(f"entry {until} is not in a record of {len(entries)} entries")
+        entries = entries[: until + 1]
 
-    for e in world.entries():
+    for e in entries:
         p = e.payload
+        if admit is not None and e.kind in RECOGNITION:
+            why = admit(e)
+            if why is not None:
+                not_counted.append((e.index, why))
+                continue
         try:
             if e.kind == "runtime":
                 machine.update(p.get("names", [p["source"]]))
@@ -98,7 +124,7 @@ def replay(world: CommonWorld) -> Projection:
                     raise NoAcknowledgedEnd(f"allowance under {p['end_id']!r}, which no one had acknowledged")
                 budget.set(Allowance(GroundKind[p["kind"]], p["unit"], p["limit"], e.author, p["end_id"], p.get("reason", "")))
             elif e.kind == "claim":
-                claim = _claim(e, p, ends, budget, footprint, canon)
+                claim = _claim(e, p, ends, budget, footprint, canon, claims)
                 if claim.revises is not None:
                     old = next((c for c in claims if c.claim_id == claim.revises), None)
                     if old is None:
@@ -131,10 +157,12 @@ def replay(world: CommonWorld) -> Projection:
         except (EndProposedByMachine, OrganonRefused, GroundIsNotSubject, NoAcknowledgedEnd, LimitReached,
                 KeyError, ValueError, TypeError) as exc:
             raise InvariantViolation(f"entry {e.index} ({e.kind} by {e.author}): {exc}") from exc
-    return Projection(ends, claims, footprint, budget, machine, notes)
+    propagate(claims)
+    return Projection(ends, claims, footprint, budget, machine, notes, not_counted, len(entries))
 
 
-def _claim(e: Entry, p: dict, ends: EndsRegistry, budget: GroundBudget, footprint: GroundFootprint, canon: Canon) -> Claim:
+def _claim(e: Entry, p: dict, ends: EndsRegistry, budget: GroundBudget, footprint: GroundFootprint, canon: Canon,
+           claims: List[Claim]) -> Claim:
     if p["source"] != e.author:
         raise InvariantViolation(f"entry {e.index}: exposed by {e.author!r} but names {p['source']!r} as its source")
     end = ends.find(p["end"])
@@ -164,7 +192,11 @@ def _claim(e: Entry, p: dict, ends: EndsRegistry, budget: GroundBudget, footprin
         ground=list(p["ground"]),
         exposed_at=e.index,
         revises=p.get("revises"),
+        depends_on=list(p.get("depends_on", [])),
     )
+    unknown = [d for d in claim.depends_on if d not in {c.claim_id for c in claims}]
+    if unknown:
+        raise InvariantViolation(f"entry {e.index}: depends on claims never exposed before it: {unknown}")
     missing = [f for f in canon.admission_flags(claim) if f not in claim.flags]
     if missing:
         raise InvariantViolation(f"entry {e.index}: flags that admission gives this claim are missing from the record: {missing}")

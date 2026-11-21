@@ -2,7 +2,7 @@
 
 from .claims import Claim, CorrectionEvent, Procedure, ProcedureKind, Reach, Stage
 from .guards import GUARDS, Flag, Guard, check, hypothesis_use
-from .judgment import Canon, OrganonRefused
+from .judgment import Canon, OrganonRefused, propagate
 
 __all__ = [
     "Claim",
@@ -18,4 +18,5 @@ __all__ = [
     "hypothesis_use",
     "Canon",
     "OrganonRefused",
+    "propagate",
 ]

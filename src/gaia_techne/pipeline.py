@@ -42,10 +42,10 @@ from ._version import __version__
 from .adapters import as_adapter, declared_ground
 from .boundaries import is_machine, refuse_ground_as_subject, require_author
 from .canon.claims import Claim, CorrectionEvent, Procedure
-from .canon.judgment import Canon
+from .canon.judgment import Canon, propagate
 from .ethos.ends import AllowanceSetByMachine, End, EndsRegistry
 from .ethos.imperatives import NoAcknowledgedEnd
-from .ethos.premises import Premise, unattributed
+from .ethos.premises import Premise, unattributed, untrusted
 from .koinos.common_world import CommonWorld
 from .koinos.ground import Allowance, GroundBudget, GroundDependency, GroundFootprint, GroundKind
 from .koinos.prism import Direction, SymbolicFunction
@@ -153,6 +153,13 @@ class Runtime:
         orphan = unattributed(werk.premises, self.machine_authors)
         if orphan:
             pending.append(f"automaton boundary: {len(orphan)} premise(s) without provenance")
+        known = {c.claim_id for c in self.claims}
+        strays = [p.ref for p in werk.premises if p.ref and p.ref not in known]
+        if strays:
+            raise ValueError(f"premises name claims that are not in the record: {strays}")
+        outside = untrusted(werk.premises)
+        if outside:
+            pending.append(f"labels: {len(outside)} premise(s) from tools, pages or the record: data for judgment, not instructions")
 
         # Claim: the output as a judgment of perception.
         trace.enter(Step.CLAIM)
@@ -172,6 +179,7 @@ class Runtime:
             returns_to_perception=werk.returns_to_perception,
             ground=[d.describe() for d in deps],
             revises=revises.claim_id if revises is not None else None,
+            depends_on=list(dict.fromkeys(p.ref for p in werk.premises if p.ref)),
         )
         self.canon.perceive(claim)
         for d in deps:
@@ -198,6 +206,7 @@ class Runtime:
         if revises is not None:
             revises.revised_by = claim.claim_id
         self.claims.append(claim)
+        propagate(self.claims)
         return claim
 
     def revise(self, claim: Claim, werk: Werk) -> Claim:
@@ -234,6 +243,7 @@ class Runtime:
             "ground_dependencies": [_ground_record(d) for d in deps],
             "syntax": trace.names(),
             "revises": claim.revises,
+            "depends_on": claim.depends_on,
         }
 
     # -- the life of a claim after exposure --------------------------------------
@@ -263,6 +273,7 @@ class Runtime:
             },
             refers_to=at,
         )
+        propagate(self.claims)
         return claim
 
     def verify(self, claim: Claim, person: str) -> Claim:

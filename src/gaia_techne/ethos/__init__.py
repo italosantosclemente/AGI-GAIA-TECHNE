@@ -2,7 +2,7 @@
 
 from .ends import Acknowledgment, AllowanceSetByMachine, End, EndProposedByMachine, EndsRegistry
 from .imperatives import NoAcknowledgedEnd, SkillExecutor, TechnicalRule
-from .premises import Premise, unattributed
+from .premises import TRUSTED, UNTRUSTED, Premise, unattributed, untrusted
 
 __all__ = [
     "Acknowledgment",
@@ -14,5 +14,8 @@ __all__ = [
     "SkillExecutor",
     "TechnicalRule",
     "Premise",
+    "TRUSTED",
+    "UNTRUSTED",
     "unattributed",
+    "untrusted",
 ]

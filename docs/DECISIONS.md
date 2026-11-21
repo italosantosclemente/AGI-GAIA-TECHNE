@@ -2,6 +2,16 @@
 
 Dated record of decisions. The most recent comes first.
 
+## 211126 (b) — 2.3: the critical kernel, phases 1–3
+
+**What changed.** A new package, `gaia_techne.kernel` (README §10.2; design in `docs/KERNEL.md`). The common world is also a Merkle log (RFC 6962/9162) with checkpoints in the C2SP signed-note format and witnesses that cosign only consistent checkpoints (K1). Entries may carry an SSH signature (OpenSSH SSHSIG, ed25519, namespace `gaia-techne`) over their digest, outside the digest, so that earlier records still verify; where principals are configured, a correction, verification or acknowledgment counts only if its author's key signed it (K3), and no name of the system can make those acts, with or without a key (K2). Premises name the claim they come from, and a claim whose premise was refuted or revised is no longer usable, nor anything built on it (K4, strict propagation). Replay can stop at any entry (K8), the record exports as PROV-O, and the ground is reported as Software Carbon Intensity or as "unmetered" (K9). The agent runs within capabilities that a person grants and that can only be narrowed (K5); what tools, pages and memory return is labelled untrusted and never reaches the plan, and an outbound tool is refused an address that only untrusted text supplied (K6).
+
+**Why.** Three gaps of 2.2: authors were strings, so anyone who could append could correct in another's name; provenance was text, so the dependents of a refuted claim stayed usable; and recalled memory reached the plan, so an earlier page could choose where an outbound tool was sent. A canon judges given cognitions; it must be able to show who gave them and what they rest on.
+
+**Taken by default.** Five questions were open when the kernel was built; the most conservative answer was taken for each (`docs/KERNEL.md`, §6): one refutation still suffices and cannot be contested; no bridging between procedures; strict propagation; signatures required only where principals are configured; the neutral name `gaia_techne.kernel`, version 2.3.0.
+
+**Open.** Order-invariance (K7), minority positions (K10), verifiers, MCP and OpenTelemetry, deliberation and federation (phases 4–6).
+
 ## 211126 — 2.2: the thesis of 21 November, the canon corrected, the agent
 
 **Line-by-line check against the thesis (same day).** Kant (2025) page for KrV A:19/B:33 corrected to p. 119; GA 3:292–293 for the common world; the Doppler extension of the prism and the homology of functions and ideas attributed to the thesis (Clemente, 2026, for the first proposal of the image), not to the project; §10.1 grounded in the thesis's 4.3, 4.4 and 10.4; Cassirer (1956) dated 1937 as in the thesis; Clemente (2025, 2026) added to the sources.

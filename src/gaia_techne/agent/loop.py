@@ -27,6 +27,13 @@ keeps it a Werk is that every one of its acts passes through the layers:
 - the answer is a claim like every other. The agent never corrects, certifies or
   verifies it, and it reports what a person still has to judge before using it.
 
+- what comes back from tools and from the memory of the record is labelled
+  untrusted: it is data for the judgments of the steps and the answer, never
+  an instruction for the plan. The plan is made before any tool runs and sees
+  only what the person brought, so no page, document or earlier claim can
+  choose a step; and an outbound tool is refused an address that only
+  untrusted text supplied (the "lethal trifecta" of private data, untrusted
+  content and a way out; Willison, 2025; Debenedetti et al., 2025, CaMeL).
 The motto holds: Werk, never Wille. Calling the loop "general as if" names a
 use of the hypothesis for defense, not a ground: it shows what such a system can
 do inside the boundaries, against those who say no general system could work
@@ -38,12 +45,12 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Dict, List, Optional
 
 from ..canon.claims import Claim, Procedure, ProcedureKind
 from ..ethos.imperatives import NoAcknowledgedEnd, SkillExecutor, TechnicalRule
-from ..ethos.premises import Premise
+from ..ethos.premises import TRUSTED, UNTRUSTED, Premise
 from ..gaia.archive import Archive, ArchiveOutsideRoot
 from ..gaia.memory import recall
 from ..koinos.ground import GroundDependency, LimitReached
@@ -157,17 +164,31 @@ class Agent:
             return dict(self.tools)
         return {n: t for n, t in self.tools.items() if n in task.tools}
 
+    @staticmethod
+    def _exfiltration(task: Task, tool: Tool, arg: str, gathered: List[Premise]) -> Optional[str]:
+        """K6: an outbound tool may not be sent to what only untrusted text supplied."""
+        if not tool.outbound or not arg.strip():
+            return None
+        needle = arg.strip()
+        trusted = [task.goal] + [p.text for p in gathered if p.label == TRUSTED]
+        if any(needle in t for t in trusted):
+            return None
+        if any(needle in p.text for p in gathered if p.label != TRUSTED):
+            return f"{tool.name}({needle}): the address appears only in untrusted text; refused"
+        return None
+
     def _use_tool(self, task: Task, tool: Tool, arg: str, pending: List[GroundDependency]) -> List[Premise]:
         deps = tool.ground(arg)
         self.runtime.budget.check(self.runtime.footprint, pending + deps)  # LimitReached before the tool runs
         rule = TechnicalRule(tool.name, task.end_id, tool.description, lambda: tool.fn(arg))
         out = self.executor.run(rule)
         pending.extend(deps)
-        return list(out["result"])
+        return [p if p.label != TRUSTED else replace(p, label=UNTRUSTED) for p in out["result"]]
 
     @staticmethod
     def _as_premise(c: Claim) -> Premise:
-        return Premise(c.content, f"claim {c.claim_id} of this run by {c.source}: {c.stage.value}")
+        return Premise(c.content, f"claim {c.claim_id} of this run by {c.source}: {c.stage.value}",
+                       ref=c.claim_id, label=UNTRUSTED)
 
     # -- the loop --------------------------------------------------------------
 
@@ -180,13 +201,14 @@ class Agent:
         premises: List[Premise] = list(task.premises)
         pending: List[GroundDependency] = []
         try:
-            if task.use_memory:
-                premises += recall(self.runtime.world, task.goal)
+            recalled = recall(self.runtime.world, task.goal) if task.use_memory else []
 
-            # The plan is a claim, testable by review of those who brought the task.
+            # The plan is a claim, testable by review of those who brought the task. It sees only
+            # what the person brought (K6): recalled claims are data for the steps, not instructions.
+            planning = [p for p in premises if p.label == TRUSTED]
             listing = ", ".join(f"{n} ({t.description})" for n, t in tools.items()) or "none"
             plan = self.runtime.process(self._werk(
-                task, PLAN_INSTRUCTIONS.format(max_steps=task.max_steps, tools=listing, goal=task.goal), premises, [],
+                task, PLAN_INSTRUCTIONS.format(max_steps=task.max_steps, tools=listing, goal=task.goal), planning, [],
                 function=SymbolicFunction.PRESENTATION, direction=Direction.TOWARD_INTUITION, determines_object=True,
                 procedures=[Procedure(ProcedureKind.REVIEW, f"review of the plan by {task.requested_by} and those the end concerns")],
                 returns_to_perception="the steps as carried out, in the common world",
@@ -195,7 +217,7 @@ class Agent:
             run.claims.append(plan)
             steps = parse_plan(plan.content, task.max_steps)
 
-            gathered: List[Premise] = list(premises)
+            gathered: List[Premise] = list(premises) + recalled
             for s in steps:
                 kind = s["step"]
                 if kind == "tool":
@@ -203,6 +225,11 @@ class Agent:
                     if name not in tools:
                         run.steps.append({"step": "tool", "detail": f"{name}: not among the tools allowed for this task"})
                         run.open_questions.append(f"the plan asked for a tool not allowed: {name}")
+                        continue
+                    refused = self._exfiltration(task, tools[name], arg, gathered)
+                    if refused:
+                        run.steps.append({"step": "tool", "detail": refused})
+                        run.open_questions.append(f"labels: {refused}")
                         continue
                     try:
                         found = self._use_tool(task, tools[name], arg, pending)

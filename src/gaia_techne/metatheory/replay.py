@@ -99,6 +99,13 @@ def replay(world: CommonWorld) -> Projection:
                 budget.set(Allowance(GroundKind[p["kind"]], p["unit"], p["limit"], e.author, p["end_id"], p.get("reason", "")))
             elif e.kind == "claim":
                 claim = _claim(e, p, ends, budget, footprint, canon)
+                if claim.revises is not None:
+                    old = next((c for c in claims if c.claim_id == claim.revises), None)
+                    if old is None:
+                        raise InvariantViolation(f"entry {e.index}: revises {claim.revises!r}, which was never exposed")
+                    if old.revised_by:
+                        raise InvariantViolation(f"entry {e.index}: {claim.revises!r} was already revised by {old.revised_by!r}")
+                    old.revised_by = claim.claim_id
                 claims.append(claim)
                 exposed[e.index] = claim
             elif e.kind == "correction":
@@ -107,7 +114,8 @@ def replay(world: CommonWorld) -> Projection:
                 if claim is None:
                     raise InvariantViolation(f"entry {e.index}: a correction that refers to no exposed claim")
                 event = CorrectionEvent(
-                    e.author, ProcedureKind[p["procedure"]], p["upheld"], Reach[p["community_reach"]], p.get("note", ""), at=e.at
+                    e.author, ProcedureKind[p["procedure"]], p["upheld"], Reach[p["community_reach"]], p.get("note", ""),
+                    at=e.at, public=p.get("public", True),
                 )
                 canon.correct(claim, event)
             elif e.kind == "verification":
@@ -155,6 +163,7 @@ def _claim(e: Entry, p: dict, ends: EndsRegistry, budget: GroundBudget, footprin
         flags=list(p["flags"]),
         ground=list(p["ground"]),
         exposed_at=e.index,
+        revises=p.get("revises"),
     )
     missing = [f for f in canon.admission_flags(claim) if f not in claim.flags]
     if missing:

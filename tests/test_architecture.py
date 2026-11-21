@@ -64,7 +64,7 @@ def werk(**kw):
 
 
 def test_version():
-    assert __version__ == "2.1.0"
+    assert __version__ == "2.2.0"
 
 
 # 0. The clue: the order of layers and the order of a run
@@ -614,3 +614,43 @@ def test_cli_verify_and_report(tmp_path, capsys):
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     assert cli(["verify", str(path)]) == 1
     assert cli(["spec"]) == 0
+
+
+# 2.2: corrections, descent and revision (thesis, 10.4)
+
+def test_restricted_correction_widens_nothing():
+    rt = runtime_with_end()
+    owned = Procedure(ProcedureKind.EXPERIMENT, "proprietary benchmark", public=False, restricted_to="vendor")
+    c = rt.process(werk(procedures=[owned]))
+    rt.correct(c, CorrectionEvent("vendor", ProcedureKind.EXPERIMENT, True, Reach.EVERYONE))
+    assert c.reach is Reach.SELF and c.stage is Stage.PERCEPTION
+    d = rt.process(werk())
+    rt.correct(d, CorrectionEvent("lab-b", ProcedureKind.REPETITION, True, Reach.EVERYONE, public=False))
+    assert d.reach is Reach.SELF and any("restricted correction" in f for f in d.flags)
+    rt.correct(d, CorrectionEvent("lab-c", ProcedureKind.REPETITION, False, Reach.EVERYONE, public=False))
+    assert not d.refuted
+    assert replay(rt.world).claims[1].reach is Reach.SELF
+
+
+def test_reach_needs_descent():
+    rt = runtime_with_end()
+    c = rt.process(werk(returns_to_perception=None))
+    rt.correct(c, CorrectionEvent("lab-b", ProcedureKind.REPETITION, True, Reach.EVERYONE))
+    assert c.reach is Reach.SELF and c.stage is Stage.PERCEPTION
+
+
+def test_refuted_claim_is_revised_not_reascended():
+    rt = runtime_with_end()
+    c = rt.process(werk())
+    rt.correct(c, CorrectionEvent("lab-b", ProcedureKind.REPETITION, False, Reach.FORM_OF_LIFE))
+    rt.correct(c, CorrectionEvent("lab-c", ProcedureKind.REPETITION, True, Reach.EVERYONE))
+    assert c.stage is Stage.PERCEPTION and c.reach is Reach.SELF and not rt.canon.usable(c)
+    r = rt.revise(c, werk(task="Estimate nitrate levels again, with the failed sample excluded"))
+    assert r.stage is Stage.PERCEPTION and r.revises == c.claim_id and c.revised_by == r.claim_id
+    with pytest.raises(ValueError):
+        rt.revise(c, werk())
+    rt.correct(r, CorrectionEvent("lab-c", ProcedureKind.REPETITION, True, Reach.EVERYONE))
+    assert r.stage is Stage.EXPERIENCE
+    projection = replay(rt.world)
+    assert [x.revised_by for x in projection.claims] == [r.claim_id, None]
+    assert rt.ledger().revised == 1

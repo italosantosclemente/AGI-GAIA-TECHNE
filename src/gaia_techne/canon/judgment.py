@@ -131,6 +131,8 @@ class Canon:
         """A claim may be acted on if it has been upheld by others or verified by a person."""
         if claim.refuted:
             return False  # a refuted claim is revised, not used
+        if claim.premises_fallen:
+            return False  # built on a claim that was refuted or revised: it is revised too, not used
         return claim.stage in (Stage.EXPERIENCE, Stage.SHARED) or bool(claim.verified_by)
 
     @staticmethod
@@ -150,6 +152,50 @@ class Canon:
         qs = list(claim.flags)
         if claim.refuted and not claim.revised_by:
             qs.append("refuted by others: to be revised, not used")
+        if claim.premises_fallen:
+            qs += [f"a premise no longer holds: {r}" for r in claim.premises_fallen]
         if claim.stage is Stage.PERCEPTION:
             qs.append("holds only for its source so far")
         return qs
+
+
+def propagate(claims: Iterable[Claim]) -> List[Claim]:
+    """Strict propagation: a claim whose premise was refuted or revised falls with it.
+
+    A claim records the ids of the claims its premises were taken from
+    (`depends_on`). When one of them is refuted, revised, or itself rests on a
+    premise that fell, the dependent claim is marked and `usable()` turns false
+    until it is revised in turn. Nothing is deleted: the record keeps both, and
+    the mark is recomputed from the record every time (README §10.1). Returns
+    the claims whose marks changed.
+    """
+    claims = list(claims)
+    by_id = {c.claim_id: c for c in claims}
+    memo: dict = {}
+
+    def reasons(c: Claim, seen: frozenset) -> List[str]:
+        if c.claim_id in memo:
+            return memo[c.claim_id]
+        out: List[str] = []
+        for dep in c.depends_on:
+            d = by_id.get(dep)
+            if d is None:
+                out.append(f"{dep} is not in the record")
+            elif dep in seen:
+                out.append(f"{dep} depends on itself through {c.claim_id}")
+            elif d.refuted:
+                out.append(f"{dep} was refuted")
+            elif d.revised_by:
+                out.append(f"{dep} was revised by {d.revised_by}")
+            elif reasons(d, seen | {c.claim_id}):
+                out.append(f"{dep} rests on a premise that fell")
+        memo[c.claim_id] = out
+        return out
+
+    changed = []
+    for c in claims:
+        r = reasons(c, frozenset())
+        if r != c.premises_fallen:
+            c.premises_fallen = r
+            changed.append(c)
+    return changed

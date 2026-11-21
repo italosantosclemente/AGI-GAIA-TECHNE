@@ -1,4 +1,4 @@
-# AGI-GAIA-TECHNE 2.2
+# AGI-GAIA-TECHNE 2.3
 
 **A critical architecture for an AGI hypothesis. Werk, never Wille.**
 
@@ -58,6 +58,8 @@ Three refusals follow, and they shape everything below:
 The architecture is model-agnostic. A local LLM, a statistical model or a human typist can stand where the `generator` stands. What the architecture fixes is not how text is produced, but what any produced text may count as.
 
 Since 2.2 the architecture also runs as an agent: a loop that takes a task from any domain, has a model plan it, uses tools, recalls the common world and answers, with every one of these acts passing through the layers below (§10.1). Its generality is a generality of tasks, not of a subject. The thesis asks what is to be done with a system "that already drives, writes, judges and fights in the public world without being a 'subject'", and answers that it falls under the criterion of correction; the agent is that system built in the only form the architecture allows.
+
+Since 2.3 a critical kernel (`gaia_techne.kernel`, §10.2) lets anyone check, from the record alone, that the acts the architecture forbids did not happen and that the acts it counts were made by those it names: the record is a Merkle log with signed and witnessed checkpoints; a correction, verification or acknowledgment counts only when its author's key signed it; a claim built on a claim that was refuted or revised is no longer usable; the agent runs within a capability that a person granted and that can only be narrowed; and what comes from tools, pages and memory never reaches the plan. The kernel is a canon, not an organon: it produces nothing, and only people, through public procedures, judge.
 
 ---
 
@@ -216,6 +218,12 @@ The homology stops at one point, and the architecture is built around it. Kant's
 | Measured "and, if it fails, revised" (thesis, 10.4) | canon | `canon/claims.py`, `pipeline.py` | a refuted claim is revised, not re-ascended: `Runtime.revise` exposes a new claim that refers to it |
 | The memory of the common world; the archive of works | koinos (read by the runtime) | `gaia/memory.py`, `gaia/archive.py` | earlier claims re-enter only with their recorded stage and reach; documents keep their source; reads stay inside the folder people opened |
 | A system that already acts in public life without being a "subject" falls under the criterion of correction (thesis, 10.4) | runtime | `agent/loop.py`, `agent/tools.py`, `models.py` | the agent's plan, steps and answer are claims; tools are rules of skill under the acknowledged end; ends its plan needs wait for people; it stops at the allowances of the ground |
+| No one can rewrite the common world unnoticed, and anyone can check it without trusting whoever keeps it | runtime (kernel) | `kernel/merkle.py`, `kernel/log.py` | K1: the record is a Merkle log (RFC 6962/9162); checkpoints are signed and cosigned by witnesses, who refuse a size that does not extend the one they saw (`InconsistentLog`) |
+| Only others correct; the canon judges, it does not produce | runtime (kernel) | `kernel/identity.py`, `kernel/sshsig.py`, `metatheory/replay.py` | K2–K3: no name of the system corrects, acknowledges or verifies, even with a key; where principals are configured, those acts count only when signed by their author's SSH key |
+| Measured "and, if it fails, revised" (thesis, 10.4): what is built on a failed claim falls with it | canon | `canon/judgment.py` | K4: a claim whose premise was refuted or revised is not usable, nor anything built on it (`premises_fallen`) |
+| Rules of skill hold only under ends they do not set (AA 5:171–173) | runtime (kernel) | `kernel/capabilities.py`, `kernel/core.py` | K5: the agent runs within a capability a person granted under an acknowledged end; a capability can only be narrowed (`CapabilityRefused`) |
+| The automaton boundary: premises from without are data, not ends | ethos, runtime | `ethos/premises.py`, `agent/loop.py` | K6: what tools, pages and memory return is labelled untrusted and never reaches the plan; an outbound tool is refused an address only untrusted text supplied |
+| The record as the measure, at any point of its history | runtime (kernel) | `kernel/core.py`, `kernel/prov.py`, `kernel/sci.py` | K8–K9: status as of any entry; export as PROV-O; the carbon intensity of the runs, or "unmetered" |
 
 ---
 
@@ -547,6 +555,14 @@ The table is generated from `src/gaia_techne/spec.py`, where each invariant name
 | 2b | The agent stops at the allowance of the ground; the ends its plan needs wait for people | `LimitReached; derived end unacknowledged` | `test_agent_stops_at_the_allowance_of_the_ground`, `test_agent_derived_end_waits_for_people`, `test_models_speak_http_and_declare_their_ground` |
 | 3 | The agent's plan, steps and answer are claims, and it cannot certify its answer | `OrganonRefused; usable() false` | `test_agent_plan_and_steps_are_claims_in_the_record`, `test_agent_cannot_certify_its_answer`, `test_unreadable_plan_still_answers` |
 | 4 | Anyone can run the agent from the command line and verify the record it leaves | `exit status 0, 1 or 2` | `test_agent_scenario_and_cli` |
+| 2 | K1. The record is a Merkle log: checkpoints are signed and witnessed, and a later size provably extends an earlier one | `InconsistentLog` | `test_merkle_proofs_match_brute_force`, `test_merkle_rfc6962_shapes`, `test_checkpoints_are_signed_witnessed_and_consistent` |
+| 3 | K2. The runtime, a model or a tool never corrects, acknowledges or verifies, even when it holds a key | `OrganonRefused` | `test_machine_cannot_correct_even_with_a_key` |
+| 3 | K3. Where principals are configured, a correction, verification or acknowledgment counts only if its author's key signed it | `not_counted: unsigned` | `test_unsigned_recognition_does_not_count`, `test_forged_signature_does_not_count_and_survives_dump`, `test_ed25519_rfc8032_vectors`, `test_ed25519_pure_python_agrees_with_cryptography`, `test_sshsig_roundtrip_and_allowed_signers` |
+| 3 | K4. A claim whose premise was refuted or revised is not usable, nor is anything built on it | `premises_fallen; usable() false` | `test_dependents_of_a_refuted_claim_are_not_usable`, `test_a_premise_cannot_name_a_claim_outside_the_record`, `test_propagation_handles_cycles` |
+| 1 | K5. A capability granted by a person can only be narrowed; the agent runs within it | `CapabilityRefused; GrantRefused` | `test_capabilities_only_narrow`, `test_agent_runs_only_within_its_capability` |
+| 1 | K6. Untrusted premises never reach the plan; an outbound tool is refused an address only untrusted text supplied | `labels: flag; tool refused` | `test_injected_page_cannot_steer_the_plan_or_the_way_out`, `test_recalled_memory_never_reaches_the_plan` |
+| 4 | K8. Anyone can ask what the record said as of any entry, and export it as PROV-O | `ValueError outside the record` | `test_status_as_of_an_entry`, `test_prov_export`, `test_kernel_cli`, `test_kernel_scenario_runs_offline` |
+| 2b | K9. The carbon intensity of the runs is computed from what was declared, or reported as unmetered | `SCI: unmetered` | `test_sci_is_reported_or_unmetered` |
 
 The guards use keyword patterns. That is deliberately modest: they flag, they never decide, and every flag returns to human judgment. A detector that claimed to decide such questions would itself commit the error it is meant to catch.
 
@@ -596,9 +612,9 @@ The v10 runtime has further code for ingestion and a local trainable model (Manu
 
 `gaia_techne.agent` is the loop that makes the architecture operate as a general system. A person brings a `Task`, a goal under an end that people have stated and acknowledged, with the tools they allow and the perception in which the answer can be tested. The agent then:
 
-1. recalls the common world (`gaia.memory`) for earlier claims that bear on the goal, each with its stage and reach;
-2. asks the model for a plan, and exposes the plan as a claim, testable by review of those who brought the task;
-3. carries out the plan: a tool step runs a rule of skill under the acknowledged end, only if the person allowed that tool and only if the allowances of the ground permit it, and its result enters as a premise with provenance; a claim step is a full run of the syntax; an end step records a derived end, which waits for people;
+1. recalls the common world (`gaia.memory`) for earlier claims that bear on the goal, each with its stage and reach, labelled untrusted and naming the claim it comes from;
+2. asks the model for a plan from what the person brought alone, never from what was recalled, and exposes the plan as a claim, testable by review of those who brought the task;
+3. carries out the plan: a tool step runs a rule of skill under the acknowledged end, only if the person allowed that tool and only if the allowances of the ground permit it, and its result enters as an untrusted premise with provenance; an outbound tool is refused an address that only untrusted text supplied; a claim step is a full run of the syntax; an end step records a derived end, which waits for people;
 4. answers with one more run, from everything gathered, declaring the ground the tools drew on;
 5. reports what a person still has to judge before using the answer.
 
@@ -617,13 +633,30 @@ flowchart LR
     A --> O["others correct;<br/>a person verifies"]
 ```
 
+### 10.2 The critical kernel
+
+`gaia_techne.kernel` gathers the means of checking the record without trusting the runtime that wrote it. Its design, the research behind it and the phases still to build are in [`docs/KERNEL.md`](docs/KERNEL.md); what this version builds is:
+
+| | Invariant | How |
+| :--- | :--- | :--- |
+| K1 | the record is a transparency log | leaves are the canonical JSON of each entry, signature included; inclusion and consistency proofs (RFC 6962, 2.1; RFC 9162, 2.1.3–2.1.4); checkpoints as C2SP signed notes, cosigned by witnesses that check consistency first |
+| K2 | the system never recognizes | the canon and the ends registry refuse corrections, acknowledgments and verifications by any name of the system; replay refuses them again, signed or not |
+| K3 | only signed recognition counts | Ed25519 (RFC 8032; the `cryptography` package when installed, a pure-Python fallback otherwise) in the SSH signature format of OpenSSH, namespace `gaia-techne`; principals read from an `allowed_signers` file; a signature made with `ssh-keygen -Y sign` can be attached later, outside the digest |
+| K4 | a fallen premise takes its dependents with it | premises name the claim they come from; strict propagation, recomputed from the record (`canon.propagate`) |
+| K5 | capabilities only narrow | macaroon-style HMAC chains of caveats (end, person, tools, steps, expiry); a person grants, the kernel mints, anyone can attenuate |
+| K6 | untrusted data never plans | premise labels; the plan sees only what the person brought; an exfiltration guard on outbound tools (after CaMeL and the "lethal trifecta") |
+| K8 | as of any entry | `replay(until=...)`, `status --as-of`; PROV-O export |
+| K9 | ground in numbers, or none | Software Carbon Intensity, (E×I+M) per claim, only from declared quantities; otherwise "unmetered" |
+
+Order-invariance of replay (K7), the keeping of minority positions (K10), deliberation, verifiers and federation between records are designed in `docs/KERNEL.md` and not built. In demonstrations the kernel keeps local keys for the people it enrolls; a person who signs on their own machine never gives the kernel a secret.
+
 ---
 
 ## 11. Concept map
 
 ```mermaid
 mindmap
-  root((AGI-GAIA-TECHNE 2.2))
+  root((AGI-GAIA-TECHNE 2.3))
     Clue
       practical first
       then theoretical
@@ -684,6 +717,13 @@ mindmap
       memory of the record
       stops at the allowance
       never certifies its answer
+      untrusted data never plans
+    Kernel
+      Merkle log and witnesses
+      only signed recognition counts
+      fallen premises take dependents
+      capabilities only narrow
+      status as of any entry
 ```
 
 ---
@@ -694,7 +734,7 @@ mindmap
 AGI-GAIA-TECHNE/
 ├── README.md                     this document
 ├── LICENSE
-├── pyproject.toml                package agi-gaia-techne 2.2.0, no runtime dependencies
+├── pyproject.toml                package agi-gaia-techne 2.3.0, no runtime dependencies
 ├── src/gaia_techne/
 │   ├── __init__.py               layer order and exports
 │   ├── _version.py               version
@@ -705,18 +745,18 @@ AGI-GAIA-TECHNE/
 │   ├── pipeline.py               Runtime: one run through the syntax; corrections, revisions, verifications, allowances; resume from a record
 │   ├── spec.py                   the argument as data: condition, invariant, code, tests
 │   ├── demo.py                   the walkthrough scenario
-│   ├── cli.py, __main__.py       python -m gaia_techne demo | verify | report | spec | syntax | agent
+│   ├── cli.py, __main__.py       python -m gaia_techne demo | verify | report | spec | syntax | agent | kernel | status | checkpoint | prove | prov
 │   ├── ethos/                    I. What should I do?
 │   │   ├── ends.py               EndsRegistry, End, Acknowledgment
 │   │   ├── imperatives.py        TechnicalRule, SkillExecutor
-│   │   └── premises.py           Premise, automaton boundary
+│   │   └── premises.py           Premise, automaton boundary, labels (trusted, untrusted)
 │   ├── koinos/                   II. What may I hope?
 │   │   ├── common_world.py       CommonWorld (append-only, hash-chained, JSON Lines)
 │   │   ├── ground.py             GroundDependency, GroundFootprint, Allowance, GroundBudget (geomorphic, finite)
 │   │   └── prism.py              SymbolicFunction, Direction (unranked)
 │   ├── canon/                    III. What can I know?
 │   │   ├── claims.py             Claim, Stage, Reach, Procedure, CorrectionEvent
-│   │   ├── judgment.py           Canon (perceive, ascent, horizon, descent; correct; refuse self-certification)
+│   │   ├── judgment.py           Canon (perceive, ascent, horizon, descent; correct; refuse self-certification); propagate
 │   │   └── guards.py             GUARDS: soul, world, ideal, immediacy, bearer, technique, humanity; defensive hypothesis
 │   ├── metatheory/
 │   │   ├── indices.py            Report
@@ -724,18 +764,31 @@ AGI-GAIA-TECHNE/
 │   ├── gaia/                     the planetary layer as ground and archive
 │   │   ├── memory.py             recall: the common world as a source
 │   │   └── archive.py            Archive, Document: documents with provenance
-│   └── agent/                    general as if
-│       ├── loop.py               Agent, Task, AgentRun: plan, tools, claims, answer
-│       ├── tools.py              Tool: arithmetic, memory, archive_search, archive_read, web_fetch
-│       └── demo.py               the agent scenario, offline
+│   ├── agent/                    general as if
+│   │   ├── loop.py               Agent, Task, AgentRun: plan, tools, claims, answer
+│   │   ├── tools.py              Tool: arithmetic, memory, archive_search, archive_read, web_fetch
+│   │   └── demo.py               the agent scenario, offline
+│   └── kernel/                   the critical kernel (§10.2)
+│       ├── merkle.py             RFC 6962 hashing, inclusion and consistency proofs
+│       ├── log.py                Checkpoint (C2SP signed note), Witness
+│       ├── ed25519.py            RFC 8032, with cryptography when installed
+│       ├── sshsig.py             OpenSSH SSHSIG signatures, ed25519
+│       ├── identity.py           Principals (allowed_signers), Keyring
+│       ├── capabilities.py       Capability, Minter: caveats that only narrow
+│       ├── sci.py                Software Carbon Intensity, or unmetered
+│       ├── prov.py               the record as W3C PROV-O
+│       ├── core.py               Kernel, Status, status_of
+│       └── demo.py               the kernel scenario, offline
 ├── tests/
 │   ├── test_architecture.py      tests for every invariant
 │   ├── test_agent.py             the agent, the models, memory and archive
+│   ├── test_kernel.py            the kernel: K1–K6, K8, K9
 │   └── test_coherence.py         the README against the code
 ├── examples/
 │   └── walkthrough.py            a claim from end to ledger
 ├── docs/
 │   ├── DECISIONS.md              dated architectural decisions
+│   ├── KERNEL.md                 the critical kernel: research, design, phases
 │   └── mapa-metateoria.html      the thesis map, chapter by chapter (Portuguese)
 └── legacy/                       the full v10.1 repository, unchanged
 ```
@@ -764,7 +817,16 @@ python -m gaia_techne agent "Summarize what the documents say about station 4 an
     --end "Make the water quality of the basin checkable by anyone who lives on it" --by "Ana" \
     --model ollama:llama3.1 --archive ./documents --calls 8 --ledger agent.jsonl
 python -m gaia_techne verify agent.jsonl
+
+# the kernel
+python -m gaia_techne kernel --ledger kernel.jsonl  # signed acts, a capability, a fallen premise, a witness
+python -m gaia_techne status kernel.jsonl --signers allowed_signers --as-of 5
+python -m gaia_techne checkpoint kernel.jsonl       # size and Merkle root
+python -m gaia_techne prove kernel.jsonl 3          # inclusion proof for entry 3
+python -m gaia_techne prov kernel.jsonl > kernel.prov.jsonld
 ```
+
+A person who keeps their own key signs the digest of their act with `ssh-keygen -Y sign -n gaia-techne -f ~/.ssh/id_ed25519`, and the signature is attached with `Kernel.attach`; their line in `allowed_signers` is `name namespaces="gaia-techne" ssh-ed25519 AAAA...`.
 
 `--model` takes `ollama:MODEL`, `openai:URL|MODEL` (any chat-completions server; the key is read from `OPENAI_API_KEY`) or `anthropic:MODEL` (the key is read from `ANTHROPIC_API_KEY`). `--archive` opens a folder; `--web` also allows public web addresses; `--calls` is the allowance of model calls under the end.
 
@@ -835,6 +897,8 @@ print(run.summary())
 | revision of refuted claims; public and restricted corrections | built, tested |
 | `gaia.memory`, `gaia.archive` | built, tested |
 | the agent: plan, tools, memory, derived ends, allowances, answer | built, tested; command line `agent` |
+| the critical kernel, phases 1–3: Merkle log, checkpoints and witnesses, SSH signatures, propagation, as-of status, capabilities, labels, SCI, PROV-O | built, tested; command line `kernel`, `status`, `checkpoint`, `prove`, `prov` (§10.2) |
+| kernel phases 4–6: order-invariance, minority positions, verifiers, MCP and OpenTelemetry, deliberation, federation | designed in `docs/KERNEL.md`, not built |
 | Gaia Earth adapters (environmental datasets), metering | planned |
 | interface for people to state ends, acknowledge, dissent and correct | planned; today through the Python API and the command line, and the record can be checked from the command line |
 | AGI | not claimed; kept as a transcendental hypothesis, used only for defense; the agent operates "general as if" (§10.1) |
@@ -852,7 +916,8 @@ print(run.summary())
 | Apr – Jun 2026 | EML kernel, LEF → WERK, v10 planetary runtime and ManualGPT | in `legacy/`; runtime parts to be ported as adapters |
 | 9 Nov 2026 | 2.0: critical architecture on geomorphic conditions | base of 2.1 |
 | 13 Nov 2026 | 2.1: the syntax as an enforced order, a record that anyone can verify and replay, a finite ground, the argument as data | base of 2.2 |
-| 21 Nov 2026 | 2.2: the argument brought up to the thesis draft of 21 November; public corrections, descent and revision in the canon; working models, memory, archive and the agent | current |
+| 21 Nov 2026 | 2.2: the argument brought up to the thesis draft of 21 November; public corrections, descent and revision in the canon; working models, memory, archive and the agent | base of 2.3 |
+| 21 Nov 2026 | 2.3: the critical kernel, phases 1–3 | current |
 
 The complete v10.1 state is preserved in the branch [`v10.1-final`](https://github.com/italosantosclemente/AGI-GAIA-TECHNE/tree/v10.1-final) and in the `legacy/` folder. Earlier releases 1.0 to 1.4 remain on the releases page.
 

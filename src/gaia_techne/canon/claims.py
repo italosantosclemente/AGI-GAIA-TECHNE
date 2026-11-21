@@ -135,6 +135,8 @@ class Claim:
     exposed_at: Optional[int] = None  # index of the entry that offered the claim to others (Exposure)
     revises: Optional[str] = None  # claim_id of the claim this one revises
     revised_by: Optional[str] = None  # claim_id of the claim that revised this one
+    depends_on: List[str] = field(default_factory=list)  # claim ids its premises were taken from
+    premises_fallen: List[str] = field(default_factory=list)  # set by `propagate`: why those premises no longer hold
 
     def counts(self, c: CorrectionEvent) -> bool:
         """A correction measures the claim only if someone else made it through a public procedure.

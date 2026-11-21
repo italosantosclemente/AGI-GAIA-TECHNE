@@ -64,7 +64,7 @@ def werk(**kw):
 
 
 def test_version():
-    assert __version__ == "2.2.0"
+    assert __version__ == "2.3.0"
 
 
 # 0. The clue: the order of layers and the order of a run

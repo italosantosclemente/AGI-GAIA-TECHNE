@@ -17,7 +17,7 @@ import operator
 from dataclasses import dataclass, field
 from typing import Callable, Dict, List
 
-from ..ethos.premises import Premise
+from ..ethos.premises import UNTRUSTED, Premise
 from ..gaia.archive import Archive
 from ..gaia.memory import recall
 from ..koinos.common_world import CommonWorld
@@ -30,6 +30,7 @@ class Tool:
     description: str
     fn: Callable[[str], List[Premise]]
     ground: Callable[[str], List[GroundDependency]] = field(default=lambda arg: [])
+    outbound: bool = False  # sends its input outside this machine (the third leg of the lethal trifecta)
 
 
 _OPS = {
@@ -91,9 +92,9 @@ def archive_read(archive: Archive) -> Tool:
 def web_fetch(archive: Archive) -> Tool:
     def run(url: str) -> List[Premise]:
         d = archive.fetch(url.strip())
-        return [Premise(d.text, d.source)]
+        return [Premise(d.text, d.source, label=UNTRUSTED)]
 
-    return Tool("web_fetch", "read a public web address", run, lambda arg: archive.ground(network=True))
+    return Tool("web_fetch", "read a public web address", run, lambda arg: archive.ground(network=True), outbound=True)
 
 
 def memory(world: CommonWorld) -> Tool:

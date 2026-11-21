@@ -6,6 +6,11 @@
     python -m gaia_techne spec                   print the chain question -> condition -> invariant -> code -> test
     python -m gaia_techne syntax                 print the syntax of a run
     python -m gaia_techne agent [GOAL] [options]  pursue a task under an end you state and acknowledge
+    python -m gaia_techne kernel [--ledger PATH]  the kernel scenario: signatures, a capability, a fallen premise
+    python -m gaia_techne status PATH [--signers FILE] [--as-of N]  what counts, as of an entry (kernel)
+    python -m gaia_techne checkpoint PATH [--size N]  the Merkle root of the record at a size (kernel)
+    python -m gaia_techne prove PATH INDEX [--size N]  an inclusion proof for one entry (kernel)
+    python -m gaia_techne prov PATH               the record as W3C PROV-O, JSON-LD (kernel)
 
 Exit status: 0 when the record verifies and no invariant is broken, 1 when the
 record was changed after it was written, 2 when it verifies but an act in it
@@ -72,6 +77,40 @@ def _agent(args) -> int:
     return 0 if result.answer is not None else 1
 
 
+def _kernel(args, world) -> int:
+    import base64
+    import json
+
+    from .kernel import log, status_of
+    from .kernel.identity import Principals
+    from .kernel.prov import export
+
+    if args.command == "status":
+        principals = Principals.load(args.signers) if args.signers else None
+        try:
+            st = status_of(world, principals, args.as_of, args.intensity)
+        except InvariantViolation as exc:
+            print(f"INVALID: counting only signed acts, {exc}")
+            return 2
+        print(st.summary())
+        return 0
+    if args.command == "prov":
+        print(json.dumps(export(world), indent=2, ensure_ascii=False))
+        return 0
+    size = args.size if args.size is not None else len(world)
+    cp = log.checkpoint(world, size)
+    if args.command == "checkpoint":
+        print(cp.body(), end="")
+        return 0
+    proof = log.prove_inclusion(world, args.index, size)
+    ok = log.check_inclusion(world.entries()[args.index], cp, proof)
+    print(cp.body(), end="")
+    for p in proof:
+        print(base64.b64encode(p).decode())
+    print(f"entry {args.index} included: {'yes' if ok else 'no'}")
+    return 0 if ok else 1
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m gaia_techne", description=f"AGI-GAIA-TECHNE {__version__}")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -92,6 +131,20 @@ def main(argv: Optional[List[str]] = None) -> int:
     ag.add_argument("--calls", type=float, default=10, help="allowance of model calls under the end")
     ag.add_argument("--test", help="the perception in which anyone can test the answer")
     ag.add_argument("--ledger", help="write the public record to this JSON Lines file")
+    sub.add_parser("kernel", help="run the kernel scenario offline").add_argument("--ledger")
+    st = sub.add_parser("status", help="replay a record counting only signed acts of recognition, as of an entry")
+    st.add_argument("path")
+    st.add_argument("--signers", help="an allowed_signers file with the public keys of the people in the record")
+    st.add_argument("--as-of", type=int, help="replay only up to this entry")
+    st.add_argument("--intensity", type=float, help="carbon intensity of the energy drawn, gCO2e/kWh")
+    cp = sub.add_parser("checkpoint", help="print the checkpoint (size and Merkle root) of a record")
+    cp.add_argument("path")
+    cp.add_argument("--size", type=int)
+    pr = sub.add_parser("prove", help="print and check an inclusion proof for one entry")
+    pr.add_argument("path")
+    pr.add_argument("index", type=int)
+    pr.add_argument("--size", type=int)
+    sub.add_parser("prov", help="print the record as W3C PROV-O (JSON-LD)").add_argument("path")
     args = parser.parse_args(argv)
 
     if args.command == "demo":
@@ -101,6 +154,11 @@ def main(argv: Optional[List[str]] = None) -> int:
         return 0
     if args.command == "agent":
         return _agent(args)
+    if args.command == "kernel":
+        from .kernel.demo import run as kernel_demo
+
+        kernel_demo(ledger=args.ledger)
+        return 0
     if args.command == "syntax":
         for step in SYNTAX:
             print(f"{step.name.title():<11} {step.value}")
@@ -115,6 +173,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     if loaded is None:
         return status
     world, projection = loaded
+    if args.command in ("status", "checkpoint", "prove", "prov"):
+        return _kernel(args, world)
     if args.command == "verify":
         print(
             f"record verifies: {len(world)} entries, head {world.head[:16]}...; replay re-checked "

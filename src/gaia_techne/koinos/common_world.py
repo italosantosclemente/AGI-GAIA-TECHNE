@@ -14,6 +14,13 @@ the digest of the entry before it. `verify()` recomputes every digest and every
 link, so that changing a payload, an author, a time or the order of entries is
 detected, not only a forged digest. An entry can refer only to an earlier one.
 
+Signatures. An entry may carry a signature over its digest. The signature is
+kept outside the digest, so that records written before signatures existed
+still verify, and it is checked by the kernel against the public keys of the
+people it names (`gaia_techne.kernel`): the chain shows that nothing changed,
+the signature shows who acted. A record keeper who strips a signature only
+makes the act count for less; no one can add one without the key.
+
 Persistence. `dump()` writes the record as JSON Lines, one entry per line;
 `load()` reads it back and refuses a record that does not verify. Anyone with
 the file can check it without trusting whoever kept it.
@@ -23,7 +30,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Set, Union
@@ -63,6 +70,7 @@ class Entry:
     previous_hash: str
     at: str
     digest: str
+    signature: Optional[str] = None  # armored SSH signature over `digest`, outside the digest
 
     @property
     def payload(self) -> Dict[str, Any]:
@@ -73,7 +81,7 @@ class Entry:
         return _digest(self.index, self.author, self.kind, self.payload_json, self.refers_to, self.previous_hash, self.at)
 
     def to_dict(self) -> Dict[str, Any]:
-        return {
+        d = {
             "index": self.index,
             "author": self.author,
             "kind": self.kind,
@@ -83,6 +91,9 @@ class Entry:
             "at": self.at,
             "digest": self.digest,
         }
+        if self.signature is not None:
+            d["signature"] = self.signature
+        return d
 
     @classmethod
     def from_dict(cls, d: Dict[str, Any]) -> "Entry":
@@ -95,6 +106,7 @@ class Entry:
             previous_hash=d["previous_hash"],
             at=d["at"],
             digest=d["digest"],
+            signature=d.get("signature"),
         )
 
 
@@ -103,6 +115,8 @@ class CommonWorld:
     participants: Set[str] = field(default_factory=set)
     _entries: List[Entry] = field(default_factory=list)
     clock: Callable[[], str] = field(default=_utc_now, repr=False)
+    # Called with (author, digest) after an entry is made; returns a signature or None.
+    signer: Optional[Callable[[str, str], Optional[str]]] = field(default=None, repr=False)
 
     def join(self, person: str) -> None:
         refuse_ground_as_subject(person)
@@ -117,6 +131,7 @@ class CommonWorld:
         previous = self.head
         at = self.clock()
         payload_json = canonical(payload)
+        digest = _digest(index, author, kind, payload_json, refers_to, previous, at)
         entry = Entry(
             index=index,
             author=author,
@@ -125,10 +140,24 @@ class CommonWorld:
             refers_to=refers_to,
             previous_hash=previous,
             at=at,
-            digest=_digest(index, author, kind, payload_json, refers_to, previous, at),
+            digest=digest,
+            signature=self.signer(author, digest) if self.signer is not None else None,
         )
         self._entries.append(entry)
         return entry
+
+    def attach_signature(self, index: int, signature: str) -> Entry:
+        """Attach a signature made elsewhere to an unsigned entry.
+
+        The digest does not cover the signature, so the chain is unchanged. The
+        common world does not judge the signature; the kernel checks it against
+        the author's public key before attaching, and again on every reading.
+        """
+        e = self._entries[index]
+        if e.signature is not None:
+            raise ValueError(f"entry {index} is already signed")
+        self._entries[index] = replace(e, signature=signature)
+        return self._entries[index]
 
     @property
     def head(self) -> str:

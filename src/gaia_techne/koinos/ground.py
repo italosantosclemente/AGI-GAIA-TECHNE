@@ -182,10 +182,10 @@ class GroundBudget:
                 planned[d.key] = planned.get(d.key, 0.0) + d.quantity
             else:
                 units = ", ".join(sorted(a.unit for a in limited))
-                flags.append(
-                    f"unmetered: {d.kind.name} is under an allowance in {units}, "
-                    "but this run declares no quantity in that unit"
-                )
+                flag = (f"unmetered: {d.kind.name} is under an allowance in {units}, "
+                        "but this run declares no quantity in that unit")
+                if flag not in flags:
+                    flags.append(flag)
         for key, amount in planned.items():
             a = self._current[key]
             after = totals.get(key, 0.0) + amount

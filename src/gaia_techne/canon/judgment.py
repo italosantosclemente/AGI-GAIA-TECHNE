@@ -108,6 +108,11 @@ class Canon:
     def correct(self, claim: Claim, event: CorrectionEvent) -> Claim:
         self._not_the_source(event.by, claim, "certify")
         claim.corrections.append(event)
+        if not claim.counts(event):
+            claim.flags.append(
+                f"restricted correction: {event.by} measured the claim by a procedure not open to anyone; "
+                "it widens nothing and refutes nothing"
+            )
         claim.stage = self._stage(claim)
         return claim
 
@@ -124,6 +129,8 @@ class Canon:
 
     def usable(self, claim: Claim) -> bool:
         """A claim may be acted on if it has been upheld by others or verified by a person."""
+        if claim.refuted:
+            return False  # a refuted claim is revised, not used
         return claim.stage in (Stage.EXPERIENCE, Stage.SHARED) or bool(claim.verified_by)
 
     @staticmethod
@@ -141,6 +148,8 @@ class Canon:
     def open_questions(self, claim: Claim) -> List[str]:
         """What a human being still has to judge before acting on the claim."""
         qs = list(claim.flags)
+        if claim.refuted and not claim.revised_by:
+            qs.append("refuted by others: to be revised, not used")
         if claim.stage is Stage.PERCEPTION:
             qs.append("holds only for its source so far")
         return qs

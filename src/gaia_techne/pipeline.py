@@ -124,7 +124,7 @@ class Runtime:
 
     # -- one run ---------------------------------------------------------------
 
-    def process(self, werk: Werk) -> Claim:
+    def process(self, werk: Werk, revises: Optional[Claim] = None) -> Claim:
         trace = RunTrace()
         pending: List[str] = []
 
@@ -171,6 +171,7 @@ class Runtime:
             procedures=list(werk.procedures),
             returns_to_perception=werk.returns_to_perception,
             ground=[d.describe() for d in deps],
+            revises=revises.claim_id if revises is not None else None,
         )
         self.canon.perceive(claim)
         for d in deps:
@@ -194,8 +195,21 @@ class Runtime:
             refers_to=end.recorded_at,
         )
         claim.exposed_at = entry.index
+        if revises is not None:
+            revises.revised_by = claim.claim_id
         self.claims.append(claim)
         return claim
+
+    def revise(self, claim: Claim, werk: Werk) -> Claim:
+        """A revision is a new run: the revised claim stays in the record, the new one starts as perception.
+
+        Others measure a claim "and, if it fails, revise it" (thesis, 10.4). The
+        revision is brought by people, like every Werk, and refers to what it revises.
+        """
+        self._exposed(claim, "a revision")
+        if claim.revised_by:
+            raise ValueError(f"{claim.claim_id} was already revised by {claim.revised_by}; revise that claim instead")
+        return self.process(werk, revises=claim)
 
     @staticmethod
     def _claim_record(claim: Claim, end: End, werk: Werk, deps: List[GroundDependency], trace: RunTrace) -> dict:
@@ -219,6 +233,7 @@ class Runtime:
             "ground": claim.ground,
             "ground_dependencies": [_ground_record(d) for d in deps],
             "syntax": trace.names(),
+            "revises": claim.revises,
         }
 
     # -- the life of a claim after exposure --------------------------------------
@@ -244,6 +259,7 @@ class Runtime:
                 "upheld": event.upheld,
                 "community_reach": event.community_reach.name,
                 "note": event.note,
+                "public": event.public,
             },
             refers_to=at,
         )

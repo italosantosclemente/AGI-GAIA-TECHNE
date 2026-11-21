@@ -33,6 +33,8 @@ class Report:
     reach_distribution: Dict[str, int]
     procedure_monoculture: float
     flagged_share: float
+    refuted_share: float = 0.0
+    revised: int = 0
 
     @property
     def widening(self) -> bool:
@@ -66,6 +68,8 @@ def report(claims: Iterable[Claim]) -> Report:
         reach_distribution={r.name: reach.get(r.name, 0) for r in Reach},
         procedure_monoculture=mono,
         flagged_share=_share(flagged, total),
+        refuted_share=_share(sum(1 for c in objectual if c.refuted), len(objectual)),
+        revised=sum(1 for c in cs if c.revised_by),
     )
 
 
